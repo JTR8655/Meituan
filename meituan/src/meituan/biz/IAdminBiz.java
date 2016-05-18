@@ -26,21 +26,21 @@ public interface IAdminBiz {
 	 */
 	public double getCount();
 	
-	/**
+	/**nnnn
 	 * 
-	 * 添加管理员
+	 * 娣诲姞绠＄悊鍛�
 	 * @param po
 	 * @return
 	 */
 	public boolean addAdmin(sellerAdminPO po);
 	/**
-	 * 修改管理员
+	 * 淇敼绠＄悊鍛�j
 	 * @param po
 	 * @return
 	 */
 	public boolean updateAdmin(sellerAdminPO po);
 	/**
-	 * 删除管理员
+	 * 鍒犻櫎绠＄悊鍛�
 	 * @param aids
 	 * @return
 	 */
