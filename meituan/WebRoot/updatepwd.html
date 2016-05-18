@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>修改登录密码</title>
+<link href="css/findpwd.css" type="text/css" rel="stylesheet">
+<script src="js/jquery-1.11.3.js" type="text/javascript"></script>
+<script type="text/javascript">
+var email=window.location.href.split("=")[1];
+console.info(email);
+/*$(function(){
+	$("#submitpwd").click(function(){
+		document.getElementById("content_five").style.display='block';
+		document.getElementById("content_four").style.display='none';
+	});
+});*/
+//修改密码
+function submitpwd(){
+	var pwd=$("#pwd").val();
+	var repwd=$("#repwd").val();
+	console.info(pwd);
+	console.info(repwd);
+	$.ajax({
+		method:'POST',
+		url:'/meituan/UserOperate.do',
+		data:{
+			'op':'updatePwd',
+			'pwd':pwd,
+			'repwd':repwd
+			
+		},
+		dataType:'json',
+		success:function(data){
+		alert(data+"---")
+			//alert("回调函数"+data.code);
+			if(data.code==1){
+				alert("修改成功");
+				//console.info(data.obj.uemail);
+				$("#content_five").css("display","block");
+				$("#content_four").css("display","none");
+			}else if(data.code==0){
+				alert("修改失败");
+			}else if(data.code==2){
+				alert("密码不一致");
+			}
+		}
+	});
+
+};
+</script>
+</head>
+
+<body>
+<header class="header">
+	<div class="header_left">
+    	<a class="header_left_logo" href=""><img src="images/mwituancom.png"/></a>
+   	 <div class="header_right">
+    	<span class="tip">已有美团账号？</span>
+        <a class="header_right_login"  href="login.html">登录</a>
+   	 </div>
+    </div>
+</header>
+<div class="line"></div><!--分隔线-->
+ <div class="content" id="content_four" style="display:block">
+        <h3 class="headline"><span class="headline_content">找回登录密码</span></h3>
+        <div class="form_wrapper">
+            <form action="/account/settingpassword" method="POST" class="form_content"  style="height: 269px;">
+                <div class="retrieve_title" style="padding-left: 0px;">
+                <img src="images/yanzheng_ok.png" />
+                   
+                </div>
+                <div class="form_field" style="padding-bottom: 0px;">
+                    <label>新的登录密码</label>
+                    <input type="password" autocomplete="off" name="password" id="pwd" class="f_text J_new_password">
+                </div>
+                <div class="pw_strength">
+                     <span class="pw_strength_label" >弱</span>
+                     <span class="pw_strength_label">中</span>
+                     <span class="pw_strength_label pw-strength_label_noborder">强</span>
+                </div>
+                
+                <div class="form_field new_password">
+                    <label>确认登录密码</label>
+                    <input type="password" autocomplete="off" name="password2"  id="repwd" class="f_text J_repeat_password">
+                </div>
+                <div class="form_field">
+                    <input type="hidden" value="BqQhlJo0-Z5WqTu1vR6lPl6WQWxNduQLXO1s" name="csrf">
+                   	<a onClick="submitpwd()"><input type="button" value="确认提交" class="btn" id="submitpwd"></a>
+                </div>
+            </form>
+        </div>
+    </div><!--新密码-->
+    <!--修改密码成功-->
+   <div class="content"  id="content_five" style="display:none">
+        <h3 class="headline"><span class="headline_content">找回登录密码</span></h3>
+        <h3 class="retrieve_tips">恭喜您已成功修改了登录密码</h3>
+        <div class="retrieve_result">
+        <img src="images/update_ok.png" style="padding-left: 250px; padding-bottom: 20px;">
+            <div class="form_field retrieve_result_content">
+                <a href="login.html" class="btn">立即登录</a>
+            </div>
+        </div>
+    </div><!--验证成功-->
+<div class="line_foot"></div>
+<footer class="footer">
+	<p class="foot">
+    	©
+        <a class="" href="">meituan.com</a>
+        <a class="" href="">京ICP证070791号</a>
+        <span>京公网安备11010502025545号</span>
+    </p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<div id="sellerGoodsAdmin_table">
+<script type="text/javascript" src="../js/ajaxfileupload.js"></script>
+<script type="text/javascript">
+$(function(){
+	var datagrid;
+	var op;//所传入的对象
+	var editRow=undefined;//编辑的行
+	var flag;//信息提示 
+	datagrid=$("#sellerGoodsAdmin_table").datagrid({
+		url:'../SellerFunction.do',
+		queryParams:{op:"findBySellerpage"},//条件查询
+		pagination:true,
+		pageSize:3,
+		pageList:[1,3,5,7,10],
+		singleSelect:true,
+		columns:[[
+			{field:'fieldvalue',title:'商品',width:220,align:'center',
+						formatter:function(value,row){
+							return row.gid+'-'+row.gtitle1;
+						}
+				},
+			//{field:'gtitle1',title:'商品名',width:150,align:'center',editor:{type:"text",options:{required:true}}},
+			{field:'gdate',title:'上架时间',width:75,align:'center'},
+			{field:'gprice1',title:'原价',width:70,align:'center',editor:{type:"text",options:{required:true}}},
+			{field:'privilege',title:'优惠折扣',width:60,align:'center',editor:{type:"text",options:{required:true}}},
+			{field:'gprice2',title:'销售价',width:70,align:'center',editor:{type:"text",options:{required:true}}},
+			{field:'gsoldcount',title:'已销售量',width:70,align:'center'},
+			{field:'gtitle2',title:'免费服务',width:180,align:'center',editor:{type:"text",options:{required:true}}},
+			{field:'img',title:'图片',width:100,align:'center',formatter:function(value,row,index){return '<img src="../'+value+'"/>';}},
+			{field:'text',title:'商品介绍',width:210,align:'center',editor:{type:"text",options:{required:true}}},
+			{field:'temp1',title:'商品状态',width:80,align:'center',editor:{type:"text",options:{required:true}},formatter:function(value,row,index){
+				if(value==1){
+					return "未上架";
+				}else if(value==0){
+					return "已上架";
+				}else{
+					return value;
+				}
+			}},
+		//	{field:'operate',title:'查看详细信息',width:100,align:'center',
+		        	//formatter:function(value,rowData,index){
+		        		//console.info(JSON.stringify(rowDate));  //将对象转换成字符串
+		        	//	console.info(JSON.parse(rowData));  //将字符串转换成对象
+		        	//	return '<a class="icon-search1 icon-padding" href="javascript:findGooddetail( )">详细</a>';
+		        //	}
+		    //    }
+		]],
+		toolbar:[{
+			text:'添加',
+			iconCls:'icon-add',
+			handler:function(){
+					$("#goods_add_Info").dialog("open");
+			}
+			
+		},'-',{
+			text:'修改',
+			iconCls:'icon-edit',
+			handler:function(){
+				//alert("edit");
+				flag="修改";
+				var rows=datagrid.datagrid("getSelected");//所有的复选框
+				if(rows==undefined){
+					$.messager.show({title:'温馨提示',msg:'请选择您要修改的数据',timeout:2000,showType:'slide'});//
+				}else{
+					op="updateGoods";
+					if(editRow!=undefined){
+						datagrid.datagrid("rejectChanges");//回滚自创建以来或自上次调用acceptChanges,所有的变化数据
+						datagrid.datagrid("endEdit",editRow);//关闭当前正在编辑的行
+						editRow=undefined;
+
+
+					}else{
+						var index=datagrid.datagrid("getRowIndex",rows);//获取当前选择航的索引
+						datagrid.datagrid("updateRow",{index:index, row:rows});
+						//打开编辑器，编辑当前航
+						datagrid.datagrid("beginEdit",index);
+						editRow=index;//记录当前被编辑的行
+					}
+				}
+			}
+		},'-',{
+			text:'保存',
+			iconCls:'icon-save',
+			handler:function(){
+				datagrid.datagrid("endEdit",editRow);//关闭当前正在编辑的行
+				//获取当前被修改的而数据
+			//	alert( atagrid.datagrid("getChanges").getSelected );
+				var rows=datagrid.datagrid("getSelected");
+				if(rows==undefined){
+					datagrid.datagrid("rejectChanges");//回滚自创建以来或自上次调用acceptChanges,所有的变化数据
+					datagrid.datagrid("unselectAll");
+					editRow=undefined;
+				}else{
+					rows["op"]=op;//alert(rows);
+					$.post("../SellerFunction.do",rows,function(data){//回调函数
+						if(data=1){
+							$.messager.show({
+								title:'温馨提示',
+								msg:'信息'+flag+'成功。。。',
+								timeout:2000,
+								showType:'slide'
+							});
+						}else{
+							$.messager.alert("失败提醒","商家'+flag+'失败。。。","error");
+						}
+						
+						datagrid.datagrid("reload");//重新加载数据
+						datagrid.datagrid("rejectChanges");//回滚自创建以来或自上次调用acceptChanges,所有的变化数据
+						datagrid.datagrid("unselectAll");
+					});
+				}
+			}
+		},'-',{
+			text:'撤销',
+			iconCls:'icon-redo',
+			handler:function(){
+				//alert("redo");
+				datagrid.datagrid("rejectChanges");//回滚自创建以来或自上次调用acceptChanges,所有的变化数据
+				datagrid.datagrid("endEdit",editRow);//关闭当前正在编辑的行
+				editRow=undefined;
+				}
+		}]
+	});
+});
+</script>
+</div>
+<style>
+#goods_add_Info{
+	
+}
+	.myinput{
+		width:200px;
+		border:1px solid #f63;
+	}
+	label{
+	padding-right:10px;
+}
+</style>
+<div id="goods_add_Info" class="easyui-dialog" title="添加商品" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
+	<br/>
+	<br/>
+	<form action="" style="paddingL:20px;float:left;display:inline-block;">
+	<label>商品编号</label><input type="text" name="gid" id="goods_id" class="myinput" value="1009" required/><br/><br/>
+	<label>上架时间</label><input type="ndate" name="date" id="goods_date" class="easyui-datebox myinput" value="2016-1-11" required/><br/><br/>
+	<label>折&nbsp;&nbsp;扣</label><input type="text" name="zhekou" id="goods_zhekou" class="myinput" value="5"/><br/><br/>
+	<label>主标题</label><input type="text" name="title1" id="goods_title1" class="myinput" value="ffff"/><br/><br/>
+	<label>副标题</label><input type="text" name="title2" id="goods_title2" class="myinput" value="ssss"/><br/><br/>
+	<label>原&nbsp;&nbsp;价</label><input type="text" name="price1" id="goods_price1" class="myinput" value="99"/><br/><br/>
+	<label>销售价</label><input type="text" name="price2" id="goods_price2" class="myinput" style="readonly" value="90"/><br/><br/>
+	<!-- <label>已销售量</label><input type="text" name="count" id="goods_counts" class="myinput" value="0"/><br/><br/> -->
+	<label>图&nbsp;&nbsp;片</label><input type="file" name="goods_img" id="goods_img" multiple="multiple" onchange="previewMultipleImage(this,'news_pic_show')"/><br/><br/>
+	<label>商品介绍</label><br/>
+		<!-- <textarea rows="5" cols="100"></textarea> -->	
+		<div >
+			<script type="text/plain" id="editor" name="text" style="width:400px;height:200px;" ></script>
+		</div><br/><br/>
+		<!-- <label>商品状态</label><input id="goods_temp1"class="easyui-numberbox myinput" value="0"/><br/><br/> -->
+	<a href="javascript:addGoodsInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加</a>
+
+	
+	</form>
+	<div style="float:right;width:380px;height:400px; margin-right:20px;">
+		<fieldset id="news_pic_show" style="float:right;width:380px;height:400px; margin-right:20px;">
+			<legend>图片预览</legend>
+		</fieldset>
+	</div>
+</div>
+
+
+<script>
+//实例化编辑器
+
+	var ue=UE.getEditor('editor');
+//添加商品信息
+	function addGoodsInfo(){
+		var gid=$("#goods_id ").val();
+		var date=$("#goods_date").datebox('getValue');
+		var zhekou=$("#goods_zhekou").val();
+		var title1=$("#goods_title1").val();
+		var title2=$("#goods_title2").val()
+		var price1=$("#goods_price1").val();
+		var price2=$("#goods_price2").val();
+	//	var count=$("#goods_counts").val();
+		//var temp1=$("#goods_temp1").val();
+		
+		var content=ue.getContent();
+//		alert(content);
+		//alert(gid+"--"+date+"---"+zhekou+"--"+title1+"--"+title2+"----"+price1+"---"+price2+"---"+count+"--"+temp1);
+		$.ajaxFileUpload({
+			url:"../SellerFunction.do?op=addGoodsInfo",
+			type:"post",
+			secureuri:false,
+			fileElementId:"goods_img",
+			dataType:"json",
+			data:{gid:gid,date:date,zhekou:zhekou,title1:title1,title2:title2,price1:price1,price2:price2,content:content},
+			
+			success:function(data){
+				if(parseInt($.trim(data))==1){//说明成功
+					$.messager.show({title:'成功提示',msg:'商品信息添加成功！',timeout:2000,showType:'slide'});
+					$("#goods_add_Info").dialog("close");
+					$("#news_sellerGoodsAdmin_tableinfo").datagrid("reload");
+					$("#goods_id").val("");
+					$("#goods_date").val("");
+					$("#goods_zhekou").val("");
+					$("#goods_title1").val("");
+					$("#goods_title2").val("");
+					//$("#goods_counts").val("");
+					$("#goods_img").html("");
+					//$("#goods_temp1").val("");
+					ue.getContent();
+					//alert(222);
+				}else{
+					$.messager.alert("失败提示","商品信息添加失败！","error");
+				}
+			},
+			error:function(data,e){
+				$.messager.alert("错误提示！","商品信息添加有误！\n"+e,"error");
+				//$.messager.alert("错误提示！",e);
+			}
+		});
+	}
+	
+	
+	//查看商品详细信息
+
+//function findGooddetail(){
+//	$("#goods_find_Info").dialog("open");
+//}
+</script>

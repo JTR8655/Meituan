@@ -1,0 +1,115 @@
+
+<table id="waitliveshop"></table>
+<script>
+	$(function(){
+		var datagrid;
+		var editRow=undefined;
+		var op;
+		var flag;
+		datagrid=$('#waitliveshop').datagrid({   
+		    url:'../manager.do', 
+		    queryParams:{op:"getPageShopInfo"},
+		    fitColumns:true,
+		  //  striped:true,
+		    loadMsg:"数据加载中...",
+		   pagination:true,
+		    columns:[[ 
+		        {field:'sids',title:'商家编号',width:20,align:'center',checkbox:true},   
+		        {field:'sid',title:'商家编号',width:20,align:'center',sortable:true},   
+		        {field:'saccounts',title:'商家号',width:20,align:'center'},  
+		        {field:'sname',title:'姓名',width:20,align:'center'},
+		        {field:'semail',title:'邮箱',width:20,align:'center'},
+		        {field:'slicense',title:'营业执照',width:20,align:'center',formatter:function(value,row,index){
+					if(value=="yes"){
+						return "有营业执照";
+					}else if(value=="no"){
+						return "没有营业执照";
+					}else{
+						return value;
+					}
+				}},
+		        {field:'sphone',title:'手机',width:20,align:'center'},
+		      	{field:'status',title:'是否激活，1(已激活)，0(未激活)',width:25,align:'center',editor:{type:"text",options:{required:true}},formatter:function(value,row,index){
+					if(value==1){
+						return "已激活";
+					}else if(value==0){
+						return "未激活";
+					}else{
+						return value;
+					}
+				}}
+		    ]],
+		    toolbar:[{
+		    	text:"激活商家",
+		    	iconCls:'icon-edit',
+		    	handler:function(){
+		    		//获取要修改的行
+		    		
+		    		
+		    		var rows=datagrid.datagrid("getChecked")[0];
+		    		if(rows==undefined){
+		    			$.messager.show({title:'温馨提示',msg:'请选择您要激活的商家！',timeout:2000,showType:'slide'});
+		    		}else{
+		    			op="activeShop";
+		    			flag="激活";
+		    			if(editRow!=undefined){ //说明有行正在被编辑，则还原当前的修改
+		    				datagrid.datagrid("rejectChanges");  //回滚自创建以来或上次调用AcceptChanges，所有的变化数据
+			        		datagrid.datagrid("endEdit",editRow); //关闭当前正在编辑的行
+			        		editRow=undefined;
+		    			}else{
+		    				//获取当前选择行的索引
+		    				var index=datagrid.datagrid("getRowIndex",rows);
+		    				datagrid.datagrid("updateRow",{index:index,row:rows});
+		    				
+		    				//打开编辑器
+		    				datagrid.datagrid("beginEdit",index);
+		           	   		editRow=index;  //记录当前正在被编辑的行
+		    			}
+		    		}
+		    	}
+		    },{
+		    	text:"保存",
+		    	iconCls:'icon-save',
+		    	handler:function(){
+		    		datagrid.datagrid("endEdit",editRow); //关闭当前正在编辑的行
+		    		
+		    		//获取当前被修改的数据
+		    		var rows=datagrid.datagrid("getChanges")[0];
+		    		if(rows==undefined){//说明当前没有被编辑
+		    			datagrid.datagrid("rejectChanges");  //回滚自创建以来或上次调用AcceptChanges，所有的变化数据
+		        		datagrid.datagrid("unselectAll"); //关闭当前正在编辑的行
+		        		editRow=undefined;
+		    		}else{
+		    			rows["op"]=op;
+		    			$.post("../manager.do",rows,function(data){
+		    				data=parseInt( $.trim(data) );
+		    				if(data==1){ //添加成功
+		    					$.messager.show({
+		    						title:'成功提示',
+		    						msg:'商家'+flag+'成功..',
+		    						timeout:2000, //时间
+		    						showType:'slide'
+		    					});
+		    				}else{ //添加失败
+		    					$.messager.alert('失败提示！','商家'+flag+'失败...','error');
+		    				}
+		    				rows=null;
+		    				datagrid.datagrid("reload");  //重新加载数据一次
+		    				editRow=undefined;
+		    				datagrid.datagrid("rejectChanges");  //回滚自创建以来或上次调用AcceptChanges，所有的变化数据
+			        		datagrid.datagrid("unselectAll"); //关闭当前正在编辑的行
+		    			});
+		    		}
+		    	}
+		  	},{
+		  		text:'撤销',
+		  		iconCls:'icon-redo',
+		    	handler:function(){
+		    		datagrid.datagrid("rejectChanges");  //回滚自创建以来或上次调用AcceptChanges，所有的变化数据
+		    		datagrid.datagrid("endEdit",editRow);
+		    		editRow=undefined;
+		    	}
+		  	} ] 
+		}); 
+	});
+</script>

@@ -1,0 +1,116 @@
+ <div id="sellerAdmin_table">
+<script type="text/javascript">
+$(function(){
+	var datagrid;
+	var op;//所传入的对象
+	var editRow=undefined;//编辑的行
+	var flag;//信息提示
+	datagrid=$("#sellerAdmin_table").datagrid({
+		url:'../SellerOperate.do?op=findBypage',
+		queryParamers:{op:"sLogin"},//条件查询
+		pagination:true,
+		pageSize:3,
+		pageList:[1,3,5,7,10],
+		columns:[[
+			{field:'saccounts',title:'商家帐号',width:80,align:'center'},
+			{field:'spwd',title:'商家密码',width:100,align:'center',formatter: function(value,row,index){return "******"},editor:{type:"text",options:{required:true}}},
+			{field:'saddress',title:'商家地址',width:200,align:'center'},
+			{field:'sshopname',title:'店铺名',width:100,align:'center'},
+			{field:'stype',title:'营销类型',width:80,align:'center'},
+			{field:'sname',title:'店主姓名',width:80,align:'center'},
+			{field:'semail',title:'邮箱',width:100,align:'center'},
+			{field:'slicense',title:'营业执照',width:80,align:'center',formatter:function(value,row,index){
+				if(value=="yes"){
+					return "有";
+				}else if(value=="no"){
+					return "没有";
+				}else{
+					return value;
+				}
+			}},
+			{field:'sphone',title:'联系方式',width:100,align:'center',editor:{type:"text",options:{required:true}}},
+			{field:'status',title:'是否激活',width:80,align:'center',formatter:function(value,row,index){
+				if(value==1){
+					return "已激活";
+				}else if(value==0){
+					return "未激活";
+				}else{
+					return value;
+				}
+			}}
+		]],
+		toolbar:[{
+		
+			text:'编辑',
+			iconCls:'icon-edit',
+			handler:function(){
+				//alert("edit");
+				flag="修改";
+				var rows=datagrid.datagrid("getChecked")[0];//所有的复选框
+				if(rows==undefined){
+					$.messager.show({title:'温馨提示',msg:'请选择您要修改的数据',timeout:2000,showType:'slide'});//
+				}else{
+					op="updateAdmin";
+					if(editRow!=undefined){
+						datagrid.datagrid("rejectChanges");//回滚自创建以来或自上次调用acceptChanges,所有的变化数据
+						datagrid.datagrid("endEdit",editRow);//关闭当前正在编辑的行
+						editRow=undefined;
+					}else{
+						var index=datagrid.datagrid("getRowIndex",rows);//获取当前选择航的索引
+						datagrid.datagrid("updateRow",{index:index,row:rows});
+						//打开编辑器，编辑当前航
+						datagrid.datagrid("beginEdit",index);
+						editRow=0;//记录当前被编辑的行
+						
+					}
+				}
+			}
+		},'-',{
+			text:'保存',
+			iconCls:'icon-save',
+			handler:function(){
+				//alert("save");
+				datagrid.datagrid("endEdit",editRow);//关闭当前正在编辑的行
+				//获取当前被修改的而数据
+				var rows=datagrid.datagrid("getChanges")[0];
+				if(rows==undefined){
+					datagrid.datagrid("rejectChanges");//回滚自创建以来或自上次调用acceptChanges,所有的变化数据
+					datagrid.datagrid("unselectAll");
+					editRow=undefined;
+				}else{
+					rows["op"]=op;
+					$.post("../SellerOperate.do",rows,function(data){//回调函数
+						if(data=1){
+							
+							$.messager.show({
+								title:'温馨提示',
+								msg:flag+'成功。。。',
+								timeout:2000,
+								showType:'slide'
+							});
+						}else{
+							$.messager.alert("失败提醒","用户'+flag+'失败。。。","error");
+						}
+						
+						rows=null;
+						datagrid.datagrid("reload");//重新加载数据
+						datagrid.datagrid("rejectChanges");//回滚自创建以来或自上次调用acceptChanges,所有的变化数据
+						datagrid.datagrid("unselectAll");
+					});
+				}
+			}
+		},'-',{
+			text:'撤销',
+			iconCls:'icon-redo',
+			handler:function(){
+				//alert("redo");
+				datagrid.datagrid("rejectChanges");//回滚自创建以来或自上次调用acceptChanges,所有的变化数据
+				datagrid.datagrid("endEdit",editRow);//关闭当前正在编辑的行
+				editRow=undefined;
+				
+			}
+		}]
+	});
+});
+</script>
+</div>

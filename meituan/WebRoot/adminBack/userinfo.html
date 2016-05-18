@@ -1,0 +1,118 @@
+<table id="user_info"></table>
+
+<script>
+	$(function(){
+		var datagrid;
+		var editRow=undefined;
+		var op;
+		var flag;
+		datagrid=$("#user_info").datagrid({
+			url:'../manager.do',
+			queryParams:{op:"getUserinfo"},
+			fitColumns:true,
+			striped:true,
+			loadMsg:"数据加载中",
+			pagination:true,
+			sortName:'muid',
+			sortOrder:'asc',
+			remoteSort:false,
+			//pageSize:3,
+			//pageList:[1,3,5,7,10],
+			columns:[[
+				{field:'muids',title:'会员编号',width:5,align:'center',checkbox:true},
+				{field:'muid',title:'会员编号',width:10,align:'center',sortable:true},
+				{field:'uaccounts',title:'用户帐号',width:20,align:'center',editor:{type:"text",options:{required:true}}},
+				{field:'uemail',title:'邮箱',width:20,align:'center',editor:{type:"text",options:{required:true}}},
+				//{field:'uphone',title:'手机',width:20,align:'center',editor:{type:"text",options:{required:true}}},
+				{field:'usex',title:'性别',width:5,align:'center',editor:{type:"text",options:{required:true}}},
+				//{field:'upoint',title:'积分',width:20,align:'center',editor:{type:"text",options:{required:true}}},
+				//{field:'ubirth',title:'生日',width:20,align:'center',editor:{type:"text",options:{required:true}}},
+				//{field:'umarital',title:'个人状况',width:20,align:'center',editor:{type:"text",options:{required:true}}},
+				//{field:'ujob',title:'职业',width:20,align:'center',editor:{type:"text",options:{required:true}}},
+				//{field:'uinterest',title:'兴趣',width:20,align:'center',editor:{type:"text",options:{required:true}}},
+			]],
+			toolbar:[{
+				text:"删除",
+				iconCls:'icon-remove',
+				handler:function(){
+					//获取所有被选中的行
+		    		var rows=datagrid.datagrid("getChecked");
+		    		if(rows.length<=0){ //说明没有选中任意一行
+		    			$.messager.show({
+    						title:'温馨提示',
+    						msg:'请选择您要删除的用户信息！',
+    						timeout:2000, //时间
+    						showType:'slide'
+    					});
+		    		}else{
+		    			$.messager.confirm('信息确认', '您确定要删除所选中的用户信息吗？', function(r){
+		    				if (r){
+		    					var muid="";
+		    					for(var i=0;i<rows.length-1;i++){
+		    						muid+=rows[i].muid+",";
+		    					}
+		    					muid+=rows[i].muid;
+		    					//console.info(muid);
+		    					//将要删除mid 发送到服务器
+		    					$.post("../manager.do",{op:"delUserinfo",muid:muid},function(data){
+				    				if(data==1){ //删除成功
+				    					$.messager.show({
+				    						title:'删除提示',
+				    						msg:'用户信息删除成功..',
+				    						timeout:2000, //时间
+				    						showType:'slide'
+				    					});
+				    					datagrid.datagrid("reload");  //重新加载数据一次
+				    				}else{ //添加失败
+				    					$.messager.alert('失败提示！','用户信息删除失败...','error');
+				    				}
+				    			});
+		    				}
+		    			});
+		    		}
+				}
+			},{
+				text:"保存",
+				iconCls:'icon-save',
+				handler:function(){
+					datagrid.datagrid("endEdit",editRow); //关闭当前正在编辑的行
+		    		//获取当前被修改的数据
+		    		var rows=datagrid.datagrid("getChanges")[0];
+		    		if(rows==undefined){//说明当前没有被编辑
+		    			datagrid.datagrid("rejectChanges");  //回滚自创建以来或上次调用AcceptChanges，所有的变化数据
+		        		datagrid.datagrid("unselectAll"); //关闭当前正在编辑的行
+		        		editRow=undefined;
+		    		}else{
+		    			rows["op"]=op;
+		    			$.post("../manager.do",rows,function(data){
+		    				data=parseInt( $.trim(data) );
+		    				if(data==1){ //添加成功
+		    					$.messager.show({
+		    						title:'成功提示',
+		    						msg:'用户信息'+flag+'成功..',
+		    						timeout:2000, //时间
+		    						showType:'slide'
+		    					});
+		    				}else{ //添加失败
+		    					$.messager.alert('失败提示！','用户信息'+flag+'失败...','error');
+		    				}
+		    				rows=null;
+		    				datagrid.datagrid("reload");  //重新加载数据一次
+		    				editRow=undefined;
+		    				datagrid.datagrid("rejectChanges");  //回滚自创建以来或上次调用AcceptChanges，所有的变化数据
+			        		datagrid.datagrid("unselectAll"); //关闭当前正在编辑的行
+		    			});
+		    		}
+				}
+			},{
+				text:"撤销",
+				iconCls:'icon-redo',
+				handler:function(){
+				datagrid.datagrid("rejectChanges");  //回滚自创建以来或上次调用AcceptChanges，所有的变化数据
+		    		datagrid.datagrid("endEdit",editRow);
+		    		editRow=undefined;
+				}
+			}]
+		});
+	});
+</script>

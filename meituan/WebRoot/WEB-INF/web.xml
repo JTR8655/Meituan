@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <display-name></display-name>	
+  <welcome-file-list>
+    <welcome-file>login.html</welcome-file>
+  </welcome-file-list>
+  
+  	<!-- 过滤器配置在Servlet前面 -->
+  <filter>
+  	<filter-name>CharacterEncoding</filter-name>
+  	<filter-class>meituan.filters.CharactorFilter</filter-class>
+  	<init-param>
+    	<param-name>encoding</param-name>
+    	<param-value>utf-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+  	<filter-name>CharacterEncoding</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  
+  <!-- 配置用户个人信息操作servlet -->
+  <servlet>
+	    <servlet-name>UserOperateServlet</servlet-name>
+	    <servlet-class>meituan.servlets.UserOperateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+  		<servlet-name>UserOperateServlet</servlet-name>
+  		<url-pattern>/UserOperate.do</url-pattern>
+  	</servlet-mapping>
+  	
+  	<!-- 配置用户下单等操作servlet -->
+  <servlet>
+	    <servlet-name>UserFunctionServlet</servlet-name>
+	    <servlet-class>meituan.servlets.UserFunctionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+  		<servlet-name>UserFunctionServlet</servlet-name>
+  		<url-pattern>/UserFunction.do</url-pattern>
+  	</servlet-mapping>
+  	
+  	<!-- 配置商家个人信息操作servlet -->
+  <servlet>
+	    <servlet-name>SellerOperateServlet</servlet-name>
+	    <servlet-class>meituan.servlets.SellerOperateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+  		<servlet-name>SellerOperateServlet</servlet-name>
+  		<url-pattern>/SellerOperate.do</url-pattern>
+  	</servlet-mapping>
+  	
+  		<!-- 配置商家对商品操作servlet -->
+  <servlet>
+	    <servlet-name>SellerFunctionServlet</servlet-name>
+	    <servlet-class>meituan.servlets.SellerFunctionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+  		<servlet-name>SellerFunctionServlet</servlet-name>
+  		<url-pattern>/SellerFunction.do</url-pattern>
+  	</servlet-mapping>
+  	
+  	<!-- 配置首页显示Servlet -->
+  	 <servlet>
+	    <servlet-name>IndexGoodsServlet</servlet-name>
+	    <servlet-class>meituan.servlets.IndexGoodsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+  		<servlet-name>IndexGoodsServlet</servlet-name>
+  		<url-pattern>/IndexGoods.do</url-pattern>
+  	</servlet-mapping>
+  	<!--配置验证码-->
+  	<servlet>
+	    <servlet-name>reCode</servlet-name>
+	    <servlet-class>meituan.servlets.CodeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	 		<servlet-name>reCode</servlet-name>
+	 		<url-pattern>/code.do</url-pattern>
+	</servlet-mapping>
+	<!--配置商品详情-->
+  	<servlet>
+	    <servlet-name>IndexGoods</servlet-name>
+	    <servlet-class>meituan.servlets.IndexGoodsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	 		<servlet-name>IndexGoods</servlet-name>
+	 		<url-pattern>/showGoodsInfo.do</url-pattern>
+	</servlet-mapping>
+	<!--配置管理员  -->
+	<servlet>
+	    <servlet-name>managerServlet</servlet-name>
+	    <servlet-class>meituan.servlets.managerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	 		<servlet-name>managerServlet</servlet-name>
+	 		<url-pattern>/manager.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 配置商品详情页  -->
+	<servlet>
+		<servlet-name>showGoodsInfo</servlet-name>
+		<servlet-class>meituan.servlets.ShowGoodsInfoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>showGoodsInfo</servlet-name>
+		<url-pattern>/showGoodsDetails.do</url-pattern>
+	</servlet-mapping>
+		<!-- 配置商家接单操作的servlet -->
+  	 <servlet>
+	    <servlet-name>SellerGoodsOrderServlet</servlet-name>
+	    <servlet-class>meituan.servlets.SellerGoodsOrderServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+  		<servlet-name>SellerGoodsOrderServlet</servlet-name>
+  		<url-pattern>/SellerGoodsOrderServlet.do</url-pattern>
+  	</servlet-mapping>
+	<!-- 配置订单页面 -->
+	<servlet>
+		<servlet-name>fairs</servlet-name>
+		<servlet-class>meituan.servlets.FairServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>fairs</servlet-name>
+		<url-pattern>/fairs.do</url-pattern>
+	</servlet-mapping>
+	
+</web-app>

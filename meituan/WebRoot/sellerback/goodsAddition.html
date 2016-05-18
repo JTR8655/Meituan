@@ -1,0 +1,226 @@
+<div id="goodsAddition_table">
+<script type="text/javascript" src="../js/ajaxfileupload.js"></script>
+<script type="text/javascript">
+$(function(){
+	var datagrid;
+	var op;//所传入的对象
+	var editRow=undefined;//编辑的行
+	var flag;//信息提示
+	datagrid=$("#goodsAddition_table").datagrid({
+		url:'../SellerFunction.do',
+		queryParams:{op:"findByGoodspage"},//条件查询
+		pagination:true,
+		pageSize:3,
+		pageList:[1,3,5,7,10],
+		singleSelect:true,
+		columns:[[
+
+			{field:'gid',title:'商品',width:80,align:'center',formatter:function(vslue,row){
+							return row.gid+'-'+row.gtitle1;
+						}
+			},
+				{field:'d_taocan',title:'套餐内容',width:80,align:'center',editor:{type:"text",options:{required:true}}},
+			{field:'d_price1',title:'套餐单价',width:80,align:'center',editor:{type:"text",options:{required:true}}},
+			{field:'d_count',title:'套餐数量',width:80,align:'center',editor:{type:"text",options:{required:true}}},
+			{field:'b_retime',title:'有效期',width:100,align:'center',editor:{type:"text",options:{required:true}}},
+			{field:'b_usetime',title:'使用时间',width:80,align:'center',editor:{type:"text",options:{required:true}}},
+			{field:'b_ordertip',title:'预约提示',width:80,align:'center',editor:{type:"text",options:{required:true}}},
+			{field:'b_parlor',title:'包间',width:80,align:'center',editor:{type:"text",options:{required:true}}},
+			{field:'b_pack',title:'食堂外带',width:100,align:'center',editor:{type:"text",options:{required:true}}},
+			{field:'b_serve',title:'商家服务',width:180,align:'center',editor:{type:"text",options:{required:true}}},
+			{field:'b_limittip',title:'限购提醒',width:100,align:'center',editor:{type:"text",options:{required:true}}},
+			{field:'b_prompt',title:'温馨提示',width:100,align:'center',editor:{type:"text",options:{required:true}}},
+		
+		//	{field:'operate',title:'查看详细信息',width:100,align:'center',formatter:function(value,rowData,index){
+		        		//console.info(JSON.stringify(rowDate));  //将对象转换成字符串
+		        		//console.info(JSON.parse(rowData));  //将字符串转换成对象
+		        //		return '<a class="icon-search1 icon-padding" href="javascript:findGooddetail( )">详细</a>';
+		        	//}
+		       // }
+		]],
+		toolbar:[{
+			text:'添加',
+			iconCls:'icon-add',
+			handler:function(){
+					$("#goods_add_Intro").dialog("open");
+			}
+			
+		},'-',{
+			text:'修改',
+			iconCls:'icon-edit',
+			handler:function(){
+				//alert("edit");
+				flag="修改";
+				var rows=datagrid.datagrid("getSelected");//所有的复选框
+				if(rows==undefined){
+					$.messager.show({title:'温馨提示',msg:'请选择您要修改的数据',timeout:2000,showType:'slide'});//
+				}else{
+					op="updateGoodsIntro";
+					if(editRow!=undefined){
+						datagrid.datagrid("rejectChanges");//回滚自创建以来或自上次调用acceptChanges,所有的变化数据
+						datagrid.datagrid("endEdit",editRow);//关闭当前正在编辑的行
+						editRow=undefined;
+					}else{
+						var index=datagrid.datagrid("getRowIndex",rows);//获取当前选择航的索引
+						datagrid.datagrid("updateRow",{index:index, row:rows});
+						//打开编辑器，编辑当前行
+						datagrid.datagrid("beginEdit",index);
+						editRow=index;//记录当前被编辑的行
+					}
+				}
+			}
+		},'-',{
+			text:'保存',
+			iconCls:'icon-save',
+			handler:function(){
+				datagrid.datagrid("endEdit",editRow);//关闭当前正在编辑的行
+				//获取当前被修改的而数据
+			//	alert( atagrid.datagrid("getChanges").getSelected );
+				var rows=datagrid.datagrid("getSelected");
+				if(rows==undefined){
+					datagrid.datagrid("rejectChanges");//回滚自创建以来或自上次调用acceptChanges,所有的变化数据
+					datagrid.datagrid("unselectAll");
+					editRow=undefined;
+				}else{
+					rows["op"]=op;//alert(rows);
+					$.post("../SellerFunction.do",rows,function(data){//回调函数
+						if(data=1){
+							$.messager.show({
+								title:'温馨提示',
+								msg:'信息'+flag+'成功。。。',
+								timeout:2000,
+								showType:'slide'
+							});
+						}else{
+							$.messager.alert("失败提醒","商家'+flag+'失败。。。","error");
+						}
+						
+						datagrid.datagrid("reload");//重新加载数据
+						datagrid.datagrid("rejectChanges");//回滚自创建以来或自上次调用acceptChanges,所有的变化数据
+						datagrid.datagrid("unselectAll");
+					});
+				}
+			}
+		},'-',{
+			text:'撤销',
+			iconCls:'icon-redo',
+			handler:function(){
+				//alert("redo");
+				datagrid.datagrid("rejectChanges");//回滚自创建以来或自上次调用acceptChanges,所有的变化数据
+				datagrid.datagrid("endEdit",editRow);//关闭当前正在编辑的行
+				editRow=undefined;
+				}
+		
+		}]
+	});
+});
+</script>
+</div>
+<style>
+#goods_add_Intro{
+	width:700px;
+	height:900px;
+}
+	.myinput{
+		width:500px;
+		border:1px solid #f63;
+	}
+	label{
+	padding-right:10px;
+}
+</style>
+
+<div id="goods_add_Intro" class="easyui-dialog" title="添加商品附加信息" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
+	<br/>
+	<br/>
+	
+	<form action="" style="paddingL:20px;float:left;display:inline-block;">
+	 <!--  <div> 
+     <label>商品编号</label> <select name="gid" id="introgoods_id" class="myinput" required>   
+        <option value="1001">1001</option>   
+        <option value="1002">1002</option>   
+        <option value="1003">1003</option>   
+        <option value="1004">1004</option>   
+        <option value="1005">1005</option>       
+      </select>   
+       </div>
+       --> 
+	<label>商品编号</label><input type="text" name="gid" id="introgoods_id" class="myinput" value="1001" required/><br/><br/>
+	<label>有效期</label><input type="text" name="b_retime" id="introgoods_b_retime" class="myinput" value="2016.1.1-2016.12.12" required/><br/><br/>
+	<label>使用时间</label><input type="text" name="b_usetime" id="introgoods_b_usetime" class="myinput" value="8:00-22:00"/><br/><br/>
+	<label>预约提示</label><input type="text" name="b_ordertip" id="introgoods_b_ordertip" class="myinput" value="无需预约"/><br/><br/>
+	<label>包&nbsp;&nbsp;间</label><input type="text" name="b_parlor" id="introgoods_b_parlor" class="myinput" value="有包间"/><br/><br/>
+	<label>食堂外带</label><input type="text" name="b_pack" id="introgoods_b_pack" class="myinput" value="免费打包，可外带"/><br/><br/>
+	<label>商家服务</label><input type="text" name="b_serve" id="introgoods_b_serve" class="myinput" value=""/><br/><br/>
+	<label>限购提醒</label><input type="text" name="b_limittip" id="introgoods_b_limittip" class="myinput" value="0"/><br/><br/> 
+	<label>温馨提示</label><input type="text" name="b_prompt" id="introgoods_b_prompt" class="myinput"/><br/><br/>
+	<label>套餐内容</label><input type="text" name="d_taocan" id="introgoods_d_taocan" class="myinput"/><br/><br/>
+	<label>套餐单价</label><input type="text" name="d_price1" id="introgoods_d_price1" class="myinput"/><br/><br/>
+	<label>套餐数量</label><input type="text" name="d_count" id="introgoods_d_count"class="myinput" value="0"/><br/><br/> 
+	<a href="javascript:addGoodsIntro()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加</a>
+	</form>
+</div>
+
+
+<script>
+//实例化编辑器
+
+	var ue=UE.getEditor('editor');
+//添加商品信息
+	function addGoodsIntro(){
+		var gid=$("#introgoods_id ").val();
+		var retime=$("#introgoods_b_retime").val();
+		var usetime=$("#introgoods_b_usetime").val();
+		var ordertip=$("#introgoods_b_ordertip").val();
+		var parlor=$("#introgoods_b_parlor").val();
+		var pack=$("#introgoods_b_pack").val();
+		var serve=$("#introgoods_b_serve").val();
+		var limittip=$("#introgoods_b_limittip").val();
+		var prompt=$("#introgoods_b_prompt").val();
+		var taocan=$("#introgoods_d_taocan").val();
+		var price1=$("#introgoods_d_price1").val();
+		var count=$("#introgoods_d_count").val();
+		if(gid=="" || retime=="" || usetime=="" || ordertip=="" || parlor=="" || pack=="" || serve=="" || limittip==""
+		 || prompt=="" || taocan=="" || price1=="" || count==""){
+			alert("请将信息填写完整");
+			return;
+		}/*
+		var reg = /^\d$/;
+		if(!reg.test(price1) || !reg.test(count)){
+			alert("请在单价和数量中输入数字");
+			return;
+		}
+*/
+		$.ajaxFileUpload({
+			url:"../SellerFunction.do?op=addGoodsIntro",
+			type:"post",
+			secureuri:false,
+			//fileElementId:"goods_img",
+			dataType:"json",
+			data:{gid:gid,retime:retime,usetime:usetime,ordertip:ordertip,parlor:parlor,pack:pack,serve:serve,limittip:limittip,prompt:prompt,taocan:taocan,price1:price1,count:count},
+			success:function(data){
+				if(parseInt($.trim(data))==1){//说明成功
+					$.messager.show({title:'成功提示',msg:'商品信息添加成功',timeout:2000,showType:'slide'});
+					$("#goods_add_Intro").dialog("close");
+					//$("#news_sellerGoodsAdmin_tableinfo").datagrid("reload");
+					$("#introgoods_id").val("");
+					$("#introgoods_b_retime").val("");
+					$("#introgoods_b_usetime").val("");
+					$("#introgoods_b_ordertip").val("");
+					$("#introgoods_b_parlor").val("");
+					$("#introgoods_b_pack").val("");
+					$("#introgoods_b_serve").val("");
+					$("#introgoods_b_limittip").val("");
+					$("#introgoods_b_prompt").val("");
+					$("#introgoods_d_taocan").val("");
+					$("#introgoods_d_price1").val("");
+					$("#introgoods_d_count").val("");
+					ue.getContent();
+					//alert(222);
+				}else{
+					$.messager.alert("失败提示","商品信息添加失败！","error");
+				}
+			}
+		});
+	}
+</script>
