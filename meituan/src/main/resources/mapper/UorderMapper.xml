@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.meituan.mapper.UorderMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.meituan.entity.Uorder" >
+    <id column="OID" property="oid" jdbcType="DECIMAL" />
+    <result column="OIDENTIFIER" property="oidentifier" jdbcType="DECIMAL" />
+    <result column="MUID" property="muid" jdbcType="DECIMAL" />
+    <result column="GID" property="gid" jdbcType="DECIMAL" />
+    <result column="OTIME" property="otime" jdbcType="TIMESTAMP" />
+    <result column="OSTATUS" property="ostatus" jdbcType="VARCHAR" />
+    <result column="OPWD" property="opwd" jdbcType="VARCHAR" />
+    <result column="OPAYTIME" property="opaytime" jdbcType="TIMESTAMP" />
+    <result column="OCOUNT" property="ocount" jdbcType="DECIMAL" />
+    <result column="PJSTATUS" property="pjstatus" jdbcType="DECIMAL" />
+    <result column="TEMP2" property="temp2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    OID, OIDENTIFIER, MUID, GID, OTIME, OSTATUS, OPWD, OPAYTIME, OCOUNT, PJSTATUS, TEMP2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from MEITUAN_UORDER
+    where OID = #{oid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from MEITUAN_UORDER
+    where OID = #{oid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.yc.meituan.entity.Uorder" >
+    insert into MEITUAN_UORDER (OID, OIDENTIFIER, MUID, 
+      GID, OTIME, OSTATUS, 
+      OPWD, OPAYTIME, OCOUNT, 
+      PJSTATUS, TEMP2)
+    values (#{oid,jdbcType=DECIMAL}, #{oidentifier,jdbcType=DECIMAL}, #{muid,jdbcType=DECIMAL}, 
+      #{gid,jdbcType=DECIMAL}, #{otime,jdbcType=TIMESTAMP}, #{ostatus,jdbcType=VARCHAR}, 
+      #{opwd,jdbcType=VARCHAR}, #{opaytime,jdbcType=TIMESTAMP}, #{ocount,jdbcType=DECIMAL}, 
+      #{pjstatus,jdbcType=DECIMAL}, #{temp2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yc.meituan.entity.Uorder" >
+    insert into MEITUAN_UORDER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="oid != null" >
+        OID,
+      </if>
+      <if test="oidentifier != null" >
+        OIDENTIFIER,
+      </if>
+      <if test="muid != null" >
+        MUID,
+      </if>
+      <if test="gid != null" >
+        GID,
+      </if>
+      <if test="otime != null" >
+        OTIME,
+      </if>
+      <if test="ostatus != null" >
+        OSTATUS,
+      </if>
+      <if test="opwd != null" >
+        OPWD,
+      </if>
+      <if test="opaytime != null" >
+        OPAYTIME,
+      </if>
+      <if test="ocount != null" >
+        OCOUNT,
+      </if>
+      <if test="pjstatus != null" >
+        PJSTATUS,
+      </if>
+      <if test="temp2 != null" >
+        TEMP2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="oid != null" >
+        #{oid,jdbcType=DECIMAL},
+      </if>
+      <if test="oidentifier != null" >
+        #{oidentifier,jdbcType=DECIMAL},
+      </if>
+      <if test="muid != null" >
+        #{muid,jdbcType=DECIMAL},
+      </if>
+      <if test="gid != null" >
+        #{gid,jdbcType=DECIMAL},
+      </if>
+      <if test="otime != null" >
+        #{otime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ostatus != null" >
+        #{ostatus,jdbcType=VARCHAR},
+      </if>
+      <if test="opwd != null" >
+        #{opwd,jdbcType=VARCHAR},
+      </if>
+      <if test="opaytime != null" >
+        #{opaytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ocount != null" >
+        #{ocount,jdbcType=DECIMAL},
+      </if>
+      <if test="pjstatus != null" >
+        #{pjstatus,jdbcType=DECIMAL},
+      </if>
+      <if test="temp2 != null" >
+        #{temp2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.meituan.entity.Uorder" >
+    update MEITUAN_UORDER
+    <set >
+      <if test="oidentifier != null" >
+        OIDENTIFIER = #{oidentifier,jdbcType=DECIMAL},
+      </if>
+      <if test="muid != null" >
+        MUID = #{muid,jdbcType=DECIMAL},
+      </if>
+      <if test="gid != null" >
+        GID = #{gid,jdbcType=DECIMAL},
+      </if>
+      <if test="otime != null" >
+        OTIME = #{otime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ostatus != null" >
+        OSTATUS = #{ostatus,jdbcType=VARCHAR},
+      </if>
+      <if test="opwd != null" >
+        OPWD = #{opwd,jdbcType=VARCHAR},
+      </if>
+      <if test="opaytime != null" >
+        OPAYTIME = #{opaytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ocount != null" >
+        OCOUNT = #{ocount,jdbcType=DECIMAL},
+      </if>
+      <if test="pjstatus != null" >
+        PJSTATUS = #{pjstatus,jdbcType=DECIMAL},
+      </if>
+      <if test="temp2 != null" >
+        TEMP2 = #{temp2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where OID = #{oid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yc.meituan.entity.Uorder" >
+    update MEITUAN_UORDER
+    set OIDENTIFIER = #{oidentifier,jdbcType=DECIMAL},
+      MUID = #{muid,jdbcType=DECIMAL},
+      GID = #{gid,jdbcType=DECIMAL},
+      OTIME = #{otime,jdbcType=TIMESTAMP},
+      OSTATUS = #{ostatus,jdbcType=VARCHAR},
+      OPWD = #{opwd,jdbcType=VARCHAR},
+      OPAYTIME = #{opaytime,jdbcType=TIMESTAMP},
+      OCOUNT = #{ocount,jdbcType=DECIMAL},
+      PJSTATUS = #{pjstatus,jdbcType=DECIMAL},
+      TEMP2 = #{temp2,jdbcType=VARCHAR}
+    where OID = #{oid,jdbcType=DECIMAL}
+  </update>
+</mapper>

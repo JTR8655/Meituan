@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.meituan.mapper.ManagerMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.meituan.entity.Manager" >
+    <id column="MID" property="mid" jdbcType="DECIMAL" />
+    <result column="MNAME" property="mname" jdbcType="VARCHAR" />
+    <result column="MPWD" property="mpwd" jdbcType="VARCHAR" />
+    <result column="TEMP1" property="temp1" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    MID, MNAME, MPWD, TEMP1
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from MEITUAN_MANAGER
+    where MID = #{mid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from MEITUAN_MANAGER
+    where MID = #{mid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.yc.meituan.entity.Manager" >
+    insert into MEITUAN_MANAGER (MID, MNAME, MPWD, 
+      TEMP1)
+    values (#{mid,jdbcType=DECIMAL}, #{mname,jdbcType=VARCHAR}, #{mpwd,jdbcType=VARCHAR}, 
+      #{temp1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yc.meituan.entity.Manager" >
+    insert into MEITUAN_MANAGER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mid != null" >
+        MID,
+      </if>
+      <if test="mname != null" >
+        MNAME,
+      </if>
+      <if test="mpwd != null" >
+        MPWD,
+      </if>
+      <if test="temp1 != null" >
+        TEMP1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mid != null" >
+        #{mid,jdbcType=DECIMAL},
+      </if>
+      <if test="mname != null" >
+        #{mname,jdbcType=VARCHAR},
+      </if>
+      <if test="mpwd != null" >
+        #{mpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="temp1 != null" >
+        #{temp1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.meituan.entity.Manager" >
+    update MEITUAN_MANAGER
+    <set >
+      <if test="mname != null" >
+        MNAME = #{mname,jdbcType=VARCHAR},
+      </if>
+      <if test="mpwd != null" >
+        MPWD = #{mpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="temp1 != null" >
+        TEMP1 = #{temp1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where MID = #{mid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yc.meituan.entity.Manager" >
+    update MEITUAN_MANAGER
+    set MNAME = #{mname,jdbcType=VARCHAR},
+      MPWD = #{mpwd,jdbcType=VARCHAR},
+      TEMP1 = #{temp1,jdbcType=VARCHAR}
+    where MID = #{mid,jdbcType=DECIMAL}
+  </update>
+</mapper>

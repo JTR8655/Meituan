@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.meituan.mapper.UserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.meituan.entity.UserInfo" >
+    <id column="MUID" property="muid" jdbcType="DECIMAL" />
+    <result column="UACCOUNTS" property="uaccounts" jdbcType="VARCHAR" />
+    <result column="UPWD" property="upwd" jdbcType="VARCHAR" />
+    <result column="UEMAIL" property="uemail" jdbcType="VARCHAR" />
+    <result column="UPHONE" property="uphone" jdbcType="VARCHAR" />
+    <result column="USEX" property="usex" jdbcType="VARCHAR" />
+    <result column="UBALANCE" property="ubalance" jdbcType="FLOAT" />
+    <result column="UPOINT" property="upoint" jdbcType="DECIMAL" />
+    <result column="UBIRTH" property="ubirth" jdbcType="TIMESTAMP" />
+    <result column="UMARITAL" property="umarital" jdbcType="VARCHAR" />
+    <result column="UJOB" property="ujob" jdbcType="VARCHAR" />
+    <result column="UHEADIMG" property="uheadimg" jdbcType="VARCHAR" />
+    <result column="UINTEREST" property="uinterest" jdbcType="VARCHAR" />
+    <result column="USTATUS" property="ustatus" jdbcType="DECIMAL" />
+    <result column="uaddr" property="uaddr" jdbcType="VARCHAR" />
+    <result column="uregtime" property="uregtime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    MUID, UACCOUNTS, UPWD, UEMAIL, UPHONE, USEX, UBALANCE, UPOINT, UBIRTH, UMARITAL, 
+    UJOB, UHEADIMG, UINTEREST, USTATUS, uaddr, uregtime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from MEITUAN_USER_INFO
+    where MUID = #{muid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from MEITUAN_USER_INFO
+    where MUID = #{muid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.yc.meituan.entity.UserInfo" >
+    insert into MEITUAN_USER_INFO (MUID, UACCOUNTS, UPWD, 
+      UEMAIL, UPHONE, USEX, 
+      UBALANCE, UPOINT, UBIRTH, 
+      UMARITAL, UJOB, UHEADIMG, 
+      UINTEREST, USTATUS, uaddr, 
+      uregtime)
+    values (#{muid,jdbcType=DECIMAL}, #{uaccounts,jdbcType=VARCHAR}, #{upwd,jdbcType=VARCHAR}, 
+      #{uemail,jdbcType=VARCHAR}, #{uphone,jdbcType=VARCHAR}, #{usex,jdbcType=VARCHAR}, 
+      #{ubalance,jdbcType=FLOAT}, #{upoint,jdbcType=DECIMAL}, #{ubirth,jdbcType=TIMESTAMP}, 
+      #{umarital,jdbcType=VARCHAR}, #{ujob,jdbcType=VARCHAR}, #{uheadimg,jdbcType=VARCHAR}, 
+      #{uinterest,jdbcType=VARCHAR}, #{ustatus,jdbcType=DECIMAL}, #{uaddr,jdbcType=VARCHAR}, 
+      #{uregtime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yc.meituan.entity.UserInfo" >
+    insert into MEITUAN_USER_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="muid != null" >
+        MUID,
+      </if>
+      <if test="uaccounts != null" >
+        UACCOUNTS,
+      </if>
+      <if test="upwd != null" >
+        UPWD,
+      </if>
+      <if test="uemail != null" >
+        UEMAIL,
+      </if>
+      <if test="uphone != null" >
+        UPHONE,
+      </if>
+      <if test="usex != null" >
+        USEX,
+      </if>
+      <if test="ubalance != null" >
+        UBALANCE,
+      </if>
+      <if test="upoint != null" >
+        UPOINT,
+      </if>
+      <if test="ubirth != null" >
+        UBIRTH,
+      </if>
+      <if test="umarital != null" >
+        UMARITAL,
+      </if>
+      <if test="ujob != null" >
+        UJOB,
+      </if>
+      <if test="uheadimg != null" >
+        UHEADIMG,
+      </if>
+      <if test="uinterest != null" >
+        UINTEREST,
+      </if>
+      <if test="ustatus != null" >
+        USTATUS,
+      </if>
+      <if test="uaddr != null" >
+        uaddr,
+      </if>
+      <if test="uregtime != null" >
+        uregtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="muid != null" >
+        #{muid,jdbcType=DECIMAL},
+      </if>
+      <if test="uaccounts != null" >
+        #{uaccounts,jdbcType=VARCHAR},
+      </if>
+      <if test="upwd != null" >
+        #{upwd,jdbcType=VARCHAR},
+      </if>
+      <if test="uemail != null" >
+        #{uemail,jdbcType=VARCHAR},
+      </if>
+      <if test="uphone != null" >
+        #{uphone,jdbcType=VARCHAR},
+      </if>
+      <if test="usex != null" >
+        #{usex,jdbcType=VARCHAR},
+      </if>
+      <if test="ubalance != null" >
+        #{ubalance,jdbcType=FLOAT},
+      </if>
+      <if test="upoint != null" >
+        #{upoint,jdbcType=DECIMAL},
+      </if>
+      <if test="ubirth != null" >
+        #{ubirth,jdbcType=TIMESTAMP},
+      </if>
+      <if test="umarital != null" >
+        #{umarital,jdbcType=VARCHAR},
+      </if>
+      <if test="ujob != null" >
+        #{ujob,jdbcType=VARCHAR},
+      </if>
+      <if test="uheadimg != null" >
+        #{uheadimg,jdbcType=VARCHAR},
+      </if>
+      <if test="uinterest != null" >
+        #{uinterest,jdbcType=VARCHAR},
+      </if>
+      <if test="ustatus != null" >
+        #{ustatus,jdbcType=DECIMAL},
+      </if>
+      <if test="uaddr != null" >
+        #{uaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="uregtime != null" >
+        #{uregtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.meituan.entity.UserInfo" >
+    update MEITUAN_USER_INFO
+    <set >
+      <if test="uaccounts != null" >
+        UACCOUNTS = #{uaccounts,jdbcType=VARCHAR},
+      </if>
+      <if test="upwd != null" >
+        UPWD = #{upwd,jdbcType=VARCHAR},
+      </if>
+      <if test="uemail != null" >
+        UEMAIL = #{uemail,jdbcType=VARCHAR},
+      </if>
+      <if test="uphone != null" >
+        UPHONE = #{uphone,jdbcType=VARCHAR},
+      </if>
+      <if test="usex != null" >
+        USEX = #{usex,jdbcType=VARCHAR},
+      </if>
+      <if test="ubalance != null" >
+        UBALANCE = #{ubalance,jdbcType=FLOAT},
+      </if>
+      <if test="upoint != null" >
+        UPOINT = #{upoint,jdbcType=DECIMAL},
+      </if>
+      <if test="ubirth != null" >
+        UBIRTH = #{ubirth,jdbcType=TIMESTAMP},
+      </if>
+      <if test="umarital != null" >
+        UMARITAL = #{umarital,jdbcType=VARCHAR},
+      </if>
+      <if test="ujob != null" >
+        UJOB = #{ujob,jdbcType=VARCHAR},
+      </if>
+      <if test="uheadimg != null" >
+        UHEADIMG = #{uheadimg,jdbcType=VARCHAR},
+      </if>
+      <if test="uinterest != null" >
+        UINTEREST = #{uinterest,jdbcType=VARCHAR},
+      </if>
+      <if test="ustatus != null" >
+        USTATUS = #{ustatus,jdbcType=DECIMAL},
+      </if>
+      <if test="uaddr != null" >
+        uaddr = #{uaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="uregtime != null" >
+        uregtime = #{uregtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where MUID = #{muid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yc.meituan.entity.UserInfo" >
+    update MEITUAN_USER_INFO
+    set UACCOUNTS = #{uaccounts,jdbcType=VARCHAR},
+      UPWD = #{upwd,jdbcType=VARCHAR},
+      UEMAIL = #{uemail,jdbcType=VARCHAR},
+      UPHONE = #{uphone,jdbcType=VARCHAR},
+      USEX = #{usex,jdbcType=VARCHAR},
+      UBALANCE = #{ubalance,jdbcType=FLOAT},
+      UPOINT = #{upoint,jdbcType=DECIMAL},
+      UBIRTH = #{ubirth,jdbcType=TIMESTAMP},
+      UMARITAL = #{umarital,jdbcType=VARCHAR},
+      UJOB = #{ujob,jdbcType=VARCHAR},
+      UHEADIMG = #{uheadimg,jdbcType=VARCHAR},
+      UINTEREST = #{uinterest,jdbcType=VARCHAR},
+      USTATUS = #{ustatus,jdbcType=DECIMAL},
+      uaddr = #{uaddr,jdbcType=VARCHAR},
+      uregtime = #{uregtime,jdbcType=VARCHAR}
+    where MUID = #{muid,jdbcType=DECIMAL}
+  </update>
+</mapper>

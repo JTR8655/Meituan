@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.meituan.mapper.GoodsInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.meituan.entity.GoodsInfo" >
+    <id column="GID" property="gid" jdbcType="DECIMAL" />
+    <result column="GDATE" property="gdate" jdbcType="TIMESTAMP" />
+    <result column="PRIVILEGE" property="privilege" jdbcType="VARCHAR" />
+    <result column="SID" property="sid" jdbcType="DECIMAL" />
+    <result column="GTITLE1" property="gtitle1" jdbcType="VARCHAR" />
+    <result column="GTITLE2" property="gtitle2" jdbcType="VARCHAR" />
+    <result column="GPRICE1" property="gprice1" jdbcType="FLOAT" />
+    <result column="GPRICE2" property="gprice2" jdbcType="FLOAT" />
+    <result column="GSOLDCOUNT" property="gsoldcount" jdbcType="DECIMAL" />
+    <result column="IMG" property="img" jdbcType="VARCHAR" />
+    <result column="TEXT" property="text" jdbcType="VARCHAR" />
+    <result column="TEMP1" property="temp1" jdbcType="VARCHAR" />
+    <result column="TEMP2" property="temp2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    GID, GDATE, PRIVILEGE, SID, GTITLE1, GTITLE2, GPRICE1, GPRICE2, GSOLDCOUNT, IMG, 
+    TEXT, TEMP1, TEMP2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from MEITUAN_GOODS_INFO
+    where GID = #{gid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from MEITUAN_GOODS_INFO
+    where GID = #{gid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.yc.meituan.entity.GoodsInfo" >
+    insert into MEITUAN_GOODS_INFO (GID, GDATE, PRIVILEGE, 
+      SID, GTITLE1, GTITLE2, 
+      GPRICE1, GPRICE2, GSOLDCOUNT, 
+      IMG, TEXT, TEMP1, TEMP2
+      )
+    values (#{gid,jdbcType=DECIMAL}, #{gdate,jdbcType=TIMESTAMP}, #{privilege,jdbcType=VARCHAR}, 
+      #{sid,jdbcType=DECIMAL}, #{gtitle1,jdbcType=VARCHAR}, #{gtitle2,jdbcType=VARCHAR}, 
+      #{gprice1,jdbcType=FLOAT}, #{gprice2,jdbcType=FLOAT}, #{gsoldcount,jdbcType=DECIMAL}, 
+      #{img,jdbcType=VARCHAR}, #{text,jdbcType=VARCHAR}, #{temp1,jdbcType=VARCHAR}, #{temp2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yc.meituan.entity.GoodsInfo" >
+    insert into MEITUAN_GOODS_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gid != null" >
+        GID,
+      </if>
+      <if test="gdate != null" >
+        GDATE,
+      </if>
+      <if test="privilege != null" >
+        PRIVILEGE,
+      </if>
+      <if test="sid != null" >
+        SID,
+      </if>
+      <if test="gtitle1 != null" >
+        GTITLE1,
+      </if>
+      <if test="gtitle2 != null" >
+        GTITLE2,
+      </if>
+      <if test="gprice1 != null" >
+        GPRICE1,
+      </if>
+      <if test="gprice2 != null" >
+        GPRICE2,
+      </if>
+      <if test="gsoldcount != null" >
+        GSOLDCOUNT,
+      </if>
+      <if test="img != null" >
+        IMG,
+      </if>
+      <if test="text != null" >
+        TEXT,
+      </if>
+      <if test="temp1 != null" >
+        TEMP1,
+      </if>
+      <if test="temp2 != null" >
+        TEMP2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gid != null" >
+        #{gid,jdbcType=DECIMAL},
+      </if>
+      <if test="gdate != null" >
+        #{gdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="privilege != null" >
+        #{privilege,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null" >
+        #{sid,jdbcType=DECIMAL},
+      </if>
+      <if test="gtitle1 != null" >
+        #{gtitle1,jdbcType=VARCHAR},
+      </if>
+      <if test="gtitle2 != null" >
+        #{gtitle2,jdbcType=VARCHAR},
+      </if>
+      <if test="gprice1 != null" >
+        #{gprice1,jdbcType=FLOAT},
+      </if>
+      <if test="gprice2 != null" >
+        #{gprice2,jdbcType=FLOAT},
+      </if>
+      <if test="gsoldcount != null" >
+        #{gsoldcount,jdbcType=DECIMAL},
+      </if>
+      <if test="img != null" >
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="text != null" >
+        #{text,jdbcType=VARCHAR},
+      </if>
+      <if test="temp1 != null" >
+        #{temp1,jdbcType=VARCHAR},
+      </if>
+      <if test="temp2 != null" >
+        #{temp2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.meituan.entity.GoodsInfo" >
+    update MEITUAN_GOODS_INFO
+    <set >
+      <if test="gdate != null" >
+        GDATE = #{gdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="privilege != null" >
+        PRIVILEGE = #{privilege,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null" >
+        SID = #{sid,jdbcType=DECIMAL},
+      </if>
+      <if test="gtitle1 != null" >
+        GTITLE1 = #{gtitle1,jdbcType=VARCHAR},
+      </if>
+      <if test="gtitle2 != null" >
+        GTITLE2 = #{gtitle2,jdbcType=VARCHAR},
+      </if>
+      <if test="gprice1 != null" >
+        GPRICE1 = #{gprice1,jdbcType=FLOAT},
+      </if>
+      <if test="gprice2 != null" >
+        GPRICE2 = #{gprice2,jdbcType=FLOAT},
+      </if>
+      <if test="gsoldcount != null" >
+        GSOLDCOUNT = #{gsoldcount,jdbcType=DECIMAL},
+      </if>
+      <if test="img != null" >
+        IMG = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="text != null" >
+        TEXT = #{text,jdbcType=VARCHAR},
+      </if>
+      <if test="temp1 != null" >
+        TEMP1 = #{temp1,jdbcType=VARCHAR},
+      </if>
+      <if test="temp2 != null" >
+        TEMP2 = #{temp2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where GID = #{gid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yc.meituan.entity.GoodsInfo" >
+    update MEITUAN_GOODS_INFO
+    set GDATE = #{gdate,jdbcType=TIMESTAMP},
+      PRIVILEGE = #{privilege,jdbcType=VARCHAR},
+      SID = #{sid,jdbcType=DECIMAL},
+      GTITLE1 = #{gtitle1,jdbcType=VARCHAR},
+      GTITLE2 = #{gtitle2,jdbcType=VARCHAR},
+      GPRICE1 = #{gprice1,jdbcType=FLOAT},
+      GPRICE2 = #{gprice2,jdbcType=FLOAT},
+      GSOLDCOUNT = #{gsoldcount,jdbcType=DECIMAL},
+      IMG = #{img,jdbcType=VARCHAR},
+      TEXT = #{text,jdbcType=VARCHAR},
+      TEMP1 = #{temp1,jdbcType=VARCHAR},
+      TEMP2 = #{temp2,jdbcType=VARCHAR}
+    where GID = #{gid,jdbcType=DECIMAL}
+  </update>
+</mapper>
