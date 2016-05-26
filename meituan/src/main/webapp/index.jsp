@@ -4,6 +4,6 @@
 <meta charset="utf-8" />
 <base href="/vote/">
 <body>
-	<center><h3>Welcome to meituan</h3></center>
+	<jsp:forward page="goods_index.action"/>
 </body>
 </html>

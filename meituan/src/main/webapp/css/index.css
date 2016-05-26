@@ -1,0 +1,523 @@
+@charset "utf-8";
+/* CSS Document */
+#head_3 div{
+	background:#D0F1F8;
+	width:1177px;
+	height:60px;
+	left:8%;
+	position:relative;
+	top:2px;
+}
+#content{
+	width:1177px;
+}
+#cont_div{
+	width:100%;
+	height:477px;
+}
+#content_left{
+	width:21%;
+	height:100%;
+	float:left;
+	margin-left:4px;
+	border:1px solid #EEE;
+	border-top:none;
+	background:#FAFAFA;
+}
+#content_mid{
+	width:60%;
+	height:477px;
+	margin-left:10px;
+	float:left;
+}
+#content_right{
+	width:197px;
+	height:477px;
+	float:right;
+	margin-right:-4px;
+	border:1px solid #EEE;
+	border-top:none;
+}
+.fenlei{
+	width:224px;
+	height:50px;
+	margin:0 auto;
+	border-bottom:1px solid #EEE;
+	line-height:50px;
+	background:url(../index_images/fenlei_arrow.png) no-repeat right center;
+}
+.fenlei_main{
+	font-size:14px;
+	font-weight:bold;
+	color:black;
+}
+.fenlei_small{
+	font-size:12px;
+	float:right;
+	margin-left:5px;
+	color:#999999;
+	padding-right:16px;
+}
+.cont_m_up{
+	width:689px;
+	height:52px;
+	border-bottom:1px solid #EEE;
+}
+#remen{
+	background:url(../index_images/remen.png) no-repeat left center;
+	padding-left:5px;
+}
+#quyu{
+	background:url(../index_images/quyu.png) no-repeat left center;
+	padding-left:5px;
+}
+#shangquan{
+	background:url(../index_images/shangquan.png) no-repeat left center;
+}
+#sosuo_right{
+	cursor:pointer;
+}
+
+#img_qiehuan{
+	width:690px;
+	height:317px;
+	margin-top:-2px;
+}
+.img_qie_li{
+	display:block;
+	width:690px;
+	height:317px;
+}
+.img_qie_li_2{
+	display:none;
+}
+.qie{
+	width:50%;
+	height:100px;
+	border-bottom:1px solid #EEE;
+	float:left;
+	padding:11px 0px;
+}
+.qie_l{
+	width:335px;
+	height:297px;
+	border-right:1px solid #EEE;
+	padding-right:9px;
+}
+.qie_r{
+	width:335px;
+	height:297px;
+	padding-left:9px;
+}
+.qie_goleft,.qie_goright{
+	position:relative;
+	top:180px;
+	display:block;
+	height:39px;
+	opacity:0.6;
+}
+.qie_goleft{
+	background:url(../index_images/qie_goleft.jpg) no-repeat;
+	right:329px;
+	width:30px;
+	right:329px;
+}
+.qie_goright{
+	background:#A9A9A9;
+	left:313px;
+	top:141px;
+	width:60px;
+}
+.goright_div{
+	display:none;
+	background:url(../index_images/qie_goright.jpg) no-repeat right;
+	position:relative;
+	top:0px;
+	left:15px;
+	width:30px;
+	height:39px;
+}
+.tupian{
+	display:block;
+	width:333px;
+	height:232px;
+	overflow:auto;
+	margin-bottom:20px;	
+}
+.ri_do_1{
+	width:41px;
+	height:41px;
+	border-bottom:1px solid #EEE;
+}
+.ri_do_2{
+	border-bottom:none;
+}
+.jiage{
+	float:right;
+	font-size:26px;
+	font-weight:bold;
+	color:red;
+	margin-top:-20px;
+	margin-right:5px;
+}
+.p_name{
+	width:250px;
+	float:left;
+}
+.name{
+	font-size:14px;
+	font-weight:bold;
+}
+.jieshao{
+	font-size:12px;
+	color:#9F9F9F;
+}
+#afterXiangxi{
+	
+}
+
+.cont_m_up{
+	font-size:12px;
+}
+.cont_m_a_1,.cont_m_a_2,.cont_m_a_3{
+	margin-right:20px;
+	text-align:center;
+	line-height:50px;
+}
+.cont_m_a_1{
+	padding-left:20px;
+	color:#999999;
+}
+.cont_m_a_2{
+	color:#F76120;
+}
+#morearea{
+	display:inline-block;
+	border:1px solid #EEE;
+	float:right;
+	height:16px;
+	margin-top:15px;
+	width:30px;
+	padding:1px 5px;
+}
+#cont_r_up{
+	height:158px;
+    width:197px;
+	border-bottom:1px solid #EEE;
+}
+#cont_r_down{
+	width:197px;
+	height:318px;
+}
+#shangxin{
+	color: #333;
+    font-size: 24px;
+    text-align: center;
+	margin-top:51px;
+}
+#dijia{
+	color: #999;
+    font-size: 14px;
+	margin-top:5px;
+    text-align: center;
+}
+#qiang_logo{
+	margin-top:30px;
+	height:48px;
+	width:100%;
+	float:left;
+	margin-left:4px;
+}
+#qiang_a{
+	background:url(../index_images/daojishi.png) no-repeat;
+	padding-left:37px;
+	background-position: 0 -321px;
+    float: left;
+    height: 40px;
+    width: 80px;
+	font-size:20px;
+	line-height:40px;
+}
+#daojishi{
+	margin-top:-5px;
+	width:216px;
+	height:29px; 
+	padding: 5px 5px;
+	float:left;
+	margin-left:10px;
+	border:1px solid #EEE;
+	border-radius:3px;
+}
+#small_logo{
+	position:relative;
+	width:7px;
+	height:5px;
+	border-left:1px solid #EEE;
+	background:#FFF;
+	left:-458px;
+	top:13px;
+}
+#kaishi{
+	width:49px;
+	height:28px;
+	float:left;
+	background:url(../index_images/daojishi.png) no-repeat;
+	background-position:0 -376px;
+	margin-right:11px;
+}
+#qiang_qiehuan{
+	width:1177px;
+	height:260px;
+	border:1px solid #EEE;
+	float:left;
+}
+.time{
+	float:left;
+	width:20px;
+	height:28px;
+	background:url(../index_images/daojishi.png) no-repeat;
+	background-position:0 -82px;
+	margin-right:2px;
+	color:white;
+	text-align:center;
+	line-height:28px;
+	font-weight:bold;
+}
+.time_fenhao{
+	float:left;
+	margin:2px 4px 4px;
+}
+.xiangxi{
+	float:left;
+	width:1177px;
+}
+.title{
+	width:100%;
+	height:31px;
+	margin-top:30px; 
+	margin-bottom:10px;	
+}
+.title_right{
+	border-right:1px solid #CCC;
+	padding:0px 10px;
+	font-size:14px;
+}
+#food_xiangxi{
+	width:100%;
+	height:100%;
+	border-bottom:none;
+	margin-left:1px;
+}
+.xiangxi_more{
+	width:1177px;
+	height:48px;
+	background:#F6F6F6;
+	line-height:48px;
+	text-align:center;
+	font-size:14px;
+}
+#funny_xiangxi{
+	width:100%;
+	height:936px;
+	border-bottom:none;
+	margin-left:1px;
+}
+#movie_xiangxi,#hotel_xiangxi,#life_xiangxi,#shopping_xiangxi,#beauty_xiangxi,#trival_xiangxi{
+	width:100%;
+	height:624px;
+	border-bottom:none;
+	margin-left:1px;
+}
+.shangpin{
+	width:292px;
+	height:311px;
+	border: 1px solid #EEE;
+	border-bottom:none;
+	float:left;
+	margin-left:-1px;
+}
+.shangpin_right{
+	width:292px;
+	height:311px;
+	border: 1px solid #EEE;
+	border-bottom:none;
+	border-left:none;
+	float:left;	
+}
+.sp_content div{
+	margin: 12px 15px;	
+}
+.sp_c_div{
+	width:90%;
+	height:70%;
+}
+.sp_cont_img{
+	width:100%;
+	height:154px;
+	overflow:auto;	
+}
+.small_img{
+	position:relative;
+	width:123px;
+	height:43px;
+	top:-175px;
+	left:-15px;
+}
+.img1,.img2,.img3{
+	top:-12px;
+	width:43px;
+	height:95%;
+	position:absolute;
+	overflow:hidden;
+}
+.img1{
+	left:-15px;
+}
+.img2{
+	left:25px;
+}
+.img3{
+	left:65px;
+}
+.img1 img{
+	position:relative;
+	left:0px;
+	top:-493px;/*多套餐*/
+}
+.img2 img{
+	position:relative;
+	left:0px;
+	top:-619px;/*代金券*/
+}
+.img3 img{
+	position:relative;
+	left:0px;
+	top:-451px;/*免预约*/
+}
+.sp_cont_title{
+	font-size:14px;
+	font-weight:bold;
+	margin:12px 0 5px -7px;
+	margin-top:-60px;
+}
+.sp_cont_content{
+	font-size:14px;
+	color:#999999;
+	margin-left:0px;
+	padding-top:-60px;
+	width:100%;
+	height:19px;
+	overflow:hidden;
+}
+.price{
+	margin-top:-5px;
+}
+.pri_new{
+	font-size:20px;
+	color:red;
+	padding-left:15px;
+}
+.pri_old{
+	font-size:12px;
+	color: #999;
+}
+.sold{
+	float:right;
+	color: #999;
+    font-size: 12px;
+    font-weight: 400;
+	margin-top: 6px;
+	margin-right:15px;
+}
+.pingjia{
+	margin:8px 0 0 15px;
+	width:259px;
+	height:43px;
+	border-top:1px dotted #EEE; /*下划线样式为点线式*/
+	font-size:12px;
+	padding-top:10px;
+}
+.pingjia_count{
+	color:#999999;
+	float:right;
+}
+.youhui{
+	background:#F90;
+	color:white;
+	padding:0 4px;
+}
+#left_daohang ul li{
+	border-bottom:1px solid red;
+	background:#9C0;
+	position:relative;
+	top:-8000px;
+}
+#left_dao_1{
+	width:43px;
+	height:61px;
+	border-bottom:1px solid #EEE;
+}
+#right_down{
+	width:41px;
+	height:167px;
+	position:fixed;
+	right:10px;
+	bottom:20px;
+	border:1px solid #EEE;
+}
+#foot{
+	float:left;
+	margin-top:40px;
+}
+#f_fenlei{
+	border-top:1px solid #EEE;
+	border-right:1px solid #EEE;
+	height:23px;
+	float:left;
+}
+#f_fenlei ul li{
+	text-align:center;
+	font-size:12px;
+	line-height:23px;
+}
+.f_fen_a{
+	border_top:1px solid #EEE;
+	border-left:1px solid #EEE;
+	display:block;
+	background:#F9F9F9;
+	width:78px;
+	padding:0 5px;
+}
+.f_fenlei{
+	border:1px solid #EEE;
+	width:1148px;
+	height:21px;
+	float:left;
+	padding:10px 10px;
+}
+.f_fenlei a{
+	width:85px;
+	overflow:hidden;
+	font-size:12px;
+	margin:3px 8px;
+	display:block;
+	height:16px;
+	float:left;
+	line-height:16px; 
+}
+#fenlei_4,#fenlei_5,#fenlei_7,#fenlei_8,#fenlei_9{
+	height:63px;
+}
+#fenlei_10,#fenlei_11,#fenlei_12{
+	height:84px;
+}
+#fenlei_6{
+	height:42px;
+}
+.f_fen_xiangxi{
+	display:none;
+}
+#fenlei_10{
+	display:block;
+}
+

@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC
-	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
-	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+
 <struts>
-	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
-	<constant name="struts.devMode" value="true" />
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.devMode" value="true" /> 
 	
-	<!-- 把struts的action对象交给spring容器管理 -->
+	 <!-- 把struts的action对象交给spring容器管理 -->
 	<constant name="struts.objectFactory " value="spring" />
 
-	<package name="default" namespace="/" extends="struts-default">
+	<package name="default" extends="struts-default">
 		<interceptors>
 			<interceptor name="loginInterceptor" class="com.yc.meituan.web.interceptor.LoginInterceptor"/>
 			<interceptor-stack name="myStack">
@@ -24,10 +26,13 @@
 		<global-results>
 			<result name="login" type="redirect">page/login.jsp</result>
 		</global-results>
-		
+		<global-allowed-methods>login</global-allowed-methods>
 		<action name="*_*" class="{1}Action" method="{2}">
 			<interceptor-ref name="myStack" />
+			<result name="loginSuccess">page/index.jsp</result>
 			<result name="{2}">/page/{2}.jsp</result> 
 		</action>
+		<action name="user_logout" class="com.yc.meituan.web.action.UserAction" method="logout"></action>
+		<action name="goods_indexGoods" class="com.yc.meituan.web.action.GoodsAction" method="indexGoods"></action>
 	</package>
 </struts>

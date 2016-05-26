@@ -1,0 +1,104 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	margin:0 auto;
+	padding:0px;
+	background:#F9F9F9;
+}
+*{
+	padding:0px;
+}
+form{
+	margin-left:20px;
+}
+#head{
+	width:1349px;
+	height:75px;
+	background:#23BEB1;
+}
+#head img{
+	margin-left:150px;
+}
+#content{
+	width:1010px;
+	background:#fff;
+	height:890px;
+	margin: 10px auto;
+}
+#cont_left{
+	width:660px;
+	border:1px solid #ccc;
+	margin-left:5px;
+	float:left;
+	height:95%;
+}
+#cont_right{
+	width:240px;
+	height:600px;
+	border:1px solid #ccc;
+	margin-left:30px;
+	float:left;
+}
+#cont_r_up,#cont_r_down{
+	padding: 20px 0px;
+	margin:0 15px;
+	width:208px;
+}
+#cont_r_up{
+	height:148px;
+	ppadding-bottom:20px;
+	border-bottom:1px dotted #ccc;
+	background:url(../images/hezuoliucheng.jpg) no-repeat bottom;
+}
+#cont_r_down{
+	height:683px;
+	background:url(../images/changjianwenti.jpg) no-repeat;
+}
+#con_l_head{
+	height:50px;
+	width:100%;
+	background:#F9F9F9;
+	margin-top:-20px;
+	border-bottom:1px solid #eee;
+	margin-bottom:50px;
+}
+#con_l_head p{
+	font-size:20px;
+	margin-left:20px;
+	line-height:50px;
+}
+#basicInfo{
+	width:320px;
+	height:300px;
+}
+#basicInfo p{
+	float:right;
+}
+#basicInfo p a,#detailInfo p a{
+	font-size:14px;
+	margin-right:20px;
+}
+.infotext{
+	 padding:5px 5px;
+	 border:1px solid #89B4D6;
+	 width:200px;
+	 height:20px;
+}
+#detailInfo{
+	margin-top:-20px;
+	padding-top:10px;
+	border-top:2px dotted #ccc;
+	width:660px;
+	margin-left:-20px;
+	height:500px;
+}
+#uploadP{
+	display:none;
+}
+#detailInfo p{
+	margin-left:46px;
+	margin-top:40px;
+}
+#sub{
+	margin-left:50px;
+}

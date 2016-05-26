@@ -1,0 +1,427 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link href="css/basic.css" type="text/css" rel="stylesheet">
+<link href="css/search.css" type="text/css" rel="stylesheet">
+<script src="js/jquery-1.11.3.js" type="text/javascript"></script>
+<script src="js/basic.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div id="head_tishi"></div>
+    <div id="head">
+        <ul>
+            <li id="head_2">
+                <div>
+                    <ul id="head_2_left">
+                        <li><a href="" id="shoucang">收藏美团</a></li>
+                        <li><a href="" id="login">登录</a></li>
+                        <li><a href="" id="rrgister">注册</a></li>
+                        <li><a href="" id="massage">|&nbsp;&nbsp;&nbsp;消息<span class="jiantou"></span></a></li>
+                        <li><a href="" id="phone" class="border">手机美团</a></li>
+                    </ul>
+                    <ul id="head_2_right">
+                        <li><a href="">我的订单</a></li>
+                        <li><a href="">我的美团</a></li>
+                        <li><a href="" class="border">|&nbsp;&nbsp;&nbsp;最近浏览</a></li>
+                        <li><a href="" class="border">|&nbsp;&nbsp;&nbsp;购物车0件</a></li>
+                        <li><a href="" class="border">|&nbsp;&nbsp;&nbsp;联系客服</a></li>
+                        <li><a href="" class="border">|&nbsp;&nbsp;&nbsp;我是商家</a></li>
+                        <li><a href="" class="border">|&nbsp;&nbsp;&nbsp;更多</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li id="head_3"><div><a href=""><img id="chwl" src="images/chwl.jpg"/><a href="javascript:void(0)" id="close_1" href="">X</a></a></div></li>
+            <li id="head_4">
+                <div id="head_4_left">
+                    <a href="index.html" id="logo"><img id="logo_img" src="images/smalljpg.png"></a>
+                    <a href="" class="didian" id="city">衡阳</a><br/>
+               <!--     <a href="" class="didian" id="qiehuan">切换城市</a>  -->
+                </div><!--head_4_left-->
+                <div id="head_4_mid">
+                    <div id="sosuo">
+                        <form action="" method="">
+                            <a href="javascript:void(0)" id="sosuo_left">团购</a>
+                            <input id="sosuo_mid" type="text" name="请输入商品名称、地址等">
+                            <a href="" id="sosuo_right">搜索</a>
+                        </form>
+                    </div>
+                    <ul id="hot">
+                        <li class="sosuo_hot"><a href="">游泳馆</a></li>
+                        <li class="sosuo_hot"><a href="">华莱士</a></li>
+                        <li class="sosuo_hot"><a href="">ktv</a></li>
+                        <li class="sosuo_hot"><a href="">希朵曼</a></li>
+                        <li class="sosuo_hot"><a href="">必胜客</a></li>
+                        <li class="sosuo_hot"><a href="">老味道</a></li>
+                        <li class="sosuo_hot"><a href="">肯德基</a></li>
+                        <li class="sosuo_hot"><a href="">外婆桥</a></li>
+                        <li class="sosuo_hot"><a href="">麦琪</a></li>
+                    </ul>
+                </div><!--head_4_mid-->
+                <div id="head_4_right">
+                    <div id="suishi" class="baozhang"><a href="" id="bao_1"><img src="basic_images/suishi.png"></a></div>
+                    <div id="miandan" class="baozhang"><a href="" id="bao_2"><img src="basic_images/miandan.png"></a></div>
+                    <div id="guoqi" class="baozhang"><a href="" id="bao_3"><img src="basic_images/guoqi.png"></a></div>
+                </div><!--head_4_right-->
+            </li><!--head_4-->
+            <li id="head_5">
+                <p id="nav_left" onMouseOver="showNavMenu()" onMouseOut="hidenNavMenu()"><a id="nav_left_a">全部分类</a>
+                	<img id="nav_left_img" src="images/nav_left_down.jpg"/>
+             	   <div id="content_left" onMouseOver="showNavMenu()" onMouseOut="hidenNavMenu()">
+                        <table border="0">
+                            <tr class="left_menu" onMouseOver="showDetailMenu(0)">
+                                <td><div class="fenlei"><a href="" class="fenlei_main">美食</a><a class="fenlei_small" href="">川湘菜</a><a class="fenlei_small" href="">代金券</a></div></td>
+                            </tr>
+                            <tr>
+                                <td><div class="fenlei"><a href="" class="fenlei_main">酒店</a><a class="fenlei_small" href="">经济型酒店</a></div></td>
+                            </tr>
+                            <tr class="left_menu" onMouseOver="showDetailMenu(0)">
+                                <td><div class="fenlei"><a href="" class="fenlei_main">电影</a>/<a href="" class="fenlei_main">在线选座</a></div></td>
+                            </tr>
+                            <tr class="left_menu" onMouseOver="showDetailMenu(0)">
+                                <td><div class="fenlei"><a href="" class="fenlei_main">KTV</a>/<a href="" class="fenlei_main">在线预定</a></div></td>
+                            </tr>
+                            <tr class="left_menu" onMouseOver="showDetailMenu(0)">
+                                <td><div class="fenlei"><a href="" class="fenlei_main">休闲娱乐</a><a class="fenlei_small" href="">温泉</a><a class="fenlei_small" href="">足疗按摩</a></div></td>
+                            </tr>
+                            <tr class="left_menu" onMouseOver="showDetailMenu(0)">
+                                <td><div class="fenlei"><a href="" class="fenlei_main">周边游</a>/<a href="" class="fenlei_main">旅游</a></div></td>
+                            </tr>
+                            <tr class="left_menu" onMouseOver="showDetailMenu(0)">
+                                <td><div class="fenlei"><a href="" class="fenlei_main">生活服务</a><a class="fenlei_small" href="">儿童摄影</a><a class="fenlei_small" href="">婚纱摄影</a></div></td>
+                            </tr>
+                            <tr>
+                                <td><div class="fenlei"><a href="" class="fenlei_main">购物</a><a class="fenlei_small" href="">内衣</a><a class="fenlei_small" href="">男装</a><a class="fenlei_small" href="">女装</a></div></td>
+                            </tr>
+                            <tr class="left_menu" onMouseOver="showDetailMenu(0)">
+                                <td><div class="fenlei"><a href="" class="fenlei_main">丽人</a><a class="fenlei_small" href="">美甲</a><a class="fenlei_small" href="">美发</a></div></td>
+                            </tr>
+                        </table>
+                    </div>  
+                </p>
+                <ul id="nav">
+                    <li class="head_5_li"><a href=""><h4>首页</h4></a></li>
+                    <li class="head_5_li"><a href=""><h4>今日新单</a></h4></li>
+                    <li class="head_5_li"><a href=""><h4>购物</a></h4></li>
+                    <li class="head_5_li"><a href=""><h4>身边外卖</a></h4></li>
+                </ul>
+            </li><!--head_5-->
+    	</ul>
+	</div> 
+    <div id="content">
+    	<div id="c_fenlei">
+        	<div id="c_f_1">
+            	<a href="#" class="c_f_1_a">全部</a>&nbsp;>&nbsp;<a href="#"><a href="" class="c_f_1_a c_f_1_a_1">美食</a><a class=""></a></a>
+            </div>
+            <div id="c_f_2">
+            	<div  id="c_f_2_fen">分类：</div>
+                <ul id="c_f_2_ul">
+                    <li><a href="">全部1</a></li>
+                    <li><a href="">全部2</a></li>
+                    <li><a href="">全部3</a></li>
+                    <li><a href="">全部4</a></li>
+                    <li><a href="">全部5</a></li>
+                    <li><a href="">全部6</a></li>
+                    <li><a href="">全部7</a></li>
+                </ul>
+            </div>
+        </div>
+    	<div id="c_paixu">
+        	
+        </div>
+    
+    </div><!--content-->
+    <div id="foot">
+        	<div id="f_fenlei">
+            	<ul>
+                	<li><a class="f_fen_a" href="javascript:void(0)">团购分类</a></li>
+                    <li><a class="f_fen_a f_fen_a_cont" href="javascript:void(0)">热门地标</a></li>
+                    <li><a class="f_fen_a f_fen_a_cont" href="javascript:void(0)">今日新单</a></li>
+                    <li><a class="f_fen_a f_fen_a_cont" href="javascript:void(0)">热门团购</a></li>
+       		        <li><a class="f_fen_a f_fen_a_cont" href="javascript:void(0)">精品推荐</a></li>
+                    <li><a class="f_fen_a f_fen_a_cont" href="javascript:void(0)">历史团购</a></li>
+                    <li><a class="f_fen_a f_fen_a_cont" href="javascript:void(0)">热门城市</a></li>
+                    <li><a class="f_fen_a f_fen_a_cont" href="javascript:void(0)">周边城市</a></li>   
+                	<li><a class="f_fen_a f_fen_a_cont" href="javascript:void(0)">美团推荐</a></li>
+                    <li><a class="f_fen_a f_fen_a_cont" href="javascript:void(0)">品牌推荐</a></li>
+                    <li><a class="f_fen_a f_fen_a_cont" href="javascript:void(0)">专题推荐</a></li>
+                    <li><a class="f_fen_a f_fen_a_cont" href="javascript:void(0)">品类推荐</a></li>
+                </ul>
+            </div><!--f_fenlei-->
+            <div id="fenlei_1" class="f_fenlei f_fen_xiangxi">
+            	<a title="美食团购" href="">美食团购</a>
+                <a title="电影团购" href="">电影团购</a>
+                <a title="休闲娱乐团购" href="">休闲娱乐团购</a>
+                <a title="旅游团购" href="">旅游团购</a>
+                <a title="生活服务团购" href="">生活服务团购</a>
+                <a title="购物团购" href="">购物团购</a>
+                <a title="丽人团购" href="">丽人团购</a>
+                <a title="团购评论" href="">团购评论</a>
+                <a title="品牌团购" href="">品牌团购</a>
+                <a title="美团团购" href="">美团团购</a>
+            </div>
+            <div id="fenlei_2" class="f_fenlei f_fen_xiangxi">
+            	<a title="解放路口团购" href="">解放路口团购</a>
+                <a title="崇尚广场团购" href="">崇尚广场团购</a>
+                <a title="南华大学团购" href="">南华大学团购</a>
+                <a title="中山南路团购" href="">中山南路团购</a>
+                <a title="岳屏公园团购" href="">岳屏公园团购</a>
+                <a title="莲湖广场团购" href="">莲湖广场团购</a>
+                <a title="立新开发区团购" href="">立新开发区团购</a>
+                <a title="火车站团购" href="">火车站团购</a>
+                <a title="湘江东路沿线团" href="">湘江东路沿线团</a>
+                <a title="石鼓广场团购" href="">石鼓广场团购</a>
+                <a title="西湖公园团购" href="">西湖公园团购</a>
+            </div>
+            <div id="fenlei_3" class="f_fenlei f_fen_xiangxi">
+            	<a title="U度酒店时尚情侣房A钟点房3小时，" href="">U度酒店时尚情侣房A钟点房3小时，</a>
+                
+            </div>
+            <div id="fenlei_4" class="f_fenlei f_fen_xiangxi">
+            	<a title="日月潭❤️雪花2-3人餐" href="">日月潭❤️雪花2-3人餐</a>
+                <a title="果C益佰芒果千层蛋糕" href="">果C益佰芒果千层蛋糕</a>
+                <a title="地道战米粉餐厅主食" href="">地道战米粉餐厅主食</a>
+                <a title="甜蜜榴恋3人餐" href="">甜蜜榴恋3人餐</a>
+                <a title="第七街1973单人餐" href="">第七街1973单人餐</a>
+                <a title="串翻天代金券" href="">串翻天代金券</a>
+                <a title="乐吧4人餐" href="">乐吧4人餐</a>
+                <a title="小时代咖啡" href="">小时代咖啡</a>
+                <a title="回忆休闲吧4人餐" href="">回忆休闲吧4人餐</a>
+                <a title="乡野食代代金券" href="">乡野食代代金券</a>
+                <a title="回忆休闲吧2人餐" href="">回忆休闲吧2人餐</a>
+                <a title="手握V比萨单人套餐" href="">手握V比萨单人套餐</a>
+                <a title="旺家莊海鲜酒店代金券" href="">旺家莊海鲜酒店代金券</a>
+                <a title="新概念校园餐厅4-5人餐" href="">新概念校园餐厅4-5人餐</a>
+                <a title="百适甜品全部" href="">百适甜品全部</a>
+                <a title="非茶不可饮品" href="">非茶不可饮品</a>
+                <a title="多喜来西饼屋水果蛋糕" href="">多喜来西饼屋水果蛋糕</a>
+                <a title="小叫驴火锅城8人餐" href="">小叫驴火锅城8人餐</a>
+            </div>
+            <div id="fenlei_5" class="f_fenlei f_fen_xiangxi">
+            	<a title="君雅足浴泰式按摩" href="">君雅足浴泰式按摩</a>
+                <a title="安然纳米汗蒸馆纳米汗蒸" href="">安然纳米汗蒸馆纳米汗蒸</a>
+                <a title="k8台球馆室内台球一小时" href="">k8台球馆室内台球一小时</a>
+                <a title="贵足足浴保健推油" href="">贵足足浴保健推油</a>
+                <a title="乐世界儿童游乐场月卡" href="">乐世界儿童游乐场月卡</a>
+                <a title="红脸蛋DIY蛋糕DIY手工（9寸披萨）" href="">红脸蛋DIY蛋糕DIY手工（9寸披萨）</a>
+                <a title="酷贝ktv欢唱" href="">酷贝ktv欢唱</a>
+                <a title="安然之家纳米汗蒸养生馆纳米汗蒸" href="">安然之家纳米汗蒸养生馆纳米汗蒸</a>
+                <a title="安健理疗肩/背/腰/腿治" href="">安健理疗肩/背/腰/腿治</a>
+                <a title="南郊公园主题乐园烧烤+游乐园1个项目" href="">南郊公园主题乐园烧烤+游乐园1个项目</a>
+                <a title="鑫金亿网吧连锁上网卡" href="">鑫金亿网吧连锁上网卡</a>
+                <a title="惜影私人奶茶影院四人独享主题包晚场" href="">惜影私人奶茶影院四人独享主题包晚场</a>
+                <a title="Neway星派KTV欢唱" href="">Neway星派KTV欢唱</a>
+                <a title="赵氏按摩按摩/足浴" href="">赵氏按摩按摩/足浴</a>
+                <a title="易游网娱网咖100元上网卡" href="">易游网娱网咖100元上网卡</a>
+			</div>
+            <div id="fenlei_6" class="f_fenlei f_fen_xiangxi">
+                <a title="美食团购" href="">美食团购</a>
+                <a title="酒店团购" href="">酒店团购</a>
+                <a title="电影团购" href="">电影团购</a>
+                <a title="休闲娱乐" href="">休闲娱乐</a>		
+			</div>
+            <div id="fenlei_7" class="f_fenlei f_fen_xiangxi">
+				<a title="北京团购" href="">北京团购</a>
+                <a title="上海团购" href="">上海团购</a>
+                <a title="广州团购" href="">广州团购</a>
+                <a title="深圳团购" href="">深圳团购</a>
+                <a title="天津团购" href="">天津团购</a>
+                <a title="西安团购" href="">西安团购</a>
+                <a title="福州团购" href="">福州团购</a>
+                <a title="重庆团购" href="">重庆团购</a>
+                <a title="杭州团购" href="">杭州团购</a>
+                <a title="宁波团购" href="">宁波团购</a>
+                <a title="无锡团购" href="">无锡团购</a>
+                <a title="南京团购" href="">南京团购</a>
+                <a title="合肥团购" href="">合肥团购</a>
+                <a title="武汉团购" href="">武汉团购</a>
+				<a title="成都团购" href="">成都团购</a>
+				<a title="青岛团购" href="">青岛团购</a>
+				<a title="厦门团购" href="">厦门团购</a>
+                <a title="大连团购" href="">大连团购</a>
+				<a title="沈阳团购" href="">沈阳团购</a>
+				<a title="长沙团购" href="">长沙团购</a>				
+			</div>
+            <div id="fenlei_8" class="f_fenlei f_fen_xiangxi">
+				<a title="邵阳团购" href="">邵阳团购</a>
+                <a title="岳阳团购" href="">岳阳团购</a>
+                <a title="常德团购" href="">常德团购</a>
+                <a title="张家界团购" href="">张家界团购</a>
+                <a title="益阳团购" href="">益阳团购</a>
+                <a title="郴州团购" href="">郴州团购</a>
+                <a title="永州团购" href="">永州团购</a>
+                <a title="怀化团购" href="">怀化团购</a>
+                <a title="娄底团购" href="">娄底团购</a>
+                <a title="湘西团购" href="">湘西团购</a>
+			</div>
+            <div id="fenlei_9" class="f_fenlei f_fen_xiangxi"> 
+				<a title="北京美团" href="">北京美团</a>
+                <a title="广州美团" href="">广州美团</a>
+                <a title="深圳美团" href="">深圳美团</a>
+                <a title="上海美团" href="">上海美团</a>
+                <a title="成都美团" href="">成都美团</a>
+                <a title="武汉美团" href="">武汉美团</a>
+                <a title="郑州美团" href="">郑州美团</a>
+                <a title="杭州美团" href="">杭州美团</a>
+                <a title="西安美团" href="">西安美团</a>
+                <a title="重庆美团" href="">重庆美团</a>
+                <a title="合肥美团" href="">合肥美团</a>
+                <a title="南京美团" href="">南京美团</a>
+				<a title="天津美团" href="">天津美团</a>
+				<a title="石家庄美团" href="">石家庄美团</a>
+				<a title="东莞美团" href="">东莞美团</a>
+                <a title="长沙美团" href="">长沙美团</a>
+				<a title="福州美团" href="">福州美团</a>
+				<a title="青岛美团" href="">青岛美团</a>
+				<a title="沈阳美团" href="">沈阳美团</a>
+			</div>
+            <div id="fenlei_10" class="f_fenlei f_fen_xiangxi">
+				<a title="飞邦除湿除味竹炭包" href="">飞邦除湿除味竹炭包</a>
+                <a title="台州旅游联票" href="">台州旅游联票</a>
+                <a title="小胖烧烤喝丢媳妇" href="">小胖烧烤喝丢媳妇</a>
+                <a title="东街1号店" href="">东街1号店</a>
+                <a title="云水国际大酒店雨晴茶室" href="">云水国际大酒店雨晴茶室</a>
+                <a title="广益发720g饼干" href="">广益发720g饼干</a>
+                <a title="味美米线" href="">味美米线</a>
+                <a title="东台良子足浴" href="">东台良子足浴</a>
+                <a title="环球汽车新概念生活馆" href="">环球汽车新概念生活馆</a>
+                <a title="陕北高家" href="">陕北高家</a>
+                <a title="北京面馆" href="">北京面馆</a>
+                <a title="十里香石锅鱼" href="">十里香石锅鱼</a>
+				<a title="池州嘉旗观景酒店" href="">池州嘉旗观景酒店</a>
+				<a title="均福宾馆" href="">均福宾馆</a>
+				<a title="外滩一品" href="">外滩一品</a>
+                <a title="皇后秘制猪蹄" href="">皇后秘制猪蹄</a>
+				<a title="维纳风" href="">维纳风</a>
+				<a title="裕阳花园游泳馆" href="">裕阳花园游泳馆</a>
+				<a title="小丽美甲养生会馆" href="">小丽美甲养生会馆</a>
+                <a title="喜芙浓养生理疗会馆" href="">喜芙浓养生理疗会馆</a>
+                <a title="劲斗云凉皮" href="">劲斗云凉皮</a>
+                <a title="舒友阁玻尿酸秋冬补水4件套" href="">舒友阁玻尿酸秋冬补水4件套</a>
+				<a title="中国青旅" href="">中国青旅</a>
+			</div>
+            <div id="fenlei_11" class="f_fenlei f_fen_xiangxi">
+				<a title="德州德克士" href="">德州德克士</a>
+                <a title="食客土豆粉 团购" href="">食客土豆粉 团购</a>
+                <a title="早教打折" href="">早教打折</a>
+                <a title="东营照相团购" href="">东营照相团购</a>
+                <a title="砂锅如轩 团购" href="">砂锅如轩 团购</a>
+                <a title="天椒尚品 团购" href="">天椒尚品 团购</a>
+                <a title="风波庄酒家打折" href="">风波庄酒家打折</a>
+                <a title="冠菌自助 团购" href="">冠菌自助 团购</a>
+                <a title="福州曼哈顿广场美食团购" href="">福州曼哈顿广场美食团购</a>
+                <a title="濮阳水饺" href="">濮阳水饺</a>
+                <a title="烤串团购" href="">烤串团购</a>
+                <a title="芝麻开门优惠" href="">芝麻开门优惠</a>
+				<a title="美发 优惠" href="">美发 优惠</a>
+				<a title="大连格林团购" href="">大连格林团购</a>
+				<a title="美发优惠" href="">美发优惠</a>
+                <a title="姜母鸭优惠" href="">姜母鸭优惠</a>
+				<a title="北京电视塔团购" href="">北京电视塔团购</a>
+				<a title="盛和道料理 团购" href="">盛和道料理 团购</a>
+				<a title="小梅沙 打折" href="">小梅沙 打折</a>
+                <a title="北京4D电影" href="">北京4D电影</a>
+                <a title="红舵码头火锅 团购" href="">红舵码头火锅 团购</a>
+                <a title="派乐派乐 团购" href="">派乐派乐 团购</a>
+				<a title="明洞韩国料理优惠" href="">明洞韩国料理优惠</a>
+				<a title="黄龙 欧麦 团购" href="">黄龙 欧麦 团购</a>
+				<a title="大铺头 西蜀人家 团购" href="">大铺头 西蜀人家 团购</a>
+                <a title="鲁巷 幸福城堡 团购" href="">鲁巷 幸福城堡 团购</a>
+				<a title="味道轩 打折" href="">味道轩 打折</a>
+				<a title="北京权金城洗浴" href="">北京权金城洗浴</a>
+			</div>
+            <div id="fenlei_12" class="f_fenlei f_fen_xiangxi">
+				<a title="邵阳西餐" href="">邵阳西餐</a>
+                <a title="邵阳其他美食" href="">邵阳其他美食</a>
+                <a title="邵阳服装" href="">邵阳服装</a>
+                <a title="邵阳足疗按摩" href="">邵阳足疗按摩</a>
+                <a title="邵阳照片冲印" href="">邵阳照片冲印</a>
+                <a title="邵阳家居百货" href="">邵阳家居百货</a>
+                <a title="邵阳台湾菜/客家菜" href="">邵阳台湾菜/客家菜</a>
+                <a title="邵阳全部" href="">邵阳全部</a>
+                <a title="邵阳温泉" href="">邵阳温泉</a>
+                <a title="邵阳个性写真" href="">邵阳个性写真</a>
+                <a title="邵阳甜点饮品" href="">邵阳甜点饮品</a>
+                <a title="邵阳本地/周边游" href="">邵阳本地/周边游</a>
+				<a title="邵阳滑雪" href="">邵阳滑雪</a>
+				<a title="邵阳东北菜" href="">邵阳东北菜</a>
+				<a title="邵阳小吃快餐" href="">邵阳小吃快餐</a>
+                <a title="邵阳配镜" href="">邵阳配镜</a>
+				<a title="邵阳香锅烤鱼" href="">邵阳香锅烤鱼</a>
+				<a title="邵阳豪华酒店" href="">邵阳豪华酒店</a>
+				<a title="邵阳家常菜" href="">邵阳家常菜</a>
+                <a title="邵阳母婴亲子" href="">邵阳母婴亲子</a>
+                <a title="邵阳新疆菜" href="">邵阳新疆菜</a>
+                <a title="邵阳海鲜" href="">邵阳海鲜</a>
+				<a title="邵阳境外游" href="">邵阳境外游</a>
+				<a title="邵阳电器/数码" href="">邵阳电器/数码</a>
+				<a title="邵阳服装定制" href="">邵阳服装定制</a>
+                <a title="邵阳配饰" href="">邵阳配饰</a>
+			</div>
+        </div>
+        <div id="bottom">
+    	<div id="b_up">
+        	<div id="b_u_border"></div>
+            <div id="b_u_content">
+                <div class="b_u_c_l">
+                	<ul>
+                    	<li class="b_u_c_li"><a class="b_u_c_head">获取更新</a></li><br/>
+						<li class="b_u_c_li"><a class="b_u_c_head"></a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">邮件订阅</a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">iPhone/Android</a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">美团QQ空间</a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">美团新浪微博</a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">sitemap</a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">RSS订阅</a></li>
+                    </ul>
+                </div>
+                <div class="b_u_c_l">
+                	<ul>
+                    	<li class="b_u_c_li"><a class="b_u_c_head">商务合作</a></li><br/>
+						<li class="b_u_c_li"><a class="b_u_c_head"></a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">商家合作</a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">美团商家营销平台</a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">市场合作</a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">美团联盟</a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">美团云</a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">廉正邮箱</a></li>
+                    </ul>
+                </div>
+                <div class="b_u_c_l">
+                	<ul id="ulk">
+                    	<li class="b_u_c_li"><a class="b_u_c_head">公司信息</a></li><br/>
+						<li class="b_u_c_li"><a class="b_u_c_head"></a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">关于美团</a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">美团承诺</a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">媒体报道</a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">加入我们</a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">法律声明</a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">用户协议</a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">营业执照</a></li>
+                    </ul>
+                </div>
+                <div class="b_u_c_l">
+                	<ul>
+                    	<li class="b_u_c_li"><a class="b_u_c_head">用户帮助</a></li><br/>
+						<li class="b_u_c_li"><a class="b_u_c_head"></a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">申请退款</a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">查看美团券密码</a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">常见问题</a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">开放API</a></li>
+                        <li class="b_u_c_li"><a href="" class="b_u_c_body">反诈骗公告</a></li>
+                    </ul>
+                </div>
+                <div class="b_u_c_r">
+                	<img src="basic_images/kefu.png"/><br/>
+                    <a id="kefu">客服电话</a>
+                    <p><a id="phone">400-660-5335 </a><a>(9:00-23:00)</a></p><br/>
+                    <a>退款、退换货、查看美团券</a><br/>
+                    <a href="">参考教程，轻松搞定!</a>
+                </div>
+            </div>
+        </div><!--buttom-->
+        </div>
+</body>
+</html>

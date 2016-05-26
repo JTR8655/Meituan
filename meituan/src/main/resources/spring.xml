@@ -15,7 +15,7 @@
         http://www.springframework.org/schema/aop 
         http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<!-- 扫描bean包 -->
 	<context:component-scan base-package="com.yc" />
@@ -37,7 +37,6 @@
 	<!-- 配制映射接口 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
 		p:sqlSessionFactoryBeanName="sqlSessionFactory" p:basePackage="com.yc.meituan.mapper" />
-
 
 	<!-- 1.配制事务管理器 -->
 	<bean id="transactionManager"

@@ -1,0 +1,150 @@
+@charset "utf-8";
+/* CSS Document */
+#content_left{
+	width:244px;
+	height:477px;
+	float:left;
+	margin-left:4px;
+	border:1px solid #EEE;
+	border-top:none;
+	background:#FAFAFA;
+	position:relative;
+	right:250px;
+	top:40px;
+	display:none;
+}
+.fenlei{
+	width:224px;
+	height:50px;
+	margin:0 auto;
+	border-bottom:1px solid #EEE;
+	line-height:50px;
+	background:url(../index_images/fenlei_arrow.png) no-repeat right center;
+}
+.fenlei_main{
+	font-size:14px;
+	font-weight:bold;
+	color:black;
+}
+.fenlei_small{
+	font-size:12px;
+	float:right;
+	margin-left:5px;
+	color:#999999;
+	padding-right:16px;
+}
+/*搜索*/
+#content{
+	margin-top:10px;
+	margin-left:174px;
+	width:980px;
+	float:left;
+}
+
+/*搜索分类*/
+#c_fenlei{
+	height:240px;
+	width:978px;
+	border:1px solid #eee;
+	font-size:12px;
+}
+
+#c_f_1{
+	height:19px;
+	padding: 10px;
+	padding-left:0px;
+	border-bottom:1px dotted #ccc;
+	margin: 5px 20px;
+}
+.c_f_1_a{
+	padding:1px 5px;
+	font-size:12px;
+	border:1px solid #2BB8AA;
+}
+.c_f_1_a_1{
+	
+}
+#c_f_2{
+	margin:10px 20px;
+	height:66px;
+}
+#c_f_2_fen{
+	height:100%;
+	width:50px;
+	float:left;
+}
+#c_f_2_ul{
+	float:left;
+}
+#c_f_2_ul li{
+	margin:0 15px;
+	
+}
+#c_f_2_ul li:hover{
+	border:1px solid #2BB8AA;
+	border-radius:3px;
+	background:#2BB8AA;
+}
+#c_f_2_ul li a:hover{
+	color:#fff;
+}
+/*底部样式*/
+#foot{
+	float:left;
+	margin-top:40px;
+	width:980px;
+	margin-left:174px;
+}
+#f_fenlei{
+	width:980px;
+	border-top:1px solid #EEE;
+	border-right:1px solid #EEE;
+	height:23px;
+	float:left;
+}
+#f_fenlei ul li{
+	text-align:center;
+	font-size:12px;
+	line-height:23px;
+}
+.f_fen_a{
+	border_top:1px solid #EEE;
+	border-left:1px solid #EEE;
+	display:block;
+	background:#F9F9F9;
+	width:78px;
+	padding:0 5px;
+}
+.f_fenlei{
+	border:1px solid #EEE;
+	height:21px;
+	float:left;
+	height:64px;
+	padding:10px 10px;
+	margin-top:22px;
+}
+.f_fenlei a{
+	width:85px;
+	overflow:hidden;
+	font-size:12px;
+	margin:3px 8px;
+	display:block;
+	height:16px;
+	float:left;
+	line-height:16px; 
+}
+#fenlei_4,#fenlei_5,#fenlei_7,#fenlei_8,#fenlei_9{
+	height:63px;
+}
+#fenlei_10,#fenlei_11,#fenlei_12{
+	height:64px;
+}
+#fenlei_6{
+	height:42px;
+}
+.f_fen_xiangxi{
+	display:none;
+}
+#fenlei_10{
+	display:block;
+}
