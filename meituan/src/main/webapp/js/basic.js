@@ -11,6 +11,7 @@ function hidenNavMenu(){
 	$("#content_left").css("display","none");
 }
 
+
 function search(){
 	alert(11);
 	var str = $("#sosuo_mid").val();

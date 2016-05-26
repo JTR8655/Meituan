@@ -311,3 +311,301 @@ a{
 	margin:0 auto;
 	padding:0px;
 }
+=======
+ul{
+	list-style:none;
+	float:right;
+}
+li{
+	float:left;
+}
+
+a{
+	text-decoration:none;
+	color:#666;
+}
+#head_1{
+	background:#FFF6DB;
+	display:block;
+	width:1349px;
+	height:41px;
+}
+#head_1 div{
+	width:1170px;
+	height:21px;
+	margin:10px 30px;
+	margin-left:80px;
+	text-align:center;
+	font-size:14px;
+	color:#666;	
+}
+#head_1 div a{
+	color:#2BB8AA;
+}
+#head_1_right{
+	color:#666;
+	font-size:16px;
+	float:right;
+	position:relative;
+	right:-80px;
+}
+#head_2{
+	font-size:12px;
+	width:1349px;
+	height:29px;
+	background:#F9F9F9;
+	border-top:1px solid #EEE;
+	box-shadow: 0 0 0 1px #fff, 0 0 0 2px #ddd, 0 0 5px 3px #eee;
+}
+#head_2 div{
+	width:1170px;
+	margin:0 auto;
+}
+#head_2_left{
+	float:left;
+}
+#head_2_right{
+	float:right;
+}
+#head_2_left li,#head_2_left_login li,#head_2_right li{
+	margin:0 10px;
+}
+#head_2_left li a,#head_2_left_login li a,#head_2_right li a{
+	text-align:center;
+	line-height:29px;
+	font-size:12px;
+}
+#head_2_left_login{
+	display:none;
+	float:left;
+}
+.jiantou{
+	display:inline-block;
+	float:left;
+	position:relative;
+	width:0px;
+	height:0px;
+	border-top:14px solid #000;
+	top:3px;
+	left:90px;
+}
+
+#shoucang{
+	background:url(../basic_images/shoucang_1.png) no-repeat left 0px;
+	padding-left:18px; 
+}
+
+#chwl{
+	position:relative;
+	left:8%;
+}
+#close_1{
+	position:relative;
+	top:-40px;
+	right:-160px;
+	color:#2BB8AA;
+}
+#head_4{
+	width:1170px;
+	height:105px;
+	margin-top:2px;
+	margin-left:94px;
+	float:left;
+}
+#head_4_left{
+	width:300px;
+	margin-left:0px;
+	float:left;
+}
+#logo{
+	width:82px;
+	height:54px;
+	display:block;
+	position:relative;
+	overflow:hidden;
+	left:0px;
+	margin-top:20px;
+	float:left;
+}
+#logo_img{
+	position:relative;
+	top:-896px;
+}
+.didian{
+	width:50px;
+	position:relative;
+	top:25px;
+	left:10px;
+	height:30px;	
+}
+#city{
+	font-size:18px;
+	font-weight:bold;
+	color:black;
+}
+
+#qiehuan{
+	padding:2px 4px;
+	font-size:12px;
+	border:1px solid #EEE;
+	color:#999999;
+}
+#head_4_mid{
+	margin-top:20px;
+	width:500px;
+	height:100%;
+}
+#sosuo{
+	width:484px;
+	height:38px;
+	border:2px solid #2BB8AA;
+	margin-bottom:10px;
+}
+#sosuo_left,#sosuo_mid,#sosuo_right{
+	display:inline-block;
+	height:38px;
+	float:left;
+	text-align:center;
+	line-height:38px;
+}
+#sosuo_left{
+	width:62px;
+}
+#sosuo_mid{
+	margin-top:1px;
+	height:36px;
+	width:352px;
+	border:none;
+	border-left:1px solid #ccc;
+	text-align:left;
+	padding-left:5px;
+}
+#sosuo_right{
+	width:64px;
+	color:#FFF;
+	background:#2BB8AA;
+}
+#hot{
+	padding-left:5px;
+	float:left;
+}
+.sosuo_hot{
+	font-size:13px;
+	margin-right:15px;
+}
+#head_4_right{
+	width:195px;
+	height:63px;
+	float:right;
+	margin-top:-99px;
+}
+.baozhang{
+	height:42px;
+	margin-left:20px;
+	float:left;
+}
+
+#head_5{
+	width:1170px;
+	height:40px;
+	background:#2BB8AA;
+	margin-top:2px;
+	margin-left:94px;
+	float:left;
+	line-height:40px;
+}
+#head_5 p{
+	color:#FFF;
+	width:231px;
+	height:100%;
+	float:left;
+	padding-left:15px;
+}
+#head_5 ul{
+	width:924px;
+	height:100%;
+	float:left;
+}
+
+.head_5_li a{
+	color:#FFF;
+	display:block;
+	width:100%;
+	height:100%;
+	margin:0px 20px;
+	text-align:center;
+}
+
+
+
+
+
+
+#b_up{
+	margin-top:20px;
+	width:1170px;
+	height:218px;
+	float:left;
+	margin-left: 90px;
+}
+#b_u_border{
+	width:100%;
+	height:1px;
+	border-bottom:1px solid #EEE;
+	border-top:1px solid #EEE;
+}
+#b_u_content{
+	width:100%;
+	height:215px;
+}
+.b_u_c_l{
+	width:216px;
+	height:160px;
+	margin-top:20px;
+	float:left; 
+}	
+.b_u_c_li{
+	float:none;
+}
+.b_u_c_head{
+	font-size:14px;
+	font-weight:bold;
+	margin-bottom:20px;
+}
+.b_u_c_body{
+	line-height:200%;
+	font-size:12px;
+	margin-right:80px;
+}
+.b_u_c_r{
+	width:264px;
+	height:160px;
+	margin-top:20px;
+	float:left;
+	border-left:1px solid #EEE;
+	padding-left:40px;
+	font-size:12px;
+}
+#ulk{
+	margin-right:40px;
+}	
+#phone{
+	font-size:16px;
+	font-weight:bold;
+}
+#kefu{
+	font-size:14px;
+}
+#beian{
+	border-top:1px solid #CCC;
+	background:#F9F9F9;
+	width:100%;
+	height:168px;
+	float:left;
+	margin-top:30px;
+	font-size:12px;
+}
+#beian p{
+	margin:30px 0;
+	
+}

@@ -22,6 +22,7 @@ public class ConnTest {
 	public void test() {
 		Connection conn = sqlSessionfactory.openSession().getConnection();
 		assertNotNull("数据库连接失败！！！",conn);
+		//修改测试
 	}
 
 }
