@@ -153,6 +153,29 @@ function thisFood(data){
 		return;
 	}
 }
+
+
+//点击添加按钮所产生的页面效果
+function adder(){
+	
+	var value = $('#J-cart-quantity').val();
+	value++;
+	document.getElementById('J-cart-quantity').value = value;
+	$('#waring').css('display', 'none');
+}
+
+//点击减少按钮所产生的页面效果
+function lower(){
+	var value = $('#J-cart-quantity').val();
+	if(value > 1){
+		value --;
+	}else {
+		value = 1;
+		$('#waring').css('display', 'block');
+	}
+	document.getElementById('J-cart-quantity').value = value;
+}
+
 function othergoods(sid){
 	//显示商家的其他商品
 	$.ajax({
@@ -169,6 +192,11 @@ function othergoods(sid){
 		}
 	});
 }
+//关闭警告
+function closeWaring(){
+	$('#waring').css('display', 'none');
+}
+
 $(function(){
 	var gid = window.location.href.split("=")[1];
 	var sid=0;

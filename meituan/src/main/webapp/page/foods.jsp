@@ -94,8 +94,8 @@
 			<div id="body_midl_top">
 				<div id="body_mid1_top1">
 					<input type="hidden" value="  item[i].GID  " class="get_id" />
-					 <span class="title-prefix">【 item[i].SSHOPNAME 】</span>
-					<h1 class="title">item[i].GTITLE1</h1>
+					 <span class="title-prefix">【星美/美凯龙】</span>
+					<h1 class="title">土火锅烧烤</h1>
 				</div>
 				<div id="body_mid1_top2">
 					<div class="tishi1">item[i].TEXT</div>
@@ -116,18 +116,17 @@
 							<span class="price_left">团购价:</span>
 							<h2 class="symbol">
 								<span class="price-symbol">¥</span> 
-								<span class="price">item[i].GPRICE2 </span>
+								<span class="price">39</span>
 							</h2>
-							<span class="promote-default"><span class="status">门店价
+							<span class="promote-default">
+								<span class="status">门店价</span>
+								<del class="sans-serif"> ¥59</del> 
 							</span>
-							<del class="item sans-serif"> ¥ item[i].GPRICE1 </del> </span>
 						</div>
 					</div>
 					<div id="evaluate">
 						<div id="item">
-							<span class="item">已售<span class="sold-count">
-									item[i].GSOLDCOUNT </span>
-							</span>
+							<span class="item">已售<span class="sold-count">6</span></span>
 						</div>
 						<div id="item-viewed">
 							<span class="item-viewed"><a id="look-normal">
@@ -140,22 +139,27 @@
 					</div>
 					<div id="data">
 						<span class="detail-leading">有效期</span><span class="text-containe">
-							<span class="valid-through">截止到<span class="edate">
-									item[i].B_RETIME </span></span><span class="expiry-notice">周末、法定节假日通用</span>
+							<span class="valid-through">截止到
+							<span class="edate">2016.12.30</span>
+							</span>
+							<span class="expiry-notice">周末、法定节假日通用</span>
 						</span>
 					</div>
 					<div id="package">
 						<span class="deal-component">套餐</span><span class="scheme-patch"><span>
-								<a class="selection-item" href="javascript:void()">
-									item[i].D_TAOCAN </a>
+								<a class="selection-item" href="javascript:void()">代金券39元</a>
 						</span></span>
 					</div>
 					<div id="count">
 						<span class="deal-component-detail-leading">数量</span>
-						<button id="reduce_item" type="button" data-action=" ">−</button>
-						<input id="J-cart-quantity" type="text" data-max="500"
-							maxlength="9" value="1" name="q">
-						<button id="add_item" type="button" data-action=" "></button>
+						<button id="reduce_item" type="button" onclick="lower()">−</button>
+						<input id="J-cart-quantity" type="text" data-max="500" maxlength="9" value="1" name="q"/>
+						<button id="add_item" type="button" onClick="adder()">+</button>
+						<div id="waring">
+							<span id="waring-content">您最少需要购买一件！</span> <span
+								id="close-waring"><a href="javascript:void(0);"
+								onClick="closeWaring()">X</a></span>
+						</div>
 					</div>
 					<div id="accont">
 						<button type="submit"
@@ -197,16 +201,14 @@
 				<tr height="36px" class="other_tr1">
 					<td class="other1_1">
 						<p>
-							<a href="#" class="other_1_a">【 item[i].SSHOPNAME 】
-								item[i].TEXT
-								
+							<a href="#" class="other_1_a">
+							【星美/美凯龙】秘制烤鱼，建议3-4人使用，包间免费
 							 </a>
 						</p>
 					</td>
-					<td class="other2_1"><span class="other2_1_a">￥
-							item[i].GPRICE2 </span></td>
-					<td class="other3_1">￥ item[i].GPRICE1</td>
-					<td class="other4_1">item[i].GSOLDCOUNT</td>
+					<td class="other2_1"><span class="other2_1_a">￥59 </span></td>
+					<td class="other3_1">￥ 123</td>
+					<td class="other4_1">27</td>
 				</tr>
 			</table>
         </div><!--body_mid2_left-->
@@ -247,12 +249,12 @@
             </thead>
 				<tbody id="taocan_info">
 					<tr>
-						<td class="goods_name">item[i].d_taocan</td>
-						<td class="goods_price">￥ item[i].d_price1</td>
-						<td class="goods_amount">item[i].d_count 张</td>
-						<td class="goods_subtotal">￥ item[i].d_price1*item[i].d_count
-						</td>
+						<td class="goods_name">代金券</td>
+						<td class="goods_price">￥50</td>
+						<td class="goods_amount">1张</td>
+						<td class="goods_subtotal">￥50</td>
 					</tr>
+					
 				</tbody>
 			</table>
     </div>
@@ -261,14 +263,14 @@
         <p class="standard_bar" style="margin-top:40px;">全部评价</p>
 			<div id="evaluation_stars">
 				<div id="eva_point">
-					<span id="aggregate-point"> point </span> 分
+					<span id="aggregate-point">3.7</span> 分
 				</div>
 				<div id="eva_stars">
 					<span class="back_stars"> <span class="infact_stars"
 						style="width: (item[i].GRADE/item[i].AMOUNT)*20%;"></span></span>
 				</div>
 				<div id="eva_amount">
-					共有 <span> item[i].AMOUNT </span> 人评价
+					共有 <span>10</span> 人评价
 				</div>
 
 			</div>
@@ -278,34 +280,34 @@
 							<div class="user_touxiang">
 								<img src="images/touxiang.png" />
 							</div>
-							<p class="user_id">item[i].UACCOUNTS</p>
+							<p class="user_id">张三</p>
 						</div>
 						<div class="evaluation_content">
 							<div>
 								<span class="back_stars">
 								<p class="infact_stars" style="width: item[i].EGRADE_1*20%"></p>
 								</span>
-								 <span>
-									item[i].TEMP1 
+								 <span> 
+								 	2016-03-17
 								</span>
 							</div>
 							<div class="contents">
-								<p>item[i].ECONTENT</p>
+								<p>味道不错 就是位置有点难找！！！</p>
 							</div>
 						</div></li>
 				</ul>
 			</div>
 			<!--evaluation_eara-->
 			<div class="deal_buy">
-				<span id="buy_price">￥<strong> item[i].GPRICE2 </strong></span>
+				<span id="buy_price">￥<strong>39</strong></span>
 				<ul>
 					<li class="seller_price">门店价<br />
-					<p id="real_price">￥ item[i].GPRICE1</p>
+					<p id="real_price">￥ 50</p>
 					</li>
 					<li class="seller_price">折扣<br />
-					<p>item[i].DISCOUNT 折</p></li>
+					<p>7.8折</p></li>
 					<li class="seller_price">已售<br />
-					<p>item[i].GSOLDCOUNT</p></li>
+					<p>41</p></li>
 				</ul>
 				<div>
 					<input id="qianggou" type="submit" value="抢购">

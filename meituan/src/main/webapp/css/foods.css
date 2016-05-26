@@ -93,7 +93,9 @@
 	padding-top:20px;
 	color:#99B3CD;
 }
-
+.symbol{
+	padding-top:15px;
+}
 .price-symbol{
 	float:left;
 	margin-left:8px;
@@ -116,12 +118,11 @@
 	float:left;
 	margin-left:15px;
 	font-size:16px;
-	color:99B3CD;
+	color:#99B3CD;
 }
-.item sans-serif{
+.sans-serif{
 	float:left;
 	margin-left:10px;
-	padding-top:15px;
 	font-size:16px;
 	color:99B3CD;
 }
@@ -288,6 +289,26 @@
 	height:32px;
 	font-size:16px;
 	}
+#waring {
+	width: 250px;
+	height:34px;
+	margin-right:55px;
+	display: none;
+}
+#waring-content{
+	font-size: 14px;
+	color:red;
+	padding-top: 12px;
+	display: inline-block;
+}
+#close-waring {
+	font-size: 18px;
+	color: red;
+	font-weight: 900px;
+}
+#waring a:hover {
+	color:#2BB8AA;
+}
 #accont{
 	width:430px;
 	height:50px;
