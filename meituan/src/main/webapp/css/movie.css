@@ -1,0 +1,9 @@
+@charset "utf-8";
+/* CSS Document */
+#content{
+	height:900px;
+	width:980px;
+	background:#EEE;
+	float:left;
+	margin-left:174px;
+}
