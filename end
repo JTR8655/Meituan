@@ -1,0 +1,59 @@
+[33mcommit b678375c67d6f17e4cdca4d43e799796cf843eca[m
+Author: JTR8655 <1059191443@qq.com>
+Date:   Sat May 21 19:35:54 2016 +0800
+
+    添加三期项目模版meituan
+
+[33mcommit a67d2c6a9eb02d23cebe48d65d2d591a5b9a1432[m
+Author: JTR8655 <1059191443@qq.com>
+Date:   Sat May 21 15:12:35 2016 +0800
+
+    Delete readme.txt
+
+[33mcommit dc4c7e233ef7074d29fcf9bab6aa22e6999f1132[m
+Author: Mirror36594912 <2818299827@qq.com>
+Date:   Fri May 20 17:23:50 2016 +0800
+
+    什么改动都没做，只是重新保存了一下一个文件。--黄善政
+
+[33mcommit bb8239698417d9b570275f316b6834dc65602593[m
+Author: songchenwu <918811028@qq.com>
+Date:   Thu May 19 21:24:38 2016 +0800
+
+    我之前WebRoot下面没有WEB-INf下的lib，添加上去了，现在是编码集报错,找不到怎么调的了
+    
+    Signed-off-by: songchenwu <918811028@qq.com>
+
+[33mcommit 968713477e07058bcc3ddc36e5286469d108d0e3[m
+Author: songchenwu <918811028@qq.com>
+Date:   Thu May 19 20:38:53 2016 +0800
+
+    上传一下
+    
+    Signed-off-by: songchenwu <918811028@qq.com>
+
+[33mcommit 51a122368305ac9eab65901526137cfb4e80afc2[m
+Author: songchenwu <918811028@qq.com>
+Date:   Wed May 18 22:08:44 2016 +0800
+
+    sss
+
+[33mcommit 011fb4c6beb7e67504d3355dfe32139b1fb995ab[m
+Author: JTR8655 <1059191443@qq.com>
+Date:   Wed May 18 19:14:47 2016 +0800
+
+    添加二期项目meituan
+    
+    Signed-off-by: JTR8655 <1059191443@qq.com>
+
+[33mcommit e862da66286484d253a81e5deefba813f95376aa[m
+Author: JTR <1059191443@qq.com>
+Date:   Tue May 17 20:18:56 2016 +0800
+
+    创建新文件:readme.txt
+
+[33mcommit 8a44dbda6036d85d6344e738105cf8a2b31d9b11[m
+Author: JTR8655 <1059191443@qq.com>
+Date:   Tue May 17 20:12:12 2016 +0800
+
+    Initial commit

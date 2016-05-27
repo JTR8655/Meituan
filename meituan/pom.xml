@@ -130,6 +130,13 @@
 			<artifactId>javax.mail</artifactId>
 			<version>1.5.5</version>
 		</dependency>
+		
+		<!-- Gson支持包 -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.6.2</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>meituan</finalName>

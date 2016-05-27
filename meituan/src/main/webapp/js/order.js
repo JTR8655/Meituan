@@ -287,6 +287,7 @@ var nav_content = document.getElementsByClassName('nav_content');
 			document.getElementById('v'+i).style.display = 'none';
 		}			
 		list[index].style.background = "#2BB8AA";
+		image[index].src = "../images/arrow.png";
 		image[index].src = "images/arrow.png";
 		font[index].style.color = "#FFF";
 		document.getElementById('v'+index).style.display = 'block';

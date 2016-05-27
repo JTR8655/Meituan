@@ -1,3 +1,41 @@
+$(function(){
+	/*$(".ss_ul_li").bind({
+		mouseover:function(){
+			$("#ss_ul").css("overflow","visible");
+			$("#ss_ul > li").each(function(){
+				$(this).css("display","block");
+				console.info($(this));
+			});
+		//	console.info($("#ss_ul > li"));
+		},
+		mouseout:function(){
+			$("#ss_ul").css("overflow","hidden");
+		}
+	});*/
+	
+});
+
+
+
+var mytime;//定时器
+var total=0;//图片总数
+var index=0;//图片索引
+var change_time=1000;/*
+$(function(){
+	total=$("show_img li").length;
+	mytime=window.setTimeout("showPic()",change_time);
+	$("show_imgsmall li img").bind({
+		mouseover:function(){
+			window.clearInterval(mytime);
+			showPic($(this).parent().parent().index());	
+		},
+		mouseout:function(){
+			window.clearInterval(mytime);
+			mytime=window.setInterval("showPic()",change_time);
+		}	
+	});
+});*/
+
 // JavaScript Document
 var mytime;//定时器
 var total=0;//图片总数
