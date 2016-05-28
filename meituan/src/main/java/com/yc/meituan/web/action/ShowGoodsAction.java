@@ -11,25 +11,24 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import com.google.gson.Gson;
 import com.opensymphony.xwork2.ModelDriven;
-import com.yc.meituan.bean.GoodsBean;
-import com.yc.meituan.entity.Evaluate;
-import com.yc.meituan.entity.GoodsInfo;
+import com.yc.meituan.entity.bean.GoodsBean;
 import com.yc.meituan.service.ShowGoodsService;
-
+@Controller("showGoodsAction")
 public class ShowGoodsAction implements ModelDriven<GoodsBean>, SessionAware, RequestAware{
 	
 	private GoodsBean goodsBean;
 	private Map<String, Object> session;
 	private Map<String, Object> request;
-	
+	private int gid;
 	@Autowired
 	private ShowGoodsService showGoodsService;
-	
+	//显示商品详情
 	public String showGoods(){
-		List<GoodsBean> goodsbeans = ShowGoodsService.listShowGoods();
+		List<GoodsBean> goodsbeans = showGoodsService.listShowGoods(gid);
 		Gson gson = new Gson();
 		String jsonResult = gson.toJson(goodsbeans);
 		HttpServletResponse response = ServletActionContext.getResponse();

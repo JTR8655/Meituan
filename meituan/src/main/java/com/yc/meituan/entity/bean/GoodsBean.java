@@ -1,4 +1,4 @@
-package com.yc.meituan.bean;
+package com.yc.meituan.entity.bean;
 
 public class GoodsBean {
 	private int gid;//商品编号

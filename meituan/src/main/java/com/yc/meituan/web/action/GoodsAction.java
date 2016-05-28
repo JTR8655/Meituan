@@ -15,8 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.google.gson.Gson;
 import com.opensymphony.xwork2.ModelDriven;
-import com.yc.meituan.bean.GoodsBean;
 import com.yc.meituan.entity.GoodsInfo;
+import com.yc.meituan.entity.bean.GoodsBean;
 import com.yc.meituan.service.GoodsService;
 
 public class GoodsAction implements ModelDriven<GoodsBean>, SessionAware, RequestAware {

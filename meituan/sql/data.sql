@@ -17,3 +17,14 @@ insert into meituan_goods_info (gid,gdate,gtitle1,gtitle2,gprice1,gprice2,sid)
   select 6,to_date('2011-8-19','yyyy-MM-dd'),'标题6','小标题6',11,18,4 from dual 
   
 -commit
+
+
+select g.gid,s.sid, g.gtitle1,g.gtitle2, g.img, g.text, g.gsoldcount, g.gprice1, g.gprice2, m.b_retime, m.d_taocan from meituan_seller_info s inner join meituan_goods_info g on s.sid = g.sid inner join meituan_goods_intro m on g.gid = m.gid and g.gid = 1112;
+
+
+
+
+
+
+
+
