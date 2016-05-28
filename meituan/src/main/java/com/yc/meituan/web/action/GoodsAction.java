@@ -68,4 +68,7 @@ public class GoodsAction implements ModelDriven<GoodsBean>, SessionAware, Reques
 		return goodsBean;
 	}
 
+	
+
+	
 }
