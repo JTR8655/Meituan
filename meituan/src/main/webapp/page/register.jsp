@@ -1,9 +1,11 @@
-<!doctype html>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"
+	isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<link rel="shortcut icon" href="images/title.png">
 <base href="/meituan/">
+<meta charset="utf-8">
 <title>注册 | 美团网</title>
 <link href="css/registor.css" type="text/css" rel="stylesheet">
 <script src="js/jquery-1.11.3.js" type="text/javascript"></script>
@@ -114,7 +116,7 @@ function changeyanzheng(obj){
     	<a class="header_left_logo" href=""><img src="images/mwituancom.png"/></a>
    	 <div class="header_right">
     	<span class="tip">已有美团账号？</span>
-        <a class="header_right_login"  href="login.html">登录</a>
+        <a class="header_right_login"  href="page/login.jsp">登录</a>
    	 </div>
     </div>
 </header>
@@ -133,24 +135,13 @@ function changeyanzheng(obj){
             </ul>
         </div>    	
         <div class="sheet" ><!--style="display:none"-->
-        	<form id="form1">
+        	<form id="form1" >
             	<div class="con_email">
                 <table>
-                	<!-- <div id="signup-email-auto" class="email-auto" style="display: none;">
-						<p class="email-title">请选择您的邮箱类型...</p>
-						<ul class="email-list">
-						<li class="current" title="@qq.com">@qq.com</li>
-						<li title="@163.com" class="">@163.com</li>
-						<li title="@126.com" class="">@126.com</li>
-						<li title="@sina.com" class="">@sina.com</li>
-						<li title="@hotmail.com" class="">@hotmail.com</li>
-						<li title="@sohu.com" class="">@sohu.com</li>
-						<li title="@gmail.com" class="">@gmail.com</li>
-						</ul>
-					</div> -->
+                	
                 	<tr>
                     	<td class="con_email_txt">邮箱</td>
-                        <td class="con_tex"><input type="text" name="email" id="email" onChange="check()" placeholder="xxxxxx@xxx.com"></td>
+                        <td class="con_tex"><input type="text" name="email" id="email" onChange="check()" ></td>
                         <td class="con_email_txt_3" id="tongyong">注册成功后，全美团通用</td>
                         <td class="con_email_txt_3"><span id="user_email">请填写邮箱地址</span><span id="iuser_email">邮箱已注册</span><span id="geshi_email">邮箱格式错误，请重新输入</span></td> 
                     </tr>
@@ -160,7 +151,7 @@ function changeyanzheng(obj){
                  <table>
                 	<tr>
                     	<td class="con_email_txt">用户名</td>
-                        <td class="con_tex"><input type="text" name="username" id="zcuname" onChange="check()" placeholder="不超过十位"></td>
+                        <td class="con_tex"><input type="text" name="uaccounts" id="zcuname" onChange="check()" ></td>
                         <td class="con_email_txt_3"><span id="user_name">请填写用户名</span><span id="user_uname">用户名已注册</span></td>       
                     </tr>
                 </table>                	
@@ -169,7 +160,7 @@ function changeyanzheng(obj){
                  <table>
                 	<tr>
                     	<td class="con_email_txt">创建密码</td>
-                        <td class="con_tex"><input type="password" name="pwd"  id="zcpwd" onChange="check()" onKeyUp="pwStrength(this.value)" placeholder="密码长度为6-18位"></td><!--  onBlur="pwStrength(this.value)" -->
+                        <td class="con_tex"><input type="password" name="upwd"  id="zcpwd" onChange="check()" onKeyUp="pwStrength(this.value)" ></td><!--  onBlur="pwStrength(this.value)" -->
                         <td class="con_email_txt_3"><span id="user_pwd">请填写密码</span></td>                
                     </tr>           
                 	<tr>
@@ -185,7 +176,7 @@ function changeyanzheng(obj){
                  <table>
                 	<tr>
                     	<td class="con_email_txt">确认密码</td>
-                        <td class="con_tex"><input type="password" name="pwd" id="zcrepwd" onChange="check()"></td>
+                        <td class="con_tex"><input type="password" name="upwd" id="zcrepwd" onChange="check()"></td>
                         <td class="con_email_txt_3"><span id="user_repwd">请再次输入密码</span><span id="user_urepwd">两次输入不匹配</span></td> 
                     </tr>
                 </table>                	                   
