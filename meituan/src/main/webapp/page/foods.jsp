@@ -237,10 +237,10 @@
 				<dd>item[i].b_serve</dd>
 			</dl>
 	</div>
-    <div>
+     <!--<div>
         <p class="trem_title"><a name="xiangqing">本单详情</a></p>
         <p class="standard_bar">美味尽享</p>
-        <table class="deal_menu">
+         <table class="deal_menu">
         	<thead style="border-bottom:#000; background:#f0f0f0;">
             	<th class="goods_name">套餐内容</th>
                 <th class="goods_price">单价</th>
@@ -256,8 +256,8 @@
 					</tr>
 					
 				</tbody>
-			</table>
-    </div>
+		</table>
+    </div>-->
     <div>
     	<p class="trem_title"><a name="jieshao">消费评价</a></p>
         <p class="standard_bar" style="margin-top:40px;">全部评价</p>

@@ -19,6 +19,7 @@ public class GoodsBean {
 	private String b_limittip;//限购限用提醒
 	private float d_price1;//套餐单价
 	private int d_count;//套餐数量/规格
+	
 	public int getGid() {
 		return gid;
 	}

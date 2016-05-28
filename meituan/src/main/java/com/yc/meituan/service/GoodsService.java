@@ -11,14 +11,6 @@ public interface GoodsService {
 	
 	List<GoodsInfo> listGoodsInIndex();
 	
-	List<Map<String, Object>> showGoods(int gid);
 	
-	List<Map<String, Object>> otherFoods(String sid);
-	
-	List<GoodsBean> must_know();
-
-	List<Map<String, Object>> showEvaluatePoint(int gid);
-	
-	List<Map<String, Object>> showEvaluateContent(int gid);
 
 }

@@ -22,34 +22,6 @@ public class GoodsServiceImpl implements GoodsService {
 		return goodsMapper.selectGoods();
 	}
 
-	@Override
-	public List<Map<String, Object>> showGoods(int gid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Map<String, Object>> otherFoods(String sid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<GoodsBean> must_know() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Map<String, Object>> showEvaluatePoint(int gid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Map<String, Object>> showEvaluateContent(int gid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	                  
 
 }
