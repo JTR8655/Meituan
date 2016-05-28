@@ -8,7 +8,7 @@ public class GoodsBean {
 	private String privilege;//优惠折扣
 	private float gprice1;//原价
 	private float gprice2;//现价
-	private int gsoldcount;//已购数
+	private int gsoldcount;//已售数
 	private String img;//照片
 	private String b_retime;//有效期
 	private String b_usetime;//使用时间

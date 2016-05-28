@@ -194,20 +194,20 @@ function mustKnow(data){
 }
 
 //显示套餐详情
-function tuanTaoCan(data){
-	var value = "";
-	$("#taocan_info").html("");
-	var item = data.obj;
-	for(var i=0;i<item.length;i++){
-		value += '<tr>'
-            	+'<td class="goods_name">'+item[i].d_taocan+'</td>'
-                +'<td class="goods_price">￥'+item[i].d_price1+'</td>'
-                +'<td class="goods_amount">'+item[i].d_count+'张</td>'
-                +'<td class="goods_subtotal">￥'+item[i].d_price1*item[i].d_count+'</td>'
-            	+'</tr>';
-            	$("#taocan_info").append(value);
-	}
-}
+//function tuanTaoCan(data){
+//	var value = "";
+//	$("#taocan_info").html("");
+//	var item = data.obj;
+//	for(var i=0;i<item.length;i++){
+//		value += '<tr>'
+//            	+'<td class="goods_name">'+item[i].d_taocan+'</td>'
+//                +'<td class="goods_price">￥'+item[i].d_price1+'</td>'
+//                +'<td class="goods_amount">'+item[i].d_count+'张</td>'
+//                +'<td class="goods_subtotal">￥'+item[i].d_price1*item[i].d_count+'</td>'
+//            	+'</tr>';
+//            	$("#taocan_info").append(value);
+//	}
+//}
 //显示评价总分
 function showEvaluatePoint(data){
 	var value = "";
@@ -287,7 +287,10 @@ function lower(){
 	}
 	document.getElementById('J-cart-quantity').value = value;
 }
-
+//关闭警告
+function closeWaring(){
+	$('#waring').css('display', 'none');
+}
 function othergoods(sid){
 	//显示商家的其他商品
 	$.ajax({
@@ -304,10 +307,7 @@ function othergoods(sid){
 		}
 	});
 }
-//关闭警告
-function closeWaring(){
-	$('#waring').css('display', 'none');
-}
+
 
 $(function(){
 	var gid = window.location.href.split("=")[1];
@@ -315,7 +315,7 @@ $(function(){
 	//显示商品信息
 	$.ajax({
 		type:'post',
-		url:'showGoodsDetails.do',
+		url:'goods_showGoods.action',
 		data:{
 			gid:gid
 		},

@@ -93,12 +93,12 @@
 		<div id="body_mid1">
 			<div id="body_midl_top">
 				<div id="body_mid1_top1">
-					<input type="hidden" value="  item[i].GID  " class="get_id" />
-					 <span class="title-prefix">【星美/美凯龙】</span>
-					<h1 class="title">土火锅烧烤</h1>
+					<input type="hidden" value="item[i].GID" class="get_id" />
+					 <span class="title-prefix"></span>
+					<h1 class="title"></h1>
 				</div>
 				<div id="body_mid1_top2">
-					<div class="tishi1">item[i].TEXT</div>
+					<div class="tishi1"></div>
 				</div>
 			</div>
 			<div id="body_mid1_down">
@@ -120,21 +120,21 @@
 							</h2>
 							<span class="promote-default">
 								<span class="status">门店价</span>
-								<del class="sans-serif"> ¥59</del> 
+								<del class="sans-serif">¥59</del>
 							</span>
 						</div>
 					</div>
 					<div id="evaluate">
 						<div id="item">
-							<span class="item">已售<span class="sold-count">6</span></span>
+							<span class="item">已售<span class="sold-count">&nbsp;6</span></span>
 						</div>
 						<div id="item-viewed">
 							<span class="item-viewed"><a id="look-normal">
-							<span class="rating-stars">3.9</span>分 </a></span>
+							<span class="rating-stars">3.9&nbsp;</span>分 </a></span>
 						</div>
 						<div id="comments-count">
 							<span class="comments-count"><a id="look-normal">
-							<span class="comment-count">8</span>人评价 </a></span>
+							<span class="comment-count">8&nbsp;</span>人评价 </a></span>
 						</div>
 					</div>
 					<div id="data">
