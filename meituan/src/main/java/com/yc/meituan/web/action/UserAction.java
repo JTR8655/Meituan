@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.struts2.ServletActionContext;
@@ -16,7 +18,8 @@ import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.ModelDriven;
 import com.yc.meituan.entity.UserInfo;
 import com.yc.meituan.service.UserService;
-import com.yc.meituan.util.VoteData;
+import com.yc.meituan.util.AjaxUtil;
+import com.yc.meituan.util.MeituanData;
 
 @Controller("userAction")
 public class UserAction implements ModelDriven<UserInfo>, SessionAware, RequestAware{
@@ -30,13 +33,13 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware, RequestA
 
 	//登录
 	public String login(){
-		LogManager.getLogger().debug("userInfo:" + userInfo);
 		UserInfo user = userService.login(userInfo);
+		LogManager.getLogger().debug("取到的用户：" + user);
 		if(null != user){
-			session.put(VoteData.LOGIN_USER, user);
+			session.put(MeituanData.LOGIN_USER, user);
 			return "loginSuccess";
 		}else{
-			session.put(VoteData.ERROR_MSG, "登陆失败！用户名或密码错误");
+			session.put(MeituanData.ERROR_MSG, "登陆失败！用户名或密码错误");
 			return "login";
 		}
 	}
@@ -44,26 +47,15 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware, RequestA
 	//注销登录
 	public String logout(){
 		int code = 0;
-		if(session.get(VoteData.LOGIN_USER) != null){
-			session.remove(VoteData.LOGIN_USER);
+		if(session.get(MeituanData.LOGIN_USER) != null){
+			session.remove(MeituanData.LOGIN_USER);
 			code = 1;
 		}
-		HttpServletResponse response = ServletActionContext.getResponse();
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("charset=utf-8");
-		try {
-			PrintWriter out = response.getWriter();
-			out.println(code+"");//写出响应数据
-			out.flush();
-			out.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
+
+		AjaxUtil.ajaxResponse(code + "");
+		LogManager.getLogger().debug("注销成功");
 		return "none";
 	}
-	
-	
 	
 	
 	

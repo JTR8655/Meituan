@@ -1,6 +1,5 @@
 package com.yc.meituan.entity;
 
-import java.util.Date;
 //实体类
 public class UserInfo {
     private Integer muid;
@@ -19,7 +18,7 @@ public class UserInfo {
 
     private Integer upoint;
 
-    private Date ubirth;
+    private String ubirth;
 
     private String umarital;
 
@@ -99,11 +98,11 @@ public class UserInfo {
         this.upoint = upoint;
     }
 
-    public Date getUbirth() {
+    public String getUbirth() {
         return ubirth;
     }
 
-    public void setUbirth(Date ubirth) {
+    public void setUbirth(String ubirth) {
         this.ubirth = ubirth;
     }
 

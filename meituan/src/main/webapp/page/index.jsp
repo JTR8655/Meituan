@@ -18,7 +18,6 @@
 		<ul id="head_ul">
 			<li id="head_2">
 				<div id="h_2_div">
-				
 					<ul id="head_2_left_login">
 						<li><a href="" id="shoucang">收藏美团</a></li>
 						<li><a href="page/order.jsp" id="user">${sessionScope.loginUser.uemail }</a></li>
@@ -1102,10 +1101,8 @@
 			type : 'post',
 			url : 'user_logout.action',
 			success : function(data) {
-				if (data == 1) {
-					$("#head_2_left_login").css("display", "none");
-					$("#head_2_left").css("display", "block");
-				}
+				$("#head_2_left_login").css("display", "none");
+				$("#head_2_left").css("display", "block");
 			}
 		});
 	}

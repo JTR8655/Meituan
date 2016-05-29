@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yc.meituan.mapper.UorderMapper" >
+	<select id="showAllUorder" parameterType="int" resultType="UorderBean">
+		select o.oid,o.oidentifier,o.muid,o.gid,o.ocount,o.ostatus,g.gprice2,g.gtitle1,g.img,g.sid,gi.b_retime from 
+			meituan_uorder o inner join meituan_goods_info g on o.gid = g.gid left join meituan_goods_intro gi 
+				on o.gid = gi.gid where muid = #{muid} order by opaytime desc 	
+	</select>
+	
+	<select id="listCollections" parameterType="int" resultType="CollectionBean">
+		select c.cid,c.muid,c.gid,gi.b_retime,g.img,g.gtitle1,g.gprice2 from meituan_collection c inner join
+		 meituan_goods_intro gi on c.gid = gi.gid inner join meituan_goods_info g on g.gid = c.gid and c.muid = #{muid}
+	</select>
 </mapper>

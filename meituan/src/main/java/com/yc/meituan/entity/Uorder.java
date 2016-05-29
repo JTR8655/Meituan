@@ -1,7 +1,5 @@
 package com.yc.meituan.entity;
 
-import java.util.Date;
-
 public class Uorder {
     private Integer oid;
 
@@ -11,13 +9,13 @@ public class Uorder {
 
     private Integer gid;
 
-    private Date otime;
+    private String otime;
 
     private String ostatus;
 
     private String opwd;
 
-    private Date opaytime;
+    private String opaytime;
 
     private Integer ocount;
 
@@ -57,11 +55,11 @@ public class Uorder {
         this.gid = gid;
     }
 
-    public Date getOtime() {
+    public String getOtime() {
         return otime;
     }
 
-    public void setOtime(Date otime) {
+    public void setOtime(String otime) {
         this.otime = otime;
     }
 
@@ -81,11 +79,11 @@ public class Uorder {
         this.opwd = opwd == null ? null : opwd.trim();
     }
 
-    public Date getOpaytime() {
+    public String getOpaytime() {
         return opaytime;
     }
 
-    public void setOpaytime(Date opaytime) {
+    public void setOpaytime(String opaytime) {
         this.opaytime = opaytime;
     }
 

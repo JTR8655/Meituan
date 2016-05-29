@@ -28,11 +28,13 @@
 		</global-results>
 		<global-allowed-methods>login</global-allowed-methods>
 		<action name="*_*" class="{1}Action" method="{2}">
-			<interceptor-ref name="myStack" />
+			<!-- <interceptor-ref name="myStack" /> -->
 			<result name="loginSuccess">page/index.jsp</result>
 			<result name="{2}">/page/{2}.jsp</result> 
 		</action>
 		<action name="user_logout" class="com.yc.meituan.web.action.UserAction" method="logout"></action>
 		<action name="goods_indexGoods" class="com.yc.meituan.web.action.GoodsAction" method="indexGoods"></action>
+		<action name="uorder_showAllUorder" class="com.yc.meituan.web.action.UorderAction" method="showAllUorder"></action>
+		<action name="uorder_listCollection" class="com.yc.meituan.web.action.UorderAction" method="listCollection"></action>
 	</package>
 </struts>

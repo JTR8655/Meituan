@@ -42,76 +42,121 @@ var pjContent='<div class="pjDetail">'
 				+'<p class="bb">修改后的评价不参与“认真评价奖积分”活动。</p>'
 				+'</div>';
 add();
+/*
 $(function (){
 	$.ajax({
 		type:'post',
-		url:'/meituan/UserOperate.do',
-		data:{op:'showUseInfo'},
+		url:'user_getUser.action',
 		dataType:'json',
 		success:function(data){
-			if(data.code==1){
+			if(data != null){
 				$("#head_2_left_login").css("display","block");
 				$("#head_2_left").css("display","none");
-				$("#user").html(data.obj.uemail);
+				$("#user").html(data.uemail);
 			}
 		}
 	});
-});
+});*/
 
+
+//退出
+function logOut() {
+	$.ajax({
+		type : 'post',
+		url : 'user_logout.action',
+		success : function(data) {
+			$("#head_2_left_login").css("display", "none");
+			$("#head_2_left").css("display", "block");
+		}
+	});
+}
 //显示所有订单
 $(function(){
 	$.ajax({
 		type : 'post',
-		url : '/meituan/UserFunction.do',
-		data : {op : 'showAllOrder'},
-		dataType : 'json',
+		url : 'uorder_showAllUorder.action',
+		dataType:'json',
 		success : function(data){
-			if(data.code==1){
-				console.info(data.obj[0].IMG);
-				for(var i=0;i<data.obj.length;i++){	
-					var str="";
-					str = '<div class="orders_body">'
-						+'<div class="order_title">'     	
-						+ '订单编号：<a class="number" href="javascript:void(0)">'+data.obj[i].OIDENTIFIER+'</a>'
-						+ ' <a class="delete" href="javascript:void(0)" onclick=dOrder('+i+') onMouseOver="fc(0)" onMouseOut="fr(0)">删除</a>'
-						+ '</div>'
-						+ '  <div class="order_row">'
-						+ '<div class="order_cell_info">'
-						+ '<div class="images">'
-						+ ' 	<a href="javascript:void(0)"><img class="v0_img" src="'+data.obj[i].IMG+'" /></a>'
-						+ ' </div>'
-						+ '  <div class="goods_info">'
-						+ '	<a class="goods" href="javascript:void(0)" onMouseOver="font_1(0)" onMouseOut="fr_1(0)">'+data.obj[i].GTITLE1+'</a><br />'
-						+ '    <p style="color:#999;">有效期至：2015-12-31</p>'
-			//			+ '    <a href="javascript:void(0)" style="color:#2BB8AA">商家信息</a>'
-						+ '    </div>'
-						+ ' </div>'
-						+ '<div class="order_cell_number">'
-						+ '  	<p class="info">'+data.obj[i].OCOUNT+'</p>'
-						+ '  </div>'
-						+ '	<div class="order_cell_price">'
-						+ '  	<p class="info">￥<a class="info_money">'+data.obj[i].GPRICE2+'</a></p>'
-						+ '  </div>'
-						+ '<div class="order_cell_statu">'
-						+ ' 	<p class="info">'+data.obj[i].OSTATUS+'</p>'
-				//		+ '     <a href="javascript:void(0)" style="color:#2bb8AA">订单详情</a>'
-						+ ' </div>'
-						+ '	<div class="order_cell_operate"></div>'
-						+ ' </div>'
-						+ ' </div>';
-					$("#v0").html($("#v0").html()+str);	
-				}
+			if(data == null){
+				return;
 			}
+			var str="";
+			for(var i=0;i<data.length;i++){	
+				str += '<div class="orders_body">'
+					+'<div class="order_title">'     	
+					+ '订单编号：<a class="number" href="javascript:void(0)">'+data[i].oidentifier+'</a>'
+					+ ' <a class="delete" href="javascript:void(0)" onclick=dOrder('+i+') onMouseOver="fc('+i+')" onMouseOut="fr('+i+')">删除</a>'
+					+ '</div>'
+					+ '  <div class="order_row">'
+					+ '<div class="order_cell_info">'
+					+ '<div class="images">'
+					+ ' 	<a href="javascript:void(0)"><img class="v0_img" src="'+data[i].img+'" /></a>'
+					+ ' </div>'
+					+ '  <div class="goods_info">'
+					+ '	<a class="goods" href="javascript:void(0)" onMouseOver="font_1(0)" onMouseOut="fr_1(0)">'+data[i].gtitle1+'</a><br />'
+					+ '    <p style="color:#999;">有效期至：2015-12-31</p>'
+		//			+ '    <a href="javascript:void(0)" style="color:#2BB8AA">商家信息</a>'
+					+ '    </div>'
+					+ ' </div>'
+					+ '<div class="order_cell_number">'
+					+ '  	<p class="info">'+data[i].ocount+'</p>'
+					+ '  </div>'
+					+ '	<div class="order_cell_price">'
+					+ '  	<p class="info">￥<a class="info_money">'+data[i].gprice2+'</a></p>'
+					+ '  </div>'
+					+ '<div class="order_cell_statu">'
+					+ ' 	<p class="info">'+data[i].ostatus+'</p>'
+			//		+ '     <a href="javascript:void(0)" style="color:#2bb8AA">订单详情</a>'
+					+ ' </div>'
+					+ '	<div class="order_cell_operate"></div>'
+					+ ' </div>'
+					+ ' </div>';
+			}
+			$("#v0").html(str);
 		}
 	});
 });
+
+
+//显示收藏商品
+function listCollection(){
+	$.ajax({
+		type : 'post',
+		url : 'uorder_listCollection.action',
+		dataType:'json',
+		success : function(data){
+			if(data == null){
+				return;
+			}
+			var str="";
+			console.info(data);
+			for(var i=0;i<data.length;i++){
+				str += 
+				'<tr class="collection_detailed">'+
+					'<td class="sc_td"><div>'+
+						'<a href="foods.jsp?gid= '+ data[i].gid +'"><img src="'+ data[i].img +'"'+
+							'style="float: left;padding-bottom:10px; margin-top: 10px; margin-left: 20px; width: 100px; height: 61px;" /></a>'+
+						'<a href="foods.jsp?gid= '+ data[i].gid +'" style="float: left; margin-left: 20px; font-size:12px; margin-top: 33px; color: #666666;"'+
+							'class="goods_text" onMouseOver="changeFontColor(0)" onMouseOut="returnFontColor(0)">'+ data[i].gtitle1 +'</a>'+
+						'</div></td> <td class="sc_td"><div> <p class="goods_text">￥'+ data[i].gprice2 +'</p></div></td>'+
+					'<td class="sc_td"><div> <p class="goods_text">'+ data[i].gstatus +'</p> </div></td>'+
+					'<td class="sc_td"> <div> <a href="fair.jsp?gid= '+ data[i].gid +'" class="goods_text" style="margin-left: 23px; color: #2BB8AA;"'+
+						'onMouseOver="changeFontColor(3)" onMouseOut="returnFontColor(3)">购买</a> <a '+
+						'href="javascript:void(0)" class="goods_text" style="margin-left: 3px;" onMouseOver="changeFontColor(4)"'+
+						'onMouseOut="returnFontColor(4)" onClick=" ('+data[i].cid+')">删除</a>'+
+				'</div> </td> </tr>';
+			}
+			$("#info_tbody").html(str);
+		}
+	});
+}
+
 
 //显示未评价订单
 $(function(){
 	$.ajax({
 		type:'post',
 		url:'/meituan/UserFunction.do',
-		data:{op:'showNoEvaluate'},
 		dataType:"JSON",
 		success: function(data){
 			if(data.code==1){
@@ -150,7 +195,6 @@ $(function(){
 	$.ajax({
 		type:'post',
 		url:'/meituan/UserFunction.do',
-		data:{op:'showEvaluated'},
 		dataType:"JSON",
 		success: function(data){
 			console.info(data);
@@ -233,6 +277,8 @@ function add(){
 function dOrder(i){
 	
 }
+
+
 function pinglun(){
 	var hid=0;
 	var niming = document.getElementsByName("niming")[pjliIndex];
@@ -288,7 +334,6 @@ var nav_content = document.getElementsByClassName('nav_content');
 		}			
 		list[index].style.background = "#2BB8AA";
 		image[index].src = "../images/arrow.png";
-		image[index].src = "images/arrow.png";
 		font[index].style.color = "#FFF";
 		document.getElementById('v'+index).style.display = 'block';
 		flag = true;						

@@ -1,5 +1,8 @@
 @charset "utf-8";
 /* CSS Document */
+a{
+	font-size:12px;
+}
 .top_nav{
 	margin-left:20px;
 }
@@ -18,11 +21,15 @@
 	color:#666;
 	font-size:14px;
 }
-.collection_detailed{
-	border:#000 1px solid;		
-}
 #move_index{
 	color:#2bb8aa;
+}
+.sc_td{
+	height:60px;
+	border-bottom:1px solid #eee;
+}
+.sc_td a,.sc_td p{
+	 font-size:12px;
 }
 #move_index:hover{
 	text-decoration:underline;	
@@ -30,7 +37,7 @@
 
 #left_nav strong{
 	display:block;
-	padding:15px 10px 15px 32px;
+	padding:8px 10px 8px 32px;
 }
 #left_nav li{
 	float:none;
