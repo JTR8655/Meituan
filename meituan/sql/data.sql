@@ -48,3 +48,8 @@ select o.oid,o.oidentifier,o.muid,o.gid,o.ocount,o.ostatus,g.gprice2,g.gtitle1,g
 	meituan_goods_info g on o.gid = g.gid left join meituan_goods_intro gi on o.gid = gi.gid where muid = 1 order by opaytime desc 	
 
 select c.cid,c.muid,c.gid, g.b_retime from meituan_collection c inner join meituan_goods_intro g on c.gid = g.gid and c.muid = 1
+  
+-commit
+
+
+select g.gid,s.sid, g.gtitle1,g.gtitle2, g.img, g.text, g.gsoldcount, g.gprice1, g.gprice2, m.b_retime, m.d_taocan from meituan_seller_info s inner join meituan_goods_info g on s.sid = g.sid inner join meituan_goods_intro m on g.gid = m.gid and g.gid = 1112;

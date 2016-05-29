@@ -36,5 +36,6 @@
 		<action name="goods_indexGoods" class="com.yc.meituan.web.action.GoodsAction" method="indexGoods"></action>
 		<action name="uorder_showAllUorder" class="com.yc.meituan.web.action.UorderAction" method="showAllUorder"></action>
 		<action name="uorder_listCollection" class="com.yc.meituan.web.action.UorderAction" method="listCollection"></action>
+		<action name="goods_showGoods" class="com.yc.meituan.web.action.ShowGoodsAction" method="showGoods"></action>
 	</package>
 </struts>

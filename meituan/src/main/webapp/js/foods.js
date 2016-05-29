@@ -317,7 +317,6 @@ $(function(){
 		type:'post',
 		url:'showGoodsDetails.do',
 		data:{
-			op:'showGoodsInfo',
 			gid:gid
 		},
 		dataType:'json',

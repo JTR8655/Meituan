@@ -10,7 +10,7 @@ import org.apache.struts2.ServletActionContext;
 import com.google.gson.Gson;
 
 public class AjaxUtil {
-	
+
 	public static void ajaxResponse(Object object){
 		Gson gson = new Gson();
 		String jsonResult = gson.toJson(object);

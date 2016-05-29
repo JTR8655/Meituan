@@ -1,27 +1,28 @@
 package com.yc.meituan.entity;
 
 public class Evaluate {
-    private Integer eid;
 
-    private Integer muid;
+    private Integer eid;//评价表编号
 
-    private Integer oid;
+    private Integer muid;//会员编号
 
-    private Double egrade1;
+    private Integer oid;//订单编号
 
-    private Double egrade2;
+    private Double egrade1;//服务分
 
-    private Double egrade3;
+    private Double egrade2;//口味分
 
-    private Double egrade4;
+    private Double egrade3;//环境分
 
-    private String econtent;
+    private Double egrade4;//总评分
 
-    private String img;
+    private String econtent;//长时间未评价，系统默认好评
 
-    private Integer hidename;
+    private String img;//评价图片
 
-    private String temp1;
+    private Integer hidename;//评论人的用户名，默认为匿名
+
+    private String temp1;//备用字段
 
     public Integer getEid() {
         return eid;

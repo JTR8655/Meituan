@@ -83,11 +83,13 @@ create table meituan_goods_info(
 	temp1 int default 0, --商品状态，已上架0  已下架1
 	temp2 varchar2(100)
 );
-
+select * from meituan_goods_info where gid=1112;
 alter table meituan_goods_info
    add constraint FK_g_info_REFERENCE_s_info foreign key (sid)
       references meituan_seller_info(sid);
-insert into meituan_goods_info values(1001,to_date('2016-1-1','yyyy-MM-dd'),'8.8折',1,'羊肉火锅','仅售38.8元，提供免费wifi',68.8,38.8,9,null,null,1,null);
+insert into meituan_goods_info values(1111,to_date('2016-1-1','yyyy-MM-dd'),'8.8折',1,'羊肉火锅','仅售38.8元，提供免费wifi',68.8,38.8,9,null,null,1,null);
+insert into meituan_goods_info values(1112,to_date('2016-5-28','yyyy-MM-dd'),'8.8折',1,'土火锅烧烤','仅售38.8元，提供免费wifi',68.8,38.8,9,'../update/back1.jpg',null,1,null);
+
 --------------------------------------------
 --商品介绍表    一个商品会有多条数据(不同的小商品等等)
 drop table meituan_goods_intro;
@@ -102,21 +104,21 @@ create table meituan_goods_intro(
 --	b_limit varchar(100),		--限价片条款 
 	b_serve varchar2(500),		--商家服务
 	b_limittip varchar2(100),	--限购限用提醒 
---	d_taocan varchar2(100),		--套餐内容 
-	d_price1 float,		--单价
-	d_count int,		--数量
+	d_taocan varchar2(100),		--套餐内容 
+--	d_price1 float,		--单价
+--	d_count int,		--数量
 --	d_sum float,		--小计
 --	d_infos varchar2(2000),		--详细信息
 --	d_introduce varchar2(2000),		--商家介绍
 	temp1 varchar2(100),
 	temp2 varchar2(100),
 	temp3 varchar2(100)
-)
-
+);
+select * from meituan_goods_intro;
 alter table meituan_goods_intro
    add constraint FK_g_intro_REFERENCE_g_info  foreign key (gid)
       references meituan_goods_info(gid);
-
+insert into meituan_goods_intro values(1112,'2016.1.1-2016.12.31','节假日通用，早上九点到晚上10点',default,'有包间','提供打包外带','提供免费wifi，停车场','不限量使用','39元代金券',null,null,null);
 ---------------------------------------------
 
 --会员订单表
@@ -231,10 +233,10 @@ create table meituan_manager(
 	temp1 varchar2(100)
 ); 
 
-comit;
+commit;
 
-update meituan_user_info set UEMAIL = '1059191443@qq.com';
-
+update meituan_user_info set upwd = 'a';
+delete from meituan_user_info where muid=123;
 select * from meituan_user_info;
 select * from meituan_manager;
 select * from meituan_evaluate;

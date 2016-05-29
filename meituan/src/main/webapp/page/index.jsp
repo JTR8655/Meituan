@@ -27,13 +27,13 @@
 					<ul id="head_2_left">
 						<li><a href="" id="shoucang">收藏美团</a></li>
 						<li><a href="page/login.jsp" id="login">登录</a></li>
-						<li><a href="page/register.html" id="register">注册</a></li>
+						<li><a href="page/register.jsp" id="register">注册</a></li>
 					</ul>
 					<ul id="head_2_right">
 						<li><a href="page/order.jsp">我的美团</a></li>
 						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;购物车0件</a></li>
 						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;联系客服</a></li>
-						<li><a href="backLogin/sellerLogin.html" class="border">|&nbsp;&nbsp;&nbsp;我是商家</a></li>
+						<li><a href="backLogin/sellerLogin.jsp" class="border">|&nbsp;&nbsp;&nbsp;我是商家</a></li>
 						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;更多</a></li>
 					</ul>
 					<c:if test="${sessionScope.loginUser != null}">
@@ -53,7 +53,7 @@
 			<li id="head_4">
 				<div id="h4_div">
 					<div id="head_4_left">
-						<a href="index.html" id="logo"><img id="logo_img"
+						<a href="index.jsp" id="logo"><img id="logo_img"
 							src="images/smalljpg.png"></a> <a href="" class="didian"
 							id="city">衡阳</a><br />
 						<!--     <a href="" class="didian" id="qiehuan">切换城市</a>  -->
@@ -1124,7 +1124,7 @@
 					} else {
 						value += '<div class="shangpin">';
 					}
-					value += '<a href="foods.html?gid='
+					value += '<a href="page/foods.jsp?gid='
 							+ item[i].gid
 							+ '" class="sp_content">'
 							+ '<div>'
@@ -1207,7 +1207,7 @@
 						success : function(data) {
 							if (data == -1) {
 								alert("您还未登录，请先登录");
-								window.location.href = "login.html";
+								window.location.href = "login.jsp";
 							} else if (data > 0) {
 								alert("收藏成功！");
 								$('.xingji').eq(i).text("已收藏");
