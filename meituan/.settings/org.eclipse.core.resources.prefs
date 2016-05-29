@@ -1,9 +1,10 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=branch 'master' of ssh\://git@github.com/JTR8655/Meituan.git
 eclipse.preferences.version=1
+encoding//src/main/java/com/yc/meituan/web/action/RegisterMailAction.java=UTF-8
 encoding//src/main/resources/db.properties=UTF-8
 encoding//src/main/resources/mail.properties=UTF-8
-<<<<<<< HEAD
 encoding//src/main/webapp/page/fair.jsp=UTF-8
 encoding//src/main/webapp/page/order.jsp=UTF-8
-=======
 encoding/<project>=UTF-8
->>>>>>> branch 'master' of ssh://git@github.com/JTR8655/Meituan.git

@@ -17,3 +17,4 @@ insert into meituan_goods_info (gid,gdate,gtitle1,gtitle2,gprice1,gprice2,sid)
   select 6,to_date('2011-8-19','yyyy-MM-dd'),'标题6','小标题6',11,18,4 from dual 
   
 -commit
+insert into meituan_user_info values(seq_meituanuser.nextval,'samsara0','a','918811021@qq.com',default,default,default,null,null,null,null,null,default,'湖南省-长沙市',sysdate);

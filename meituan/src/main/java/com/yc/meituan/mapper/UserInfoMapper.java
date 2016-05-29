@@ -6,4 +6,5 @@ public interface UserInfoMapper {
 
 	UserInfo login(UserInfo userInfo);
    
+	void reg(UserInfo userInfo);
 }

@@ -5,13 +5,13 @@
 
 <struts>
 
-	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<constant name="struts.devMode" value="true" /> 
 	
 	 <!-- 把struts的action对象交给spring容器管理 -->
 	<constant name="struts.objectFactory " value="spring" />
 
-	<package name="default" extends="struts-default">
+	<package name="default" namespace="/" extends="struts-default">
 		<interceptors>
 			<interceptor name="loginInterceptor" class="com.yc.meituan.web.interceptor.LoginInterceptor"/>
 			<interceptor-stack name="myStack">
@@ -26,17 +26,15 @@
 		<global-results>
 			<result name="login" type="redirect">page/login.jsp</result>
 		</global-results>
-		<global-allowed-methods>login</global-allowed-methods>
+		<global-allowed-methods>login,register</global-allowed-methods>
 		<action name="*_*" class="{1}Action" method="{2}">
-
-			<!--  <interceptor-ref name="myStack" />-->
-
 			<interceptor-ref name="myStack" />
 			<result name="loginSuccess">page/index.jsp</result>
-
+			<result name="registerSuccess">page/regist_yz.jsp</result>
 			<result name="{2}">/page/{2}.jsp</result> 
 		</action>
 		<action name="user_logout" class="com.yc.meituan.web.action.UserAction" method="logout"></action>
+		<action name="user_code" class="com.yc.meituan.web.action.UserAction" method="code"></action>
 		<action name="goods_indexGoods" class="com.yc.meituan.web.action.GoodsAction" method="indexGoods"></action>
 	</package>
 </struts>
