@@ -322,7 +322,7 @@ $(function(){
 		dataType:'json',
 		success:function(data){
 			showInfo(data);
-			sid = data.obj[0].SID;
+			sid = data.SID;
 			othergoods(sid);
 		}
 	});
