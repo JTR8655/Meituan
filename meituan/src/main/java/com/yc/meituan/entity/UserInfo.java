@@ -1,166 +1,194 @@
 package com.yc.meituan.entity;
 
+import java.util.Date;
+
 //实体类
 public class UserInfo {
-    private Integer muid;
+	private Integer muid;
 
-    private String uaccounts;
+	private String uaccounts;
 
-    private String upwd;
+	private String upwd;
 
-    private String uemail;
+	private String uemail;
 
-    private String uphone;
+	private String uphone;
 
-    private String usex;
+	private String usex;
 
-    private Double ubalance;
+	private Double ubalance;
 
-    private Integer upoint;
+	private Integer upoint;
 
-    private String ubirth;
+	private Date ubirth;
 
-    private String umarital;
+	private String umarital;
 
-    private String ujob;
+	private String ujob;
 
-    private String uheadimg;
+	private String uheadimg;
 
-    private String uinterest;
+	private String uinterest;
 
-    private Integer ustatus;
+	private Integer ustatus;
 
-    private String uaddr;
+	private String uaddr;
 
-    private String uregtime;
+	private Date uregtime;
 
-    public Integer getMuid() {
-        return muid;
-    }
+	public UserInfo() {
+		super();
+	}
 
-    public void setMuid(Integer muid) {
-        this.muid = muid;
-    }
+	public UserInfo(Integer muid, String uaccounts, String upwd, String uemail, String uphone, String usex,
+			Double ubalance, Integer upoint, Date ubirth, String umarital, String ujob, String uheadimg,
+			String uinterest, Integer ustatus, String uaddr, Date uregtime) {
+		super();
+		this.muid = muid;
+		this.uaccounts = uaccounts;
+		this.upwd = upwd;
+		this.uemail = uemail;
+		this.uphone = uphone;
+		this.usex = usex;
+		this.ubalance = ubalance;
+		this.upoint = upoint;
+		this.ubirth = ubirth;
+		this.umarital = umarital;
+		this.ujob = ujob;
+		this.uheadimg = uheadimg;
+		this.uinterest = uinterest;
+		this.ustatus = ustatus;
+		this.uaddr = uaddr;
+		this.uregtime = uregtime;
+	}
 
-    public String getUaccounts() {
-        return uaccounts;
-    }
+	public Integer getMuid() {
+		return muid;
+	}
 
-    public void setUaccounts(String uaccounts) {
-        this.uaccounts = uaccounts == null ? null : uaccounts.trim();
-    }
+	public void setMuid(Integer muid) {
+		this.muid = muid;
+	}
 
-    public String getUpwd() {
-        return upwd;
-    }
+	public String getUaccounts() {
+		return uaccounts;
+	}
 
-    public void setUpwd(String upwd) {
-        this.upwd = upwd == null ? null : upwd.trim();
-    }
+	public void setUaccounts(String uaccounts) {
+		this.uaccounts = uaccounts;
+	}
 
-    public String getUemail() {
-        return uemail;
-    }
+	public String getUpwd() {
+		return upwd;
+	}
 
-    public void setUemail(String uemail) {
-        this.uemail = uemail == null ? null : uemail.trim();
-    }
+	public void setUpwd(String upwd) {
+		this.upwd = upwd;
+	}
 
-    public String getUphone() {
-        return uphone;
-    }
+	public String getUemail() {
+		return uemail;
+	}
 
-    public void setUphone(String uphone) {
-        this.uphone = uphone == null ? null : uphone.trim();
-    }
+	public void setUemail(String uemail) {
+		this.uemail = uemail;
+	}
 
-    public String getUsex() {
-        return usex;
-    }
+	public String getUphone() {
+		return uphone;
+	}
 
-    public void setUsex(String usex) {
-        this.usex = usex == null ? null : usex.trim();
-    }
+	public void setUphone(String uphone) {
+		this.uphone = uphone;
+	}
 
-    public Double getUbalance() {
-        return ubalance;
-    }
+	public String getUsex() {
+		return usex;
+	}
 
-    public void setUbalance(Double ubalance) {
-        this.ubalance = ubalance;
-    }
+	public void setUsex(String usex) {
+		this.usex = usex;
+	}
 
-    public Integer getUpoint() {
-        return upoint;
-    }
+	public Double getUbalance() {
+		return ubalance;
+	}
 
-    public void setUpoint(Integer upoint) {
-        this.upoint = upoint;
-    }
+	public void setUbalance(Double ubalance) {
+		this.ubalance = ubalance;
+	}
 
-    public String getUbirth() {
-        return ubirth;
-    }
+	public Integer getUpoint() {
+		return upoint;
+	}
 
-    public void setUbirth(String ubirth) {
-        this.ubirth = ubirth;
-    }
+	public void setUpoint(Integer upoint) {
+		this.upoint = upoint;
+	}
 
-    public String getUmarital() {
-        return umarital;
-    }
+	public Date getUbirth() {
+		return ubirth;
+	}
 
-    public void setUmarital(String umarital) {
-        this.umarital = umarital == null ? null : umarital.trim();
-    }
+	public void setUbirth(Date ubirth) {
+		this.ubirth = ubirth;
+	}
 
-    public String getUjob() {
-        return ujob;
-    }
+	public String getUmarital() {
+		return umarital;
+	}
 
-    public void setUjob(String ujob) {
-        this.ujob = ujob == null ? null : ujob.trim();
-    }
+	public void setUmarital(String umarital) {
+		this.umarital = umarital;
+	}
 
-    public String getUheadimg() {
-        return uheadimg;
-    }
+	public String getUjob() {
+		return ujob;
+	}
 
-    public void setUheadimg(String uheadimg) {
-        this.uheadimg = uheadimg == null ? null : uheadimg.trim();
-    }
+	public void setUjob(String ujob) {
+		this.ujob = ujob;
+	}
 
-    public String getUinterest() {
-        return uinterest;
-    }
+	public String getUheadimg() {
+		return uheadimg;
+	}
 
-    public void setUinterest(String uinterest) {
-        this.uinterest = uinterest == null ? null : uinterest.trim();
-    }
+	public void setUheadimg(String uheadimg) {
+		this.uheadimg = uheadimg;
+	}
 
-    public Integer getUstatus() {
-        return ustatus;
-    }
+	public String getUinterest() {
+		return uinterest;
+	}
 
-    public void setUstatus(Integer ustatus) {
-        this.ustatus = ustatus;
-    }
+	public void setUinterest(String uinterest) {
+		this.uinterest = uinterest;
+	}
 
-    public String getUaddr() {
-        return uaddr;
-    }
+	public Integer getUstatus() {
+		return ustatus;
+	}
 
-    public void setUaddr(String uaddr) {
-        this.uaddr = uaddr == null ? null : uaddr.trim();
-    }
+	public void setUstatus(Integer ustatus) {
+		this.ustatus = ustatus;
+	}
 
-    public String getUregtime() {
-        return uregtime;
-    }
+	public String getUaddr() {
+		return uaddr;
+	}
 
-    public void setUregtime(String uregtime) {
-        this.uregtime = uregtime == null ? null : uregtime.trim();
-    }
+	public void setUaddr(String uaddr) {
+		this.uaddr = uaddr;
+	}
+
+	public Date getUregtime() {
+		return uregtime;
+	}
+
+	public void setUregtime(Date uregtime) {
+		this.uregtime = uregtime;
+	}
 
 	@Override
 	public String toString() {
@@ -170,4 +198,5 @@ public class UserInfo {
 				+ ", uinterest=" + uinterest + ", ustatus=" + ustatus + ", uaddr=" + uaddr + ", uregtime=" + uregtime
 				+ "]";
 	}
+
 }

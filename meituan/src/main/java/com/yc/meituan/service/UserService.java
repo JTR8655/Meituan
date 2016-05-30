@@ -6,4 +6,5 @@ public interface UserService {
 
 	UserInfo login(UserInfo userInfo);
 	
+	void register(UserInfo userInfo);
 }

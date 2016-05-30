@@ -51,11 +51,8 @@ select o.oid,o.oidentifier,o.muid,o.gid,o.ocount,o.ostatus,g.gprice2,g.gtitle1,g
 
 select c.cid,c.muid,c.gid, g.b_retime from meituan_collection c inner join meituan_goods_intro g on c.gid = g.gid and c.muid = 1
   
--commit
-
-
 select g.gid,s.sid, g.gtitle1,g.gtitle2, g.img, g.text, g.gsoldcount, g.gprice1, g.gprice2, m.b_retime, m.d_taocan from meituan_seller_info s inner join meituan_goods_info g on s.sid = g.sid inner join meituan_goods_intro m on g.gid = m.gid and g.gid = 1112;
-
 
 select * from meituan_uorder;
 select * from meituan_evaluate;
+insert into meituan_user_info values(seq_meituanuser.nextval,'samsara0','a','918811021@qq.com',default,default,default,null,null,null,null,null,default,'湖南省-长沙市',sysdate);

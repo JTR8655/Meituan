@@ -1,6 +1,10 @@
-<!doctype html>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"
+	isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
 <html>
 <head>
+<base href="/meituan/">
 <meta charset="utf-8">
 <link rel="shortcut icon" href="images/title.png">
 <title>注册 | 美团网</title>
@@ -8,7 +12,6 @@
 <script src="js/jquery-1.11.3.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(function(){
-
 	var email=window.location.href.split("=")[1];
 	var emailAddr=email.split("@")[1].split(".")[0];
 	console.info(email+"========"+emailAddr);
