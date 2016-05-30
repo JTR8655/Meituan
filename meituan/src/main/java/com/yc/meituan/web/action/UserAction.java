@@ -52,7 +52,7 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware, RequestA
 			code = 1;
 		}
 
-		AjaxUtil.ajaxResponse(code + "");
+		AjaxUtil.stringAjaxResponse(code + "");
 		LogManager.getLogger().debug("注销成功");
 		return "none";
 	}

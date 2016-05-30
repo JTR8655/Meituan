@@ -93,7 +93,6 @@ strong{
 
 #v0{
 	width:819px;
-	height:898px;
 	display:block;
 }
 #v1{
@@ -153,7 +152,7 @@ strong{
 	border:#eee 1px solid;
 	border-left-color:#f6f6f6;
 	border-right-color:#f6f6f6;
-	height:100px;
+	height:90px;
 }
 #select_1{
 	width:100px;
@@ -393,7 +392,15 @@ strong{
 	font-size:18px;	
 	color:red;
 }
-
+.pingjiaLi a,.pingjiaLi p{
+	font-size: 12px;
+}
+.bb{
+	color:#999;
+}
+#v2_d_title{
+	font-size:14px;
+}
 .v0_img{
 	width:81px;
 	height:50px;

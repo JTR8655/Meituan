@@ -5,18 +5,17 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.apache.logging.log4j.LogManager;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.google.gson.Gson;
 import com.opensymphony.xwork2.ModelDriven;
 import com.yc.meituan.entity.Uorder;
 import com.yc.meituan.entity.UserInfo;
 import com.yc.meituan.entity.bean.CollectionBean;
+import com.yc.meituan.entity.bean.NoevalBean;
 import com.yc.meituan.entity.bean.UorderBean;
 import com.yc.meituan.service.UorderService;
 import com.yc.meituan.util.AjaxUtil;
@@ -33,18 +32,24 @@ public class UorderAction implements ModelDriven<Uorder>, SessionAware, RequestA
 	
 	public String showAllUorder(){
 		UserInfo user = (UserInfo) session.get(MeituanData.LOGIN_USER);
+		if(null == user){
+			return "none";
+		}
 		LogManager.getLogger().debug("显示所有订单,muid = " + user.getMuid());
 		List<UorderBean> uorders = uorderService.showAllUorder(user.getMuid());
 		if(null != uorders && uorders.size() > 0){
 			LogManager.getLogger().debug("取到数据：" + uorders);
 			session.put("uorders", uorders);
-			AjaxUtil.ajaxResponse(uorders);
+			AjaxUtil.objectAjaxResponse(uorders);
 		}
 		return "none";
 	}
 	
 	public String listCollection(){
 		UserInfo user = (UserInfo) session.get(MeituanData.LOGIN_USER);
+		if(null == user){
+			return "none";
+		}
 		List<CollectionBean> collections = uorderService.listCollections(user.getMuid());
 		if(null != collections && collections.size() > 0){
 			SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
@@ -60,15 +65,25 @@ public class UorderAction implements ModelDriven<Uorder>, SessionAware, RequestA
 				}
 			}
 			session.put("collections", collections);
-			AjaxUtil.ajaxResponse(collections);
+			AjaxUtil.objectAjaxResponse(collections);
 		}
 		return "none";
 	}
 	
-	
-	
-	
-	
+	public String listNoPj(){
+		LogManager.getLogger().debug("显示未评价订单");
+		UserInfo user = (UserInfo) session.get(MeituanData.LOGIN_USER);
+		if(null == user){
+			return "none";
+		}
+		List<NoevalBean> noevalBeans = uorderService.listNoPj(user.getMuid());
+		if(null != noevalBeans && noevalBeans.size() > 0){
+			LogManager.getLogger().debug("取到数据：" + noevalBeans);
+			session.put("uorders", noevalBeans);
+			AjaxUtil.objectAjaxResponse(noevalBeans);
+		}
+		return "none";
+	}
 	
 	
 	@Override

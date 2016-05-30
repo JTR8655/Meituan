@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.yc.meituan.entity.bean.CollectionBean;
+import com.yc.meituan.entity.bean.NoevalBean;
 import com.yc.meituan.entity.bean.UorderBean;
 import com.yc.meituan.service.UorderService;
 
@@ -34,5 +35,12 @@ public class UorderServiceTest {
 		List<CollectionBean> collections = uorderService.listCollections(1);
 		LogManager.getLogger().debug("取到的收藏：" + collections);
 		assertNotNull("取值失败!!!", collections);
+	}
+	
+	@Test
+	public void testListNoPj() {
+		List<NoevalBean> noevalBeans = uorderService.listNoPj(1);
+		LogManager.getLogger().debug("取到的未评价：" + noevalBeans);
+		assertNotNull("取值失败!!!", noevalBeans);
 	}
 }

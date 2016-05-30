@@ -29,7 +29,9 @@ insert into meituan_goods_intro (gid,b_retime,b_usetime,b_parlor,b_pack,b_serve,
 insert into meituan_uorder(oid,oidentifier,muid,gid,otime,ostatus,opwd,opaytime,ocount,pjstatus)
 	select 1,123,1,1,to_date('2016-1-9','yyyy-MM-dd'),'未消','123',to_date('2016-1-9','yyyy-MM-dd'),1,0 from dual union
 	select 2,234,1,1,to_date('2016-1-9','yyyy-MM-dd'),'未消','123',to_date('2016-1-9','yyyy-MM-dd'),1,0 from dual union
-	select 3,345,1,1,to_date('2016-1-9','yyyy-MM-dd'),'未消','123',to_date('2016-1-9','yyyy-MM-dd'),1,0 from dual  
+	select 3,345,1,1,to_date('2016-1-9','yyyy-MM-dd'),'未消','123',to_date('2016-1-9','yyyy-MM-dd'),1,0 from dual  union
+	select 4,123,1,1,to_date('2016-1-9','yyyy-MM-dd'),'已使用','123',to_date('2016-1-9','yyyy-MM-dd'),1,0 from dual union
+	select 5,345,1,1,to_date('2016-1-9','yyyy-MM-dd'),'已使用','123',to_date('2016-1-9','yyyy-MM-dd'),1,0 from dual  
 
 	
 --插入收藏数据
@@ -40,7 +42,7 @@ insert into meituan_collection(cid,muid,gid)
 	select 4,1,4 from dual union
 	select 5,1,5 from dual 
 	
-	
+
 -commit
 
 --查询所有订单
@@ -53,3 +55,7 @@ select c.cid,c.muid,c.gid, g.b_retime from meituan_collection c inner join meitu
 
 
 select g.gid,s.sid, g.gtitle1,g.gtitle2, g.img, g.text, g.gsoldcount, g.gprice1, g.gprice2, m.b_retime, m.d_taocan from meituan_seller_info s inner join meituan_goods_info g on s.sid = g.sid inner join meituan_goods_intro m on g.gid = m.gid and g.gid = 1112;
+
+
+select * from meituan_uorder;
+select * from meituan_evaluate;

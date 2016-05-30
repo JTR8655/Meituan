@@ -1,9 +1,9 @@
-package com.yc.meituan.mapper;
+package com.yc.meituan.service;
 
 import com.yc.meituan.entity.Evaluate;
 
-public interface EvaluateMapper {
+public interface EvaluateService {
 
 	void addEvaluate(Evaluate evaluate);
-   
+
 }

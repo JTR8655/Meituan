@@ -4,7 +4,7 @@ var count2=0;
 var count3=0;
 var count4=0;
 var pjliIndex=0;
-var pjContent='<div class="pjDetail">'
+/*var pjContent='<div class="pjDetail">'
 //				+'<div class="v2_de_count1 v_de_count">口味：'
 //				+'<a href="javascript:void(0)" class="pingfen_1_a"><img src="images/v2_pinglunxingji.png" class="pingfen"></a>'
 //				+'<a href="javascript:void(0)" class="pingfen_1_a"><img src="images/v2_pinglunxingji.png" class="pingfen"></a>'
@@ -30,34 +30,93 @@ var pjContent='<div class="pjDetail">'
 				+'<div class="v2_pingjia_content">'
 				+'<p class="v2_pj_head">'
 				+'<input class="imgtip" type="file" name="uploadimg" accept="image/*" class="uploadimg" style="display:none;">'
-//				+'<a class="showPic" href="javascript:void(0)" onClick="upload()"><img class="showimg" src="images/v2_pjhead_shaitu.jpg"></a>'
-//				+'<a class="showPicTip">最多传20张，按住 Ctrl 或 Shift 可选择多张</a>'
-				+'<a class="niming"><input type="checkbox" value="1" name="niming">匿名评价</a>'
+				+'<a class="showPic" href="javascript:void(0)" onClick="upload()"><img class="showimg" src="../images/v2_pjhead_shaitu.jpg"></a>'
+				+'<a class="showPicTip">最多传5张，按住 Ctrl 或 Shift 可选择多张</a>'
+				+'<a class="niming"><input type="checkbox" name="hidename">&nbsp;匿名评价</a>'
 				+'</p>'
 				+'<textarea class="pingjiaContent" name="pingjiaDetail"></textarea>'
 //				+'<a class="text_tip"><a class="contentTip v2_tip">还可输入<a class="v2_jf_count text_num v2_tip">490</a><a class="v2_tip">字，从多维度图文并茂地评价，将有机会获得“认真评价”，额外奖励</a><a class="v2_jf_count v2_tip">100</a><a class="v2_tip">积分。</a></a></a>'
 				+'</div>'
 				+'<p class="bb">* 请上传原创、真实、合法的图片，如果发现用户上传的图片有侵权内容，美团有权先行删除</p>'
-				+'<span  style="margin-left:20px;" class="pingjiaSub" onclick="pinglun()"><img src="images/pingjiasub.jpg"></span>'
+				+'<a href="javascript:void(0)" style="margin-left:20px;" class="pingjiaSub" onclick="pinglun()"><img src="../images/pingjiasub.jpg"></a>'
 				+'<p class="bb">修改后的评价不参与“认真评价奖积分”活动。</p>'
 				+'</div>';
-add();
-/*
-$(function (){
-	$.ajax({
-		type:'post',
-		url:'user_getUser.action',
-		dataType:'json',
-		success:function(data){
-			if(data != null){
-				$("#head_2_left_login").css("display","block");
-				$("#head_2_left").css("display","none");
-				$("#user").html(data.uemail);
-			}
+*/
+//显示评价详情
+/*function pjDetail(){
+	 $(".pingjiaLi").click(function(){
+		pjliIndex=$(".pingjiaLi").index($(this));
+		console.info("pjliIndex:"+pjliIndex);
+	});
+}*/
+
+/*//修改匿名状态
+function changeHidname(){
+	$(".niming").bind({
+		click:function(){
+			var status = $(this).children();
+			status = document.getElementsByName("hidename")[pjliIndex].checked;
+			var index = $(".niming").index($(this));
+			console.info(status);
 		}
 	});
-});*/
+}*/
 
+
+function clickPj(){
+	//点击差、一般、满意等评分
+	$(".v2_pingjia").click(function(){
+	//	$(this).parent().parent().parent().append(pjContent);
+		$("pjDetail")
+		document.getElementsByClassName("pjDetail")[pjliIndex].style.display = 'block';
+		console.info($(this).parent().parent());
+		$(".v2_pingjia").each(function(){
+			$(this).parent().children().css("background","white");
+			$(this).parent().children().css("border-color","#eee");
+			$(this).parent().children().css("color","#666");
+		});
+		$(this).parent().parent().next().css("display","block");
+		$(this).css("border-color","red");
+		$(this).css("background","#FFEBD7");
+		$(this).css("color","red");
+		var str=$(this).text();//获取总评分
+		if(str=='差'){
+			count1=1;
+		}else if(str=='一般'){
+			count1=2;
+		}else if(str=='满意'){
+			count1=3;
+		}else if(str=='很满意'){
+			count1=4;
+		}else if(str=='强烈推荐'){
+			count1=5;
+		}
+		console.info("count1:"+count1);
+		document.getElementsByName("egrade4")[pjliIndex].value = count1;
+	});
+	
+	/*//点击评分星级(总体评价)
+	$(".pingfen").click(function(){
+		count2=$(this).parent().parent().children().index($(this))+1;
+		console.info("count2:"+count2);
+	});
+	$(".pingfen").click(function(){
+		count3=$(this).parent().parent().children().index($(this))+1;
+		console.info("count3:"+count3);
+	});
+	$(".pingfen").click(function(){
+		count4=$(this).parent().parent().children().index($(this))+1;
+		console.info("count4:"+count4);
+	});*/
+	
+	//获取到所有评价订单的表单
+	$(".pingjiaLi").click(function (){
+		var pingjiali=$(".pingjiaLi");
+		var thisli=$(this);		
+		//获取当前节点在所有同辈节点的下标
+		index=pingjiali.index($(this));
+	});
+}
 
 //退出
 function logOut() {
@@ -112,7 +171,7 @@ $(function(){
 					+ ' </div>'
 					+ ' </div>';
 			}
-			$("#v0").html(str);
+			$("#v0").html($("#v0").html()+str);
 		}
 	});
 });
@@ -153,25 +212,24 @@ function listCollection(){
 
 
 //显示未评价订单
-$(function(){
+function showNoPj(){
 	$.ajax({
 		type:'post',
-		url:'/meituan/UserFunction.do',
+		url:'uorder_listNoPj.action',
 		dataType:"JSON",
 		success: function(data){
-			if(data.code==1){
-				var item=data.obj;
-				for(var i=0;i<item.length;i++){
-					var value='<li class="pingjiaLi" onclick="add()">'
+			if(data != null){
+				data = $.parseJSON(data);
+				for(var i=0;i<data.length;i++){
+					var value='<li class="pingjiaLi">'
 					    +'<div class="v2_dingdan">'
-						+'<form class="pingjiaForm"><div>'
-						+'<input type="hidden" name="op" value="UserPingjia">'
-						+'<input type="hidden" name="oid" class="oid" value="'+item[i].oid+'">'
-						+'<input type="hidden" name="count1" value='+count1+'>'
+						+'<form class="pingjiaForm" id="pingjiaForm'+ i +'" method="post" enctype="multipart/form-data"><div>'
+						+'<input type="hidden" name="oid" class="oid" value="'+data[i].oid+'">'
 						+'<input type="hidden" name="hid" class="hid" value="0">'
-						+'<div class="v2_d_img v2_d_div"><img src="'+item[i].img+'" width="90" height="60"></div>'
+						+'<input type="hidden" name="egrade_4" class="egrade4" value="0">'
+						+'<div class="v2_d_img v2_d_div"><img src="'+data[i].img+'" width="90" height="60"></div>'
 						+'<div class="v2_d_pingjia v2_d_div">'
-						+'<p><a href="goods.html?gid='+item[i].gid+'" id="v2_d_title">'+item[i].gtitle1+'</a><input type="hidden" value="'+item.muid+'" name="muid"></p>'
+						+'<p><a href="goods.jsp?gid='+data[i].gid+'" id="v2_d_title">'+data[i].gtitle1+'</a></p>'
 						+'<p class="bb getcount">本次团购体验如何？ 评价可随机赢取最多100积分</p>'
 						+'<p><a class="v2_pj mypj">我的总体评价：</a>'
 						+'<a href="javascript:void(0)" class="v2_pingjia v2_pj_1 v2_pj">差</a>'
@@ -179,16 +237,40 @@ $(function(){
 						+'<a href="javascript:void(0)" class="v2_pingjia v2_pj_3 v2_pj">满意</a>'
 						+'<a href="javascript:void(0)" class="v2_pingjia v2_pj_4 v2_pj">很满意</a>'
 						+'<a href="javascript:void(0)" class="v2_pingjia v2_pj_5 v2_pj">强烈推荐</a>'
-						+'<a class="v2_pj">请选择评价</a></p></div></div></form></div></li>';
+						+'<a class="v2_pj">请选择评价</a></p></div>'
+						
+						+'<div class="pjDetail">'
+						+'<p class="bb">菜品口味如何，服务周到吗，环境如何？（写够15字，才是好同志～）</p>'
+						+'<div class="v2_pingjia_content">'
+						+'<p class="v2_pj_head">'
+						+'<input class="imgtip" type="file" name="uploadimg" accept="image/*" class="uploadimg" style="display:none;">'
+						+'<a class="showPic" href="javascript:void(0)" onClick="upload()"><img class="showimg" src="../images/v2_pjhead_shaitu.jpg"></a>'
+						+'<a class="showPicTip">最多传5张，按住 Ctrl 或 Shift 可选择多张</a>'
+						+'<a class="niming"><input type="checkbox" name="hidename">&nbsp;匿名评价</a>'
+						+'</p>'
+						+'<textarea class="pingjiaContent" name="econtent"></textarea>'
+//						+'<a class="text_tip"><a class="contentTip v2_tip">还可输入<a class="v2_jf_count text_num v2_tip">490</a><a class="v2_tip">字，从多维度图文并茂地评价，将有机会获得“认真评价”，额外奖励</a><a class="v2_jf_count v2_tip">100</a><a class="v2_tip">积分。</a></a></a>'
+						+'</div>'
+						+'<p class="bb">* 请上传原创、真实、合法的图片，如果发现用户上传的图片有侵权内容，美团有权先行删除</p>'
+						+'<a href="javascript:void(0)" style="margin-left:20px;" class="pingjiaSub" onclick="pinglun()"><img src="../images/pingjiasub.jpg"></a>'
+						+'<p class="bb">修改后的评价不参与“认真评价奖积分”活动。</p>'
+						+'</div></div>'
+						+'</form></div></li>';
+						
 					$("#pingjiaUl").append(value);
-					$(".v2_jf_count").html(item.length);
+					$(".v2_jf_count").html(data.length);
 				}
-			}else if(data.code==0){
-			//	alert("加载失败，请刷新后重试");
+				$("#pingjiaUl li").live('click',function(){
+					pjliIndex=$(".pingjiaLi").index($(this));
+					console.info("pjliIndex:"+pjliIndex);
+					clickPj();
+				});
 			}
 		}
 	});
-});
+}
+
+
 
 //已评价订单，未完成
 $(function(){
@@ -209,68 +291,11 @@ $(function(){
 	});
 });
 
-function add(){
-	 
-	 $(".pingjiaLi").click(function(){
-		pjliIndex=$(".pingjiaLi").index($(this));
-		console.info("pjliIndex:"+pjliIndex);
-	});
-/*	$(".v2_pingjia").mouseover(function(){
-		$(this).css("color","red");
-		$(this).css("border-color","red");	
-	});	
-	$(".v2_pingjia").mouseout(function(){
-		$(this).css("color","black");
-		$(this).css("border-color","#eee");	
-	});	
-	*/
-	//点击差、一般、满意等评分
-	$(".v2_pingjia").click(function(){
-		$(this).parent().children().css("background","white");
-		$(this).parent().parent().next().css("display","block");
-		$(this).parent().parent().parent().append(pjContent);
-		$(this).css("border-color","#FFEBD7");
-		$(this).css("background","#FFEBD7");
-		$(this).css("color","red");
-		var str=$(this).text();//获取总评分
-		if(str=='差'){
-			count1=1;
-		}else if(str=='一般'){
-			count1=2;
-		}else if(str=='满意'){
-			count1=3;
-		}else if(str=='很满意'){
-			count1=4;
-		}else if(str=='强烈推荐'){
-			count1=5;
-		}
-		console.info("count1:"+count1);
-		document.getElementsByName("count1")[pjliIndex].val(count1);
-	});
-	
-	//点击评分星级(总体评价)
-	$(".pingfen").click(function(){
-		count2=$(this).parent().parent().children().index($(this))+1;
-		console.info("count2:"+count2);
-	});
-	$(".pingfen").click(function(){
-		count3=$(this).parent().parent().children().index($(this))+1;
-		console.info("count3:"+count3);
-	});
-	$(".pingfen").click(function(){
-		count4=$(this).parent().parent().children().index($(this))+1;
-		console.info("count4:"+count4);
-	});
-	//获取到所有评价订单的表单
-	$(".pingjiaLi").click(function (){
-		var pingjiali=$(".pingjiaLi");
-		var thisli=$(this);		
-		//获取当前节点在所有同辈节点的下标
-		index=pingjiali.index($(this));
-	});
-	
-	
-}
+
+
+
+
+
 
 
 //删除订单
@@ -278,28 +303,27 @@ function dOrder(i){
 	
 }
 
-
+//评论订单
 function pinglun(){
-	var hid=0;
-	var niming = document.getElementsByName("niming")[pjliIndex];
-	if(niming.checked==true){
-		hid=1;
+	var status = document.getElementsByName("hidename")[pjliIndex].checked;
+	if(status){
+		document.getElementsByClassName("hid")[pjliIndex].value=1;
+	}else{
+		document.getElementsByClassName("hid")[pjliIndex].value=0;
 	}
-	console.info("hid:"+hid);
-	document.getElementsByClassName("hid")[pjliIndex].value=hid;
+	console.info($("#pingjiaForm"+pjliIndex).serialize());
 	//评论提交时发送请求
 	$.ajax({	
 		type:"post",
-		url:"/meituan/UserFunction.do",
-		data:$(".pingjiaSub").parent().parent().parent().serialize(),
+		url:"evaluate_addEvaluate.action",
+		data:$("#pingjiaForm"+pjliIndex).serialize(),
 		dataType:"json",
 		success:function(data){
-		//	alert(data);
-			console.info("回调函数"+data);
-			if(data.code==1){
+			console.info("回调参数："+data);
+			if(data == 1){
 				alert("评价成功！");
 				hide();
-			}else if(data.code==0){
+			}else if(data == 0){
 				alert("评价失败");
 			}
 		}
@@ -397,3 +421,6 @@ var nav_content = document.getElementsByClassName('nav_content');
 	function upload(){
 		$(".uploadimg").click();
 	}
+	
+	
+	

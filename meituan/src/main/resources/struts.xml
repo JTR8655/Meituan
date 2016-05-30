@@ -37,5 +37,7 @@
 		<action name="uorder_showAllUorder" class="com.yc.meituan.web.action.UorderAction" method="showAllUorder"></action>
 		<action name="uorder_listCollection" class="com.yc.meituan.web.action.UorderAction" method="listCollection"></action>
 		<action name="goods_showGoods" class="com.yc.meituan.web.action.ShowGoodsAction" method="showGoods"></action>
+		<action name="uorder_listNoPj" class="com.yc.meituan.web.action.UorderAction" method="listNoPj"></action>
+		<action name="evaluate_addEvaluate" class="com.yc.meituan.web.action.EvaluateAction" method="addEvaluate"></action>
 	</package>
 </struts>

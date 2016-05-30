@@ -8,7 +8,7 @@
 <title>我的订单</title>
 <link href="../css/basic.css" type="text/css" rel="stylesheet">
 <link href="../css/order.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/order.js"></script>
 <style>
 #head_2_left_login {
@@ -308,7 +308,7 @@
 					style="border: #eee solid 1px; border-right-color: #f6f6f6; border-left-color: #f6f6f6">
 					<strong>我的评价</strong>
 					<ul>
-						<li class="list" onMouseDown="changeColor(2)"><a class="font"
+						<li onclick="showNoPj()" class="list" onMouseDown="changeColor(2)"><a class="font"
 							onMouseOver="fontColor(2)" onMouseOut="fontReturn(2)"
 							href="javascript:void(0)">待评价</a><img class="image" /></li>
 						<li class="list" onMouseDown="changeColor(3)"><a class="font"
@@ -474,7 +474,7 @@
 						</div>
 
 						<ul id="pingjiaUl">
-							<li class="pingjiaLi" onclick="add()">
+							<!-- <li class="pingjiaLi" onclick="pjDetail()">
 								<div class="v2_dingdan">
 									<form class="pingjiaForm">
 										<div>
@@ -506,7 +506,7 @@
 										</div>
 									</form>
 								</div>
-							</li>
+							</li> -->
 						</ul>
 					</div>
 				</div>
