@@ -47,7 +47,7 @@
                         </td>
                         <td class="con_email_txt_3" id="tongyong">注册成功后，全美团通用</td>
                         <td class="con_email_txt_3">
-                        	<span>sessionScope.regMsg</span>
+                        	
 	                        <span id="user_email">请填写邮箱地址</span>
 	                        <span id="iuser_email">邮箱已注册</span>
 	                        <span id="geshi_email">邮箱格式错误，请重新输入</span>
