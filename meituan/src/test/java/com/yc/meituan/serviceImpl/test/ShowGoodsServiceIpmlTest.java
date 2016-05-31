@@ -26,5 +26,10 @@ public class ShowGoodsServiceIpmlTest {
 		LogManager.getLogger().debug("取到的数据：" + goodsbeans);
 		assertNotNull("取值失败！！！", goodsbeans);
 	}
-
+	@Test
+	public void testListShowGoodsIntro() {
+		List<GoodsBean> goodsIntro= showGoodsService.listShowGoodsIntro(1112);
+		LogManager.getLogger().debug("取到的数据：" + goodsIntro);
+		assertNotNull("取值失败！！！", goodsIntro);
+	}
 }

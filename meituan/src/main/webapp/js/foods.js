@@ -4,31 +4,33 @@ var text = '';
 function showInfo(data){
 	var value = "";
 	$("#body_mid1").html("");
-	var item = data.obj;
-	for(var i=0;i<item.length;i++){
+	for(var i=0;i<data.length;i++){
 		value += '<div id="body_midl_top"><div id="body_mid1_top1">'
-				+'<input type="hidden" value="'+item[i].GID+'" class="get_id"/>'
-	            +'<span class="title-prefix">【'+item[i].SSHOPNAME+'】</span><h1 class="title">'+item[i].GTITLE1+'</h1></div>'
-	       	    +'<div id="body_mid1_top2"><div class="tishi1" >'+item[i].TEXT+'</div></div></div>'
-	   		    +'<div id="body_mid1_down"><div id="down_left"><div id="big_image"><img src="'+item[i].IMG+'"/></div>'
-	            +'<div id="small_image"><img src="'+item[i].IMG+'"/></div></div><div id="down_right"><div id="price">'
+				+'<input type="hidden" value="'+data[i].gid+'" class="get_id"/>'
+	   //         +'<span class="title-prefix">【'+data[i].sshopname+'】</span>'
+	            +'<h1 class="title">'+data[i].gtitle1+'</h1></div>'
+	       	    +'<div id="body_mid1_top2"><div class="tishi1" >'+data[i].gtitle2+'</div></div></div>'
+	   		    +'<div id="body_mid1_down"><div id="down_left"><div id="big_image"><img src="'+data[i].img+'"/></div>'
+	            +'<div id="small_image"><img src="'+data[i].img+'"/></div></div><div id="down_right"><div id="price">'
 	            +'<div class="price_cf "><span class="price_left">团购价:</span><h2 class="symbol"><span class="price-symbol">¥</span>'
-	            +'<span class="price">'+item[i].GPRICE2+'</span></h2><span class="promote-default"><span class="status">门店价 </span><del class="item sans-serif"> ¥'+item[i].GPRICE1+'</del>'
-	            +'</span></div></div><div id="evaluate"><div id="item"><span class="item">已售<span class="sold-count">'+item[i].GSOLDCOUNT+'</span>'
+	            +'<span class="price">'+data[i].gprice2+'</span></h2><span class="promote-default"><span class="status">门店价 </span><del class="data sans-serif"> ¥'+data[i].gprice1+'</del>'
+	            +'</span></div></div><div id="evaluate"><div id="item"><span class="item">已售<span class="sold-count">'+data[i].gsoldcount+'</span>'
 	            +'</span></div><div id="item-viewed"><span class="item-viewed" ><a id="look-normal" ><span class="rating-stars">3.9</span>分'
 	            +'</a></span></div><div id="comments-count"><span class="comments-count"><a id="look-normal"><span class="comment-count">8</span>人评价'
 	            +'</a></span></div></div><div id="data"><span class="detail-leading">有效期</span><span class="text-containe">'
-	            +'<span class="valid-through">截止到<span class="edate">'+item[i].B_RETIME+'</span></span><span class="expiry-notice">周末、法定节假日通用</span>'
+	            +'<span class="valid-through">截止到<span class="edate">'+data[i].b_retime+'</span></span><span class="expiry-notice">周末、法定节假日通用</span>'
 	            +'</span></div><div id="package"><span class="deal-component">套餐</span><span class="scheme-patch"><span>'
-	            +'<a class="selection-item" href="javascript:void()">'+item[i].D_TAOCAN+'</a></span></span></div><div id="count">'
+	            +'<a class="selection-item" href="javascript:void()">'+data[i].d_taocan+'</a></span></span></div><div id="count">'
 	            +'<span class="deal-component-detail-leading">数量</span><button id="reduce_item" type="button" data-action="+">−</button>'
 	            +'<input id="J-cart-quantity" type="text" data-max="500" maxlength="9" value="1" name="q"><button id="add_item" type="button"  data-action="+">+</button>'
-	            +'</div><div id="accont"><button type="submit" style="color:#fff; font-size:18px; font-weight:bold;" id="sall_button" onClick="submits()">√ 立即抢购</button>'
-	            +'<div id="goods_car"><a title="加入购物车"><i class="goods_car_logo"><img src="images/goods_car.png"/></i></a></div><div id="favorite">'
-	            +'<a src="#"><i class="favorite_star"><img src="images/star.png"/></i><span class="fav_font">收藏</span>(<b class="J-fav-count">75</b>)'
-	            +'</a></div><div id="share"><a class="share-tip" src="#"><i class="F-glob-share"><img src="images/share.png"/></i>分享到'
+	            +'</div><div id="waring"><span id="waring-content">您最少需要购买一件！</span> <span id="close-waring">'
+	            +'<a href="javascript:void(0);" onClick="closeWaring()">X</a></span></div>'
+	            +'<div id="accont"><button type="submit" style="color:#fff; font-size:18px; font-weight:bold;" id="sall_button" onClick="submits()">√ 立即抢购</button>'
+	            +'<div id="goods_car"><a title="加入购物车"><i class="goods_car_logo"><img src="../images/goods_car.png"/></i></a></div><div id="favorite">'
+	            +'<a src="#"><i class="favorite_star"><img src="../images/star.png"/></i><span class="fav_font">收藏</span>(<b class="J-fav-count">75</b>)'
+	            +'</a></div><div id="share"><a class="share-tip" src="#"><i class="F-glob-share"><img src="../images/share.png"/></i>分享到'
 	            +'</a></div></div></div></div></div>';
-		text = item[i].TEXT;
+		text = data[i].text;
 	    $("#body_mid1").append(value);
 	}
 }
@@ -42,7 +44,7 @@ function otherFoods(data){
 		    	+'<td class="other3">门店价</td>'
 		    	+'<td class="other4">已售</td>'
 		    	+'</tr>';
-	var item = data.obj;
+	var data = data.obj;
 	for(var i=0;i<item.length;i++){
 		if(item[i].TEXT != text){
 			value += '<tr height="36px" class="other_tr1">'
@@ -81,7 +83,7 @@ function mustKnow(data){
 }
 
 //显示套餐详情
-function tuanTaoCan(data){
+/*function tuanTaoCan(data){
 	var value = "";
 	$("#taocan_info").html("");
 	var item = data.obj;
@@ -94,7 +96,7 @@ function tuanTaoCan(data){
             	+'</tr>';
             	$("#taocan_info").append(value);
 	}
-}
+}*/
 //显示评价总分
 function showEvaluatePoint(data){
 	var value = "";
@@ -173,22 +175,21 @@ function othergoods(sid){
 function mustKnow(data){
 	var value = "";
 	$("#must_know").html("");
-	var item = data.obj;
-	for(var i=0;i<item.length;i++){
+	for(var i=0;i<data.length;i++){
 		value += '<dt>有效期</dt>'
-		        +'<dd>2015-12-1 至 '+item[i].b_retime+'</dd>'
+		        +'<dd>2015-12-1 至 '+data[i].b_retime+'</dd>'
 	            +'<dt>使用时间</dt>'
-	            +'<dd>11:00-23:00</dd>'
+	            +'<dd>'+data[i].b_usetime+'</dd>'
 	            +'<dt>预约提醒</dt>'
-	            +'<dd>'+item[i].b_ordertip+'</dd>'
+	            +'<dd>'+data[i].b_ordertip+'</dd>'
 	            +'<dt>限购限用提醒</dt>'
-	            +'<dd>'+item[i].b_limittip+'</dd>'
+	            +'<dd>'+data[i].b_limittip+'</dd>'
 	            +'<dt>包间</dt>'
-	            +'<dd>'+item[i].b_parlor+'</dd>'
+	            +'<dd>'+data[i].b_parlor+'</dd>'
 	            +'<dt>食堂外带</dt>'
-	            +'<dd>'+item[i].b_pack+'</dd>'
+	            +'<dd>'+data[i].b_pack+'</dd>'
 	            +'<dt>商家服务</dt>'
-	            +'<dd>'+item[i].b_serve+'</dd>';
+	            +'<dd>'+data[i].b_serve+'</dd>';
 	           	$("#must_know").html(value);
 	}
 }
@@ -312,6 +313,7 @@ function othergoods(sid){
 $(function(){
 	var gid = window.location.href.split("=")[1];
 	var sid=0;
+	gid=1112;
 	//显示商品信息
 	$.ajax({
 		type:'post',
@@ -322,7 +324,7 @@ $(function(){
 		dataType:'json',
 		success:function(data){
 			showInfo(data);
-			sid = data.SID;
+			sid = data.sid;
 			othergoods(sid);
 		}
 	});
@@ -330,10 +332,7 @@ $(function(){
 	//显示用户须知
 	$.ajax({
 		type:'post',
-		url:'showGoodsDetails.do',
-		data:{
-			op:'mustKnow'
-		},
+		url:'goods_showGoodsIntro.action',
 		dataType:'json',
 		success:function(data){
 			mustKnow(data);

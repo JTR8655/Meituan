@@ -29,4 +29,5 @@ public class GoodsServiceImplTest {
 		LogManager.getLogger().debug("取到的数据：" + goodsInfos);
 		assertNotNull("取值失败！！！", goodsInfos);
 	}
+	
 }

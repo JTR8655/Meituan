@@ -93,12 +93,12 @@
 		<div id="body_mid1">
 			<div id="body_midl_top">
 				<div id="body_mid1_top1">
-					<input type="hidden" value="item[i].GID" class="get_id" />
-					 <span class="title-prefix"></span>
-					<h1 class="title"></h1>
+					<input type="hidden" value="  item[i].GID  " class="get_id" />
+					 <span class="title-prefix">【星美/美凯龙】</span>
+					<h1 class="title">土火锅烧烤</h1>
 				</div>
 				<div id="body_mid1_top2">
-					<div class="tishi1"></div>
+					<div class="tishi1">item[i].TEXT</div>
 				</div>
 			</div>
 			<div id="body_mid1_down">
@@ -120,27 +120,27 @@
 							</h2>
 							<span class="promote-default">
 								<span class="status">门店价</span>
-								<del class="sans-serif">¥59</del>
+								<del class="sans-serif"> ¥59</del> 
 							</span>
 						</div>
 					</div>
 					<div id="evaluate">
 						<div id="item">
-							<span class="item">已售<span class="sold-count">&nbsp;6</span></span>
+							<span class="item">已售<span class="sold-count">6</span></span>
 						</div>
 						<div id="item-viewed">
 							<span class="item-viewed"><a id="look-normal">
-							<span class="rating-stars">3.9&nbsp;</span>分 </a></span>
+							<span class="rating-stars">3.9</span>分 </a></span>
 						</div>
 						<div id="comments-count">
 							<span class="comments-count"><a id="look-normal">
-							<span class="comment-count">8&nbsp;</span>人评价 </a></span>
+							<span class="comment-count">8</span>人评价 </a></span>
 						</div>
 					</div>
 					<div id="data">
 						<span class="detail-leading">有效期</span><span class="text-containe">
 							<span class="valid-through">截止到
-							<span class="edate">2016.12.30</span>
+								<span class="edate">2016.12.30</span>
 							</span>
 							<span class="expiry-notice">周末、法定节假日通用</span>
 						</span>
@@ -237,10 +237,10 @@
 				<dd>item[i].b_serve</dd>
 			</dl>
 	</div>
-     <!--<div>
+    <div>
         <p class="trem_title"><a name="xiangqing">本单详情</a></p>
         <p class="standard_bar">美味尽享</p>
-         <table class="deal_menu">
+        <table class="deal_menu">
         	<thead style="border-bottom:#000; background:#f0f0f0;">
             	<th class="goods_name">套餐内容</th>
                 <th class="goods_price">单价</th>
@@ -256,8 +256,8 @@
 					</tr>
 					
 				</tbody>
-		</table>
-    </div>-->
+			</table>
+    </div>
     <div>
     	<p class="trem_title"><a name="jieshao">消费评价</a></p>
         <p class="standard_bar" style="margin-top:40px;">全部评价</p>

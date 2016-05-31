@@ -39,5 +39,6 @@
 		<action name="user_logout" class="com.yc.meituan.web.action.UserAction" method="logout"></action>
 		<action name="goods_indexGoods" class="com.yc.meituan.web.action.GoodsAction" method="indexGoods"></action>
 		<action name="goods_showGoods" class="com.yc.meituan.web.action.GoodsAction" method="showGoods"></action>
+		<action name="goods_showGoodsIntro" class="com.yc.meituan.web.action.GoodsAction" method="showGoodsIntro"></action>
 	</package>
 </struts>

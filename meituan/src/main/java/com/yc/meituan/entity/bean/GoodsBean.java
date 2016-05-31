@@ -19,7 +19,15 @@ public class GoodsBean {
 	private String b_limittip;//限购限用提醒
 	private float d_price1;//套餐单价
 	private int d_count;//套餐数量/规格
+	private String d_taocan;//套餐
+
 	
+	public String getD_taocan() {
+		return d_taocan;
+	}
+	public void setD_taocan(String d_taocan) {
+		this.d_taocan = d_taocan;
+	}
 	public int getGid() {
 		return gid;
 	}
@@ -137,7 +145,8 @@ public class GoodsBean {
 				+ b_retime + ", b_usetime=" + b_usetime + ", b_ordertip="
 				+ b_ordertip + ", b_parlor=" + b_parlor + ", b_pack=" + b_pack
 				+ ", b_serve=" + b_serve + ", b_limittip=" + b_limittip
-				+ ", d_price1=" + d_price1 + ", d_count=" + d_count + "]";
+				+ ", d_price1=" + d_price1 + ", d_count=" + d_count
+				+ ", d_taocan=" + d_taocan + "]";
 	}
 	public GoodsBean() {
 	}
@@ -145,7 +154,7 @@ public class GoodsBean {
 			String privilege, float gprice1, float gprice2, int gsoldcount,
 			String img, String b_retime, String b_usetime, String b_ordertip,
 			String b_parlor, String b_pack, String b_serve, String b_limittip,
-			float d_price1, int d_count) {
+			float d_price1, int d_count, String d_taocan) {
 		this.gid = gid;
 		this.sid = sid;
 		this.gtitle1 = gtitle1;
@@ -164,6 +173,7 @@ public class GoodsBean {
 		this.b_limittip = b_limittip;
 		this.d_price1 = d_price1;
 		this.d_count = d_count;
+		this.d_taocan = d_taocan;
 	}
 	
 	

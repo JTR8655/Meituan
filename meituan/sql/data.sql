@@ -20,6 +20,7 @@ insert into meituan_goods_info (gid,gdate,gtitle1,gtitle2,gprice1,gprice2,sid)
 
 
 select g.gid,s.sid, g.gtitle1,g.gtitle2, g.img, g.text, g.gsoldcount, g.gprice1, g.gprice2, m.b_retime, m.d_taocan from meituan_seller_info s inner join meituan_goods_info g on s.sid = g.sid inner join meituan_goods_intro m on g.gid = m.gid and g.gid = 1112;
+select b_retime,b_usetime,b_ordertip,b_parlor,b_pack,b_serve,b_limittip,d_taocan from meituan_goods_intro where gid=1112;
 
 
 
