@@ -33,142 +33,208 @@ public class UserInfo {
 
     private String uaddr;
 
-    private String uregtime;
+    private Date uregtime;
 
-    public Integer getMuid() {
-        return muid;
-    }
+    
+	public UserInfo() {
+		super();
+	}
 
-    public void setMuid(Integer muid) {
-        this.muid = muid;
-    }
 
-    public String getUaccounts() {
-        return uaccounts;
-    }
+	public UserInfo(Integer muid, String uaccounts, String upwd, String uemail,
+			String uphone, String usex, Double ubalance, Integer upoint,
+			Date ubirth, String umarital, String ujob, String uheadimg,
+			String uinterest, Integer ustatus, String uaddr, Date uregtime) {
+		super();
+		this.muid = muid;
+		this.uaccounts = uaccounts;
+		this.upwd = upwd;
+		this.uemail = uemail;
+		this.uphone = uphone;
+		this.usex = usex;
+		this.ubalance = ubalance;
+		this.upoint = upoint;
+		this.ubirth = ubirth;
+		this.umarital = umarital;
+		this.ujob = ujob;
+		this.uheadimg = uheadimg;
+		this.uinterest = uinterest;
+		this.ustatus = ustatus;
+		this.uaddr = uaddr;
+		this.uregtime = uregtime;
+	}
 
-    public void setUaccounts(String uaccounts) {
-        this.uaccounts = uaccounts == null ? null : uaccounts.trim();
-    }
 
-    public String getUpwd() {
-        return upwd;
-    }
+	public Integer getMuid() {
+		return muid;
+	}
 
-    public void setUpwd(String upwd) {
-        this.upwd = upwd == null ? null : upwd.trim();
-    }
 
-    public String getUemail() {
-        return uemail;
-    }
+	public void setMuid(Integer muid) {
+		this.muid = muid;
+	}
 
-    public void setUemail(String uemail) {
-        this.uemail = uemail == null ? null : uemail.trim();
-    }
 
-    public String getUphone() {
-        return uphone;
-    }
+	public String getUaccounts() {
+		return uaccounts;
+	}
 
-    public void setUphone(String uphone) {
-        this.uphone = uphone == null ? null : uphone.trim();
-    }
 
-    public String getUsex() {
-        return usex;
-    }
+	public void setUaccounts(String uaccounts) {
+		this.uaccounts = uaccounts;
+	}
 
-    public void setUsex(String usex) {
-        this.usex = usex == null ? null : usex.trim();
-    }
 
-    public Double getUbalance() {
-        return ubalance;
-    }
+	public String getUpwd() {
+		return upwd;
+	}
 
-    public void setUbalance(Double ubalance) {
-        this.ubalance = ubalance;
-    }
 
-    public Integer getUpoint() {
-        return upoint;
-    }
+	public void setUpwd(String upwd) {
+		this.upwd = upwd;
+	}
 
-    public void setUpoint(Integer upoint) {
-        this.upoint = upoint;
-    }
 
-    public Date getUbirth() {
-        return ubirth;
-    }
+	public String getUemail() {
+		return uemail;
+	}
 
-    public void setUbirth(Date ubirth) {
-        this.ubirth = ubirth;
-    }
 
-    public String getUmarital() {
-        return umarital;
-    }
+	public void setUemail(String uemail) {
+		this.uemail = uemail;
+	}
 
-    public void setUmarital(String umarital) {
-        this.umarital = umarital == null ? null : umarital.trim();
-    }
 
-    public String getUjob() {
-        return ujob;
-    }
+	public String getUphone() {
+		return uphone;
+	}
 
-    public void setUjob(String ujob) {
-        this.ujob = ujob == null ? null : ujob.trim();
-    }
 
-    public String getUheadimg() {
-        return uheadimg;
-    }
+	public void setUphone(String uphone) {
+		this.uphone = uphone;
+	}
 
-    public void setUheadimg(String uheadimg) {
-        this.uheadimg = uheadimg == null ? null : uheadimg.trim();
-    }
 
-    public String getUinterest() {
-        return uinterest;
-    }
+	public String getUsex() {
+		return usex;
+	}
 
-    public void setUinterest(String uinterest) {
-        this.uinterest = uinterest == null ? null : uinterest.trim();
-    }
 
-    public Integer getUstatus() {
-        return ustatus;
-    }
+	public void setUsex(String usex) {
+		this.usex = usex;
+	}
 
-    public void setUstatus(Integer ustatus) {
-        this.ustatus = ustatus;
-    }
 
-    public String getUaddr() {
-        return uaddr;
-    }
+	public Double getUbalance() {
+		return ubalance;
+	}
 
-    public void setUaddr(String uaddr) {
-        this.uaddr = uaddr == null ? null : uaddr.trim();
-    }
 
-    public String getUregtime() {
-        return uregtime;
-    }
+	public void setUbalance(Double ubalance) {
+		this.ubalance = ubalance;
+	}
 
-    public void setUregtime(String uregtime) {
-        this.uregtime = uregtime == null ? null : uregtime.trim();
-    }
+
+	public Integer getUpoint() {
+		return upoint;
+	}
+
+
+	public void setUpoint(Integer upoint) {
+		this.upoint = upoint;
+	}
+
+
+	public Date getUbirth() {
+		return ubirth;
+	}
+
+
+	public void setUbirth(Date ubirth) {
+		this.ubirth = ubirth;
+	}
+
+
+	public String getUmarital() {
+		return umarital;
+	}
+
+
+	public void setUmarital(String umarital) {
+		this.umarital = umarital;
+	}
+
+
+	public String getUjob() {
+		return ujob;
+	}
+
+
+	public void setUjob(String ujob) {
+		this.ujob = ujob;
+	}
+
+
+	public String getUheadimg() {
+		return uheadimg;
+	}
+
+
+	public void setUheadimg(String uheadimg) {
+		this.uheadimg = uheadimg;
+	}
+
+
+	public String getUinterest() {
+		return uinterest;
+	}
+
+
+	public void setUinterest(String uinterest) {
+		this.uinterest = uinterest;
+	}
+
+
+	public Integer getUstatus() {
+		return ustatus;
+	}
+
+	public void setUstatus(Integer ustatus) {
+		this.ustatus = ustatus;
+	}
+
+
+	public String getUaddr() {
+		return uaddr;
+	}
+
+
+	public void setUaddr(String uaddr) {
+		this.uaddr = uaddr;
+	}
+
+
+	public Date getUregtime() {
+		return uregtime;
+	}
+
+
+	public void setUregtime(Date uregtime) {
+		this.uregtime = uregtime;
+	}
+
 
 	@Override
 	public String toString() {
-		return "UserInfo [muid=" + muid + ", uaccounts=" + uaccounts + ", upwd=" + upwd + ", uemail=" + uemail
-				+ ", uphone=" + uphone + ", usex=" + usex + ", ubalance=" + ubalance + ", upoint=" + upoint
-				+ ", ubirth=" + ubirth + ", umarital=" + umarital + ", ujob=" + ujob + ", uheadimg=" + uheadimg
-				+ ", uinterest=" + uinterest + ", ustatus=" + ustatus + ", uaddr=" + uaddr + ", uregtime=" + uregtime
-				+ "]";
+		return "UserInfo [muid=" + muid + ", uaccounts=" + uaccounts
+				+ ", upwd=" + upwd + ", uemail=" + uemail + ", uphone="
+				+ uphone + ", usex=" + usex + ", ubalance=" + ubalance
+				+ ", upoint=" + upoint + ", ubirth=" + ubirth + ", umarital="
+				+ umarital + ", ujob=" + ujob + ", uheadimg=" + uheadimg
+				+ ", uinterest=" + uinterest + ", ustatus=" + ustatus
+				+ ", uaddr=" + uaddr + ", uregtime=" + uregtime + "]";
 	}
+
+  
+   
 }

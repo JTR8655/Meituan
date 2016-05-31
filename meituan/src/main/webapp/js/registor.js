@@ -29,6 +29,8 @@ $(document).ready(function(){
 		$("#email").css('border','1px solid #2BB8AA');
 		$("#tongyong").hide();
 		$("#user_email").hide();
+		$("#geshi_email").hide();
+		$("#iuser_email").hide();
 	}).blur(function(){//判断是否已注册，判断输入是否合法
 		$("#email").css('border','1px solid #FF8800');
 		$("#tongyong").hide();
@@ -43,15 +45,14 @@ $(document).ready(function(){
 			if(email.match(zhengze)){
 				$.ajax({
 					method:'POST',
-					url:'/meituan/UserOperate.do',
+					url:'user_findEmail.action',
 					data:{
-						email:email,
-						op:'checkEmail'
+						uemail:email
 					},
-					datatype:'html',
+					datatype:'jsp',
 					success:function(data){
-						//alert(data+"---------");
-						if(data==1){
+						alert(data+"---------");
+						if(data==0){
 							$("#iuser_email").show();//邮箱号被注册
 							$("#email").val("");
 						}else{
@@ -83,7 +84,7 @@ $(document).ready(function(){
 			$("#user_name").show();
 		}else{//正则表达式
 			var uname=$("#zcuname").val();
-			$.ajax({
+			/*$.ajax({
 				method:'POST',
 				url:'/meituan/UserOperate.do',
 				data:{
@@ -101,7 +102,7 @@ $(document).ready(function(){
 					}
 					
 				}
-			});
+			});*/
 		}
 	});
 	//密码
@@ -244,9 +245,72 @@ function check(){
 	var pro =$("#zcprovince").val();
 	var yz =$("#zcyanzheng").val();
 	
-	
 }
 
+/*hy /^[a-z0-9]{3,6}$/  /^[a-z0-9_-]{6,9}$/  /^[a-z0-9A-Z_-]{9,18}$/*/
+function pwStrength(pwd){
+	var reg1=/^[a-z0-9]{3,6}$/;
+	var reg2=/^[a-z0-9_-]{6,9}$/;
+	var reg3=/^[a-z0-9A-Z_-]{9,18}$/;
+	if(pwd.match(reg1)){
+		$("#pwd_small").css("background-color","#F76120");
+		$("#pwd_midumn").css("background-color","#E2E3E6");
+		$("#pwd_strong").css("background-color","#E2E3E6");
+	}else if(pwd.match(reg2)){
+		$("#pwd_small").css("background-color","#FF8900");
+		$("#pwd_midumn").css("background-color","#FF8900");
+		$("#pwd_strong").css("background-color","#E2E3E6");
+	}else if(pwd.match(reg3)){
+		$("#pwd_small").css("background-color","#5BAB3C");
+		$("#pwd_midumn").css("background-color","#5BAB3C");
+		$("#pwd_strong").css("background-color","#5BAB3C");
+	}else{
+		$("#pwd_small").css("background-color","#E2E3E6");
+		$("#pwd_midumn").css("background-color","#E2E3E6");
+		$("#pwd_strong").css("background-color","#E2E3E6");
+	}
+}
+/*function reg(){
+	var email=$("#email").val();
+	var username=$("#zcuname").val();
+	var pwd =$("#zcpwd").val();
+	var a=$("#zcprovince").val();
+	var b=$("#zccity").val();
+	var recode=$("#zcyanzheng").val();
+	var uaddr=a+b;
+	console.info(uaddr);
+	console.info(email);
+	//console.info(recode);
+	$.ajax({
+		method:'POST',
+		url:'/meituan/UserOperate.do',
+		data:{
+			'op':'addUser',
+			'email':email,
+			'username':username,
+			'pwd':pwd,
+			'uaddr':uaddr,
+			'recode':recode
+		},
+		dataType:'json',
+		success:function(data){
+			//alert("回调函数"+data.code);
+			if(data.code==1){
+				window.location="regist_yz.html?uemail="+email;
+			}else if(data.code==0){
+				alert("注册失败");
+			}else if(data.code==2){
+				$("#user_reyanzheng").text("验证码错误");
+				//alert("验证码验证失败");
+			}
+		}
+	});
+};
+*/
+
+function changeyanzheng(obj){
+	 $("#code").attr("src","user_code.action?t="+Math.random() );//改变验证码图片  
+}
 
 
 

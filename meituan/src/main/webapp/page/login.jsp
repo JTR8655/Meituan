@@ -50,7 +50,7 @@
 			</form>
 			<div id="tishi1">
 				<p id="p1">还没有账号?</p>
-				<a href="registor.html" id="sign">免费注册</a>
+				<a href="page/register.jsp" id="sign">免费注册</a>
 			</div>
 		</div>
 	</div>

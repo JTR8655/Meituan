@@ -28,7 +28,7 @@
 					<ul id="head_2_left">
 						<li><a href="" id="shoucang">收藏美团</a></li>
 						<li><a href="page/login.jsp" id="login">登录</a></li>
-						<li><a href="page/register.html" id="register">注册</a></li>
+						<li><a href="page/register.jsp" id="register">注册</a></li>
 					</ul>
 					<ul id="head_2_right">
 						<li><a href="page/order.jsp">我的美团</a></li>

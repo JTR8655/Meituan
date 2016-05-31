@@ -41,7 +41,8 @@ $(function(){
 	<div class="content_yz_main">
             <div class="">
                 <label class=""></label>
-                <h3 class="content_yz_email">已发送邮件到<span class="yz_email" id="email"></span></h3>
+                <h3 class="content_yz_email">发送邮件到<span class="yz_email" id="email">${sessionScope.userInfo.uemail }</span></h3>
+
                 <p class="con_yz_button">请您进入邮箱中点击验证按钮完成注册</p>
             </div>
         </div>

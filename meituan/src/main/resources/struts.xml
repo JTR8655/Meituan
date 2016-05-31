@@ -37,6 +37,8 @@
 			<result name="{2}">/page/{2}.jsp</result> 
 		</action>
 		<action name="user_logout" class="com.yc.meituan.web.action.UserAction" method="logout"></action>
+		<action name="user_findEmail" class="com.yc.meituan.web.action.UserAction" method="findEmail"></action>
+		<action name="user_code" class="com.yc.meituan.web.action.UserAction" method="code"></action>
 		<action name="goods_indexGoods" class="com.yc.meituan.web.action.GoodsAction" method="indexGoods"></action>
 		<action name="goods_showGoods" class="com.yc.meituan.web.action.GoodsAction" method="showGoods"></action>
 		<action name="goods_showGoodsIntro" class="com.yc.meituan.web.action.GoodsAction" method="showGoodsIntro"></action>

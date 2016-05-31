@@ -18,7 +18,7 @@ create table meituan_user_info(
 	uaccounts varchar2(20),	 --用户帐号
 	upwd varchar2(20),		--密码
 	uemail varchar2(30),	--邮箱
-	uphone int, 			--手机
+	--uphone int, 			--手机
 	usex varchar2(2) default '男' constraint c_user_info_sex check  (usex in ('男','女')),	--性别
 	ubalance float default 0, 		--余额
 	upoint int default 0,			--积分
@@ -28,9 +28,10 @@ create table meituan_user_info(
 	uheadimg varchar2(100),			--头像信息
 	uinterest varchar2(100),		--兴趣
 	ustatus int default 0,			--激活状态，规定时间未激活则删除该数据,0表示未激活
-	temp1 varchar2(100),
-	temp2 varchar2(100)
+	uaddr varchar2(100),
+	uregtime date 
 );
+alter table meituan_user_info  drop column uphone;
 create sequence seq_meituanuser increment by 1  start with 1  nomaxvalue nocycle;
 
 -------------------------------------------------
