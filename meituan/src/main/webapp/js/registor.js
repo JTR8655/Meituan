@@ -29,6 +29,8 @@ $(document).ready(function(){
 		$("#email").css('border','1px solid #2BB8AA');
 		$("#tongyong").hide();
 		$("#user_email").hide();
+		$("#geshi_email").hide();
+		$("#iuser_email").hide();
 	}).blur(function(){//判断是否已注册，判断输入是否合法
 		$("#email").css('border','1px solid #FF8800');
 		$("#tongyong").hide();
@@ -41,17 +43,16 @@ $(document).ready(function(){
 			var email=$("#email").val();
 			var zhengze=/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 			if(email.match(zhengze)){
-				/*$.ajax({
+				$.ajax({
 					method:'POST',
-					url:'/meituan/UserOperate.do',
+					url:'user_findEmail.action',
 					data:{
-						email:email,
-						op:'checkEmail'
+						uemail:email
 					},
-					datatype:'html',
+					datatype:'jsp',
 					success:function(data){
-						//alert(data+"---------");
-						if(data==1){
+						alert(data+"---------");
+						if(data==0){
 							$("#iuser_email").show();//邮箱号被注册
 							$("#email").val("");
 						}else{
@@ -59,10 +60,10 @@ $(document).ready(function(){
 							$("#iuser_email").hide();
 						}
 					}	
-				});*/
+				});
 			}else{
-				/*$("#geshi_email").show();
-				$("#email").val("");*/
+				$("#geshi_email").show();
+				$("#email").val("");
 			}				
 		};
 	});

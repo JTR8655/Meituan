@@ -7,12 +7,12 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.util.Date;
 import java.util.Map;
 import java.util.Random;
-import java.util.logging.SimpleFormatter;
 
 import javax.imageio.ImageIO;
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,6 +21,8 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ModelDriven;
@@ -34,6 +36,8 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private JavaMailSender javaMailSender;
 
 	private UserInfo userInfo;
 	private Map<String, Object> session;
@@ -89,25 +93,77 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 		return "none";
 	}
 	
+	public String findEmail(){
+		LogManager.getLogger().debug(""+userInfo.getUemail());
+		//UserInfo userInfos=userService.findEmail(userInfo.getUemail());
+		UserInfo uemail=userService.findEmail(userInfo.getUemail());
+		LogManager.getLogger().debug(uemail);
+		int status=0;
+		if(uemail!=null){
+			if(uemail.getUemail()!=null&&"".equals(uemail.getUemail())){
+				//存在
+				status=0;
+			}
+		}else{
+			status=1;
+		}
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("charset=utf-8");
+		try {
+			PrintWriter out = response.getWriter();
+			out.println(status + "");// 写出响应数据
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return "none";
+	}
 	
 	
-	
-	
-
 	public String register() {
 		LogManager.getLogger().debug("注册操作+" + userInfo);
 		userInfo.setUaddr(province + "-" + city);
 		try {
-			userService.register(userInfo);
-			return "registerSuccess";
+			userInfo=userService.register(userInfo);
+			session.put("userInfo",userInfo);
+			//调用发邮件方法
+			boolean flag = sendEmail(userInfo.getUemail());
+			LogManager.getLogger().debug(flag);
+			if(flag){
+				return "registerSuccess";
+			}
 		} catch (Exception e) {
 		
 		}
-		session.put("regMsg", "该用户已被注册");
+		//session.put("regMsg", "该用户已被注册");
 		return "register";
-		
 	}
 
+	public boolean sendEmail(String toEmail) {
+		MimeMessage mm=javaMailSender.createMimeMessage();
+		try {
+			MimeMessageHelper smm=new MimeMessageHelper(mm,true);
+			smm.setFrom("13298581430@163.com");//邮件发送者
+			smm.setTo(toEmail);//邮件接收者
+			smm.setSubject("美团用户邮箱验证"); //邮件主	
+			smm.setText("<p>Hi~</p>"
+					+"<p><a href='http://localhost:8080/meituan/user_active.action"
+					+"'>感谢您注册,请点击此链接激活您的账号</a></p>", true); //邮件内容
+			javaMailSender.send(mm);//发送邮件
+			return true;
+		} catch (MessagingException e) {
+		}
+		return false;
+	}
+	
+	/*public String active(){
+		LogManager.getLogger().debug("激活操作+" + userInfo);
+		userService.activeUser(userInfo.getUemail());
+		return "activeSuccess";
+		
+	}*/
 	public String code() throws IOException {
 		// 设置响应头 Content-type类型
 		HttpServletRequest request = ServletActionContext.getRequest();
@@ -162,7 +218,7 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		// System.out.println("assass"+sRand);
+		
 		return "none";
 	}
 
