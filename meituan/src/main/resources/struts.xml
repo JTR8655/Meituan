@@ -42,5 +42,6 @@
 		<action name="goods_showGoods" class="com.yc.meituan.web.action.ShowGoodsAction" method="showGoods"></action>
 		<action name="uorder_listNoPj" class="com.yc.meituan.web.action.UorderAction" method="listNoPj"></action>
 		<action name="evaluate_addEvaluate" class="com.yc.meituan.web.action.EvaluateAction" method="addEvaluate"></action>
+		<action name="evaluate_listPj" class="com.yc.meituan.web.action.EvaluateAction" method="listPj"></action>
 	</package>
 </struts>

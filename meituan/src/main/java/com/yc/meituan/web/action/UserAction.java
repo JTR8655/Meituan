@@ -7,8 +7,10 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.Map;
 import java.util.Random;
+import java.util.logging.SimpleFormatter;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
@@ -86,10 +88,6 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 
 		return "none";
 	}
-	
-	
-	
-	
 	
 	
 	

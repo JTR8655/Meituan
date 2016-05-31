@@ -30,7 +30,7 @@ var pjliIndex=0;
 				+'<div class="v2_pingjia_content">'
 				+'<p class="v2_pj_head">'
 				+'<input class="imgtip" type="file" name="uploadimg" accept="image/*" class="uploadimg" style="display:none;">'
-				+'<a class="showPic" href="javascript:void(0)" onClick="upload()"><img class="showimg" src="../images/v2_pjhead_shaitu.jpg"></a>'
+				+'<a class="showPic" href="javascript:void(0)" onClick="upload()"><img class="showimg" src="images/v2_pjhead_shaitu.jpg"></a>'
 				+'<a class="showPicTip">最多传5张，按住 Ctrl 或 Shift 可选择多张</a>'
 				+'<a class="niming"><input type="checkbox" name="hidename">&nbsp;匿名评价</a>'
 				+'</p>'
@@ -38,7 +38,7 @@ var pjliIndex=0;
 //				+'<a class="text_tip"><a class="contentTip v2_tip">还可输入<a class="v2_jf_count text_num v2_tip">490</a><a class="v2_tip">字，从多维度图文并茂地评价，将有机会获得“认真评价”，额外奖励</a><a class="v2_jf_count v2_tip">100</a><a class="v2_tip">积分。</a></a></a>'
 				+'</div>'
 				+'<p class="bb">* 请上传原创、真实、合法的图片，如果发现用户上传的图片有侵权内容，美团有权先行删除</p>'
-				+'<a href="javascript:void(0)" style="margin-left:20px;" class="pingjiaSub" onclick="pinglun()"><img src="../images/pingjiasub.jpg"></a>'
+				+'<a href="javascript:void(0)" style="margin-left:20px;" class="pingjiaSub" onclick="pinglun()"><img src="images/pingjiasub.jpg"></a>'
 				+'<p class="bb">修改后的评价不参与“认真评价奖积分”活动。</p>'
 				+'</div>';
 */
@@ -92,7 +92,7 @@ function clickPj(){
 			count1=5;
 		}
 		console.info("count1:"+count1);
-		document.getElementsByName("egrade4")[pjliIndex].value = count1;
+		document.getElementsByName("egrade_4")[pjliIndex].value = count1;
 	});
 	
 	/*//点击评分星级(总体评价)
@@ -152,8 +152,8 @@ $(function(){
 					+ ' 	<a href="javascript:void(0)"><img class="v0_img" src="'+data[i].img+'" /></a>'
 					+ ' </div>'
 					+ '  <div class="goods_info">'
-					+ '	<a class="goods" href="javascript:void(0)" onMouseOver="font_1(0)" onMouseOut="fr_1(0)">'+data[i].gtitle1+'</a><br />'
-					+ '    <p style="color:#999;">有效期至：2015-12-31</p>'
+					+ '	<a class="goods" href="page/goods.jsp?gid='+ data[i].gid +'" onMouseOver="font_1('+i+')" onMouseOut="fr_1('+i+')">'+data[i].gtitle1+'</a><br />'
+					+ '    <p style="color:#999;font-size:12px;">有效期至：2015-12-31</p>'
 		//			+ '    <a href="javascript:void(0)" style="color:#2BB8AA">商家信息</a>'
 					+ '    </div>'
 					+ ' </div>'
@@ -196,13 +196,13 @@ function listCollection(){
 						'<a href="foods.jsp?gid= '+ data[i].gid +'"><img src="'+ data[i].img +'"'+
 							'style="float: left;padding-bottom:10px; margin-top: 10px; margin-left: 20px; width: 100px; height: 61px;" /></a>'+
 						'<a href="foods.jsp?gid= '+ data[i].gid +'" style="float: left; margin-left: 20px; font-size:12px; margin-top: 33px; color: #666666;"'+
-							'class="goods_text" onMouseOver="changeFontColor(0)" onMouseOut="returnFontColor(0)">'+ data[i].gtitle1 +'</a>'+
+							'class="goods_text_a">'+ data[i].gtitle1 +'</a>'+
 						'</div></td> <td class="sc_td"><div> <p class="goods_text">￥'+ data[i].gprice2 +'</p></div></td>'+
 					'<td class="sc_td"><div> <p class="goods_text">'+ data[i].gstatus +'</p> </div></td>'+
-					'<td class="sc_td"> <div> <a href="fair.jsp?gid= '+ data[i].gid +'" class="goods_text" style="margin-left: 23px; color: #2BB8AA;"'+
-						'onMouseOver="changeFontColor(3)" onMouseOut="returnFontColor(3)">购买</a> <a '+
-						'href="javascript:void(0)" class="goods_text" style="margin-left: 3px;" onMouseOver="changeFontColor(4)"'+
-						'onMouseOut="returnFontColor(4)" onClick=" ('+data[i].cid+')">删除</a>'+
+					'<td class="sc_td"> <div> <a href="fair.jsp?gid= '+ data[i].gid +'" class="goods_text_buy" style="margin-left: 23px; color: #2BB8AA;"'+
+						'>购买</a> <a '+
+						'href="javascript:void(0)" class="goods_text_del" style="margin-left: 3px;"'+
+						' onClick=" ('+data[i].cid+')">删除</a>'+
 				'</div> </td> </tr>';
 			}
 			$("#info_tbody").html(str);
@@ -218,6 +218,7 @@ function showNoPj(){
 		url:'uorder_listNoPj.action',
 		dataType:"JSON",
 		success: function(data){
+			$("#pingjiaUl").html("");
 			if(data != null){
 				data = $.parseJSON(data);
 				for(var i=0;i<data.length;i++){
@@ -244,7 +245,7 @@ function showNoPj(){
 						+'<div class="v2_pingjia_content">'
 						+'<p class="v2_pj_head">'
 						+'<input class="imgtip" type="file" name="uploadimg" accept="image/*" class="uploadimg" style="display:none;">'
-						+'<a class="showPic" href="javascript:void(0)" onClick="upload()"><img class="showimg" src="../images/v2_pjhead_shaitu.jpg"></a>'
+						+'<a class="showPic" href="javascript:void(0)" onClick="upload()"><img class="showimg" src="images/v2_pjhead_shaitu.jpg"></a>'
 						+'<a class="showPicTip">最多传5张，按住 Ctrl 或 Shift 可选择多张</a>'
 						+'<a class="niming"><input type="checkbox" name="hidename">&nbsp;匿名评价</a>'
 						+'</p>'
@@ -252,7 +253,7 @@ function showNoPj(){
 //						+'<a class="text_tip"><a class="contentTip v2_tip">还可输入<a class="v2_jf_count text_num v2_tip">490</a><a class="v2_tip">字，从多维度图文并茂地评价，将有机会获得“认真评价”，额外奖励</a><a class="v2_jf_count v2_tip">100</a><a class="v2_tip">积分。</a></a></a>'
 						+'</div>'
 						+'<p class="bb">* 请上传原创、真实、合法的图片，如果发现用户上传的图片有侵权内容，美团有权先行删除</p>'
-						+'<a href="javascript:void(0)" style="margin-left:20px;" class="pingjiaSub" onclick="pinglun()"><img src="../images/pingjiasub.jpg"></a>'
+						+'<a href="javascript:void(0)" style="margin-left:20px;" class="pingjiaSub" onclick="pinglun()"><img src="images/pingjiasub.jpg"></a>'
 						+'<p class="bb">修改后的评价不参与“认真评价奖积分”活动。</p>'
 						+'</div></div>'
 						+'</form></div></li>';
@@ -276,16 +277,34 @@ function showNoPj(){
 $(function(){
 	$.ajax({
 		type:'post',
-		url:'/meituan/UserFunction.do',
+		url:'evaluate_listPj.action',
 		dataType:"JSON",
 		success: function(data){
+			if(data == null){
+				return;
+			}
 			console.info(data);
-			if(data.code==1){
-				var item=data.obj;
-				for(var i=0;i<item.length;i++){
-					console.info(item[i]);
+			data = $.parseJSON(data);
+			var pj="一般";
+			for(var i=0;i<data.length;i++){
+				if(data[i].egrade_4 == 1){
+					pj="差";
+				}else if(data[i].egrade_4 == 2){
+					pj="一般";
+				}else if(data[i].egrade_4 == 3){
+					pj="满意";
+				}else if(data[i].egrade_4 == 4){
+					pj="很满意";
+				}else if(data[i].egrade_4 == 5){
+					pj="强烈推荐";
 				}
-			}else if(data.code==0){
+				var str = '<div class="v3_content">'+
+					'<div class="v3_img v3_"><img src="'+ data[i].img +'"></div>'+
+					'<div class="v3_evaluated v3_">'+
+					'<p class="v3_gtitle1"><a class="v3_g_goods" href="">'+ data[i].gtitle1 +'</a> </p>'+
+					'<p class="v3_grade"> 我的总体评价:&nbsp;&nbsp;<a class="v3_g_point"></a><a style="color:red;font-weight:bold;font-size:14px;">'+ pj +'</a></p>'+
+					'<p class="v3_pl_content">'+ data[i].econtent +'</p> </div> </div>';
+				$("#v3").append(str);
 			}
 		}
 	});
@@ -357,7 +376,7 @@ var nav_content = document.getElementsByClassName('nav_content');
 			document.getElementById('v'+i).style.display = 'none';
 		}			
 		list[index].style.background = "#2BB8AA";
-		image[index].src = "../images/arrow.png";
+		image[index].src = "images/arrow.png";
 		font[index].style.color = "#FFF";
 		document.getElementById('v'+index).style.display = 'block';
 		flag = true;						

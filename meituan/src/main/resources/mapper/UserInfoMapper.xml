@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yc.meituan.mapper.UserInfoMapper" >
 	<select id="login" parameterType="com.yc.meituan.entity.UserInfo" resultType="UserInfo">
-		select * from meituan_user_info where UEMAIL= #{uemail} and UPWD = #{upwd} and USTATUS = 1
+		select to_char(ubirth,'yyyy-mm-dd hh:mm:ss') ubirth,meituan_user_info.* from meituan_user_info where UEMAIL= #{uemail} and UPWD = #{upwd} and USTATUS = 1
 	</select>
 	<insert id="reg" parameterType="com.yc.meituan.entity.UserInfo" >
-		insert into meituan_user_info values(seq_meituanuser.nextval,#{uaccounts},#{upwd},#{uemail},default,default,default,null,null,null,null,null,default,#{uaddr},sysdate)
-	</insert>
+		insert into meituan_user_info values(seq_meituanuser.nextval,#{uaccounts},#{upwd},#{uemail},null,default,default,default,null,null,null,null,null,default,#{uaddr},sysdate)
+	</insert> 
 </mapper>

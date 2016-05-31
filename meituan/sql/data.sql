@@ -27,9 +27,9 @@ insert into meituan_goods_intro (gid,b_retime,b_usetime,b_parlor,b_pack,b_serve,
  
 --插入订单数据  
 insert into meituan_uorder(oid,oidentifier,muid,gid,otime,ostatus,opwd,opaytime,ocount,pjstatus)
-	select 1,123,1,1,to_date('2016-1-9','yyyy-MM-dd'),'未消','123',to_date('2016-1-9','yyyy-MM-dd'),1,0 from dual union
-	select 2,234,1,1,to_date('2016-1-9','yyyy-MM-dd'),'未消','123',to_date('2016-1-9','yyyy-MM-dd'),1,0 from dual union
-	select 3,345,1,1,to_date('2016-1-9','yyyy-MM-dd'),'未消','123',to_date('2016-1-9','yyyy-MM-dd'),1,0 from dual  union
+	select 1,123,1,1,to_date('2016-1-9','yyyy-MM-dd'),'未使用','123',to_date('2016-1-9','yyyy-MM-dd'),1,0 from dual union
+	select 2,234,1,1,to_date('2016-1-9','yyyy-MM-dd'),'未使用','123',to_date('2016-1-9','yyyy-MM-dd'),1,0 from dual union
+	select 3,345,1,1,to_date('2016-1-9','yyyy-MM-dd'),'未使用','123',to_date('2016-1-9','yyyy-MM-dd'),1,0 from dual  union
 	select 4,123,1,1,to_date('2016-1-9','yyyy-MM-dd'),'已使用','123',to_date('2016-1-9','yyyy-MM-dd'),1,0 from dual union
 	select 5,345,1,1,to_date('2016-1-9','yyyy-MM-dd'),'已使用','123',to_date('2016-1-9','yyyy-MM-dd'),1,0 from dual  
 
@@ -54,5 +54,8 @@ select c.cid,c.muid,c.gid, g.b_retime from meituan_collection c inner join meitu
 select g.gid,s.sid, g.gtitle1,g.gtitle2, g.img, g.text, g.gsoldcount, g.gprice1, g.gprice2, m.b_retime, m.d_taocan from meituan_seller_info s inner join meituan_goods_info g on s.sid = g.sid inner join meituan_goods_intro m on g.gid = m.gid and g.gid = 1112;
 
 select * from meituan_uorder;
+select * from meituan_user_info;
 select * from meituan_evaluate;
 insert into meituan_user_info values(seq_meituanuser.nextval,'samsara0','a','918811021@qq.com',default,default,default,null,null,null,null,null,default,'湖南省-长沙市',sysdate);
+
+

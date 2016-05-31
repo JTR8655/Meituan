@@ -1,4 +1,4 @@
-package com.yc.meituan.service.impl;
+package com.yc.meituan.serviceImpl.test;
 
 import static org.junit.Assert.*;
 

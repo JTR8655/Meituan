@@ -1,6 +1,7 @@
 package com.yc.meituan.service.impl;
 
 
+import org.apache.logging.log4j.LogManager;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,13 @@ public class UserServiceImplTest {
 		userInfo.setUemail("89@QQ.COM");
 		userInfo.setUaddr("长沙");
 		userService.register(userInfo);
-		
-		
 	}
-
+	
+	@Test
+	public void testLogin() {
+		UserInfo userInfo=new UserInfo();
+		userInfo.setUpwd("a");
+		userInfo.setUemail("1059191443@qq.com");
+		LogManager.getLogger().debug(userService.login(userInfo));
+	}
 }

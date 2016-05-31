@@ -34,16 +34,14 @@ public class UserInfo {
 
 	private String uaddr;
 
-	private Date uregtime;
+	private String uregtime;
 
 	public UserInfo() {
-		super();
 	}
 
 	public UserInfo(Integer muid, String uaccounts, String upwd, String uemail, String uphone, String usex,
 			Double ubalance, Integer upoint, Date ubirth, String umarital, String ujob, String uheadimg,
-			String uinterest, Integer ustatus, String uaddr, Date uregtime) {
-		super();
+			String uinterest, Integer ustatus, String uaddr, String uregtime) {
 		this.muid = muid;
 		this.uaccounts = uaccounts;
 		this.upwd = upwd;
@@ -182,11 +180,11 @@ public class UserInfo {
 		this.uaddr = uaddr;
 	}
 
-	public Date getUregtime() {
+	public String getUregtime() {
 		return uregtime;
 	}
 
-	public void setUregtime(Date uregtime) {
+	public void setUregtime(String uregtime) {
 		this.uregtime = uregtime;
 	}
 

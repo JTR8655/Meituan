@@ -1,5 +1,6 @@
 package com.yc.meituan.web.action;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.ModelDriven;
 import com.yc.meituan.entity.Evaluate;
 import com.yc.meituan.entity.UserInfo;
+import com.yc.meituan.entity.bean.EvaluatedBean;
 import com.yc.meituan.service.EvaluateService;
 import com.yc.meituan.service.UorderService;
 import com.yc.meituan.util.AjaxUtil;
@@ -50,7 +52,17 @@ public class EvaluateAction implements ModelDriven<Evaluate>, SessionAware, Requ
 		return "none";
 	}
 	
-	
+	public String listPj(){
+		UserInfo user = (UserInfo) session.get(MeituanData.LOGIN_USER);
+		if(null == user){
+			return "none";
+		}
+		List<EvaluatedBean> evaluated = evaluateService.listPj(user.getMuid());
+		if(null != evaluated && evaluated.size() > 0){
+			AjaxUtil.objectAjaxResponse(evaluated);
+		}
+		return "none";
+	}
 	
 	
 	
