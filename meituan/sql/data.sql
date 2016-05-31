@@ -15,6 +15,7 @@ insert into meituan_goods_info (gid,gdate,gtitle1,gtitle2,gprice1,gprice2,sid)
   select 4,to_date('2012-3-5','yyyy-MM-dd'),'标题4','小标题4',16,20,3 from dual union
   select 5,to_date('2017-7-21','yyyy-MM-dd'),'标题5','小标题5',13,15,2 from dual union
   select 6,to_date('2011-8-19','yyyy-MM-dd'),'标题6','小标题6',11,18,4 from dual 
+<<<<<<< HEAD
 
 --插入商品介绍数据
 insert into meituan_goods_intro (gid,b_retime,b_usetime,b_parlor,b_pack,b_serve,b_limittip)
@@ -44,6 +45,10 @@ insert into meituan_collection(cid,muid,gid)
 	
 
 -commit
+=======
+  
+-commit
+>>>>>>> branch 'master' of ssh://git@github.com/JTR8655/Meituan.git
 
 --查询所有订单
 select o.oid,o.oidentifier,o.muid,o.gid,o.ocount,o.ostatus,g.gprice2,g.gtitle1,g.img,g.sid,gi.b_retime from meituan_uorder o inner join 
@@ -52,6 +57,7 @@ select o.oid,o.oidentifier,o.muid,o.gid,o.ocount,o.ostatus,g.gprice2,g.gtitle1,g
 select c.cid,c.muid,c.gid, g.b_retime from meituan_collection c inner join meituan_goods_intro g on c.gid = g.gid and c.muid = 1
   
 select g.gid,s.sid, g.gtitle1,g.gtitle2, g.img, g.text, g.gsoldcount, g.gprice1, g.gprice2, m.b_retime, m.d_taocan from meituan_seller_info s inner join meituan_goods_info g on s.sid = g.sid inner join meituan_goods_intro m on g.gid = m.gid and g.gid = 1112;
+<<<<<<< HEAD
 
 select * from meituan_uorder;
 select * from meituan_user_info;
@@ -59,3 +65,8 @@ select * from meituan_evaluate;
 insert into meituan_user_info values(seq_meituanuser.nextval,'samsara0','a','918811021@qq.com',default,default,default,null,null,null,null,null,default,'湖南省-长沙市',sysdate);
 
 
+=======
+select b_retime,b_usetime,b_ordertip,b_parlor,b_pack,b_serve,b_limittip,d_taocan from meituan_goods_intro where gid=1112;
+
+insert into meituan_user_info values(seq_meituanuser.nextval,'samsara0','a','918811021@qq.com',default,default,default,null,null,null,null,null,default,'湖南省-长沙市',sysdate);
+>>>>>>> branch 'master' of ssh://git@github.com/JTR8655/Meituan.git

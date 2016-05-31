@@ -188,6 +188,7 @@
 	line-height:18px;
 }
 #data{
+	float:left;
 	width:500px;
 	height:28px;
 	margin-top:10px;
@@ -382,12 +383,6 @@
 	font-size:14px;
 	color:orange;
 	line-height:18px;
-}
-#data{
-	width:500px;
-	height:28px;
-	margin-top:10px;
-	background_color:#C36;
 }
 .detail-leading{
 	width:60px;
@@ -1048,14 +1043,14 @@
 		border-style:inset;
 	}
 	.back_stars{
-		background: url(../images/pingfenxin_2.png) no-repeat;
+		background: url(images/pingfenxin_2.png) no-repeat;
 		width: 80px;
 		height: 17px;
 		position: relative;
 		display: block;
 	}
 	.infact_stars{
-		background: url(../images/pingfenxin_1.png) no-repeat;
+		background: url(images/pingfenxin_1.png) no-repeat;
 		height: 17px;
 		display: block;
 		float: left;

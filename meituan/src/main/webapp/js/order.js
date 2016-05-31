@@ -152,7 +152,7 @@ $(function(){
 					+ ' 	<a href="javascript:void(0)"><img class="v0_img" src="'+data[i].img+'" /></a>'
 					+ ' </div>'
 					+ '  <div class="goods_info">'
-					+ '	<a class="goods" href="page/goods.jsp?gid='+ data[i].gid +'" onMouseOver="font_1('+i+')" onMouseOut="fr_1('+i+')">'+data[i].gtitle1+'</a><br />'
+					+ '	<a class="goods" href="page/foods.jsp?gid='+ data[i].gid +'" onMouseOver="font_1('+i+')" onMouseOut="fr_1('+i+')">'+data[i].gtitle1+'</a><br />'
 					+ '    <p style="color:#999;font-size:12px;">有效期至：2015-12-31</p>'
 		//			+ '    <a href="javascript:void(0)" style="color:#2BB8AA">商家信息</a>'
 					+ '    </div>'
@@ -193,13 +193,13 @@ function listCollection(){
 				str += 
 				'<tr class="collection_detailed">'+
 					'<td class="sc_td"><div>'+
-						'<a href="foods.jsp?gid= '+ data[i].gid +'"><img src="'+ data[i].img +'"'+
+						'<a href="page/foods.jsp?gid= '+ data[i].gid +'"><img src="'+ data[i].img +'"'+
 							'style="float: left;padding-bottom:10px; margin-top: 10px; margin-left: 20px; width: 100px; height: 61px;" /></a>'+
-						'<a href="foods.jsp?gid= '+ data[i].gid +'" style="float: left; margin-left: 20px; font-size:12px; margin-top: 33px; color: #666666;"'+
+						'<a href="page/foods.jsp?gid= '+ data[i].gid +'" style="float: left; margin-left: 20px; font-size:12px; margin-top: 33px; color: #666666;"'+
 							'class="goods_text_a">'+ data[i].gtitle1 +'</a>'+
 						'</div></td> <td class="sc_td"><div> <p class="goods_text">￥'+ data[i].gprice2 +'</p></div></td>'+
 					'<td class="sc_td"><div> <p class="goods_text">'+ data[i].gstatus +'</p> </div></td>'+
-					'<td class="sc_td"> <div> <a href="fair.jsp?gid= '+ data[i].gid +'" class="goods_text_buy" style="margin-left: 23px; color: #2BB8AA;"'+
+					'<td class="sc_td"> <div> <a href="page/fair.jsp?gid='+ data[i].gid +'" class="goods_text_buy" style="margin-left: 23px; color: #2BB8AA;"'+
 						'>购买</a> <a '+
 						'href="javascript:void(0)" class="goods_text_del" style="margin-left: 3px;"'+
 						' onClick=" ('+data[i].cid+')">删除</a>'+
@@ -230,7 +230,7 @@ function showNoPj(){
 						+'<input type="hidden" name="egrade_4" class="egrade4" value="0">'
 						+'<div class="v2_d_img v2_d_div"><img src="'+data[i].img+'" width="90" height="60"></div>'
 						+'<div class="v2_d_pingjia v2_d_div">'
-						+'<p><a href="goods.jsp?gid='+data[i].gid+'" id="v2_d_title">'+data[i].gtitle1+'</a></p>'
+						+'<p><a href="page/foods.jsp?gid='+data[i].gid+'" id="v2_d_title">'+data[i].gtitle1+'</a></p>'
 						+'<p class="bb getcount">本次团购体验如何？ 评价可随机赢取最多100积分</p>'
 						+'<p><a class="v2_pj mypj">我的总体评价：</a>'
 						+'<a href="javascript:void(0)" class="v2_pingjia v2_pj_1 v2_pj">差</a>'
@@ -301,7 +301,7 @@ $(function(){
 				var str = '<div class="v3_content">'+
 					'<div class="v3_img v3_"><img src="'+ data[i].img +'"></div>'+
 					'<div class="v3_evaluated v3_">'+
-					'<p class="v3_gtitle1"><a class="v3_g_goods" href="">'+ data[i].gtitle1 +'</a> </p>'+
+					'<p class="v3_gtitle1"><a class="v3_g_goods" href="page/foods.jsp?gid="'+data[i].gid+'>'+ data[i].gtitle1 +'</a> </p>'+
 					'<p class="v3_grade"> 我的总体评价:&nbsp;&nbsp;<a class="v3_g_point"></a><a style="color:red;font-weight:bold;font-size:14px;">'+ pj +'</a></p>'+
 					'<p class="v3_pl_content">'+ data[i].econtent +'</p> </div> </div>';
 				$("#v3").append(str);
