@@ -12,22 +12,11 @@
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/order.js"></script>
 <style>
-#head_2_left_login {
-	display: none;
-	float: left;
-	margin: 0 10px;
-	line-height: 29px;
-	margin-left: -23px;
-}
+
 
 #head_2_right {
 	margin-right: -3px;
 }
-
-#head_2_left_login li {
-	margin-left: 10px;
-}
-
 .top_nav {
 	margin-left: 20px;
 }
@@ -183,18 +172,12 @@
 				}
 			});
 		}
-
 	}
 </script>
 </head>
 <body>
-	<div id="head_tishi"></div>
 	<div id="head">
 		<ul>
-			<!-- 
-            <li id="head_1">
-                <div>为了您的账号安全，提供多种校验身份的方式，请<a href="">设置安保问题</a><a href="javascript:void(0)" id="head_1_right">X</a></div>
-            </li> -->
 			<li id="head_2">
 				<div>
 					<ul id="head_2_left">

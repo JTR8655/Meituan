@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.logging.SimpleFormatter;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.struts2.interceptor.RequestAware;
@@ -85,6 +87,25 @@ public class UorderAction implements ModelDriven<Uorder>, SessionAware, RequestA
 		return "none";
 	}
 	
+	public String addUorder(){
+		//取得当前用户
+		UserInfo user = (UserInfo) session.get(MeituanData.LOGIN_USER);
+		if(null == user){
+			AjaxUtil.stringAjaxResponse(""+2);
+			return "none";
+		}
+		uorder.setMuid(user.getMuid());
+		LogManager.getLogger().debug(uorder);
+		try {
+			Uorder successUorder = uorderService.addUorder(uorder);
+			AjaxUtil.objectAjaxResponse(successUorder);
+		} catch (Exception e) {
+			e.printStackTrace();
+			AjaxUtil.stringAjaxResponse(""+0);
+		}
+		
+		return "none";
+	}
 	
 	@Override
 	public void setRequest(Map<String, Object> request) {

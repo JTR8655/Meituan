@@ -3,11 +3,12 @@ $(function(){
 	var title = strs.split("?")[1].split("&")[0].split("=")[1];
 	var text = strs.split("?")[1].split("&")[1].split("=")[1];
 	var price = strs.split("?")[1].split("&")[2].split("=")[1];
+	var gid = strs.split("?")[1].split("&")[3].split("=")[1];
 	 if(strs != 'undefined' || strs != null){	 
 		 var value = document.getElementsByClassName('fair-count').innerHTML = '';
 		 var content = '<td class="fair-project">' + decodeURI(title) + '：' + decodeURI(text) + '</td>'
 					  +'<td class="fair-price">￥<span class="unit-price">' + decodeURI(price) + '</span></td>'
-					  +'<td class="fair-price">'
+					  +'<td class="fair-price"><input id="gid" type="hidden" value="'+gid+'">'
 					  +'<button class="lower" onClick="lower(0)">-</button>'
 					  +'<input type="text" class="amount" id="amount_0" value="1" />'
 					  +'<button class="adder" onClick="adder(0)">+</button></td>'
@@ -41,33 +42,40 @@ window.onload = function(){
 		document.getElementsByClassName('amount-price')[i].innerHTML = unitPrice ;
 	}
 	getTotal();
-	console.info();
 };
 //点击提交订单时所产生的页面效果
 function submitFair(){
-	$('#first-step').css('display', 'none');
-	$('.step-2').css('border-bottom-color', '#2BB8AA');
-	$('#second-step').css('display', 'block');	
-	
+	var gid = $("#gid").val();
+	var ocount = $("#amount_0").val();
+	var title1 = $(".fair-project").html().split("：")[0];
 	//点击提交订单所产生的数据交互
-	var strs = window.location.href;
-	var count = document.getElementById('amount_0').value;
-	var muid = 1;
-	var gid = strs.split("?")[1].split("&")[3].split("=")[1];
-	var title = strs.split("?")[1].split("&")[0].split("=")[1];
-	$('#goods-name').html(decodeURI(title));
 	$.ajax({
 		type:'post',
-		url:'fairs.do',
+		url:'uorder_addUorder.action',
 		data:{
-			op:'submitFair',
-			muid:muid,
-			tcount:count,
-			gid:decodeURI(gid)
+			gid:gid,
+			ocount:ocount
 		},
 		dataType:'json',
 		success:function(data){
-			meituanPwd(data);
+			if(data == 2){
+				alert("请先登录");
+				return;
+			}else if(data == 0){
+				alert("购买失败！！！");
+				windows.location.href="page/foods.jsp?gid="+gid;
+				return;
+			}
+			
+			if(data.opwd != null){
+				$("#show-pwd").html(data.opwd);
+				$("#goods-name").html(title1);
+			}
+			$('#first-step').css('display','none');
+			$('.step-2').css('border-bottom-color', '#2BB8AA');
+			$('#second-step').css('display', 'block');	
+
+		//	meituanPwd(data);
 		}
 	});
 }

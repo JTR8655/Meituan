@@ -12,7 +12,19 @@
 	color: #666;
     font-size: 12px;
 	margin-top:10px;
-	padding-bottom:10px;
+	margin-bottom:10px;
+	border-bottom: 1px solid #ccc;
+}
+.black__green{
+	color:black;
+}
+#promise{
+	border-top: 1px solid #eee;
+    margin-top: 8px;
+    padding-top: 10px;
+    weight:500px;
+    height:28px;
+    background: #ccc;
 }
 .nav a:hover{
 	text-decoration:underline;
@@ -85,13 +97,11 @@
 #price{
 	width:500px;
 	height:41px;
-	
 }
 .price_left{
 	float:left;
 	font-size:12px;
-	padding-top:20px;
-	color:#99B3CD;
+	color:#999;
 }
 
 .price-symbol{
@@ -110,13 +120,13 @@
 	float:left;
 	margin-left:8px;
 	padding-top:15px;
-	color:#99B3CD;
+	color:#999;
 }
 .status{
 	float:left;
 	margin-left:15px;
-	font-size:16px;
-	color:99B3CD;
+	font-size:14px;
+	color:#999;
 }
 .item sans-serif{
 	float:left;
@@ -125,21 +135,7 @@
 	font-size:16px;
 	color:99B3CD;
 }
-#evaluate{
-	width:500px;
-	height:29px;
-	margin-top:15px;
-	border-top:1px solid #999;
-	border-bottom:1px solid #999;
-	padding:6px 0;
-}
-#item{
-	float:left;
-	width:162px;
-	
-	border-right:1px solid;
-	border-right-color:#CCC;
-}
+
 .item{
 	width:40px;
 	height:16px;
@@ -156,7 +152,7 @@
 	float:left;
 	width:162px;
 	border-right:1px solid;
-	border-right-color:#CCC;
+	border-right-color:#eee;
 }
 .item-viewed{
 	width:40px;
@@ -191,7 +187,7 @@
 	float:left;
 	width:500px;
 	height:28px;
-	margin-top:10px;
+	margin:10px 0;
 	background_color:#C36;
 }
 .detail-leading{
@@ -237,13 +233,9 @@
 	padding-right:10px;
 	margin-bottom:5px;
 	margin-right:5px;
-	border:1px #999999 solid;
+	border:2px #2BB8AA solid;
 	font-size:12px;
 	color:#999999;
-}
-.selection-item:hover{
-	border:2px #2BB8AA solid;
-	text-decoration:none;
 }
 #count{
 	width:500px;
@@ -289,9 +281,6 @@
 	height:32px;
 	font-size:16px;
 	}
-.symbol{
-	padding-top:15px;
-}
 .price-symbol{
 	float:left;
 	margin-left:8px;
@@ -308,13 +297,12 @@
 	float:left;
 	margin-left:8px;
 	padding-top:15px;
-	color:#99B3CD;
+	color:#999;
 }
 .status{
 	float:left;
 	margin-left:15px;
-	font-size:16px;
-	color:#99B3CD;
+	font-size:14px;
 }
 .sans-serif{
 	float:left;
@@ -326,34 +314,27 @@
 	width:500px;
 	height:29px;
 	margin-top:15px;
-	border-top:1px solid #999;
-	border-bottom:1px solid #999;
-	padding:6px 0;
+	border-top:1px solid #eee;
+	border-bottom:1px solid #eee;
+	padding-top:6px;
 }
 #item{
 	float:left;
 	width:162px;
-	
-	border-right:1px solid;
-	border-right-color:#CCC;
+	height:23px;
+	border-right:1px solid #eee;
 }
 .item{
 	width:40px;
-	height:16px;
+	height:23px;
 	margin:0 61px;
-	font-size:12px;
+	font-size:14px;
 	color:#999999;
-	line-height:18px;
+	line-height:23px;
 	
 }
 .sold-count{
 	color:orange;
-}
-#item-viewed{
-	float:left;
-	width:162px;
-	border-right:1px solid;
-	border-right-color:#CCC;
 }
 .item-viewed{
 	width:40px;
@@ -416,24 +397,14 @@
 	padding-left:10px;
 	color:#999999;
 	font-size:12px;
-	margin-right:25px;
+	margin-right:35px;
 }
-.selection-item{
-	width:68px;
-	height:50px;
-	padding-top:5px;
-	padding-bottom:5px;
-	padding-left:10px;
-	padding-right:10px;
-	margin-bottom:5px;
-	margin-right:5px;
-	border:1px #999999 solid;
-	font-size:12px;
-	color:#999999;
+.countbutton{
+	cursor:pointer;
 }
-.selection-item:hover{
-	border:2px #2BB8AA solid;
-	text-decoration:none;
+#warn{
+	color:red;
+	display:none;
 }
 #count{
 	width:500px;
@@ -517,7 +488,6 @@
 }
 #goods_car{
 	float:left;
-	background-color:#F5F5F5;
 	width:62px;
 	height:48px;
 	border:1px #F5F5F5 solid;
@@ -526,10 +496,7 @@
 .goods_car_logo img{
 	width:24px;
 	height:27px;
-	padding-left:19px;
-	padding-right:19px;
-	padding-bottom:10px;
-	padding-top:10px;
+	padding:7px 14px 7px 14px;
 }
 #favorite{
 	width:70px;

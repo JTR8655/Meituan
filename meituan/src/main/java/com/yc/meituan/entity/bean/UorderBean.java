@@ -2,7 +2,7 @@ package com.yc.meituan.entity.bean;
 
 public class UorderBean {
 	private Integer oid; // 订单id
-	private Integer oidentifier; // 订单编号
+	private String oidentifier; // 订单编号
 	private Integer muid; // 用户id
 	private Integer gid; // 商品id
 	private String ostatus; // 订单状态
@@ -21,11 +21,11 @@ public class UorderBean {
 		this.oid = oid;
 	}
 
-	public Integer getOidentifier() {
+	public String getOidentifier() {
 		return oidentifier;
 	}
 
-	public void setOidentifier(Integer oidentifier) {
+	public void setOidentifier(String oidentifier) {
 		this.oidentifier = oidentifier;
 	}
 

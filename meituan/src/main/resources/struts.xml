@@ -42,8 +42,10 @@
 		<action name="uorder_listCollection" class="com.yc.meituan.web.action.UorderAction" method="listCollection"></action>
 		<action name="goods_showGoods" class="com.yc.meituan.web.action.GoodsAction" method="showGoods"></action>
 		<action name="uorder_listNoPj" class="com.yc.meituan.web.action.UorderAction" method="listNoPj"></action>
+		<action name="uorder_addUorder" class="com.yc.meituan.web.action.UorderAction" method="addUorder"></action>
 		<action name="evaluate_addEvaluate" class="com.yc.meituan.web.action.EvaluateAction" method="addEvaluate"></action>
 		<action name="evaluate_listPj" class="com.yc.meituan.web.action.EvaluateAction" method="listPj"></action>
 		<action name="goods_showGoodsIntro" class="com.yc.meituan.web.action.GoodsAction" method="showGoodsIntro"></action>
+		<action name="trolley_addToGoodsCar" class="com.yc.meituan.web.action.TrolleyAction" method="addToGoodsCar"></action>
 	</package>
 </struts>

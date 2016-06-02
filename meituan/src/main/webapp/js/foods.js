@@ -22,18 +22,48 @@ function showInfo(data){
 	            +'<span class="valid-through">截止到<span class="edate">'+data[i].b_retime+'</span></span><span class="expiry-notice">周末、法定节假日通用</span>'
 	            +'</span></div><div id="package"><span class="deal-component">套餐</span><span class="scheme-patch"><span>'
 	            +'<a class="selection-item" href="javascript:void()">'+data[i].d_taocan+'</a></span></span></div><div id="count">'
-	            +'<span class="deal-component-detail-leading">数量</span><button id="reduce_item" type="button" data-action="+">−</button>'
-	            +'<input id="J-cart-quantity" type="text" data-max="500" maxlength="9" value="1" name="q"><button id="add_item" type="button"  data-action="+">+</button>'
-	            +'</div><div id="waring"><span id="waring-content">您最少需要购买一件！</span> <span id="close-waring">'
-	            +'<a href="javascript:void(0);" onClick="closeWaring()">X</a></span></div>'
+	            +'<span class="deal-component-detail-leading">数量</span><button id="reduce_item" class="countbutton" type="button" onclick="reduceCount()">−</button>'
+	            +'<input id="J-cart-quantity" type="text" data-max="500" maxlength="9" value="1" name="q"><button id="add_item" class="countbutton" type="button" onclick="addCount()">+</button>'
+	            +'<span id="warn">最少一件起售</span></div>'
 	            +'<div id="accont"><button type="submit" style="color:#fff; font-size:18px; font-weight:bold;" id="sall_button" onClick="submits()">√ 立即抢购</button>'
-	            +'<div id="goods_car"><a title="加入购物车"><i class="goods_car_logo"><img src="images/goods_car.png"/></i></a></div><div id="favorite">'
+	            +'<div id="goods_car"><a onclick="addToGoodsCar('+data[i].gid+')" title="加入购物车"><button class="goods_car_logo"><img src="images/goods_car.png"/></button></a></div><div id="favorite">'
 	            +'<a src="#"><i class="favorite_star"><img src="images/star.png"/></i><span class="fav_font">收藏</span>(<b class="J-fav-count">75</b>)'
 	            +'</a></div><div id="share"><a class="share-tip" src="#"><i class="F-glob-share"><img src="images/share.png"/></i>分享到'
-	            +'</a></div></div></div></div></div>';
+	            +'</a></div></div>';
+				+'<div id="promise" style="display:block">1111111</div>';
+	            +'</div></div></div>';
 		text = data[i].text;
 	    $("#body_mid1").append(value);
 	}
+}
+
+function reduceCount(){
+	var count = $("#J-cart-quantity").val();
+	var reg = /^\d*$/;
+	if(!reg.test(count)){
+		$("#warn").html("请输入有效的数字");
+		$("#warn").css("display","block");
+		return;
+	}
+	if($("#J-cart-quantity").val()<=1){
+		$("#warn").html("最少一件起售");
+		$("#warn").css("display","block");
+	}else{
+		$("#warn").css("display","none");
+		$("#J-cart-quantity").val($("#J-cart-quantity").val()-1);
+	}
+}
+
+function addCount(){
+	var count = $("#J-cart-quantity").val();
+	var reg = /^\d*$/;
+	if(!reg.test(count)){
+		$("#warn").html("请输入有效的数字");
+		$("#warn").css("display","block");
+		return;
+	}
+	$("#warn").css("display","none");
+	$("#J-cart-quantity").val(parseInt($("#J-cart-quantity").val())+1);
 }
 
 //显示该商家的其他商品
@@ -375,7 +405,7 @@ function submits(){
 	var text = $('.tishi1').html();
 	var price = $('.price').html();
 	var gid = $('.get_id').attr('value');
-	window.location.href = 'fair.html?title =' + title + '&text =' + text + '&price =' + price +'&gid =' + gid;
+	window.location.href = 'page/fair.jsp?title =' + title + '&text =' + text + '&price =' + price +'&gid =' + gid;
 }
 function toDecimal(x) {    
     var f = parseFloat(x);    
@@ -385,3 +415,33 @@ function toDecimal(x) {
     f = Math.round(x*100)/100;    
     return f;    
 }  
+
+function addToGoodsCar(gid){
+	var count = $("#J-cart-quantity").val();
+	var reg = /^\d*$/;
+	if(!reg.test(count)){
+		$("#warn").html("请输入有效的数字");
+		$("#warn").css("display","block");
+		return;
+	}else{
+		$("#warn").css("display","none");
+	}
+	$.ajax({
+		type:'post',
+		url:'trolley_addToGoodsCar.action',
+		data:{
+			gid:gid,
+			tcount:count
+		},
+		dataType:'json',
+		success:function(data){
+			if(data == 1){
+				alert("添加成功！");
+			}else if(data == 0){
+				alert("添加失败！");
+			}else if(data == 2){
+				alert("请登陆后重试");
+			}
+		}
+	});
+}

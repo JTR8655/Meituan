@@ -18,6 +18,17 @@ a{
 	display:none;
 	float:left;
 }
+#head_2_left_login {
+	display: none;
+	float: left;
+	margin: 0 10px;
+	line-height: 29px;
+	margin-left: -23px;
+}
+
+#head_2_left_login li {
+    margin-left: 10px;
+}
 #user{
 	display: block;
 }

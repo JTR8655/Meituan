@@ -3,7 +3,7 @@ package com.yc.meituan.entity;
 public class Uorder {
     private Integer oid;
 
-    private Integer oidentifier;
+    private String oidentifier;
 
     private Integer muid;
 
@@ -31,11 +31,11 @@ public class Uorder {
         this.oid = oid;
     }
 
-    public Integer getOidentifier() {
+    public String getOidentifier() {
         return oidentifier;
     }
 
-    public void setOidentifier(Integer oidentifier) {
+    public void setOidentifier(String oidentifier) {
         this.oidentifier = oidentifier;
     }
 

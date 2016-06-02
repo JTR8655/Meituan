@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,31 +14,43 @@
 <script type="text/javascript" src="js/foods.js"></script>
 </head>
 <body>
-	<div id="head_tishi"></div>
     <div id="head">
         <ul>
-   <!--        <li id="head_1">
-                <!-- <div>为了您的账号安全，提供多种校验身份的方式，请<a href="">设置安保问题</a><a href="javascript:void(0)" id="head_1_right">X</a></div> 
-            </li> -->  
             <li id="head_2">
                 <div>
-                    <ul id="head_2_left">
-                        <li><a href="" id="shoucang">收藏美团</a></li>
-                        <li><a href="page/login.jsp" id="login">登录</a></li>
-                        <li><a href="page/register.jsp" id="rrgister">注册</a></li>
-                        <li><a href="" id="massage">|&nbsp;&nbsp;&nbsp;消息<span class="jiantou"></span></a></li>
-                        <li><a href="" id="phone" class="border">手机美团</a></li>
-                    </ul>
-                    <ul id="head_2_right">
-                        <li><a href="">我的订单</a></li>
-                        <li><a href="">我的美团</a></li>
-                        <li><a href="" class="border">|&nbsp;&nbsp;&nbsp;最近浏览</a></li>
-                        <li><a href="" class="border">|&nbsp;&nbsp;&nbsp;购物车0件</a></li>
-                        <li><a href="" class="border">|&nbsp;&nbsp;&nbsp;联系客服</a></li>
-                        <li><a href="" class="border">|&nbsp;&nbsp;&nbsp;我是商家</a></li>
-                        <li><a href="" class="border">|&nbsp;&nbsp;&nbsp;更多</a></li>
-                    </ul>
-                </div>
+					<ul id="head_2_left">
+						<li><a href="" id="shoucang">收藏美团</a></li>
+						<li><a href="page/login.jsp" id="login">登录</a></li>
+						<li><a href="page/register.jsp" id="register">注册</a></li>
+					</ul>
+					<ul id="head_2_left_login">
+						<li><a href="" id="shoucang">收藏美团</a></li>
+						<li><a href="page/order.jsp" id="user">${sessionScope.loginUser.uemail }</a></li>
+						<li><a href="javascript:void(0)" onclick="logOut()"
+							id="logout">退出</a></li>
+					</ul>
+					<ul id="head_2_right">
+						<li><a href="">我的订单</a></li>
+						<li><a href="">我的美团</a></li>
+						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;最近浏览</a></li>
+						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;购物车0件</a></li>
+						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;联系客服</a></li>
+						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;我是商家</a></li>
+						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;更多</a></li>
+					</ul>
+				<c:if test="${sessionScope.loginUser != null}">
+					<script type="text/javascript">
+						$("#head_2_left").css('display','none');
+						$("#head_2_left_login").css("display","block");
+					</script>
+				</c:if>
+				<c:if test="${sessionScope.loginUser == null}">
+					<script type="text/javascript">
+						$("#head_2_left_login").css("display","none");
+						$("#head_2_left").css("display","block");
+					</script>
+				</c:if> 
+				</div>
             </li>
             <li id="head_4">
                 <div id="head_4_left">
@@ -162,34 +175,11 @@
 								onClick="closeWaring()">X</a></span>
 						</div>
 					</div>
-					<div id="accont">
-						<button type="submit"
-							style="color: #fff; font-size: 18px; font-weight: bold;"
-							id="sall_button" onClick="submits()">√ 立即抢购</button>
-						<div id="goods_car">
-							<a title="加入购物车"><i class="goods_car_logo"><img
-									src="images/goods_car.png" /></i></a>
-						</div>
-						<div id="favorite">
-							<a src="#"><i class="favorite_star">
-								<img src="images/star.png" /></i>
-								<span class="fav_font">收藏</span>
-								<b class="J-fav-count">75</b>
-							 </a>
-						</div>
-						<div id="share">
-							<a class="share-tip" src="#"><i class="F-glob-share">
-							<img src="images/share.png" /></i>分享到 </a>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div><!--body_mid1-->
 
 	</div><!--content--> 
-	
-    
-            
  <div id="body_mid2">
     	<div id="body_mid2_left">
         	<table width="702" id="body_mid2_others">

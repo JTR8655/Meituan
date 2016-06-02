@@ -195,7 +195,7 @@ function listCollection(){
 					'<td class="sc_td"><div>'+
 						'<a href="page/foods.jsp?gid= '+ data[i].gid +'"><img src="'+ data[i].img +'"'+
 							'style="float: left;padding-bottom:10px; margin-top: 10px; margin-left: 20px; width: 100px; height: 61px;" /></a>'+
-						'<a href="page/foods.jsp?gid= '+ data[i].gid +'" style="float: left; margin-left: 20px; font-size:12px; margin-top: 33px; color: #666666;"'+
+						'<a href="page/foods.jsp?gid='+ data[i].gid +'" style="float: left; margin-left: 20px; font-size:12px; margin-top: 33px; color: #666666;"'+
 							'class="goods_text_a">'+ data[i].gtitle1 +'</a>'+
 						'</div></td> <td class="sc_td"><div> <p class="goods_text">￥'+ data[i].gprice2 +'</p></div></td>'+
 					'<td class="sc_td"><div> <p class="goods_text">'+ data[i].gstatus +'</p> </div></td>'+
@@ -301,7 +301,7 @@ $(function(){
 				var str = '<div class="v3_content">'+
 					'<div class="v3_img v3_"><img src="'+ data[i].img +'"></div>'+
 					'<div class="v3_evaluated v3_">'+
-					'<p class="v3_gtitle1"><a class="v3_g_goods" href="page/foods.jsp?gid="'+data[i].gid+'>'+ data[i].gtitle1 +'</a> </p>'+
+					'<p class="v3_gtitle1"><a class="v3_g_goods" href="page/foods.jsp?gid='+data[i].gid+'">'+ data[i].gtitle1 +'</a> </p>'+
 					'<p class="v3_grade"> 我的总体评价:&nbsp;&nbsp;<a class="v3_g_point"></a><a style="color:red;font-weight:bold;font-size:14px;">'+ pj +'</a></p>'+
 					'<p class="v3_pl_content">'+ data[i].econtent +'</p> </div> </div>';
 				$("#v3").append(str);

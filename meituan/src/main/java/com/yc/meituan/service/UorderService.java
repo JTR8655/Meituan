@@ -19,4 +19,6 @@ public interface UorderService {
 
 	void updatePlStatus(int oid);
 
+	Uorder addUorder(Uorder uorder);
+
 }

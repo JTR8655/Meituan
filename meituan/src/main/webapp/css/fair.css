@@ -19,6 +19,10 @@ body {
 	margin-top: 20px;
 	float: left;
 }
+#head2{
+	width:75%;
+	height:100%;
+}
 #steps {
 	float: left;
 	list-style: none;
@@ -113,7 +117,16 @@ body {
 	text-align: center;
 	border-bottom: 1px solid #E5E5E5;
 }
-#lower {
+.updateCount{
+	width:34px;
+	height:34px;	
+}
+#amount_0{
+	width:40px;
+	height:32px;
+	text-align: center;
+}
+.lower {
 	background: #eee none repeat scroll 0 0;
     border: 1px solid #ddd;
     color: #666;
@@ -121,8 +134,11 @@ body {
     display: inline-block;
     font-size: 18px;
     font-weight: 700;
-    height: 34px;
     padding: 0 6px 2px;
+    width:34px;
+    height:34px;
+    position:relative;
+    top:1px;
 }
 #amount {
 	-moz-border-bottom-colors: none;
@@ -141,7 +157,7 @@ body {
     text-align: center;
     margin: 0 -4px;
 }
-#adder {
+.adder {
 	background: #eee none repeat scroll 0 0;
     border: 1px solid #ddd;
     color: #666;
@@ -149,8 +165,11 @@ body {
     display: inline-block;
     font-size: 18px;
     font-weight: 700;
-    height: 34px;
     padding: 0 6px 2px;
+    width:34px;
+    height:34px;
+    position:relative;
+    top:1px;
 }
 .fair-amount {
 	width: 140px;
