@@ -405,7 +405,8 @@ function submits(){
 	var text = $('.tishi1').html();
 	var price = $('.price').html();
 	var gid = $('.get_id').attr('value');
-	window.location.href = 'page/fair.jsp?title =' + title + '&text =' + text + '&price =' + price +'&gid =' + gid;
+	var count = $("#J-cart-quantity").val();
+	window.location.href = 'page/fair.jsp?title =' + title + '&text =' + text + '&price =' + price +'&gid =' + gid+'&count =' + count +'&type=fair';
 }
 function toDecimal(x) {    
     var f = parseFloat(x);    

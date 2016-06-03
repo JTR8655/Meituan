@@ -13,11 +13,11 @@
 
 	<package name="default" namespace="/" extends="struts-default">
 		<interceptors>
-			<interceptor name="loginInterceptor" class="com.yc.meituan.web.interceptor.LoginInterceptor"/>
+			<interceptor name="LoginInterceptor" class="com.yc.meituan.web.interceptor.LoginInterceptor"/>
 			<interceptor-stack name="myStack">
 				<interceptor-ref name="defaultStack" />
-				<interceptor-ref name="loginInterceptor" >
-					<param name="includeMethods">vote,save</param><!-- 要过滤的请求方法 -->
+				<interceptor-ref name="LoginInterceptor" >
+					<param name="includeMethods">listNoPj,addUorder,addEvaluate,listPj,addToGoodsCar,uorder_showAllUorder</param><!-- 要过滤的请求方法 -->
 				</interceptor-ref>
 			</interceptor-stack>		
 		</interceptors>
@@ -26,14 +26,18 @@
 		<global-results>
 			<result name="login" type="redirect">page/login.jsp</result>
 		</global-results>
-		<global-allowed-methods>login,register</global-allowed-methods>
+		<global-allowed-methods>login,register,actives</global-allowed-methods>
 		<action name="*_*" class="{1}Action" method="{2}">
 			<!-- <interceptor-ref name="myStack" /> -->
 			<interceptor-ref name="myStack" />
 			<result name="loginSuccess">page/index.jsp</result>
 			<result name="registerSuccess">page/regist_yz.jsp</result>
 			<result name="{2}">/page/{2}.jsp</result> 
+			<result name="activeSuccess">page/reg_ok.jsp</result>
+			<result name="activeFail">page/regist_yz.jsp</result>
 		</action>
+		
+		
 		<action name="user_logout" class="com.yc.meituan.web.action.UserAction" method="logout"></action>
 		<action name="user_findEmail" class="com.yc.meituan.web.action.UserAction" method="findEmail"></action>
 		<action name="user_code" class="com.yc.meituan.web.action.UserAction" method="code"></action>

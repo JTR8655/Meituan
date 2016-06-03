@@ -17,4 +17,9 @@
 	<!--  <select id="sendEmail" parameterType="String" resultType="UserInfo">
 		select * from meituan_user_info where UEMAIL= #{uemail}
 	</select>  -->
+	
+	<update id="changeStatus" parameterType="String">
+		update meituan_user_info set USTATUS=1 where UEMAIL=#{uemail}
+	</update>
+	
 </mapper>

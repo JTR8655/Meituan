@@ -32,7 +32,7 @@ import com.yc.meituan.util.AjaxUtil;
 import com.yc.meituan.util.MeituanData;
 
 @Controller("userAction")
-public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAware {
+public class UserAction implements ModelDriven<UserInfo>, SessionAware, RequestAware {
 
 	@Autowired
 	private UserService userService;
@@ -43,9 +43,13 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 	private Map<String, Object> session;
 	private Map<String, Object> request;
 
-	//登录
 	private String province;
 	private String city;
+	private String uemail;
+
+	public void setUemail(String uemail) {
+		this.uemail = uemail;
+	}
 
 	public void setProvince(String province) {
 		this.province = province;
@@ -60,10 +64,10 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 		LogManager.getLogger().debug("userInfo:" + userInfo);
 		UserInfo user = userService.login(userInfo);
 		LogManager.getLogger().debug("取到的用户：" + user);
-		if(null != user){
+		if (null != user) {
 			session.put(MeituanData.LOGIN_USER, user);
 			return "loginSuccess";
-		}else{
+		} else {
 			session.put(MeituanData.ERROR_MSG, "登陆失败！用户名或密码错误");
 			return "login";
 		}
@@ -72,7 +76,7 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 	// 注销登录
 	public String logout() {
 		int code = 0;
-		if(session.get(MeituanData.LOGIN_USER) != null){
+		if (session.get(MeituanData.LOGIN_USER) != null) {
 			session.remove(MeituanData.LOGIN_USER);
 		}
 
@@ -92,20 +96,20 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 
 		return "none";
 	}
-	
-	public String findEmail(){
-		LogManager.getLogger().debug(""+userInfo.getUemail());
-		//UserInfo userInfos=userService.findEmail(userInfo.getUemail());
-		UserInfo uemail=userService.findEmail(userInfo.getUemail());
+
+	public String findEmail() {
+		LogManager.getLogger().debug("" + userInfo.getUemail());
+		// UserInfo userInfos=userService.findEmail(userInfo.getUemail());
+		UserInfo uemail = userService.findEmail(userInfo.getUemail());
 		LogManager.getLogger().debug(uemail);
-		int status=0;
-		if(uemail!=null){
-			if(uemail.getUemail()!=null&&"".equals(uemail.getUemail())){
-				//存在
-				status=0;
+		int status = 0;
+		if (uemail != null) {
+			if (uemail.getUemail() != null && "".equals(uemail.getUemail())) {
+				// 存在
+				status = 0;
 			}
-		}else{
-			status=1;
+		} else {
+			status = 1;
 		}
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setCharacterEncoding("utf-8");
@@ -120,50 +124,54 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 		}
 		return "none";
 	}
-	
-	
+
 	public String register() {
 		LogManager.getLogger().debug("注册操作+" + userInfo);
 		userInfo.setUaddr(province + "-" + city);
 		try {
-			userInfo=userService.register(userInfo);
-			session.put("userInfo",userInfo);
-			//调用发邮件方法
+			userInfo = userService.register(userInfo);
+			session.put("userInfo", userInfo);
+			// 调用发邮件方法
 			boolean flag = sendEmail(userInfo.getUemail());
 			LogManager.getLogger().debug(flag);
-			if(flag){
+			if (flag) {
 				return "registerSuccess";
 			}
 		} catch (Exception e) {
-		
+
 		}
-		//session.put("regMsg", "该用户已被注册");
+		// session.put("regMsg", "该用户已被注册");
 		return "register";
 	}
 
 	public boolean sendEmail(String toEmail) {
-		MimeMessage mm=javaMailSender.createMimeMessage();
+		MimeMessage mm = javaMailSender.createMimeMessage();
 		try {
-			MimeMessageHelper smm=new MimeMessageHelper(mm,true);
-			smm.setFrom("13298581430@163.com");//邮件发送者
-			smm.setTo(toEmail);//邮件接收者
-			smm.setSubject("美团用户邮箱验证"); //邮件主	
-			smm.setText("<p>Hi~</p>"
-					+"<p><a href='http://localhost:8080/meituan/user_active.action"
-					+"'>感谢您注册,请点击此链接激活您的账号</a></p>", true); //邮件内容
-			javaMailSender.send(mm);//发送邮件
+			MimeMessageHelper smm = new MimeMessageHelper(mm, true);
+			smm.setFrom("13298581430@163.com");// 邮件发送者
+			smm.setTo(toEmail);// 邮件接收者
+			smm.setSubject("美团用户邮箱验证"); // 邮件主
+			smm.setText("<p>Hi~</p>" + "<p><a href='http://localhost:8080/meituan/user_actives.action?uemail="
+					+ toEmail 
+					+ "'>感谢您注册,请点击此链接激活您的账号</a></p>", true); // 邮件内容
+			javaMailSender.send(mm);// 发送邮件
 			return true;
 		} catch (MessagingException e) {
 		}
 		return false;
 	}
-	
-	/*public String active(){
-		LogManager.getLogger().debug("激活操作+" + userInfo);
-		userService.activeUser(userInfo.getUemail());
-		return "activeSuccess";
-		
-	}*/
+
+	public String actives() {
+		LogManager.getLogger().debug("取到的数据："+uemail);
+		try {
+			userService.activeUser(uemail);
+			return "activeSuccess";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "activeFail";
+		}
+	}
+
 	public String code() throws IOException {
 		// 设置响应头 Content-type类型
 		HttpServletRequest request = ServletActionContext.getRequest();
@@ -177,8 +185,7 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 
 		int width = 83, height = 30;
 		// 建立指定宽、高和BufferedImage对象
-		BufferedImage image = new BufferedImage(width, height,
-				BufferedImage.TYPE_INT_RGB);
+		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
 		Graphics g = image.getGraphics(); // 该画笔画在image上
 		Color c = g.getColor(); // 保存当前画笔的颜色，用完画笔后要回复现场
@@ -197,8 +204,7 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 			String rand = new Character(ch[random.nextInt(length)]).toString();
 			sRand += rand;
 			// 设置随机颜色
-			g.setColor(new Color(random.nextInt(255), random.nextInt(255),
-					random.nextInt(255)));
+			g.setColor(new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)));
 			g.drawString(rand, 20 * i + 6, 25);
 		}
 		// 产生随即干扰点
@@ -218,7 +224,7 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		return "none";
 	}
 

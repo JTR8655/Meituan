@@ -39,10 +39,15 @@ public class UserServiceImpl implements UserService {
 	public UserInfo findEmail(String uemail) {
 		return userInfoMapper.findEmail(uemail);
 	}
+
 	@Override
-	public UserInfo activeUser(String uemail) {
-		// TODO Auto-generated method stub
-		return null;
+	public void activeUser(String uemail) {
+		try {
+			userInfoMapper.changeStatus(uemail);
+		} catch (Exception e) {
+			throw new RuntimeException("激活失败",e);
+		}
 	}
+
 	
 }
