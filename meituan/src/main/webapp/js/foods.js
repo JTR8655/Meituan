@@ -136,24 +136,6 @@ function showEvaluateContent(data){
 	}
 }
 
-//显示当前商品的销售信息
-function thisFood(data){
-	var value = '';
-	$('.deal_buy').html('');
-	var item = data.obj;
-	
-	for(var i=0;i<item.length;i++){		
-		if(item[i].TEXT == text){		
-			value += '<span id="buy_price">￥<strong>'+item[i].GPRICE2+'</strong></span><ul>'
-        			+'<li class="seller_price">门店价<br /><p id="real_price">￥'+item[i].GPRICE1+'</p>'
-        			+'</li><li class="seller_price">折扣<br /><p>'+item[i].DISCOUNT+'折</p></li>'
-        			+'<li class="seller_price">已售<br /><p>'+item[i].GSOLDCOUNT+'</p></li></ul><div>'
-                    +'<input id="qianggou" type="submit" value="抢购" ><a id="join_cart" href="javascript:void(0)">加入购物车</a>';					
-		}
-		$('.deal_buy').html(value);
-		return;
-	}
-}
 function othergoods(sid){
 	//显示商家的其他商品
 	$.ajax({
@@ -177,7 +159,7 @@ function mustKnow(data){
 	$("#must_know").html("");
 	for(var i=0;i<data.length;i++){
 		value += '<dt>有效期</dt>'
-		        +'<dd>2015-12-1 至 '+data[i].b_retime+'</dd>'
+		        +'<dd>'+data[i].b_retime+'</dd>'
 	            +'<dt>使用时间</dt>'
 	            +'<dd>'+data[i].b_usetime+'</dd>'
 	            +'<dt>预约提醒</dt>'
@@ -225,8 +207,8 @@ function showEvaluatePoint(data){
     			+'<span id="aggregate-point">'+point+'</span> 分</div>'
     			+'<div id="eva_stars">'
     			+'<span class="back_stars">'
-        		+'<span class="infact_stars" style="width: '+(item[i].GRADE/item[i].AMOUNT)*20+'%;"></span></span></div>'
-        		+'<div id="eva_amount">共有 <span>'+item[i].AMOUNT+'</span> 人评价</div>';
+        		+'<span class="infact_stars" style="width: '+(item[i].grade/item[i].amount)*20+'%;"></span></span></div>'
+        		+'<div id="eva_amount">共有 <span>'+item[i].amount+'</span> 人评价</div>';
 				$("#evaluation_stars").html(value);
 	}
 }
@@ -235,16 +217,15 @@ function showEvaluatePoint(data){
 function showEvaluateContent(data){
 	var value = '';
 	$('#evaluation_contents').html('');
-	var item = data.obj;
-	for(var i=0;i<item.length;i++){
+	for(var i=0;i<data.length;i++){
 		value += '<li><div class="user_info">'
     			+'<div class="user_touxiang">'
-    			+'<img src="images/touxiang.png" /></div><p class="user_id">'+item[i].UACCOUNTS+'</p></div>'
+    			+'<img src="'+data[i].uheadimg+'" /></div><p class="user_id">'+data[i].uaccounts+'</p></div>'
     			+'<div class="evaluation_content"><div>'
-    			+'<span class="back_stars"><p class="infact_stars" style="width:'+item[i].EGRADE_1*20+'%;"></p></span>'
-    			+'<span>'+item[i].TEMP1+'</span></div><div class="contents">'
-    			+'<p>'+item[i].ECONTENT+'</p></div></div></li>';
-				$('#evaluation_contents').html(value);
+    			+'<span class="back_stars"><p class="infact_stars" style="width:'+data[i].egrade_1*20+'%;"></p></span>'
+    			+'<span>'+data[i].temp1+'</span></div><div class="contents">'
+    			+'<p>'+data[i].econtent+'</p></div></div></li>';
+				$('#evaluation_contents').data(value);
 	}
 }
 
@@ -252,14 +233,13 @@ function showEvaluateContent(data){
 function thisFood(data){
 	var value = '';
 	$('.deal_buy').html('');
-	var item = data.obj;
 	
-	for(var i=0;i<item.length;i++){		
-		if(item[i].TEXT == text){		
-			value += '<span id="buy_price">￥<strong>'+item[i].GPRICE2+'</strong></span><ul>'
-        			+'<li class="seller_price">门店价<br /><p id="real_price">￥'+item[i].GPRICE1+'</p>'
-        			+'</li><li class="seller_price">折扣<br /><p>'+item[i].DISCOUNT+'折</p></li>'
-        			+'<li class="seller_price">已售<br /><p>'+item[i].GSOLDCOUNT+'</p></li></ul><div>'
+	for(var i=0;i<data.length;i++){		
+		if(data[i].TEXT == text){		
+			value += '<span id="buy_price">￥<strong>'+data[i].gprice2+'</strong></span><ul>'
+        			+'<li class="seller_price">门店价<br /><p id="real_price">￥'+data[i].gprice1+'</p>'
+        			+'</li><li class="seller_price">折扣<br /><p>'+data[i].privilege+'</p></li>'
+        			+'<li class="seller_price">已售<br /><p>'+data[i].gsoldcount+'</p></li></ul><div>'
                     +'<input id="qianggou" type="submit" value="抢购" ><a id="join_cart" href="javascript:void(0)">加入购物车</a>';					
 		}
 		$('.deal_buy').html(value);
@@ -296,9 +276,8 @@ function othergoods(sid){
 	//显示商家的其他商品
 	$.ajax({
 		type:'post',
-		url:'showGoodsDetails.do',
+		url:'',
 		data:{
-			op:'otherFoods',
 			sid:sid
 		},
 		dataType:'json',
@@ -336,13 +315,13 @@ $(function(){
 		dataType:'json',
 		success:function(data){
 			mustKnow(data);
-			tuanTaoCan(data);
+			//tuanTaoCan(item);
 		}
 	});
 	//显示评分模块
 	$.ajax({
 		type:'post',
-		url:'showGoodsDetails.do',
+		url:'',
 		data:{
 			op:'showEvaluatePoint',
 			gid:gid
@@ -363,6 +342,16 @@ $(function(){
 		dataType:'json',
 		success:function(data){
 			showEvaluateContent(data);
+		}
+	});
+	//显示购买信息
+	$.ajax({
+		type:'post',
+		url:'goods_showGoods.action',
+		dataType:'json',
+		success:function(data){
+			thisFood(data);
+			//tuanTaoCan(item);
 		}
 	});
 });

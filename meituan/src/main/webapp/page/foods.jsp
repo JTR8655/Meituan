@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE>
 <html>
 <head>
 <title>【土火锅烧烤】团购</title>
@@ -299,15 +300,15 @@
 			</div>
 			<!--evaluation_eara-->
 			<div class="deal_buy">
-				<span id="buy_price">￥<strong>39</strong></span>
+				<span id="buy_price">￥<strong><!--  ${sessionScope.goodsbeans.gprice2 }--></strong></span>
 				<ul>
 					<li class="seller_price">门店价<br />
-					<p id="real_price">￥ 50</p>
+					<p id="real_price">￥<h3><!-- ${sessionScope.goodsbeans.gprice1 }  --></h3></p>
 					</li>
 					<li class="seller_price">折扣<br />
-					<p>7.8折</p></li>
+					<p><!-- ${sessionScope.goodsbeans.gprice2 }/${sessionScope.goodsbeans.gprice1}<h3></h3> --></p></li>
 					<li class="seller_price">已售<br />
-					<p>41</p></li>
+					<p><!-- ${sessionScope.goodsbeans.gsoldcount } --></p></li>
 				</ul>
 				<div>
 					<input id="qianggou" type="submit" value="抢购">
@@ -373,14 +374,15 @@
                     </ul>
                 </div>
                 <div class="b_u_c_r">
-                	<img src="basic_images/kefu.png"/><br/>
+                	<img src="../basic_images/kefu.png"/><br/>
                     <a id="kefu">客服电话</a>
                     <p><a id="phone">400-660-5335 </a><a>(9:00-23:00)</a></p><br/>
                     <a>退款、退换货、查看美团券</a><br/>
                     <a id="gaoding" href="">参考教程，轻松搞定!</a>
                 </div>
             </div>
-        </div><!--buttom-->
+        </div><!--b_up-->
+       </div>
         <div id="beian">
         	<div>
 				<center>
@@ -389,16 +391,16 @@
 						&nbsp;京公网安备11010502025545号 &nbsp;<a href="">电子公告服务规则</a>
 					</p>
 					<div>
-						<a href=""><img src="../basic_images/beian_1.png" /></a> <a
-							href=""><img src="../basic_images/beian_2.png" /></a> <a href=""><img
-							src="../basic_images/beian_3.png" /></a> <a href=""><img
-							src="../basic_images/beian_4.png" /></a> <a href=""><img
-							src="../basic_images/beian_5.png" /></a>
+						<a href=""><img src="../basic_images/beian_1.png" /></a> 
+						<a href=""><img src="../basic_images/beian_2.png" /></a>
+						<a href=""><img src="../basic_images/beian_3.png" /></a> 
+						<a href=""><img src="../basic_images/beian_4.png" /></a> 
+						<a href=""><img src="../basic_images/beian_5.png" /></a>
 					</div>
 				</center>
 			</div>
         </div>
-    </div>
+    
 
 </body>
 </html>

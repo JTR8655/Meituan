@@ -5,7 +5,7 @@ import java.util.Date;
 public class UserInfo {
     private Integer muid;
 
-    private String uaccounts;
+    private String uaccounts;//用户名
 
     private String upwd;
 
@@ -25,7 +25,7 @@ public class UserInfo {
 
     private String ujob;
 
-    private String uheadimg;
+    private String uheadimg;//用户头像
 
     private String uinterest;
 
