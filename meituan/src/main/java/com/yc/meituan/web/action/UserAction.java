@@ -158,11 +158,6 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 	}
 	
 	public String actives111(){//UserInfo userInfo
-//		UserInfo user=(UserInfo) session.get(userInfo);
-//		if(null==user){
-//			return "none"; 
-//		}
-	//	LogManager.getLogger().debug("激活操作+" + userInfo);
 		LogManager.getLogger().debug(userInfo.getUemail());
 		userInfo.setUemail(userInfo.getUemail());
 		try {
