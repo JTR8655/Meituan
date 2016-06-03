@@ -10,7 +10,7 @@ public interface UserService {
 	
 	UserInfo findEmail(String uemail);
 
-	UserInfo activeUser(String uemail);
+	void activeUser(String uemail);
 
 
 }

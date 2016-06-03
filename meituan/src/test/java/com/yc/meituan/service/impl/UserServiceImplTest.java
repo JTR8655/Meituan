@@ -2,8 +2,10 @@ package com.yc.meituan.service.impl;
 
 
 import javax.mail.MessagingException;
+import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.logging.log4j.LogManager;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,7 @@ public class UserServiceImplTest {
 	@Autowired
 	private JavaMailSender javaMailSender;
 	
+	
 	@Test
 	public void testRegister() {
 		UserInfo userInfo=new UserInfo();
@@ -30,7 +33,6 @@ public class UserServiceImplTest {
 		userInfo.setUemail("89@QQ.COM");
 		userInfo.setUaddr("长沙");
 		userService.register(userInfo);
-		
 	}
 	@Test
 	public void testsendEmail() {
@@ -48,6 +50,14 @@ public class UserServiceImplTest {
 		} catch (MessagingException e) {
 		}
 		System.out.println("邮件发送成功03");
+	}
+	
+	@Test
+	public void testActiveUser(){
+		UserInfo user=new UserInfo();
+		user.setUemail("918811028@qq.com");
+		userService.activeUser(user.getUemail());
+		
 	}
 
 }

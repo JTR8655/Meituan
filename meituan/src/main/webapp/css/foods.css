@@ -177,7 +177,6 @@
 	line-height:18px;
 }
 #data{
-	float:left;
 	width:500px;
 	height:28px;
 	margin-top:10px;
@@ -374,6 +373,12 @@
 	font-size:14px;
 	color:orange;
 	line-height:18px;
+}
+#data{
+	width:500px;
+	height:28px;
+	margin-top:10px;
+	background_color:#C36;
 }
 .detail-leading{
 	width:60px;

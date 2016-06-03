@@ -27,11 +27,11 @@ public class GoodsAction implements ModelDriven<GoodsBean>, SessionAware, Reques
 	private EvaluateBean evaluateBean;
 	private Map<String, Object> session;
 	private Map<String, Object> request;
+	
 	@Autowired
 	private GoodsService goodsService;
 	@Autowired
 	private ShowGoodsService showGoodsService;
-
 	public String indexGoods(){
 		List<GoodsInfo> goodsInfos = goodsService.listGoodsInIndex();
 		Gson gson = new Gson();
@@ -107,6 +107,12 @@ public class GoodsAction implements ModelDriven<GoodsBean>, SessionAware, Reques
 	}
 	
 
+	
+	
+	
+	
+	
+	
 	@Override
 	public void setRequest(Map<String, Object> request) {
 		this.request = request;

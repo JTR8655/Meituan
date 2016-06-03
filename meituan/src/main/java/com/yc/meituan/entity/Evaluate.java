@@ -2,34 +2,41 @@ package com.yc.meituan.entity;
 
 public class Evaluate {
 
-    private Integer eid;//评价表编号
+	private Integer hid;
 
-    private Integer muid;//会员编号
+	private Integer eid;// 评价表编号
 
-    private Integer oid;//订单编号
+	private Integer muid;// 会员编号
 
     private Double egrade_1;//服务分
 
+	private Integer oid;// 订单编号
+
     private Double egrade_2;//口味分
+//	private Double egrade_1;// 服务分
 
     private Double egrade_3;//环境分
+	//private Double egrade_2;// 口味分
 
     private Double egrade_4;//总评分
     
-    private Integer hid;
+   // private Integer hid;
+	//private Double egrade_3;// 环境分
 
-    private String econtent;//长时间未评价，系统默认好评
+	//private Double egrade_4;// 总评分
 
-    private String img;//评价图片
+	private String econtent;// 长时间未评价，系统默认好评
 
-    private Integer hidename;//评论人的用户名，默认为匿名
+	private String img;// 评价图片
 
     private String temp1;//评论时间
+    
+	private Integer hidename;// 评论人的用户名，默认为匿名
 
 	public Integer getEid() {
 		return eid;
 	}
-
+	
 	public void setEid(Integer eid) {
 		this.eid = eid;
 	}
@@ -121,6 +128,8 @@ public class Evaluate {
 	public void setTemp1(String temp1) {
 		this.temp1 = temp1;
 	}
+
+	
 
 	@Override
 	public String toString() {

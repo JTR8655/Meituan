@@ -20,7 +20,7 @@
 	</c:if>
 	<c:remove var="errMsg" scope="session" />
 	<header class="header">
-		<a class="site_logo" href="index.html"><img src="images/a.png"></a>
+		<a class="site_logo" href="page/index.jsp"><img src="images/a.png"></a>
 	</header>
 	<div id="mainBody">
 		<div id="login_left">

@@ -7,7 +7,6 @@ public class Collections {
 
     private Integer gid;
 
-    private String cstatus;
 
     public Integer getCid() {
         return cid;
@@ -33,16 +32,9 @@ public class Collections {
         this.gid = gid;
     }
 
-    public String getCstatus() {
-        return cstatus;
-    }
-
-    public void setCstatus(String cstatus) {
-        this.cstatus = cstatus == null ? null : cstatus.trim();
-    }
 
 	@Override
 	public String toString() {
-		return "Collection [cid=" + cid + ", muid=" + muid + ", gid=" + gid + ", cstatus=" + cstatus + "]";
+		return "Collection [cid=" + cid + ", muid=" + muid + ", gid=" + gid + "]";
 	}
 }

@@ -18,6 +18,9 @@ a{
 	display:none;
 	float:left;
 }
+#user{
+	display: block;
+}
 #head_1{
 	background:#FFF6DB;
 	display:block;
@@ -228,6 +231,7 @@ a{
 	height:100%;
 	margin:0px 25px;
 	text-align:center;
+	font-size:16px;
 }
 #nav{
 	position:absolute;

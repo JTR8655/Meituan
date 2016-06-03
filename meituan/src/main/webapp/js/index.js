@@ -56,13 +56,6 @@ $(function(){
 	});
 });*/
 
-$(function(){
-	$.ajax({
-		type:'post',
-		data:{op:''},
-	});
-	
-});
 //显示图片
 function showPic(){
 	if(arguments.length>0){

@@ -5,13 +5,54 @@
 
 <struts>
 
-	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<!-- <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.devMode" value="true" /> 
+	
+	 把struts的action对象交给spring容器管理
+	<constant name="struts.objectFactory " value="spring" />
+
+	<package name="default" extends="struts-default">
+		<interceptors>
+			<interceptor name="loginInterceptor" class="com.yc.meituan.web.interceptor.LoginInterceptor"/>
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="loginInterceptor" >
+					<param name="includeMethods">vote,save</param>要过滤的请求方法
+				</interceptor-ref>
+			</interceptor-stack>		
+		</interceptors>
+		
+		全局result : 表示在对应action中没有找对应result后，就到全局result中找 
+		<global-results>
+			<result name="login" type="redirect">page/login.jsp</result>
+		</global-results>
+		<global-allowed-methods>login</global-allowed-methods>
+		<action name="*_*" class="{1}Action" method="{2}">
+
+			 <interceptor-ref name="myStack" />
+
+			<interceptor-ref name="myStack" />
+			<result name="loginSuccess">page/index.jsp</result>
+
+			<result name="{2}">/page/{2}.jsp</result> 
+		</action>
+		<action name="user_logout" class="com.yc.meituan.web.action.UserAction" method="logout"></action>
+		<action name="user_findEmail" class="com.yc.meituan.web.action.UserAction" method="findEmail"></action>
+		<action name="user_code" class="com.yc.meituan.web.action.UserAction" method="code"></action>
+		<action name="goods_indexGoods" class="com.yc.meituan.web.action.GoodsAction" method="indexGoods"></action>
+		<action name="goods_showGoods" class="com.yc.meituan.web.action.GoodsAction" method="showGoods"></action>
+		<action name="goods_showGoodsIntro" class="com.yc.meituan.web.action.GoodsAction" method="showGoodsIntro"></action>
+		<action name="goods_showEvaluate" class="com.yc.meituan.web.action.GoodsAction" method="showEvaluate" ></action>
+	</package> -->
+
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<constant name="struts.devMode" value="true" /> 
 	
 	 <!-- 把struts的action对象交给spring容器管理 -->
 	<constant name="struts.objectFactory " value="spring" />
 
-	<package name="default" extends="struts-default">
+	<package name="default" namespace="/" extends="struts-default">
 		<interceptors>
 			<interceptor name="loginInterceptor" class="com.yc.meituan.web.interceptor.LoginInterceptor"/>
 			<interceptor-stack name="myStack">
@@ -26,22 +67,29 @@
 		<global-results>
 			<result name="login" type="redirect">page/login.jsp</result>
 		</global-results>
-		<global-allowed-methods>login</global-allowed-methods>
+		<global-allowed-methods>login,register,actives</global-allowed-methods>
 		<action name="*_*" class="{1}Action" method="{2}">
-
-			<!--  <interceptor-ref name="myStack" />-->
-
+			<!-- <interceptor-ref name="myStack" /> -->
 			<interceptor-ref name="myStack" />
 			<result name="loginSuccess">page/index.jsp</result>
-
+			<result name="registerSuccess">page/regist_yz.jsp</result>
+			<!-- <result name="activeSuccess">page/reg_ok.jsp</result>
+			<result name="activeFail">page/regist_yz.jsp</result> -->
+			<!-- <result name="activeFail"></result>activeFail -->
 			<result name="{2}">/page/{2}.jsp</result> 
+		</action>
+		<action name="user_actives" class="com.yc.meituan.web.action.UserAction" method="actives111">
+			<result name="activeSuccess">page/reg_ok.jsp</result>
+			<result name="activeFail">page/regist_yz.jsp</result>
 		</action>
 		<action name="user_logout" class="com.yc.meituan.web.action.UserAction" method="logout"></action>
 		<action name="user_findEmail" class="com.yc.meituan.web.action.UserAction" method="findEmail"></action>
 		<action name="user_code" class="com.yc.meituan.web.action.UserAction" method="code"></action>
 		<action name="goods_indexGoods" class="com.yc.meituan.web.action.GoodsAction" method="indexGoods"></action>
-		<action name="goods_showGoods" class="com.yc.meituan.web.action.GoodsAction" method="showGoods"></action>
-		<action name="goods_showGoodsIntro" class="com.yc.meituan.web.action.GoodsAction" method="showGoodsIntro"></action>
-		<action name="goods_showEvaluate" class="com.yc.meituan.web.action.GoodsAction" method="showEvaluate" ></action>
+		<action name="uorder_showAllUorder" class="com.yc.meituan.web.action.UorderAction" method="showAllUorder"></action>
+		<action name="uorder_listCollection" class="com.yc.meituan.web.action.UorderAction" method="listCollection"></action>
+		<action name="goods_showGoods" class="com.yc.meituan.web.action.ShowGoodsAction" method="showGoods"></action>
+		<action name="uorder_listNoPj" class="com.yc.meituan.web.action.UorderAction" method="listNoPj"></action>
+		<action name="evaluate_addEvaluate" class="com.yc.meituan.web.action.EvaluateAction" method="addEvaluate"></action>
 	</package>
 </struts>

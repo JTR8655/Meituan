@@ -11,11 +11,10 @@
 	
 	<insert id="reg" parameterType="com.yc.meituan.entity.UserInfo" >
 		<!-- insert into meituan_user_info values(seq_meituanuser.nextval,#{uaccounts},#{upwd},#{uemail},default,default,default,null,null,null,null,null,default,#{uaddr},sysdate) -->
-		insert into meituan_user_info(MUID,UACCOUNTS,UPWD,UEMAIL,UADDR) values(seq_meituanuser.nextval,#{uaccounts},#{upwd},#{uemail},#{uaddr})
-		
+		insert into meituan_user_info(MUID,UACCOUNTS,UPWD,UEMAIL,"UADDR",USTATUS) values(seq_meituanuser.nextval,#{uaccounts},#{upwd},#{uemail},#{uaddr},default)
 	</insert>
 	
-	<!--  <select id="sendEmail" parameterType="String" resultType="UserInfo">
-		select * from meituan_user_info where UEMAIL= #{uemail}
-	</select>  -->
+	<update id="changeStatus" parameterType="String">
+		update meituan_user_info set USTATUS=1 where UEMAIL=#{uemail}
+	</update>
 </mapper>
