@@ -1,13 +1,16 @@
 package com.yc.meituan.web.action;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Map;
-import java.io.*;
 import java.util.Random;
-import java.awt.*;
-import java.awt.image.*;
+
+
 
 import javax.imageio.*;
 import javax.mail.MessagingException;
@@ -24,11 +27,11 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 import com.yc.meituan.entity.UserInfo;
 import com.yc.meituan.service.UserService;
-import com.yc.meituan.util.VoteData;
+import com.yc.meituan.util.AjaxUtil;
+import com.yc.meituan.util.MeituanData;
 
 @Controller("userAction")
 public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAware {
@@ -42,6 +45,7 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 	private Map<String, Object> session;
 	private Map<String, Object> request;
 
+	//登录
 	private String province;
 	private String city;
 
@@ -57,11 +61,12 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 	public String login() {
 		LogManager.getLogger().debug("userInfo:" + userInfo);
 		UserInfo user = userService.login(userInfo);
-		if (null != user) {
-			session.put(VoteData.LOGIN_USER, user);
+		LogManager.getLogger().debug("取到的用户：" + user);
+		if(null != user){
+			session.put(MeituanData.LOGIN_USER, user);
 			return "loginSuccess";
-		} else {
-			session.put(VoteData.ERROR_MSG, "登陆失败！用户名或密码错误");
+		}else{
+			session.put(MeituanData.ERROR_MSG, "登陆失败！用户名或密码错误");
 			return "login";
 		}
 	}
@@ -69,10 +74,12 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 	// 注销登录
 	public String logout() {
 		int code = 0;
-		if (session.get(VoteData.LOGIN_USER) != null) {
-			session.remove(VoteData.LOGIN_USER);
-			code = 1;
+		if(session.get(MeituanData.LOGIN_USER) != null){
+			session.remove(MeituanData.LOGIN_USER);
 		}
+
+		AjaxUtil.stringAjaxResponse(code + "");
+		LogManager.getLogger().debug("注销成功");
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("charset=utf-8");
@@ -124,29 +131,24 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 			userInfo=userService.register(userInfo);
 			session.put("userInfo",userInfo);
 			//调用发邮件方法
-			boolean flag = sendEmail(userInfo.getUemail());
+			boolean flag = sendEmail(userInfo.getUemail(),userInfo);
 			if(flag){
 				return "registerSuccess";
 			}
-			session.put("userInfo",userInfo);
-			
-			
 		} catch (Exception e) {
-		
 		}
-		//session.put("regMsg", "该用户已被注册");
 		return "register";
 	}
 
-	public boolean sendEmail(String toEmail) {
+	public boolean sendEmail(String toEmail,UserInfo userInfo) {
 		MimeMessage mm=javaMailSender.createMimeMessage();
 		try {
 			MimeMessageHelper smm=new MimeMessageHelper(mm,true);
 			smm.setFrom("13298581430@163.com");//邮件发送者
 			smm.setTo(toEmail);//邮件接收者
 			smm.setSubject("美团用户邮箱验证"); //邮件主	
-			smm.setText("<p>Hi~</p>"
-					+"<p><a href='http://localhost:8080/meituan/user_active.action"
+			smm.setText("<p>Hi~"+userInfo.getUaccounts()+"</p>"
+					+"<p><a href='http://localhost:8080/meituan/user_actives.action?uemail="+userInfo.getUemail()
 					+"'>感谢您注册,请点击此链接激活您的账号</a></p>", true); //邮件内容
 			javaMailSender.send(mm);//发送邮件
 			return true;
@@ -155,12 +157,22 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 		return false;
 	}
 	
-	/*public String active(){
-		LogManager.getLogger().debug("激活操作+" + userInfo);
-		userService.activeUser(userInfo.getUemail());
-		return "activeSuccess";
-		
-	}*/
+	public String actives111(){//UserInfo userInfo
+//		UserInfo user=(UserInfo) session.get(userInfo);
+//		if(null==user){
+//			return "none"; 
+//		}
+	//	LogManager.getLogger().debug("激活操作+" + userInfo);
+		LogManager.getLogger().debug(userInfo.getUemail());
+		userInfo.setUemail(userInfo.getUemail());
+		try {
+			userService.activeUser(userInfo.getUemail());
+			return "activeSuccess";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "activeFail";
+		}
+	}
 	public String code() throws IOException {
 		// 设置响应头 Content-type类型
 		HttpServletRequest request = ServletActionContext.getRequest();

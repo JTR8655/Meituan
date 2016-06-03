@@ -42,6 +42,7 @@ $(document).ready(function(){
 			//判断是否注册，以及输入是否合法
 			var email=$("#email").val();
 			var zhengze=/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+//			/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
 			if(email.match(zhengze)){
 				$.ajax({
 					method:'POST',

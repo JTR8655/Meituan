@@ -22,7 +22,7 @@
                 <div>
                     <ul id="head_2_left">
                         <li><a href="" id="shoucang">收藏美团</a></li>
-                        <li><a href="login.html" id="login">登录</a></li>
+                        <li><a href="login.jsp" id="login">登录</a></li>
                         <li><a href="" id="rrgister">注册</a></li>
                         <li><a href="" id="massage">|&nbsp;&nbsp;&nbsp;消息<span class="jiantou"></span></a></li>
                         <li><a href="" id="phone" class="border">手机美团</a></li>
@@ -40,7 +40,7 @@
             </li>
             <li id="head_4">
                 <div id="head_4_left">
-                    <a href="index.html" id="logo"><img id="logo_img" src="../images/smalljpg.png"></a>
+                    <a href="index.jsp" id="logo"><img id="logo_img" src="../images/smalljpg.png"></a>
                     <a href="" class="didian" id="city">衡阳</a><br/>
                     <a href="" class="didian" id="qiehuan">切换城市</a>
                 </div><!--head_4_left-->
@@ -73,7 +73,7 @@
             <li id="head_5">
                 <p>全部分类</p>
                 <ul>
-                    <li class="head_5_li"><a href="index.html"><h4>首页</h4></a></li>
+                    <li class="head_5_li"><a href="index.jsp"><h4>首页</h4></a></li>
                     <li class="head_5_li"><a href=""><h4>今日新单</h4></a></li>
                     <li class="head_5_li"><a href=""><h4>身边团购</h4></a></li>
                 </ul>
@@ -237,10 +237,10 @@
 				<dd>item[i].b_serve</dd>
 			</dl>
 	</div>
-    <div>
+     <!--<div>
         <p class="trem_title"><a name="xiangqing">本单详情</a></p>
         <p class="standard_bar">美味尽享</p>
-        <table class="deal_menu">
+         <table class="deal_menu">
         	<thead style="border-bottom:#000; background:#f0f0f0;">
             	<th class="goods_name">套餐内容</th>
                 <th class="goods_price">单价</th>
@@ -256,8 +256,8 @@
 					</tr>
 					
 				</tbody>
-			</table>
-    </div>
+		</table>
+    </div>-->
     <div>
     	<p class="trem_title"><a name="jieshao">消费评价</a></p>
         <p class="standard_bar" style="margin-top:40px;">全部评价</p>

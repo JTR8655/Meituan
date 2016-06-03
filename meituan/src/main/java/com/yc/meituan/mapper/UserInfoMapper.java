@@ -11,5 +11,7 @@ public interface UserInfoMapper {
 	UserInfo findEmail(String uemail);
 
 	UserInfo sendEmail(String uemail);
+
+	void changeStatus(String uemail);
 	
 }

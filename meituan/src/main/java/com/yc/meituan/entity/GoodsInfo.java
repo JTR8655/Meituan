@@ -1,11 +1,9 @@
 package com.yc.meituan.entity;
 
-import java.util.Date;
-
 public class GoodsInfo {
     private Integer gid;
 
-    private Date gdate;
+    private String gdate;
 
     private String privilege;
 
@@ -37,11 +35,11 @@ public class GoodsInfo {
         this.gid = gid;
     }
 
-    public Date getGdate() {
+    public String getGdate() {
         return gdate;
     }
 
-    public void setGdate(Date gdate) {
+    public void setGdate(String gdate) {
         this.gdate = gdate;
     }
 

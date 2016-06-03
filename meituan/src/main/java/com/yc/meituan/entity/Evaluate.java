@@ -1,120 +1,132 @@
 package com.yc.meituan.entity;
 
 public class Evaluate {
-    private Integer eid;
 
-    private Integer muid;
+	private Integer hid;
 
-    private Integer oid;
+	private Integer eid;// 评价表编号
 
-    private Double egrade1;
+	private Integer muid;// 会员编号
 
-    private Double egrade2;
+	private Integer oid;// 订单编号
 
-    private Double egrade3;
+	private Double egrade_1;// 服务分
 
-    private Double egrade4;
+	private Double egrade_2;// 口味分
 
-    private String econtent;
+	private Double egrade_3;// 环境分
 
-    private String img;
+	private Double egrade_4;// 总评分
 
-    private Integer hidename;
+	private String econtent;// 长时间未评价，系统默认好评
 
-    private String temp1;
+	private String img;// 评价图片
 
-    public Integer getEid() {
-        return eid;
-    }
+	private Integer hidename;// 评论人的用户名，默认为匿名
 
-    public void setEid(Integer eid) {
-        this.eid = eid;
-    }
+	private String temp1;// 备用字段
 
-    public Integer getMuid() {
-        return muid;
-    }
+	public Integer getHid() {
+		return hid;
+	}
 
-    public void setMuid(Integer muid) {
-        this.muid = muid;
-    }
+	public void setHid(Integer hid) {
+		this.hid = hid;
+	}
 
-    public Integer getOid() {
-        return oid;
-    }
+	public Integer getEid() {
+		return eid;
+	}
 
-    public void setOid(Integer oid) {
-        this.oid = oid;
-    }
+	public void setEid(Integer eid) {
+		this.eid = eid;
+	}
 
-    public Double getEgrade1() {
-        return egrade1;
-    }
+	public Integer getMuid() {
+		return muid;
+	}
 
-    public void setEgrade1(Double egrade1) {
-        this.egrade1 = egrade1;
-    }
+	public void setMuid(Integer muid) {
+		this.muid = muid;
+	}
 
-    public Double getEgrade2() {
-        return egrade2;
-    }
+	public Integer getOid() {
+		return oid;
+	}
 
-    public void setEgrade2(Double egrade2) {
-        this.egrade2 = egrade2;
-    }
+	public void setOid(Integer oid) {
+		this.oid = oid;
+	}
 
-    public Double getEgrade3() {
-        return egrade3;
-    }
+	public String getEcontent() {
+		return econtent;
+	}
 
-    public void setEgrade3(Double egrade3) {
-        this.egrade3 = egrade3;
-    }
+	public void setEcontent(String econtent) {
+		this.econtent = econtent == null ? null : econtent.trim();
+	}
 
-    public Double getEgrade4() {
-        return egrade4;
-    }
+	public String getImg() {
+		return img;
+	}
 
-    public void setEgrade4(Double egrade4) {
-        this.egrade4 = egrade4;
-    }
+	public void setImg(String img) {
+		this.img = img == null ? null : img.trim();
+	}
 
-    public String getEcontent() {
-        return econtent;
-    }
+	public Integer getHidename() {
+		return hidename;
+	}
 
-    public void setEcontent(String econtent) {
-        this.econtent = econtent == null ? null : econtent.trim();
-    }
+	public void setHidename(Integer hidename) {
+		this.hidename = hidename;
+	}
 
-    public String getImg() {
-        return img;
-    }
+	public String getTemp1() {
+		return temp1;
+	}
 
-    public void setImg(String img) {
-        this.img = img == null ? null : img.trim();
-    }
+	public void setTemp1(String temp1) {
+		this.temp1 = temp1 == null ? null : temp1.trim();
+	}
 
-    public Integer getHidename() {
-        return hidename;
-    }
+	public Double getEgrade_1() {
+		return egrade_1;
+	}
 
-    public void setHidename(Integer hidename) {
-        this.hidename = hidename;
-    }
+	public void setEgrade_1(Double egrade_1) {
+		this.egrade_1 = egrade_1;
+	}
 
-    public String getTemp1() {
-        return temp1;
-    }
+	public Double getEgrade_2() {
+		return egrade_2;
+	}
 
-    public void setTemp1(String temp1) {
-        this.temp1 = temp1 == null ? null : temp1.trim();
-    }
+	public void setEgrade_2(Double egrade_2) {
+		this.egrade_2 = egrade_2;
+	}
+
+	public Double getEgrade_3() {
+		return egrade_3;
+	}
+
+	public void setEgrade_3(Double egrade_3) {
+		this.egrade_3 = egrade_3;
+	}
+
+	public Double getEgrade_4() {
+		return egrade_4;
+	}
+
+	public void setEgrade_4(Double egrade_4) {
+		this.egrade_4 = egrade_4;
+	}
 
 	@Override
 	public String toString() {
-		return "Evaluate [eid=" + eid + ", muid=" + muid + ", oid=" + oid + ", egrade1=" + egrade1 + ", egrade2="
-				+ egrade2 + ", egrade3=" + egrade3 + ", egrade4=" + egrade4 + ", econtent=" + econtent + ", img=" + img
-				+ ", hidename=" + hidename + ", temp1=" + temp1 + "]";
+		return "Evaluate [hid=" + hid + ", eid=" + eid + ", muid=" + muid + ", oid=" + oid + ", egrade_1=" + egrade_1
+				+ ", egrade_2=" + egrade_2 + ", egrade_3=" + egrade_3 + ", egrade_4=" + egrade_4 + ", econtent="
+				+ econtent + ", img=" + img + ", hidename=" + hidename + ", temp1=" + temp1 + "]";
 	}
+
 }
