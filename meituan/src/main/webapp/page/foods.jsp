@@ -1,46 +1,60 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<base href="/meituan/">
 <title>【土火锅烧烤】团购</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta charset="utf-8">
-<link href="../css/basic.css" type="text/css" rel="stylesheet">
-<link href="../css/foods.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
-<script type="text/javascript" src="../js/foods.js"></script>
+<link href="css/basic.css" type="text/css" rel="stylesheet">
+<link href="css/foods.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="js/foods.js"></script>
 </head>
 <body>
-	<div id="head_tishi"></div>
     <div id="head">
         <ul>
-   <!--        <li id="head_1">
-                <!-- <div>为了您的账号安全，提供多种校验身份的方式，请<a href="">设置安保问题</a><a href="javascript:void(0)" id="head_1_right">X</a></div> 
-            </li> -->  
             <li id="head_2">
                 <div>
-                    <ul id="head_2_left">
-                        <li><a href="" id="shoucang">收藏美团</a></li>
-                        <li><a href="login.jsp" id="login">登录</a></li>
-                        <li><a href="" id="rrgister">注册</a></li>
-                        <li><a href="" id="massage">|&nbsp;&nbsp;&nbsp;消息<span class="jiantou"></span></a></li>
-                        <li><a href="" id="phone" class="border">手机美团</a></li>
-                    </ul>
-                    <ul id="head_2_right">
-                        <li><a href="">我的订单</a></li>
-                        <li><a href="">我的美团</a></li>
-                        <li><a href="" class="border">|&nbsp;&nbsp;&nbsp;最近浏览</a></li>
-                        <li><a href="" class="border">|&nbsp;&nbsp;&nbsp;购物车0件</a></li>
-                        <li><a href="" class="border">|&nbsp;&nbsp;&nbsp;联系客服</a></li>
-                        <li><a href="" class="border">|&nbsp;&nbsp;&nbsp;我是商家</a></li>
-                        <li><a href="" class="border">|&nbsp;&nbsp;&nbsp;更多</a></li>
-                    </ul>
-                </div>
+					<ul id="head_2_left">
+						<li><a href="" id="shoucang">收藏美团</a></li>
+						<li><a href="page/login.jsp" id="login">登录</a></li>
+						<li><a href="page/register.jsp" id="register">注册</a></li>
+					</ul>
+					<ul id="head_2_left_login">
+						<li><a href="" id="shoucang">收藏美团</a></li>
+						<li><a href="page/order.jsp" id="user">${sessionScope.loginUser.uemail }</a></li>
+						<li><a href="javascript:void(0)" onclick="logOut()"
+							id="logout">退出</a></li>
+					</ul>
+					<ul id="head_2_right">
+						<li><a href="">我的订单</a></li>
+						<li><a href="">我的美团</a></li>
+						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;最近浏览</a></li>
+						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;购物车0件</a></li>
+						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;联系客服</a></li>
+						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;我是商家</a></li>
+						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;更多</a></li>
+					</ul>
+				<c:if test="${sessionScope.loginUser != null}">
+					<script type="text/javascript">
+						$("#head_2_left").css('display','none');
+						$("#head_2_left_login").css("display","block");
+					</script>
+				</c:if>
+				<c:if test="${sessionScope.loginUser == null}">
+					<script type="text/javascript">
+						$("#head_2_left_login").css("display","none");
+						$("#head_2_left").css("display","block");
+					</script>
+				</c:if> 
+				</div>
             </li>
             <li id="head_4">
                 <div id="head_4_left">
-                    <a href="index.jsp" id="logo"><img id="logo_img" src="../images/smalljpg.png"></a>
+                    <a href="page/index.jsp" id="logo"><img id="logo_img" src="images/smalljpg.png"></a>
                     <a href="" class="didian" id="city">衡阳</a><br/>
                     <a href="" class="didian" id="qiehuan">切换城市</a>
                 </div><!--head_4_left-->
@@ -65,15 +79,15 @@
                     </ul>
                 </div><!--head_4_mid-->
                 <div id="head_4_right">
-                    <div id="suishi" class="baozhang"><a href="" id="bao_1"><img src="../basic_images/suishi.png"></a></div>
-                    <div id="miandan" class="baozhang"><a href="" id="bao_2"><img src="../basic_images/miandan.png"></a></div>
-                    <div id="guoqi" class="baozhang"><a href="" id="bao_3"><img src="../basic_images/guoqi.png"></a></div>
+                    <div id="suishi" class="baozhang"><a href="" id="bao_1"><img src="basic_images/suishi.png"></a></div>
+                    <div id="miandan" class="baozhang"><a href="" id="bao_2"><img src="basic_images/miandan.png"></a></div>
+                    <div id="guoqi" class="baozhang"><a href="" id="bao_3"><img src="basic_images/guoqi.png"></a></div>
                 </div><!--head_4_right-->
             </li><!--head_4-->
             <li id="head_5">
                 <p>全部分类</p>
                 <ul>
-                    <li class="head_5_li"><a href="index.jsp"><h4>首页</h4></a></li>
+                    <li class="head_5_li"><a href="page/index.jsp"><h4>首页</h4></a></li>
                     <li class="head_5_li"><a href=""><h4>今日新单</h4></a></li>
                     <li class="head_5_li"><a href=""><h4>身边团购</h4></a></li>
                 </ul>
@@ -140,7 +154,7 @@
 					<div id="data">
 						<span class="detail-leading">有效期</span><span class="text-containe">
 							<span class="valid-through">截止到
-							<span class="edate">2016.12.30</span>
+								<span class="edate">2016.12.30</span>
 							</span>
 							<span class="expiry-notice">周末、法定节假日通用</span>
 						</span>
@@ -161,34 +175,11 @@
 								onClick="closeWaring()">X</a></span>
 						</div>
 					</div>
-					<div id="accont">
-						<button type="submit"
-							style="color: #fff; font-size: 18px; font-weight: bold;"
-							id="sall_button" onClick="submits()">√ 立即抢购</button>
-						<div id="goods_car">
-							<a title="加入购物车"><i class="goods_car_logo"><img
-									src="../images/goods_car.png" /></i></a>
-						</div>
-						<div id="favorite">
-							<a src="#"><i class="favorite_star">
-								<img src="../images/star.png" /></i>
-								<span class="fav_font">收藏</span>
-								<b class="J-fav-count">75</b>
-							 </a>
-						</div>
-						<div id="share">
-							<a class="share-tip" src="#"><i class="F-glob-share">
-							<img src="../images/share.png" /></i>分享到 </a>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div><!--body_mid1-->
 
 	</div><!--content--> 
-	
-    
-            
  <div id="body_mid2">
     	<div id="body_mid2_left">
         	<table width="702" id="body_mid2_others">
@@ -213,8 +204,8 @@
 			</table>
         </div><!--body_mid2_left-->
         <div id="body_mid2_right">
-        	<a href="#"><img class="mid2_guanggao1" src="../images/guanggao1.png"/></a>
-            <a href="#"><img class="mid2_guanggao2" src="../images/guanggao2.png"/></a>
+        	<a href="#"><img class="mid2_guanggao1" src="images/guanggao1.png"/></a>
+            <a href="#"><img class="mid2_guanggao2" src="images/guanggao2.png"/></a>
         </div><!--body_mid2_right-->
  </div><!--body_mid2-->
 <div id="foods_introduce">
@@ -237,10 +228,10 @@
 				<dd>item[i].b_serve</dd>
 			</dl>
 	</div>
-     <!--<div>
+    <div>
         <p class="trem_title"><a name="xiangqing">本单详情</a></p>
         <p class="standard_bar">美味尽享</p>
-         <table class="deal_menu">
+        <table class="deal_menu">
         	<thead style="border-bottom:#000; background:#f0f0f0;">
             	<th class="goods_name">套餐内容</th>
                 <th class="goods_price">单价</th>
@@ -256,8 +247,8 @@
 					</tr>
 					
 				</tbody>
-		</table>
-    </div>-->
+			</table>
+    </div>
     <div>
     	<p class="trem_title"><a name="jieshao">消费评价</a></p>
         <p class="standard_bar" style="margin-top:40px;">全部评价</p>
@@ -389,11 +380,11 @@
 						&nbsp;京公网安备11010502025545号 &nbsp;<a href="">电子公告服务规则</a>
 					</p>
 					<div>
-						<a href=""><img src="../basic_images/beian_1.png" /></a> <a
-							href=""><img src="../basic_images/beian_2.png" /></a> <a href=""><img
-							src="../basic_images/beian_3.png" /></a> <a href=""><img
-							src="../basic_images/beian_4.png" /></a> <a href=""><img
-							src="../basic_images/beian_5.png" /></a>
+						<a href=""><img src="basic_images/beian_1.png" /></a> <a
+							href=""><img src="basic_images/beian_2.png" /></a> <a href=""><img
+							src="basic_images/beian_3.png" /></a> <a href=""><img
+							src="basic_images/beian_4.png" /></a> <a href=""><img
+							src="basic_images/beian_5.png" /></a>
 					</div>
 				</center>
 			</div>

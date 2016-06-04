@@ -8,4 +8,6 @@ public interface ShowGoodsService {
 
 	List<GoodsBean> listShowGoods(int gid);
 
+	List<GoodsBean> listShowGoodsIntro(int gid);
+
 }

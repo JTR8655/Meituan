@@ -4,33 +4,66 @@ var text = '';
 function showInfo(data){
 	var value = "";
 	$("#body_mid1").html("");
-	var item = data.obj;
-	for(var i=0;i<item.length;i++){
+	console.info(data);
+	for(var i=0;i<data.length;i++){
 		value += '<div id="body_midl_top"><div id="body_mid1_top1">'
-				+'<input type="hidden" value="'+item[i].GID+'" class="get_id"/>'
-	            +'<span class="title-prefix">【'+item[i].SSHOPNAME+'】</span><h1 class="title">'+item[i].GTITLE1+'</h1></div>'
-	       	    +'<div id="body_mid1_top2"><div class="tishi1" >'+item[i].TEXT+'</div></div></div>'
-	   		    +'<div id="body_mid1_down"><div id="down_left"><div id="big_image"><img src="'+item[i].IMG+'"/></div>'
-	            +'<div id="small_image"><img src="'+item[i].IMG+'"/></div></div><div id="down_right"><div id="price">'
+				+'<input type="hidden" value="'+data[i].gid+'" class="get_id"/>'
+	   //         +'<span class="title-prefix">【'+data[i].sshopname+'】</span>'
+	            +'<h1 class="title">'+data[i].gtitle1+'</h1></div>'
+	       	    +'<div id="body_mid1_top2"><div class="tishi1" >'+data[i].gtitle2+'</div></div></div>'
+	   		    +'<div id="body_mid1_down"><div id="down_left"><div id="big_image"><img src="'+data[i].img+'"/></div>'
+	            +'<div id="small_image"><img src="'+data[i].img+'"/></div></div><div id="down_right"><div id="price">'
 	            +'<div class="price_cf "><span class="price_left">团购价:</span><h2 class="symbol"><span class="price-symbol">¥</span>'
-	            +'<span class="price">'+item[i].GPRICE2+'</span></h2><span class="promote-default"><span class="status">门店价 </span><del class="item sans-serif"> ¥'+item[i].GPRICE1+'</del>'
-	            +'</span></div></div><div id="evaluate"><div id="item"><span class="item">已售<span class="sold-count">'+item[i].GSOLDCOUNT+'</span>'
+	            +'<span class="price">'+data[i].gprice2+'</span></h2><span class="promote-default"><span class="status">门店价 </span><del class="data sans-serif"> ¥'+data[i].gprice1+'</del>'
+	            +'</span></div></div><div id="evaluate"><div id="item"><span class="item">已售<span class="sold-count">'+data[i].gsoldcount+'</span>'
 	            +'</span></div><div id="item-viewed"><span class="item-viewed" ><a id="look-normal" ><span class="rating-stars">3.9</span>分'
 	            +'</a></span></div><div id="comments-count"><span class="comments-count"><a id="look-normal"><span class="comment-count">8</span>人评价'
 	            +'</a></span></div></div><div id="data"><span class="detail-leading">有效期</span><span class="text-containe">'
-	            +'<span class="valid-through">截止到<span class="edate">'+item[i].B_RETIME+'</span></span><span class="expiry-notice">周末、法定节假日通用</span>'
+	            +'<span class="valid-through">截止到<span class="edate">'+data[i].b_retime+'</span></span><span class="expiry-notice">周末、法定节假日通用</span>'
 	            +'</span></div><div id="package"><span class="deal-component">套餐</span><span class="scheme-patch"><span>'
-	            +'<a class="selection-item" href="javascript:void()">'+item[i].D_TAOCAN+'</a></span></span></div><div id="count">'
-	            +'<span class="deal-component-detail-leading">数量</span><button id="reduce_item" type="button" data-action="+">−</button>'
-	            +'<input id="J-cart-quantity" type="text" data-max="500" maxlength="9" value="1" name="q"><button id="add_item" type="button"  data-action="+">+</button>'
-	            +'</div><div id="accont"><button type="submit" style="color:#fff; font-size:18px; font-weight:bold;" id="sall_button" onClick="submits()">√ 立即抢购</button>'
-	            +'<div id="goods_car"><a title="加入购物车"><i class="goods_car_logo"><img src="images/goods_car.png"/></i></a></div><div id="favorite">'
+	            +'<a class="selection-item" href="javascript:void()">'+data[i].d_taocan+'</a></span></span></div><div id="count">'
+	            +'<span class="deal-component-detail-leading">数量</span><button id="reduce_item" class="countbutton" type="button" onclick="reduceCount()">−</button>'
+	            +'<input id="J-cart-quantity" type="text" data-max="500" maxlength="9" value="1" name="q"><button id="add_item" class="countbutton" type="button" onclick="addCount()">+</button>'
+	            +'<span id="warn">最少一件起售</span></div>'
+	            +'<div id="accont"><button type="submit" style="color:#fff; font-size:18px; font-weight:bold;" id="sall_button" onClick="submits()">√ 立即抢购</button>'
+	            +'<div id="goods_car"><a onclick="addToGoodsCar('+data[i].gid+')" title="加入购物车"><button class="goods_car_logo"><img src="images/goods_car.png"/></button></a></div><div id="favorite">'
 	            +'<a src="#"><i class="favorite_star"><img src="images/star.png"/></i><span class="fav_font">收藏</span>(<b class="J-fav-count">75</b>)'
 	            +'</a></div><div id="share"><a class="share-tip" src="#"><i class="F-glob-share"><img src="images/share.png"/></i>分享到'
-	            +'</a></div></div></div></div></div>';
-		text = item[i].TEXT;
+	            +'</a></div></div>';
+				+'<div id="promise" style="display:block">1111111</div>';
+	            +'</div></div></div>';
+		text = data[i].text;
 	    $("#body_mid1").append(value);
 	}
+}
+
+function reduceCount(){
+	var count = $("#J-cart-quantity").val();
+	var reg = /^\d*$/;
+	if(!reg.test(count)){
+		$("#warn").html("请输入有效的数字");
+		$("#warn").css("display","block");
+		return;
+	}
+	if($("#J-cart-quantity").val()<=1){
+		$("#warn").html("最少一件起售");
+		$("#warn").css("display","block");
+	}else{
+		$("#warn").css("display","none");
+		$("#J-cart-quantity").val($("#J-cart-quantity").val()-1);
+	}
+}
+
+function addCount(){
+	var count = $("#J-cart-quantity").val();
+	var reg = /^\d*$/;
+	if(!reg.test(count)){
+		$("#warn").html("请输入有效的数字");
+		$("#warn").css("display","block");
+		return;
+	}
+	$("#warn").css("display","none");
+	$("#J-cart-quantity").val(parseInt($("#J-cart-quantity").val())+1);
 }
 
 //显示该商家的其他商品
@@ -42,7 +75,7 @@ function otherFoods(data){
 		    	+'<td class="other3">门店价</td>'
 		    	+'<td class="other4">已售</td>'
 		    	+'</tr>';
-	var item = data.obj;
+	var data = data.obj;
 	for(var i=0;i<item.length;i++){
 		if(item[i].TEXT != text){
 			value += '<tr height="36px" class="other_tr1">'
@@ -63,7 +96,7 @@ function mustKnow(data){
 	var item = data.obj;
 	for(var i=0;i<item.length;i++){
 		value += '<dt>有效期</dt>'
-		        +'<dd>2015-12-1 至 '+item[i].b_retime+'</dd>'
+		        +'<dd>'+item[i].b_retime+'</dd>'
 	            +'<dt>使用时间</dt>'
 	            +'<dd>11:00-23:00</dd>'
 	            +'<dt>预约提醒</dt>'
@@ -81,7 +114,7 @@ function mustKnow(data){
 }
 
 //显示套餐详情
-function tuanTaoCan(data){
+/*function tuanTaoCan(data){
 	var value = "";
 	$("#taocan_info").html("");
 	var item = data.obj;
@@ -94,7 +127,7 @@ function tuanTaoCan(data){
             	+'</tr>';
             	$("#taocan_info").append(value);
 	}
-}
+}*/
 //显示评价总分
 function showEvaluatePoint(data){
 	var value = "";
@@ -173,41 +206,40 @@ function othergoods(sid){
 function mustKnow(data){
 	var value = "";
 	$("#must_know").html("");
-	var item = data.obj;
-	for(var i=0;i<item.length;i++){
+	for(var i=0;i<data.length;i++){
 		value += '<dt>有效期</dt>'
-		        +'<dd>2015-12-1 至 '+item[i].b_retime+'</dd>'
+		        +'<dd>2015-12-1 至 '+data[i].b_retime+'</dd>'
 	            +'<dt>使用时间</dt>'
-	            +'<dd>11:00-23:00</dd>'
+	            +'<dd>'+data[i].b_usetime+'</dd>'
 	            +'<dt>预约提醒</dt>'
-	            +'<dd>'+item[i].b_ordertip+'</dd>'
+	            +'<dd>'+data[i].b_ordertip+'</dd>'
 	            +'<dt>限购限用提醒</dt>'
-	            +'<dd>'+item[i].b_limittip+'</dd>'
+	            +'<dd>'+data[i].b_limittip+'</dd>'
 	            +'<dt>包间</dt>'
-	            +'<dd>'+item[i].b_parlor+'</dd>'
+	            +'<dd>'+data[i].b_parlor+'</dd>'
 	            +'<dt>食堂外带</dt>'
-	            +'<dd>'+item[i].b_pack+'</dd>'
+	            +'<dd>'+data[i].b_pack+'</dd>'
 	            +'<dt>商家服务</dt>'
-	            +'<dd>'+item[i].b_serve+'</dd>';
+	            +'<dd>'+data[i].b_serve+'</dd>';
 	           	$("#must_know").html(value);
 	}
 }
 
 //显示套餐详情
-function tuanTaoCan(data){
-	var value = "";
-	$("#taocan_info").html("");
-	var item = data.obj;
-	for(var i=0;i<item.length;i++){
-		value += '<tr>'
-            	+'<td class="goods_name">'+item[i].d_taocan+'</td>'
-                +'<td class="goods_price">￥'+item[i].d_price1+'</td>'
-                +'<td class="goods_amount">'+item[i].d_count+'张</td>'
-                +'<td class="goods_subtotal">￥'+item[i].d_price1*item[i].d_count+'</td>'
-            	+'</tr>';
-            	$("#taocan_info").append(value);
-	}
-}
+//function tuanTaoCan(data){
+//	var value = "";
+//	$("#taocan_info").html("");
+//	var item = data.obj;
+//	for(var i=0;i<item.length;i++){
+//		value += '<tr>'
+//            	+'<td class="goods_name">'+item[i].d_taocan+'</td>'
+//                +'<td class="goods_price">￥'+item[i].d_price1+'</td>'
+//                +'<td class="goods_amount">'+item[i].d_count+'张</td>'
+//                +'<td class="goods_subtotal">￥'+item[i].d_price1*item[i].d_count+'</td>'
+//            	+'</tr>';
+//            	$("#taocan_info").append(value);
+//	}
+//}
 //显示评价总分
 function showEvaluatePoint(data){
 	var value = "";
@@ -287,7 +319,10 @@ function lower(){
 	}
 	document.getElementById('J-cart-quantity').value = value;
 }
-
+//关闭警告
+function closeWaring(){
+	$('#waring').css('display', 'none');
+}
 function othergoods(sid){
 	//显示商家的其他商品
 	$.ajax({
@@ -304,25 +339,24 @@ function othergoods(sid){
 		}
 	});
 }
-//关闭警告
-function closeWaring(){
-	$('#waring').css('display', 'none');
-}
+
 
 $(function(){
 	var gid = window.location.href.split("=")[1];
-	var sid=0;
+	var sid=1;
 	//显示商品信息
+	console.info("saaa");
+	alert(656);
 	$.ajax({
 		type:'post',
-		url:'showGoodsDetails.do',
+		url:'goods_showGoods.action',
 		data:{
 			gid:gid
 		},
 		dataType:'json',
 		success:function(data){
 			showInfo(data);
-			sid = data.obj[0].SID;
+			sid = data.sid;
 			othergoods(sid);
 		}
 	});
@@ -330,9 +364,9 @@ $(function(){
 	//显示用户须知
 	$.ajax({
 		type:'post',
-		url:'showGoodsDetails.do',
+		url:'goods_showGoodsIntro.action',
 		data:{
-			op:'mustKnow'
+			gid:gid
 		},
 		dataType:'json',
 		success:function(data){
@@ -373,7 +407,8 @@ function submits(){
 	var text = $('.tishi1').html();
 	var price = $('.price').html();
 	var gid = $('.get_id').attr('value');
-	window.location.href = 'fair.html?title =' + title + '&text =' + text + '&price =' + price +'&gid =' + gid;
+	var count = $("#J-cart-quantity").val();
+	window.location.href = 'page/fair.jsp?title =' + title + '&text =' + text + '&price =' + price +'&gid =' + gid+'&count =' + count +'&type=fair';
 }
 function toDecimal(x) {    
     var f = parseFloat(x);    
@@ -383,3 +418,33 @@ function toDecimal(x) {
     f = Math.round(x*100)/100;    
     return f;    
 }  
+
+function addToGoodsCar(gid){
+	var count = $("#J-cart-quantity").val();
+	var reg = /^\d*$/;
+	if(!reg.test(count)){
+		$("#warn").html("请输入有效的数字");
+		$("#warn").css("display","block");
+		return;
+	}else{
+		$("#warn").css("display","none");
+	}
+	$.ajax({
+		type:'post',
+		url:'trolley_addToGoodsCar.action',
+		data:{
+			gid:gid,
+			tcount:count
+		},
+		dataType:'json',
+		success:function(data){
+			if(data == 1){
+				alert("添加成功！");
+			}else if(data == 0){
+				alert("添加失败！");
+			}else if(data == 2){
+				alert("请登陆后重试");
+			}
+		}
+	});
+}
