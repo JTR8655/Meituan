@@ -1,4 +1,4 @@
-package com.yc.meituan.bean;
+package com.yc.meituan.entity.bean;
 
 import java.util.Date;
 

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yc.meituan.mapper.EvaluateMapper" >
+ 	<select id="showEvaluate" parameterType="int" resultType="EvaluateBean">
+ 		select sum(egrade_1) grade, count(egrade_1) amount from meituan_evaluate e inner join meituan_uorder o on e.oid=o.oid and o.gid=#{gid}
+ 	</select>
 	<insert id="addEvaluate" parameterType="Evaluate">
 		insert into meituan_evaluate (eid,muid,oid,egrade_4,econtent,img,hidename) values 
 			(SEQ_MEITUAN_EVAL.nextval,#{muid},#{oid},#{egrade_4},#{econtent},#{img},#{hidename})

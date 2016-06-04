@@ -345,8 +345,6 @@ $(function(){
 	var gid = window.location.href.split("=")[1];
 	var sid=1;
 	//显示商品信息
-	console.info("saaa");
-	alert(656);
 	$.ajax({
 		type:'post',
 		url:'goods_showGoods.action',

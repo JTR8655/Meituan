@@ -22,7 +22,7 @@
     	<a class="header_left_logo" href=""><img src="images/mwituancom.png"/></a>
    	 <div class="header_right">
     	<span class="tip">已有美团账号？</span>
-        <a class="header_right_login"  href="login.html">登录</a>
+        <a class="header_right_login"  href="page/login.jsp">登录</a>
    	 </div>
     </div>
 </header>
