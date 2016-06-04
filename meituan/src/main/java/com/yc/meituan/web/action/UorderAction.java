@@ -4,8 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
-import java.util.logging.SimpleFormatter;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.struts2.interceptor.RequestAware;

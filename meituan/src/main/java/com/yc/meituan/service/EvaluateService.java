@@ -8,7 +8,7 @@ import com.yc.meituan.entity.bean.EvaluatedBean;
 public interface EvaluateService {
 
 	void addEvaluate(Evaluate evaluate);
-
+	
 	List<EvaluatedBean> listPj(Integer muid);
 
 }

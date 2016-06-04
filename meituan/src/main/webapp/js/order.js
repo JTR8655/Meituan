@@ -283,7 +283,6 @@ $(function(){
 			if(data == null){
 				return;
 			}
-			console.info(data);
 			data = $.parseJSON(data);
 			var pj="一般";
 			for(var i=0;i<data.length;i++){
@@ -299,7 +298,7 @@ $(function(){
 					pj="强烈推荐";
 				}
 				var str = '<div class="v3_content">'+
-					'<div class="v3_img v3_"><img src="'+ data[i].img +'"></div>'+
+					'<div class="v3_img v3_"><img width="81" height="50" src="'+ data[i].img +'"></div>'+
 					'<div class="v3_evaluated v3_">'+
 					'<p class="v3_gtitle1"><a class="v3_g_goods" href="page/foods.jsp?gid='+data[i].gid+'">'+ data[i].gtitle1 +'</a> </p>'+
 					'<p class="v3_grade"> 我的总体评价:&nbsp;&nbsp;<a class="v3_g_point"></a><a style="color:red;font-weight:bold;font-size:14px;">'+ pj +'</a></p>'+

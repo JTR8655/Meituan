@@ -1,35 +1,34 @@
 package com.yc.meituan.entity.bean;
 
 public class GoodsBean {
+	private int gid;// 商品编号
+	private int sid;// 商家编号
+	private String gtitle1;// 主标题
+	private String gtitle2;// 副标题
+	private String privilege;// 优惠折扣
+	private float gprice1;// 原价
+	private float gprice2;// 现价
+	private int gsoldcount;// 已购数
+	private String img;// 照片
+	private String b_retime;// 有效期
+	private String b_usetime;// 使用时间
+	private String b_ordertip;// 预约提示
+	private String b_parlor;// 包间
+	private String b_pack;// 食堂外带
+	private String b_serve;// 商家服务
+	private String b_limittip;// 限购限用提醒
+	private float d_price1;// 套餐单价
+	private int d_count;// 套餐数量/规格
+	private String d_taocan;
 
-	private int gid;//商品编号
-	private int sid;//商家编号
-	private String gtitle1;//主标题
-	private String gtitle2;//副标题
-	private String privilege;//优惠折扣
-	private float gprice1;//原价
-	private float gprice2;//现价
-	private int gsoldcount;//已售数
-	private String img;//照片
-	private String b_retime;//有效期
-	private String b_usetime;//使用时间
-	private String b_ordertip;//预约提示
-	private String b_parlor;//包间
-	private String b_pack;//食堂外带
-	private String b_serve;//商家服务
-	private String b_limittip;//限购限用提醒
-	private float d_price1;//套餐单价
-	private int d_count;//套餐数量/规格
-	private String d_taocan;//套餐
-
-	
 	public String getD_taocan() {
 		return d_taocan;
 	}
+
 	public void setD_taocan(String d_taocan) {
 		this.d_taocan = d_taocan;
 	}
-
+	
 	public int getGid() {
 		return gid;
 	}
@@ -176,15 +175,12 @@ public class GoodsBean {
 
 	@Override
 	public String toString() {
-		return "GoodsBean [gid=" + gid + ", sid=" + sid + ", gtitle1="
-				+ gtitle1 + ", gtitle2=" + gtitle2 + ", privilege=" + privilege
-				+ ", gprice1=" + gprice1 + ", gprice2=" + gprice2
-				+ ", gsoldcount=" + gsoldcount + ", img=" + img + ", b_retime="
-				+ b_retime + ", b_usetime=" + b_usetime + ", b_ordertip="
-				+ b_ordertip + ", b_parlor=" + b_parlor + ", b_pack=" + b_pack
-				+ ", b_serve=" + b_serve + ", b_limittip=" + b_limittip
-				+ ", d_price1=" + d_price1 + ", d_count=" + d_count
-				+ ", d_taocan=" + d_taocan + "]";
+		return "GoodsBean [gid=" + gid + ", sid=" + sid + ", gtitle1=" + gtitle1 + ", gtitle2=" + gtitle2
+				+ ", privilege=" + privilege + ", gprice1=" + gprice1 + ", gprice2=" + gprice2 + ", gsoldcount="
+				+ gsoldcount + ", img=" + img + ", b_retime=" + b_retime + ", b_usetime=" + b_usetime + ", b_ordertip="
+				+ b_ordertip + ", b_parlor=" + b_parlor + ", b_pack=" + b_pack + ", b_serve=" + b_serve
+				+ ", b_limittip=" + b_limittip + ", d_price1=" + d_price1 + ", d_count=" + d_count + ", d_taocan="
+				+ d_taocan + "]";
 	}
 
 }

@@ -4,19 +4,30 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
 <base href="/meituan/">
+<meta charset="utf-8">
 <title>我的订单</title>
 <link href="css/basic.css" type="text/css" rel="stylesheet">
 <link href="css/order.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/order.js"></script>
 <style>
-
+#head_2_left_login {
+	display: none;
+	float: left;
+	margin: 0 10px;
+	line-height: 29px;
+	margin-left: -23px;
+}
 
 #head_2_right {
 	margin-right: -3px;
 }
+
+#head_2_left_login li {
+	margin-left: 10px;
+}
+
 .top_nav {
 	margin-left: 20px;
 }
@@ -172,22 +183,28 @@
 				}
 			});
 		}
+
 	}
 </script>
 </head>
 <body>
+	<div id="head_tishi"></div>
 	<div id="head">
 		<ul>
+			<!-- 
+            <li id="head_1">
+                <div>为了您的账号安全，提供多种校验身份的方式，请<a href="">设置安保问题</a><a href="javascript:void(0)" id="head_1_right">X</a></div>
+            </li> -->
 			<li id="head_2">
 				<div>
 					<ul id="head_2_left">
 						<li><a href="" id="shoucang">收藏美团</a></li>
-						<li><a href="page/login.jsp" id="login">登录</a></li>
-						<li><a href="page/register.jsp" id="register">注册</a></li>
+						<li><a href="login.jsp" id="login">登录</a></li>
+						<li><a href="register.jsp" id="register">注册</a></li>
 					</ul>
 					<ul id="head_2_left_login">
 						<li><a href="" id="shoucang">收藏美团</a></li>
-						<li><a href="page/order.jsp" id="user">${sessionScope.loginUser.uemail }</a></li>
+						<li><a href="order.jsp" id="user">${sessionScope.loginUser.uemail }</a></li>
 						<li><a href="javascript:void(0)" onclick="logOut()"
 							id="logout">退出</a></li>
 					</ul>
@@ -217,7 +234,7 @@
 			<li id="head_4">
 				<div id="head_4_left">
 					<a href="page/index.jsp" id="logo"><img id="logo_img"
-						src="images/smalljpg.	png"></a> <a href="" class="didian"
+						src="images/smalljpg.png"></a> <a href="" class="didian"
 						id="city">衡阳</a><br /> <a href="" class="didian" id="qiehuan">切换城市</a>
 				</div>
 				<!--head_4_left-->
@@ -494,7 +511,8 @@
 						</ul>
 					</div>
 				</div>
-				<div id="v3" class="view"></div>
+				<div id="v3" class="view">
+				</div>
 				<div id="v4" class="view"></div>
 				<div id="v5" class="view"></div>
 				<div id="v6" class="view"></div>

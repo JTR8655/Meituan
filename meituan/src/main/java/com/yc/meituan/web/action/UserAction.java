@@ -97,9 +97,9 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware, RequestA
 		return "none";
 	}
 
-	public String findEmail() {
-		LogManager.getLogger().debug("" + userInfo.getUemail());
-		// UserInfo userInfos=userService.findEmail(userInfo.getUemail());
+	public String findEmail(){
+		LogManager.getLogger().debug(""+userInfo.getUemail());
+		//UserInfo userInfos=userService.findEmail(userInfo.getUemail());
 		UserInfo uemail = userService.findEmail(userInfo.getUemail());
 		LogManager.getLogger().debug(uemail);
 		int status = 0;
@@ -129,49 +129,46 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware, RequestA
 		LogManager.getLogger().debug("注册操作+" + userInfo);
 		userInfo.setUaddr(province + "-" + city);
 		try {
-			userInfo = userService.register(userInfo);
-			session.put("userInfo", userInfo);
-			// 调用发邮件方法
-			boolean flag = sendEmail(userInfo.getUemail());
-			LogManager.getLogger().debug(flag);
-			if (flag) {
+			userInfo=userService.register(userInfo);
+			session.put("userInfo",userInfo);
+			//调用发邮件方法
+			boolean flag = sendEmail(userInfo.getUemail(),userInfo);
+			if(flag){
 				return "registerSuccess";
 			}
 		} catch (Exception e) {
-
 		}
-		// session.put("regMsg", "该用户已被注册");
 		return "register";
 	}
 
-	public boolean sendEmail(String toEmail) {
+	public boolean sendEmail(String toEmail,UserInfo userInfo) {
 		MimeMessage mm = javaMailSender.createMimeMessage();
 		try {
-			MimeMessageHelper smm = new MimeMessageHelper(mm, true);
-			smm.setFrom("13298581430@163.com");// 邮件发送者
-			smm.setTo(toEmail);// 邮件接收者
-			smm.setSubject("美团用户邮箱验证"); // 邮件主
-			smm.setText("<p>Hi~</p>" + "<p><a href='http://localhost:8080/meituan/user_actives.action?uemail="
-					+ toEmail 
-					+ "'>感谢您注册,请点击此链接激活您的账号</a></p>", true); // 邮件内容
-			javaMailSender.send(mm);// 发送邮件
+			MimeMessageHelper smm=new MimeMessageHelper(mm,true);
+			smm.setFrom("13298581430@163.com");//邮件发送者
+			smm.setTo(toEmail);//邮件接收者
+			smm.setSubject("美团用户邮箱验证"); //邮件主	
+			smm.setText("<p>Hi~"+userInfo.getUaccounts()+"</p>"
+					+"<p><a href='http://localhost:8080/meituan/user_actives.action?uemail="+userInfo.getUemail()
+					+"'>感谢您注册,请点击此链接激活您的账号</a></p>", true); //邮件内容
+			javaMailSender.send(mm);//发送邮件
 			return true;
 		} catch (MessagingException e) {
 		}
 		return false;
 	}
 
-	public String actives() {
-		LogManager.getLogger().debug("取到的数据："+uemail);
+	public String actives(){//UserInfo userInfo
+		LogManager.getLogger().debug(userInfo.getUemail());
+		userInfo.setUemail(userInfo.getUemail());
 		try {
-			userService.activeUser(uemail);
+			userService.activeUser(userInfo.getUemail());
 			return "activeSuccess";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "activeFail";
 		}
 	}
-
 	public String code() throws IOException {
 		// 设置响应头 Content-type类型
 		HttpServletRequest request = ServletActionContext.getRequest();

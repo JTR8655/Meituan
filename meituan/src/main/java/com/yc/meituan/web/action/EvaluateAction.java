@@ -1,7 +1,5 @@
 package com.yc.meituan.web.action;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -42,9 +40,7 @@ public class EvaluateAction implements ModelDriven<Evaluate>, SessionAware, Requ
 		if(null == evaluate.getImg()){
 			evaluate.setImg("");
 		}
-		Date d = new Date();
-		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		evaluate.setTemp1(sf.format(d.getTime()));
+		
 		try{
 			evaluateService.addEvaluate(evaluate);
 			uorderService.updatePlStatus(evaluate.getOid());
@@ -55,6 +51,7 @@ public class EvaluateAction implements ModelDriven<Evaluate>, SessionAware, Requ
 		}
 		return "none";
 	}
+	
 	
 	public String listPj(){
 		UserInfo user = (UserInfo) session.get(MeituanData.LOGIN_USER);
@@ -67,7 +64,7 @@ public class EvaluateAction implements ModelDriven<Evaluate>, SessionAware, Requ
 		}
 		return "none";
 	}
-	
+
 	
 	
 	

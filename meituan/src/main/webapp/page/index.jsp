@@ -53,7 +53,7 @@
 			<li id="head_4">
 				<div id="h4_div">
 					<div id="head_4_left">
-						<a href="" id="logo"><img id="logo_img"
+						<a href="index.jsp" id="logo"><img id="logo_img"
 							src="images/smalljpg.png"></a> <a href="" class="didian"
 							id="city">衡阳</a><br />
 						<!--     <a href="" class="didian" id="qiehuan">切换城市</a>  -->
@@ -297,7 +297,7 @@
             </div><!--详细美食 -->
             <a id="afterXiangxi" href=""><div id="food_more" class="xiangxi_more">更多美食团购，请点击查看></div></a>
         </div><!--美食-->
-		<!-- <div id="funny" class="xiangxi">
+		<div id="funny" class="xiangxi">
 			<div class="title">
 				<a href=""><img src="images/xiuxian.png"></a>
 				<ul>
@@ -646,7 +646,7 @@
 				</div>
 			</div>
 			<a href=""><div id="funny_more" class="xiangxi_more">更多休闲娱乐团购，请点击查看></div></a>
-		</div> -->
+		</div>
 		<!--休闲娱乐-->
 		<!--      <div id="movie" class="xiangxi">
         	<div class="title">
@@ -1206,7 +1206,7 @@
 						success : function(data) {
 							if (data == -1) {
 								alert("您还未登录，请先登录");
-								window.location.href = "page/login.jsp";
+								window.location.href = "login.jsp";
 							} else if (data > 0) {
 								alert("收藏成功！");
 								$('.xingji').eq(i).text("已收藏");
@@ -1220,6 +1220,7 @@
 				}
 			}
 		});
+
 	}
 </script>
 </body>

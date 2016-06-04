@@ -22,7 +22,7 @@
     	<a class="header_left_logo" href=""><img src="images/mwituancom.png"/></a>
    	 <div class="header_right">
     	<span class="tip">已有美团账号？</span>
-        <a class="header_right_login"  href="login.html">登录</a>
+        <a class="header_right_login"  href="page/login.jsp">登录</a>
    	 </div>
     </div>
 </header>
@@ -35,7 +35,7 @@
             <p class="tips f1">该账号通用于美团所有产品（美团团购、美团外卖、美团云、美团酒店、猫眼电影等）</p>
         </div>
 
-        <form class="J-form" action="login.html" method="POST">
+        <form class="J-form" action="page/login.jsp" method="POST">
             <div class="hidden-field" style="display:none">
                 <input class="J-token" name="token" value="yNeWbMqepz4CZdTyQmQfjBmdwZ0AAAAAogEAAImdDQ7JX0E6E06cBwr2FEbE3AWqghsVFEXGbilJGFVAjCkrhnM3bCv4iWILXa8Jsw" type="hidden">
                 <input class="J-expire" name="expire" value="0" type="hidden">

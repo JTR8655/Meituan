@@ -2,6 +2,7 @@ package com.yc.meituan.service.impl;
 
 
 import javax.mail.MessagingException;
+import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 
 import org.apache.logging.log4j.LogManager;
@@ -22,6 +23,7 @@ public class UserServiceImplTest {
 	private UserService userService;
 	@Autowired
 	private JavaMailSender javaMailSender;
+	
 	
 	@Test
 	public void testRegister() {
@@ -51,10 +53,11 @@ public class UserServiceImplTest {
 	}
 	
 	@Test
-	public void testLogin() {
-		UserInfo userInfo=new UserInfo();
-		userInfo.setUpwd("a");
-		userInfo.setUemail("1059191443@qq.com");
-		LogManager.getLogger().debug(userService.login(userInfo));
+	public void testActiveUser(){
+		UserInfo user=new UserInfo();
+		user.setUemail("918811028@qq.com");
+		userService.activeUser(user.getUemail());
+		
 	}
+
 }

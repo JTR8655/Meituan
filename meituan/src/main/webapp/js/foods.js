@@ -96,7 +96,7 @@ function mustKnow(data){
 	var item = data.obj;
 	for(var i=0;i<item.length;i++){
 		value += '<dt>有效期</dt>'
-		        +'<dd>2015-12-1 至 '+item[i].b_retime+'</dd>'
+		        +'<dd>'+item[i].b_retime+'</dd>'
 	            +'<dt>使用时间</dt>'
 	            +'<dd>11:00-23:00</dd>'
 	            +'<dt>预约提醒</dt>'
