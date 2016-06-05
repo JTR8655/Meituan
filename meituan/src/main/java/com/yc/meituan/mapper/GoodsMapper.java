@@ -10,6 +10,8 @@ public interface GoodsMapper {
 	GoodsBean listGoodsInIndex();
 
 	List<GoodsInfo> selectGoods();
+
+	List<GoodsBean> showOtherGoods(GoodsBean goodsBean);
 	
 
 }

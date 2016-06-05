@@ -91,7 +91,7 @@
 		<action name="goods_indexGoods" class="com.yc.meituan.web.action.GoodsAction" method="indexGoods"></action>
 		<action name="uorder_showAllUorder" class="com.yc.meituan.web.action.UorderAction" method="showAllUorder"></action>
 		<action name="uorder_listCollection" class="com.yc.meituan.web.action.UorderAction" method="listCollection"></action>
-		<action name="goods_showGoods" class="com.yc.meituan.web.action.ShowGoodsAction" method="showGoods"></action>
+		<action name="goods_showGoods" class="com.yc.meituan.web.action.GoodsAction" method="showGoods"></action>
 		<action name="goods_showGoodsIntro" class="com.yc.meituan.web.action.GoodsAction" method="showGoodsIntro"></action>
 		<action name="goods_showGoods" class="com.yc.meituan.web.action.GoodsAction" method="showGoods"></action>
 		<action name="uorder_listNoPj" class="com.yc.meituan.web.action.UorderAction" method="listNoPj"></action>
@@ -99,5 +99,8 @@
 		<action name="uorder_addUorder" class="com.yc.meituan.web.action.UorderAction" method="addUorder"></action>
 		<action name="trolley_addToGoodsCar" class="com.yc.meituan.web.action.TrolleyAction" method="addToGoodsCar"></action>
 		<action name="evaluate_listPj" class="com.yc.meituan.web.action.EvaluateAction" method="listPj"></action>
+		<action name="goods_showOtherGoods" class="com.yc.meituan.web.action.GoodsAction" method="showOtherGoods"></action>
+		<action name="collection_addCollection" class="com.yc.meituan.web.action.CollectionAction" method="addCollection"></action>
+		
 	</package>
 </struts>

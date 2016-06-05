@@ -27,10 +27,9 @@ function showInfo(data){
 	            +'<span id="warn">最少一件起售</span></div>'
 	            +'<div id="accont"><button type="submit" style="color:#fff; font-size:18px; font-weight:bold;" id="sall_button" onClick="submits()">√ 立即抢购</button>'
 	            +'<div id="goods_car"><a onclick="addToGoodsCar('+data[i].gid+')" title="加入购物车"><button class="goods_car_logo"><img src="images/goods_car.png"/></button></a></div><div id="favorite">'
-	            +'<a src="#"><i class="favorite_star"><img src="images/star.png"/></i><span class="fav_font">收藏</span>(<b class="J-fav-count">75</b>)'
+	            +'<a href="javascript:void(0)" onclick="collection('+data[i].gid+')"><i class="favorite_star"><img src="images/star.png"/></i><span class="fav_font">收藏</span>(<b class="J-fav-count">'+ data[i].collectCount +'</b>)'
 	            +'</a></div><div id="share"><a class="share-tip" src="#"><i class="F-glob-share"><img src="images/share.png"/></i>分享到'
 	            +'</a></div></div>';
-				+'<div id="promise" style="display:block">1111111</div>';
 	            +'</div></div></div>';
 		text = data[i].text;
 	    $("#body_mid1").append(value);
@@ -66,6 +65,31 @@ function addCount(){
 	$("#J-cart-quantity").val(parseInt($("#J-cart-quantity").val())+1);
 }
 
+//点击收藏
+function collection(gid){
+	$.ajax({
+		type:'post',
+		url:'collection_addCollection.action',
+		data:{
+			gid:gid
+		},
+		dataType:'json',
+		success:function(data){
+			if(data ==1){
+				alert("收藏成功！");
+				$(".fav_font").html("已收藏");
+				$("#favorite a").removeAttr("onclick");
+			}else if(data == 0){
+				alert("收藏失败！！");
+			}else if(data == 2){
+				alert("请先登录");
+			}else if(data == 3){
+				alert("已收藏");
+			}
+		}
+	});
+}
+
 //显示该商家的其他商品
 function otherFoods(data){
 	$("#body_mid2_others").html("");
@@ -75,43 +99,16 @@ function otherFoods(data){
 		    	+'<td class="other3">门店价</td>'
 		    	+'<td class="other4">已售</td>'
 		    	+'</tr>';
-	var data = data.obj;
-	for(var i=0;i<item.length;i++){
-		if(item[i].TEXT != text){
-			value += '<tr height="36px" class="other_tr1">'
-            	+'<td class="other1_1"><p>'
-            	+'<a href="#" class="other_1_a">【'+item[i].SSHOPNAME+'】'+item[i].TEXT+'</a></p></td>'
-            	+'<td class="other2_1"><span class="other2_1_a">￥'+item[i].GPRICE2+'</span></td>'
-            	+'<td class="other3_1">￥'+item[i].GPRICE1+'</td>'
-            	+'<td class="other4_1">'+item[i].GSOLDCOUNT+'</td>'
-            	+'</tr>';
-		}
+	for(var i=0;i<data.length;i++){
+		value += '<tr height="36px" class="other_tr1">'
+        	+'<td class="other1_1"><p>'
+        	+'<a href="page/foods.jsp?gid='+ data[i].gid +'" class="other_1_a">【'+data[i].sshopname+'】'+data[i].gtitle1+'</a></p></td>'
+        	+'<td class="other2_1"><span class="other2_1_a">￥'+data[i].gprice2+'</span></td>'
+        	+'<td class="other3_1">￥'+data[i].gprice1+'</td>'
+        	+'<td class="other4_1">'+data[i].gsoldcount+'</td></tr>';
 	}$("#body_mid2_others").append(value);
 }
 
-//显示用户须知
-function mustKnow(data){
-	var value = "";
-	$("#must_know").html("");
-	var item = data.obj;
-	for(var i=0;i<item.length;i++){
-		value += '<dt>有效期</dt>'
-		        +'<dd>'+item[i].b_retime+'</dd>'
-	            +'<dt>使用时间</dt>'
-	            +'<dd>11:00-23:00</dd>'
-	            +'<dt>预约提醒</dt>'
-	            +'<dd>'+item[i].b_ordertip+'</dd>'
-	            +'<dt>限购限用提醒</dt>'
-	            +'<dd>'+item[i].b_limittip+'</dd>'
-	            +'<dt>包间</dt>'
-	            +'<dd>'+item[i].b_parlor+'</dd>'
-	            +'<dt>食堂外带</dt>'
-	            +'<dd>'+item[i].b_pack+'</dd>'
-	            +'<dt>商家服务</dt>'
-	            +'<dd>'+item[i].b_serve+'</dd>';
-	           	$("#must_know").html(value);
-	}
-}
 
 //显示套餐详情
 /*function tuanTaoCan(data){
@@ -128,87 +125,15 @@ function mustKnow(data){
             	$("#taocan_info").append(value);
 	}
 }*/
-//显示评价总分
-function showEvaluatePoint(data){
-	var value = "";
-	$("#evaluation_stars").html("");
-	var item = data.obj;
-	for(var i=0;i<item.length;i++){
-		var point=0;
-		if(item[i].AMOUNT==0){
-			point=0;
-		}else{
-			point=toDecimal(item[i].GRADE/item[i].AMOUNT);
-		}
-		value += '<div id="eva_point">'
-    			+'<span id="aggregate-point">'+point+'</span> 分</div>'
-    			+'<div id="eva_stars">'
-    			+'<span class="back_stars">'
-        		+'<span class="infact_stars" style="width: '+(item[i].GRADE/item[i].AMOUNT)*20+'%;"></span></span></div>'
-        		+'<div id="eva_amount">共有 <span>'+item[i].AMOUNT+'</span> 人评价</div>';
-				$("#evaluation_stars").html(value);
-	}
-}
 
-//显示评价内容
-function showEvaluateContent(data){
-	var value = '';
-	$('#evaluation_contents').html('');
-	var item = data.obj;
-	for(var i=0;i<item.length;i++){
-		value += '<li><div class="user_info">'
-    			+'<div class="user_touxiang">'
-    			+'<img src="images/touxiang.png" /></div><p class="user_id">'+item[i].UACCOUNTS+'</p></div>'
-    			+'<div class="evaluation_content"><div>'
-    			+'<span class="back_stars"><p class="infact_stars" style="width:'+item[i].EGRADE_1*20+'%;"></p></span>'
-    			+'<span>'+item[i].TEMP1+'</span></div><div class="contents">'
-    			+'<p>'+item[i].ECONTENT+'</p></div></div></li>';
-				$('#evaluation_contents').html(value);
-	}
-}
 
-//显示当前商品的销售信息
-function thisFood(data){
-	var value = '';
-	$('.deal_buy').html('');
-	var item = data.obj;
-	
-	for(var i=0;i<item.length;i++){		
-		if(item[i].TEXT == text){		
-			value += '<span id="buy_price">￥<strong>'+item[i].GPRICE2+'</strong></span><ul>'
-        			+'<li class="seller_price">门店价<br /><p id="real_price">￥'+item[i].GPRICE1+'</p>'
-        			+'</li><li class="seller_price">折扣<br /><p>'+item[i].DISCOUNT+'折</p></li>'
-        			+'<li class="seller_price">已售<br /><p>'+item[i].GSOLDCOUNT+'</p></li></ul><div>'
-                    +'<input id="qianggou" type="submit" value="抢购" ><a id="join_cart" href="javascript:void(0)">加入购物车</a>';					
-		}
-		$('.deal_buy').html(value);
-		return;
-	}
-}
-function othergoods(sid){
-	//显示商家的其他商品
-	$.ajax({
-		type:'post',
-		url:'showGoodsDetails.do',
-		data:{
-			op:'otherFoods',
-			sid:sid
-		},
-		dataType:'json',
-		success:function(data){
-			otherFoods(data);
-			thisFood(data);
-		}
-	});
-}
-				
 //显示用户须知
 function mustKnow(data){
 	var value = "";
 	$("#must_know").html("");
 	for(var i=0;i<data.length;i++){
 		value += '<dt>有效期</dt>'
-		        +'<dd>2015-12-1 至 '+data[i].b_retime+'</dd>'
+		        +'<dd>'+data[i].b_retime+'</dd>'
 	            +'<dt>使用时间</dt>'
 	            +'<dd>'+data[i].b_usetime+'</dd>'
 	            +'<dt>预约提醒</dt>'
@@ -266,15 +191,14 @@ function showEvaluatePoint(data){
 function showEvaluateContent(data){
 	var value = '';
 	$('#evaluation_contents').html('');
-	var item = data.obj;
-	for(var i=0;i<item.length;i++){
+	for(var i=0;i<data.length;i++){
 		value += '<li><div class="user_info">'
     			+'<div class="user_touxiang">'
-    			+'<img src="images/touxiang.png" /></div><p class="user_id">'+item[i].UACCOUNTS+'</p></div>'
+    			+'<img src="images/touxiang.png" /></div><p class="user_id">'+data[i].uaccounts+'</p></div>'
     			+'<div class="evaluation_content"><div>'
-    			+'<span class="back_stars"><p class="infact_stars" style="width:'+item[i].EGRADE_1*20+'%;"></p></span>'
-    			+'<span>'+item[i].TEMP1+'</span></div><div class="contents">'
-    			+'<p>'+item[i].ECONTENT+'</p></div></div></li>';
+    			+'<span class="back_stars"><p class="infact_stars" style="width:'+data[i].egrade_1*20+'%;"></p></span>'
+    			+'<span>'+data[i].temp1+'</span></div><div class="contents">'
+    			+'<p>'+data[i].econtent+'</p></div></div></li>';
 				$('#evaluation_contents').html(value);
 	}
 }
@@ -283,15 +207,14 @@ function showEvaluateContent(data){
 function thisFood(data){
 	var value = '';
 	$('.deal_buy').html('');
-	var item = data.obj;
 	
-	for(var i=0;i<item.length;i++){		
-		if(item[i].TEXT == text){		
-			value += '<span id="buy_price">￥<strong>'+item[i].GPRICE2+'</strong></span><ul>'
-        			+'<li class="seller_price">门店价<br /><p id="real_price">￥'+item[i].GPRICE1+'</p>'
-        			+'</li><li class="seller_price">折扣<br /><p>'+item[i].DISCOUNT+'折</p></li>'
-        			+'<li class="seller_price">已售<br /><p>'+item[i].GSOLDCOUNT+'</p></li></ul><div>'
-                    +'<input id="qianggou" type="submit" value="抢购" ><a id="join_cart" href="javascript:void(0)">加入购物车</a>';					
+	for(var i=0;i<data.length;i++){		
+		if(data[i].TEXT == text){		
+			value += '<span id="buy_price">￥<strong>'+data[i].gprice2+'</strong></span><ul>'
+        			+'<li class="seller_price">门店价<br /><p id="real_price">￥'+data[i].gprice1+'</p>'
+        			+'</li><li class="seller_price">折扣<br /><p>'+data[i].privilege+'</p></li>'
+        			+'<li class="seller_price">已售<br /><p>'+data[i].gsoldcount+'</p></li></ul><div>'
+                    +'<input id="qianggou" onclick="submits()" type="button" value="抢购" ><a id="join_cart" href="javascript:void(0)" onclick="addToGoodsCar('+ data[i].gid +')">加入购物车</a>';					
 		}
 		$('.deal_buy').html(value);
 		return;
@@ -301,7 +224,6 @@ function thisFood(data){
 
 //点击添加按钮所产生的页面效果
 function adder(){
-	
 	var value = $('#J-cart-quantity').val();
 	value++;
 	document.getElementById('J-cart-quantity').value = value;
@@ -323,27 +245,24 @@ function lower(){
 function closeWaring(){
 	$('#waring').css('display', 'none');
 }
-function othergoods(sid){
+function othergoods(sid,gid){
 	//显示商家的其他商品
 	$.ajax({
 		type:'post',
-		url:'showGoodsDetails.do',
+		url:'goods_showOtherGoods.action',
 		data:{
-			op:'otherFoods',
-			sid:sid
+			sid:sid,
+			gid:gid
 		},
 		dataType:'json',
 		success:function(data){
 			otherFoods(data);
-			thisFood(data);
 		}
 	});
 }
 
-
 $(function(){
 	var gid = window.location.href.split("=")[1];
-	var sid=1;
 	//显示商品信息
 	$.ajax({
 		type:'post',
@@ -355,7 +274,9 @@ $(function(){
 		success:function(data){
 			showInfo(data);
 			sid = data.sid;
-			othergoods(sid);
+			console.info(data);
+			othergoods(data[0].sid,gid);
+			thisFood(data);
 		}
 	});
 	
@@ -375,9 +296,8 @@ $(function(){
 	//显示评分模块
 	$.ajax({
 		type:'post',
-		url:'showGoodsDetails.do',
+		url:'goods_showEvaluatePoint.action',
 		data:{
-			op:'showEvaluatePoint',
 			gid:gid
 		},
 		dataType:'json',
@@ -388,9 +308,8 @@ $(function(){
 	//显示评价内容
 	$.ajax({
 		type:'post',
-		url:'showGoodsDetails.do',
+		url:'goods_showGoodsDetails.action',
 		data:{
-			op:'showEvaluateContent',
 			gid:gid
 		},
 		dataType:'json',

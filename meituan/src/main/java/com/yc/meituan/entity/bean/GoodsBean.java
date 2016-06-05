@@ -20,6 +20,24 @@ public class GoodsBean {
 	private float d_price1;// 套餐单价
 	private int d_count;// 套餐数量/规格
 	private String d_taocan;
+	private String sshopname;
+	private int collectCount;
+
+	public int getCollectCount() {
+		return collectCount;
+	}
+
+	public void setCollectCount(int collectCount) {
+		this.collectCount = collectCount;
+	}
+
+	public String getSshopname() {
+		return sshopname;
+	}
+
+	public void setSshopname(String sshopname) {
+		this.sshopname = sshopname;
+	}
 
 	public String getD_taocan() {
 		return d_taocan;
@@ -28,7 +46,7 @@ public class GoodsBean {
 	public void setD_taocan(String d_taocan) {
 		this.d_taocan = d_taocan;
 	}
-	
+
 	public int getGid() {
 		return gid;
 	}
@@ -180,7 +198,7 @@ public class GoodsBean {
 				+ gsoldcount + ", img=" + img + ", b_retime=" + b_retime + ", b_usetime=" + b_usetime + ", b_ordertip="
 				+ b_ordertip + ", b_parlor=" + b_parlor + ", b_pack=" + b_pack + ", b_serve=" + b_serve
 				+ ", b_limittip=" + b_limittip + ", d_price1=" + d_price1 + ", d_count=" + d_count + ", d_taocan="
-				+ d_taocan + "]";
+				+ d_taocan + ", sshopname=" + sshopname + ", collectCount=" + collectCount + "]";
 	}
 
 }

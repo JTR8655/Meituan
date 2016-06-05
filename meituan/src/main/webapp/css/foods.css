@@ -872,6 +872,7 @@
 	
 	.user_id{
 		color:#f76120;
+		font-size:12px;
 	}
 	.evaluation_content{
 		float:left;
@@ -890,7 +891,8 @@
 	}
 	.contents{
 		margin-left:20px;
-		margin-top:45px;
+		margin-top:55px;
+		font-size:12px;
 	}
 	#qianggou{
 		background:#f76120;
@@ -993,6 +995,9 @@
 		color:#222;
 		margin-top:3px;
 	}
+	#eva_stars{
+		margin-top:10px;
+	}
 	#join_cart{
 		background:#2ebfb1;
 		width:100px;
@@ -1010,14 +1015,14 @@
 		border-style:inset;
 	}
 	.back_stars{
-		background: url(images/pingfenxin_2.png) no-repeat;
+		background: url(../images/pingfenxin_2.png) no-repeat;
 		width: 80px;
 		height: 17px;
 		position: relative;
 		display: block;
 	}
 	.infact_stars{
-		background: url(images/pingfenxin_1.png) no-repeat;
+		background: url(../images/pingfenxin_1.png) no-repeat;
 		height: 17px;
 		display: block;
 		float: left;
@@ -1081,7 +1086,7 @@
 #body_mid1_top2{
 	width:980px;
 	height:24px;
-	
+	margin-top:8px;
 }
 .tishi1{
 	font-size:16px;
@@ -1913,22 +1918,6 @@
 		margin-top:20px;
 		margin-left:14px;
 	}
-	.contents{
-		margin-left:20px;
-		margin-top:45px;
-	}
-	#qianggou{
-		background:#f76120;
-		text-align:center;
-		height:35px;
-		width:70px;
-		margin-top:10px;
-		margin-left:60px;
-		border:#f76120 2px solid outset;
-		color:#fff;
-		font-weight:bold;
-		font-size:16px;
-	}
 	.page_nav{
 		width:702px;
 		height:40px;
@@ -2040,12 +2029,6 @@
 		height: 17px;
 		position: relative;
 		display: block;
-	}
-	.infact_stars{
-		background: url(images/pingfenxin_1.png) no-repeat;
-		height: 17px;
-		display: block;
-		float: left;
 	}
 	
 	

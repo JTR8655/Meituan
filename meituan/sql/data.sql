@@ -58,3 +58,5 @@ select * from meituan_evaluate;
 insert into meituan_user_info values(seq_meituanuser.nextval,'samsara0','a','918811021@qq.com',default,default,default,null,null,null,null,null,default,'湖南省-长沙市',sysdate);
 
 select sum(egrade_1) grade, count(egrade_1) amount from meituan_evaluate e inner join meituan_uorder o on e.oid=o.oid and o.gid=1112;
+
+select s.sid,g.gid,g.gtitle1, g.gprice1, g.gprice2, g.gsoldcount, s.sshopname from meituan_goods_info g inner join meituan_seller_info s on g.sid = s.sid and s.sid = 1 and g.gid != 3 

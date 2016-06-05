@@ -30,8 +30,8 @@
 							id="logout">退出</a></li>
 					</ul>
 					<ul id="head_2_right">
-						<li><a href="">我的订单</a></li>
-						<li><a href="">我的美团</a></li>
+						<li><a href="page/order.jsp">我的订单</a></li>
+						<li><a href="page/order.jsp">我的美团</a></li>
 						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;最近浏览</a></li>
 						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;购物车0件</a></li>
 						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;联系客服</a></li>
