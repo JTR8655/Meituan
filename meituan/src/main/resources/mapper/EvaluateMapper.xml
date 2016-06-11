@@ -18,11 +18,11 @@
 	
 	<select id="showEvaluatePoint" parameterType="int" resultType="EvaluateBean">
  		select sum(egrade_4) grade, count(egrade_4) amount from meituan_evaluate e 
- 		inner join meituan_uorder o on e.oid=o.oid and o.gid=1099
+ 		inner join meituan_uorder o on e.oid=o.oid and o.gid=#{gid}
  	</select>
  	<select id="showGoodsDetails" parameterType="int" resultType="EvaluateBean">
  		select o.gid,u.uaccounts, u.uheadimg,e.hidename, e.egrade_4, e.econtent, e.temp1 from meituan_user_info u
  		inner join meituan_evaluate e on u.muid = e.muid
- 		inner join meituan_uorder o on e.oid=o.oid and o.gid=1099
+ 		inner join meituan_uorder o on e.oid=o.oid and o.gid=#{gid}
  	</select>
 </mapper>
