@@ -77,64 +77,15 @@ public class EvaluateAction implements ModelDriven<Evaluate>, SessionAware, Requ
 		AjaxUtil.objectAjaxResponse(evaluates);
 		return "none";
 	}
-	/*	public String showEvaluatePoint() {
-			LogManager.getLogger().debug("=========>"+eva);
-			List<EvaluateBean> evaluates = evaluateService.listshowEvaluatePoint(eva.getGid());
-			Gson gson = new Gson();
-			String jsonResult = gson.toJson(evaluates);
-			HttpServletResponse response = ServletActionContext.getResponse();
-			response.setCharacterEncoding("utf-8");
-			response.setContentType("charset=utf-8");
-			try {
-				PrintWriter out = response.getWriter();
-				out.println(jsonResult);// 写出响应数据
-				out.flush();
-				out.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			return "none";
-		}*/
 	//显示评价内容
 		public String showGoodsDetails(){
 			LogManager.getLogger().debug("=========>"+eva);
-			List<EvaluateBean> evaluates = evaluateService.listshowEvaluatePoint(eva.getGid());	
+			List<EvaluateBean> evaluates = evaluateService.listshowGoodsDetails(eva.getGid());	
 			LogManager.getLogger().debug(evaluates);
 			AjaxUtil.objectAjaxResponse(evaluates);
 			return "none";
 		}
-		/*//显示评价内容
-			public String showGoodsDetails() {
-				List<EvaluateBean> evaluates = evaluateService.listshowGoodsDetails(eva.getGid());
-				Gson gson = new Gson();
-				String jsonResult = gson.toJson(evaluates);
-				HttpServletResponse response = ServletActionContext.getResponse();
-				response.setCharacterEncoding("utf-8");
-				response.setContentType("charset=utf-8");
-				try {
-					PrintWriter out = response.getWriter();
-					out.println(jsonResult);// 写出响应数据
-					out.flush();
-					out.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				return "none";
-			}
-		*/
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	
 	@Override
 	public void setRequest(Map<String, Object> request) {
