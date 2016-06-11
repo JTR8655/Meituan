@@ -16,4 +16,6 @@ public interface UorderMapper {
 	List<NoevalBean> listNoPj(Integer muid);
 
 	void updatePlStatus(int oid);
+
+	void addUorder(Uorder uorder);
 }

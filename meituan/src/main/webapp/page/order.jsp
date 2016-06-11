@@ -4,12 +4,13 @@
 <!doctype html>
 <html>
 <head>
+<base href="/meituan/">
 <meta charset="utf-8">
 <title>我的订单</title>
-<link href="../css/basic.css" type="text/css" rel="stylesheet">
-<link href="../css/order.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/order.js"></script>
+<link href="css/basic.css" type="text/css" rel="stylesheet">
+<link href="css/order.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/order.js"></script>
 <style>
 #head_2_left_login {
 	display: none;
@@ -82,7 +83,7 @@
 		$.each(data,function(indexs, items) {
 			val += '<tr class="collection_detailed"  id="tr'+items.GID+'" >'
 					+ '<td><div style="height:100px;">'
-					+ '<a href="javascript:void(0)"><img src="../'+items.IMG+'" style="float:left; margin-top:20px; margin-left:20px; width:100px; height:61px;" /></a>'
+					+ '<a href="javascript:void(0)"><img src="'+items.IMG+'" style="float:left; margin-top:20px; margin-left:20px; width:100px; height:61px;" /></a>'
 					+ '<a href="javascript:void(0)" style="float:left; margin-left:20px; margin-top:43px; color:#2BB8AA;" class="goods_text" onMouseOver="changeFontColor(0)" onMouseOut="returnFontColor(0)">'
 					+ items.GTITLE1
 					+ '</a>'
@@ -232,8 +233,8 @@
 			</li>
 			<li id="head_4">
 				<div id="head_4_left">
-					<a href="index.jsp" id="logo"><img id="logo_img"
-						src="../images/smalljpg.	png"></a> <a href="" class="didian"
+					<a href="page/index.jsp" id="logo"><img id="logo_img"
+						src="images/smalljpg.png"></a> <a href="" class="didian"
 						id="city">衡阳</a><br /> <a href="" class="didian" id="qiehuan">切换城市</a>
 				</div>
 				<!--head_4_left-->
@@ -260,13 +261,13 @@
 				<!--head_4_mid-->
 				<div id="head_4_right">
 					<div id="suishi" class="baozhang">
-						<a href="" id="bao_1"><img src="../basic_images/suishi.png"></a>
+						<a href="" id="bao_1"><img src="basic_images/suishi.png"></a>
 					</div>
 					<div id="miandan" class="baozhang">
-						<a href="" id="bao_2"><img src="../basic_images/miandan.png"></a>
+						<a href="" id="bao_2"><img src="basic_images/miandan.png"></a>
 					</div>
 					<div id="guoqi" class="baozhang">
-						<a href="" id="bao_3"><img src="../basic_images/guoqi.png"></a>
+						<a href="" id="bao_3"><img src="basic_images/guoqi.png"></a>
 					</div>
 				</div>
 				<!--head_4_right-->
@@ -373,7 +374,7 @@
                     <div class="order_row">
                     	<div class="order_cell_info">
                         	<div class="images">
-                            	<a href="javascript:void(0)"><img src="../images/goods_image_2.jpg" /></a>
+                            	<a href="javascript:void(0)"><img src="images/goods_image_2.jpg" /></a>
                             </div>
                             <div class="goods_info">
                             	<a class="goods" href="javascript:void(0)" onMouseOver="font_1(1)" onMouseOut="fr_1(1)">Theron 希伦蛋糕</a><br />
@@ -422,7 +423,7 @@
 									<tr class="collection_detailed" id="tr'+items.GID+'">
 										<td class="sc_td"><div>
 												<a href="javascript:void(0)"><img
-													src="../ges/goods_image_1.jpg"
+													src="ges/goods_image_1.jpg"
 													style="float: left; margin-top: 20px; margin-left: 20px; width: 100px; height: 61px;" /></a>
 												<a href="javascript:void(0)"
 													style="float: left; margin-left: 20px; font-size:12px; margin-top: 33px; color: #666666;"
@@ -455,7 +456,7 @@
 				</div>
 				<div id="v2" class="view">
 					<div style="margin-left: 164px; margin-top: 230px;" id="nullv2">
-						<img src="../images/order_no_evaluate.png" style="float: left;">
+						<img src="images/order_no_evaluate.png" style="float: left;">
 						<div
 							style="float: left; margin-top: 47px; margin-left: 15px; color: #666;">
 							亲，您没有待评价的订单哦，请移步到<a id="move_index" href="index.html">美团首页</a>下单吧！
@@ -482,12 +483,12 @@
 											<input type="hidden" name="count1" value='+count1+'>
 											<input type="hidden" name="hid" class="hid" value="0">
 											<div class="v2_d_img v2_d_div">
-												<img src="../images/goods_image_1.jpg" width="90"
+												<img src="images/goods_image_1.jpg" width="90"
 													height="60">
 											</div>
 											<div class="v2_d_pingjia v2_d_div">
 												<p>
-													<a src="../javascript:void(0)" id="v2_d_title">戏论蛋糕</a><input
+													<a src="javascript:void(0)" id="v2_d_title">戏论蛋糕</a><input
 														type="hidden" value="'+item.muid+'" name="muid">
 												</p>
 												<p class="bb getcount">本次团购体验如何？ 评价可随机赢取最多100积分</p>
@@ -511,19 +512,6 @@
 					</div>
 				</div>
 				<div id="v3" class="view">
-					<div class="v3_content">
-						<div class="v3_img v3_"></div>
-						<div class="v3_evaluated v3_">
-							<p class="v3_gtitle1">
-								<a class="v3_g_goods" href="">非i而恢复i</a>
-							</p>
-							<p class="v3_grade">
-								我的总体评价<a class="v3_g_point"></a>好
-							</p>
-							<p class="v3_pl_content">味道很好！赞，下次还来</p>
-						</div>
-					</div>
-
 				</div>
 				<div id="v4" class="view"></div>
 				<div id="v5" class="view"></div>
@@ -591,7 +579,7 @@
 					</ul>
 				</div>
 				<div class="b_u_c_r">
-					<img src="../images/kefu.png" /><br /> <a id="kefu">客服电话</a>
+					<img src="images/kefu.png" /><br /> <a id="kefu">客服电话</a>
 					<p>
 						<a id="phone">400-660-5335 </a><a>(9:00-23:00)</a>
 					</p>
@@ -608,11 +596,11 @@
 							href="">电子公告服务规则</a>
 					</p>
 					<div>
-						<a href=""><img src="../basic_images/beian_1.png"></a> <a
-							href=""><img src="../basic_images/beian_2.png"></a> <a
-							href=""><img src="../basic_images/beian_3.png"></a> <a
-							href=""><img src="../basic_images/beian_4.png"></a> <a
-							href=""><img src="../basic_images/beian_5.png"></a>
+						<a href=""><img src="basic_images/beian_1.png"></a> <a
+							href=""><img src="basic_images/beian_2.png"></a> <a
+							href=""><img src="basic_images/beian_3.png"></a> <a
+							href=""><img src="basic_images/beian_4.png"></a> <a
+							href=""><img src="basic_images/beian_5.png"></a>
 					</div>
 			</div>
 			</center>

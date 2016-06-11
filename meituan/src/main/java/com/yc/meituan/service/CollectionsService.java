@@ -1,11 +1,11 @@
-package com.yc.meituan.mapper;
+package com.yc.meituan.service;
 
 import com.yc.meituan.entity.Collections;
 
-public interface CollectionsMapper {
+public interface CollectionsService {
 
 	void addCollection(Collections collections);
 
 	Collections checkIsCollect(Collections collections);
-    
+
 }

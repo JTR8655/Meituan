@@ -10,9 +10,7 @@ import java.io.PrintWriter;
 import java.util.Map;
 import java.util.Random;
 
-
-
-import javax.imageio.*;
+import javax.imageio.ImageIO;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +32,7 @@ import com.yc.meituan.util.AjaxUtil;
 import com.yc.meituan.util.MeituanData;
 
 @Controller("userAction")
-public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAware {
+public class UserAction implements ModelDriven<UserInfo>, SessionAware, RequestAware {
 
 	@Autowired
 	private UserService userService;
@@ -45,9 +43,13 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 	private Map<String, Object> session;
 	private Map<String, Object> request;
 
-	//登录
 	private String province;
 	private String city;
+	private String uemail;
+
+	public void setUemail(String uemail) {
+		this.uemail = uemail;
+	}
 
 	public void setProvince(String province) {
 		this.province = province;
@@ -62,10 +64,10 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 		LogManager.getLogger().debug("userInfo:" + userInfo);
 		UserInfo user = userService.login(userInfo);
 		LogManager.getLogger().debug("取到的用户：" + user);
-		if(null != user){
+		if (null != user) {
 			session.put(MeituanData.LOGIN_USER, user);
 			return "loginSuccess";
-		}else{
+		} else {
 			session.put(MeituanData.ERROR_MSG, "登陆失败！用户名或密码错误");
 			return "login";
 		}
@@ -74,7 +76,7 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 	// 注销登录
 	public String logout() {
 		int code = 0;
-		if(session.get(MeituanData.LOGIN_USER) != null){
+		if (session.get(MeituanData.LOGIN_USER) != null) {
 			session.remove(MeituanData.LOGIN_USER);
 		}
 
@@ -98,16 +100,16 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 	public String findEmail(){
 		LogManager.getLogger().debug(""+userInfo.getUemail());
 		//UserInfo userInfos=userService.findEmail(userInfo.getUemail());
-		UserInfo uemail=userService.findEmail(userInfo.getUemail());
+		UserInfo uemail = userService.findEmail(userInfo.getUemail());
 		LogManager.getLogger().debug(uemail);
-		int status=0;
-		if(uemail!=null){
-			if(uemail.getUemail()!=null&&"".equals(uemail.getUemail())){
-				//存在
-				status=0;
+		int status = 0;
+		if (uemail != null) {
+			if (uemail.getUemail() != null && "".equals(uemail.getUemail())) {
+				// 存在
+				status = 0;
 			}
-		}else{
-			status=1;
+		} else {
+			status = 1;
 		}
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setCharacterEncoding("utf-8");
@@ -122,8 +124,7 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 		}
 		return "none";
 	}
-	
-	
+
 	public String register() {
 		LogManager.getLogger().debug("注册操作+" + userInfo);
 		userInfo.setUaddr(province + "-" + city);
@@ -141,7 +142,7 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 	}
 
 	public boolean sendEmail(String toEmail,UserInfo userInfo) {
-		MimeMessage mm=javaMailSender.createMimeMessage();
+		MimeMessage mm = javaMailSender.createMimeMessage();
 		try {
 			MimeMessageHelper smm=new MimeMessageHelper(mm,true);
 			smm.setFrom("13298581430@163.com");//邮件发送者
@@ -156,8 +157,8 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 		}
 		return false;
 	}
-	
-	public String actives111(){//UserInfo userInfo
+
+	public String actives(){//UserInfo userInfo
 		LogManager.getLogger().debug(userInfo.getUemail());
 		userInfo.setUemail(userInfo.getUemail());
 		try {
@@ -181,8 +182,7 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 
 		int width = 83, height = 30;
 		// 建立指定宽、高和BufferedImage对象
-		BufferedImage image = new BufferedImage(width, height,
-				BufferedImage.TYPE_INT_RGB);
+		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
 		Graphics g = image.getGraphics(); // 该画笔画在image上
 		Color c = g.getColor(); // 保存当前画笔的颜色，用完画笔后要回复现场
@@ -201,8 +201,7 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 			String rand = new Character(ch[random.nextInt(length)]).toString();
 			sRand += rand;
 			// 设置随机颜色
-			g.setColor(new Color(random.nextInt(255), random.nextInt(255),
-					random.nextInt(255)));
+			g.setColor(new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)));
 			g.drawString(rand, 20 * i + 6, 25);
 		}
 		// 产生随即干扰点
@@ -222,7 +221,7 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware,RequestAw
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		return "none";
 	}
 

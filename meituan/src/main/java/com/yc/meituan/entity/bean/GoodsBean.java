@@ -19,6 +19,33 @@ public class GoodsBean {
 	private String b_limittip;// 限购限用提醒
 	private float d_price1;// 套餐单价
 	private int d_count;// 套餐数量/规格
+	private String d_taocan;
+	private String sshopname;
+	private int collectCount;
+
+	public int getCollectCount() {
+		return collectCount;
+	}
+
+	public void setCollectCount(int collectCount) {
+		this.collectCount = collectCount;
+	}
+
+	public String getSshopname() {
+		return sshopname;
+	}
+
+	public void setSshopname(String sshopname) {
+		this.sshopname = sshopname;
+	}
+
+	public String getD_taocan() {
+		return d_taocan;
+	}
+
+	public void setD_taocan(String d_taocan) {
+		this.d_taocan = d_taocan;
+	}
 
 	public int getGid() {
 		return gid;
@@ -170,33 +197,8 @@ public class GoodsBean {
 				+ ", privilege=" + privilege + ", gprice1=" + gprice1 + ", gprice2=" + gprice2 + ", gsoldcount="
 				+ gsoldcount + ", img=" + img + ", b_retime=" + b_retime + ", b_usetime=" + b_usetime + ", b_ordertip="
 				+ b_ordertip + ", b_parlor=" + b_parlor + ", b_pack=" + b_pack + ", b_serve=" + b_serve
-				+ ", b_limittip=" + b_limittip + ", d_price1=" + d_price1 + ", d_count=" + d_count + "]";
-	}
-
-	public GoodsBean() {
-	}
-
-	public GoodsBean(int gid, int sid, String gtitle1, String gtitle2, String privilege, float gprice1, float gprice2,
-			int gsoldcount, String img, String b_retime, String b_usetime, String b_ordertip, String b_parlor,
-			String b_pack, String b_serve, String b_limittip, float d_price1, int d_count) {
-		this.gid = gid;
-		this.sid = sid;
-		this.gtitle1 = gtitle1;
-		this.gtitle2 = gtitle2;
-		this.privilege = privilege;
-		this.gprice1 = gprice1;
-		this.gprice2 = gprice2;
-		this.gsoldcount = gsoldcount;
-		this.img = img;
-		this.b_retime = b_retime;
-		this.b_usetime = b_usetime;
-		this.b_ordertip = b_ordertip;
-		this.b_parlor = b_parlor;
-		this.b_pack = b_pack;
-		this.b_serve = b_serve;
-		this.b_limittip = b_limittip;
-		this.d_price1 = d_price1;
-		this.d_count = d_count;
+				+ ", b_limittip=" + b_limittip + ", d_price1=" + d_price1 + ", d_count=" + d_count + ", d_taocan="
+				+ d_taocan + ", sshopname=" + sshopname + ", collectCount=" + collectCount + "]";
 	}
 
 }

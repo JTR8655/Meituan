@@ -1,6 +1,9 @@
 package com.yc.meituan.web.interceptor;
 
 import java.util.Map;
+
+import org.apache.logging.log4j.LogManager;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.MethodFilterInterceptor;
@@ -23,6 +26,7 @@ public class LoginInterceptor extends MethodFilterInterceptor {
 		Object obj = session.get(MeituanData.LOGIN_USER);
 		if(obj == null){
 			session.put(MeituanData.ERROR_MSG, "请登录后再进行操作！！");
+			LogManager.getLogger().debug("拦截到用户未登录");
 			return "login";
 		}
 		return invocation.invoke();

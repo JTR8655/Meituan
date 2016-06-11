@@ -39,6 +39,7 @@ public class UserServiceImpl implements UserService {
 	public UserInfo findEmail(String uemail) {
 		return userInfoMapper.findEmail(uemail);
 	}
+
 	@Override
 	public void activeUser(String uemail) {
 		try {
@@ -47,5 +48,6 @@ public class UserServiceImpl implements UserService {
 			throw new RuntimeException("激活失败",e);
 		}
 	}
+
 	
 }
