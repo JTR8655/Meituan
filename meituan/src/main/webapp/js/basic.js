@@ -13,8 +13,23 @@ function hidenNavMenu(){
 
 
 function search(){
-	alert(11);
 	var str = $("#sosuo_mid").val();
 	alert(str);
 }
+
+$(function showtrolley(){
+	$("#trolleyCount").css("color","red");
+	$.ajax({
+		type:'post',
+		url:'trolley_showTrolley.action',
+		dataType:'json',
+		success:function(data){
+			if(data != null){
+				$("#trolleyCount").html(data.length);
+			}else{
+				$("#trolleyCount").html(0);
+			}
+		}
+	});
+});
 

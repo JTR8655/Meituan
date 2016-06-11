@@ -1,7 +1,9 @@
 package com.yc.meituan.entity.bean;
 
+
 public class UorderBean {
 	private Integer oid; // 订单id
+	private String opwd;
 	private String oidentifier; // 订单编号
 	private Integer muid; // 用户id
 	private Integer gid; // 商品id
@@ -12,6 +14,9 @@ public class UorderBean {
 	private String img; // 图片路径
 	private Integer sid; // 商家id
 	private String b_retime; // 有效时间
+	private Double oprice;
+	private String otime;
+	private String opaytime;
 
 	public Integer getOid() {
 		return oid;
@@ -101,11 +106,44 @@ public class UorderBean {
 		this.gprice2 = gprice2;
 	}
 
+	public Double getOprice() {
+		return oprice;
+	}
+
+	public void setOprice(Double oprice) {
+		this.oprice = oprice;
+	}
+
+	public String getOpwd() {
+		return opwd;
+	}
+
+	public void setOpwd(String opwd) {
+		this.opwd = opwd;
+	}
+
+	public String getOtime() {
+		return otime;
+	}
+
+	public void setOtime(String otime) {
+		this.otime = otime;
+	}
+
+	public String getOpaytime() {
+		return opaytime;
+	}
+
+	public void setOpaytime(String opaytime) {
+		this.opaytime = opaytime;
+	}
+
 	@Override
 	public String toString() {
-		return "UorderBean [oid=" + oid + ", oidentifier=" + oidentifier + ", muid=" + muid + ", gid=" + gid
-				+ ", ostatus=" + ostatus + ", ocount=" + ocount + ", gtitle1=" + gtitle1 + ", gprice2=" + gprice2
-				+ ", img=" + img + ", sid=" + sid + ", b_retime=" + b_retime + "]";
+		return "UorderBean [oid=" + oid + ", opwd=" + opwd + ", oidentifier=" + oidentifier + ", muid=" + muid
+				+ ", gid=" + gid + ", ostatus=" + ostatus + ", ocount=" + ocount + ", gtitle1=" + gtitle1 + ", gprice2="
+				+ gprice2 + ", img=" + img + ", sid=" + sid + ", b_retime=" + b_retime + ", oprice=" + oprice
+				+ ", otime=" + otime + ", opaytime=" + opaytime + "]";
 	}
 
 }

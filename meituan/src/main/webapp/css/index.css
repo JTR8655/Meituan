@@ -47,7 +47,7 @@
 	margin:0 auto;
 	border-bottom:1px solid #EEE;
 	line-height:50px;
-	background:url(../index_images/fenlei_arrow.png) no-repeat right center;
+	background:url(../images/fenlei_arrow.png) no-repeat right center;
 }
 .fenlei_main{
 	font-size:14px;
@@ -67,15 +67,15 @@
 	border-bottom:1px solid #EEE;
 }
 #remen{
-	background:url(../index_images/remen.png) no-repeat left center;
+	background:url(../images/remen.png) no-repeat left center;
 	padding-left:5px;
 }
 #quyu{
-	background:url(../index_images/quyu.png) no-repeat left center;
+	background:url(../images/quyu.png) no-repeat left center;
 	padding-left:5px;
 }
 #shangquan{
-	background:url(../index_images/shangquan.png) no-repeat left center;
+	background:url(../images/shangquan.png) no-repeat left center;
 }
 #sosuo_right{
 	cursor:pointer;
@@ -120,7 +120,7 @@
 	opacity:0.6;
 }
 .qie_goleft{
-	background:url(../index_images/qie_goleft.jpg) no-repeat;
+	background:url(../images/qie_goleft.jpg) no-repeat;
 	right:329px;
 	width:30px;
 	right:329px;
@@ -133,7 +133,7 @@
 }
 .goright_div{
 	display:none;
-	background:url(../index_images/qie_goright.jpg) no-repeat right;
+	background:url(../images/qie_goright.jpg) no-repeat right;
 	position:relative;
 	top:0px;
 	left:15px;
@@ -232,7 +232,7 @@
 	margin-left:4px;
 }
 #qiang_a{
-	background:url(../index_images/daojishi.png) no-repeat;
+	background:url(../images/daojishi.png) no-repeat;
 	padding-left:37px;
 	background-position: 0 -321px;
     float: left;
@@ -264,7 +264,7 @@
 	width:49px;
 	height:28px;
 	float:left;
-	background:url(../index_images/daojishi.png) no-repeat;
+	background:url(../images/daojishi.png) no-repeat;
 	background-position:0 -376px;
 	margin-right:11px;
 }
@@ -278,7 +278,7 @@
 	float:left;
 	width:20px;
 	height:28px;
-	background:url(../index_images/daojishi.png) no-repeat;
+	background:url(../images/daojishi.png) no-repeat;
 	background-position:0 -82px;
 	margin-right:2px;
 	color:white;

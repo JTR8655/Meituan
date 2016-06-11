@@ -1,0 +1,194 @@
+#bd {
+	margin: 0 auto;
+	padding: 10px 0 65px;
+	width: 980px;
+}
+.mainbox {
+	background: #fff none repeat scroll 0 0;
+	border: 1px solid #eee;
+	clear: both;
+	height: auto !important;
+	min-height: 400px;
+	padding: 25px;
+}
+
+.mine {
+	z-index: 1;
+	left:-11px;
+}
+
+.mine, .mine .bonus {
+	position: relative;
+}
+
+.mainbox h2 {
+	border-bottom: 1px solid #ddd;
+	font-size: 28px;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+.info-section {
+	background: #fff6db none repeat scroll 0 0;
+	border: 1px solid #f5d8a7;
+	margin: 0 0 10px;
+	padding: 8px 16px;
+}
+
+.info-section, .info-section h3 {
+	font-size: 12px;
+}
+
+.bfc, .ccf, .common-banner, .indication-arrow, .info-section, .section {
+	overflow: hidden;
+}
+
+.mainbox h2 span.op-area {
+	font-size: 14px;
+	font-weight: 400;
+	position: absolute;
+	right: 20px;
+	top: 40px;
+}
+
+.info-section dt {
+	font-weight: 700;
+	margin-bottom: 2px;
+}
+
+.apply-refund-link, .coupon-send {
+	float: right;
+	font-size: 12px;
+}
+
+.info-section dt span.info-section--title {
+	display: inline-block;
+	margin-left: 0;
+	vertical-align: top;
+}
+
+.info-section dt span {
+	font-weight: 400;
+	margin-left: 10px;
+}
+
+.info-section em.info-section--text {
+	display: inline-block;
+}
+
+.info-section em {
+	color: #d00;
+	font-weight: 700;
+}
+
+address, caption, cite, code, dfn, em, var {
+	font-style: normal;
+	font-weight: 400;
+}
+
+.info-section dd.last {
+	border-bottom: 0 none;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.bunch-section {
+	background: #fff none repeat scroll 0 0;
+	border: 1px solid #e5e5e5;
+	font-size: 12px;
+	margin: 0 0 10px;
+	overflow: hidden;
+}
+
+.bunch-section__label {
+	background: #eee none repeat scroll 0 0;
+	color: #333;
+	font-size: 14px;
+	font-weight: 700;
+	padding: 5px 8px;
+	height:21px;
+}
+
+.bunch-section__content {
+	padding: 5px 8px 10px;
+}
+.flow-list{
+	height:20px;
+}
+.coupon-field {
+	background-color: #eee;
+	border: 1px solid #eee;
+	min-height: 20px;
+	padding: 5px 0 1px 10px;
+}
+#coupon-field_ul{
+	height:21px;
+}
+.coupon-field__tip {
+	color: #999;
+	padding-bottom: 5px;
+}
+
+.coupon-field li.invalid {
+	color: #999;
+}
+
+.coupon-field li {
+	width:100%;
+	margin-top:5px 0;
+	margin-bottom: 5px;
+}
+
+.coupon-field li span {
+	color: #999;
+	margin-left: 10px;
+}
+
+#order-address, .flow-list {
+	line-height: 1.8;
+}
+
+.flow-list li {
+	width: 220px;
+}
+
+.bunch-section .flow-list li {
+	display: inline-block;
+	margin-right: 2px;
+	width: 220px;
+}
+
+.info-table {
+	width: 100%;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.info-table .left {
+	text-align: left;
+}
+
+.info-table th {
+	font-weight: 700;
+}
+
+.info-table td, .info-table th {
+	padding: 3px 5px;
+	text-align: center;
+}
+
+.info-table td, .info-table th {
+	padding: 3px 5px;
+	text-align: center;
+}
+
+.info-table .total {
+	color: #c33;
+}
+
+.rates, span.money {
+	font-family: arial, sans-serif;
+}

@@ -24,6 +24,7 @@ public class EvaluateServiceImpl implements EvaluateService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addEvaluate(Evaluate evaluate) {
 		try {
+			LogManager.getLogger().debug("!!!!!");
 			evaluateMapper.addEvaluate(evaluate);
 		} catch (Exception e) {
 			throw new RuntimeException("添加评论失败！！！", e);

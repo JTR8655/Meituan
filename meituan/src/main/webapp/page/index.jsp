@@ -31,9 +31,9 @@
 					</ul>
 					<ul id="head_2_right">
 						<li><a href="page/order.jsp">我的美团</a></li>
-						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;购物车0件</a></li>
+						<li><a href="page/fair.jsp?type=trolley" class="border">|&nbsp;&nbsp;&nbsp;购物车<a id="trolleyCount">0</a>件</a></li>
 						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;联系客服</a></li>
-						<li><a href="backLogin/sellerLogin.jsp" class="border">|&nbsp;&nbsp;&nbsp;我是商家</a></li>
+						<li><a href="back/sellerLogin.jsp" class="border">|&nbsp;&nbsp;&nbsp;我是商家</a></li>
 						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;更多</a></li>
 					</ul>
 					<c:if test="${sessionScope.loginUser != null}">
@@ -53,7 +53,7 @@
 			<li id="head_4">
 				<div id="h4_div">
 					<div id="head_4_left">
-						<a href="index.jsp" id="logo"><img id="logo_img"
+						<a href="page/index.jsp" id="logo"><img id="logo_img"
 							src="images/smalljpg.png"></a> <a href="" class="didian"
 							id="city">衡阳</a><br />
 						<!--     <a href="" class="didian" id="qiehuan">切换城市</a>  -->
@@ -297,7 +297,7 @@
             </div><!--详细美食 -->
             <a id="afterXiangxi" href=""><div id="food_more" class="xiangxi_more">更多美食团购，请点击查看></div></a>
         </div><!--美食-->
-		<div id="funny" class="xiangxi">
+		<!-- <div id="funny" class="xiangxi">
 			<div class="title">
 				<a href=""><img src="images/xiuxian.png"></a>
 				<ul>
@@ -307,7 +307,7 @@
 					<li class="title_right"><a href="">全部></a></li>
 				</ul>
 			</div>
-		<!--      <div id="movie" class="xiangxi">
+		     <div id="movie" class="xiangxi">
         	<div class="title">
             	<a href=""><img src="images/dianying.png"></a>
                 <ul>

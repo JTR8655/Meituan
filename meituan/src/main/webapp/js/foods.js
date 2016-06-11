@@ -1,5 +1,20 @@
 var text = '';
 
+$(function showtrolley(){
+	$("#trolleyCount").css("color","red");
+	$.ajax({
+		type:'post',
+		url:'trolley_showTrolley.action',
+		dataType:'json',
+		success:function(data){
+			if(data != null){
+				$("#trolleyCount").html(data.length);
+			}else{
+				$("#trolleyCount").html(0);
+			}
+		}
+	});
+});
 //显示当前商品详情
 function showInfo(data){
 	var value = "";

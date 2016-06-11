@@ -21,4 +21,6 @@ public interface UorderService {
 
 	Uorder addUorder(Uorder uorder);
 
+	UorderBean showOrderDetail(Uorder uorder);
+
 }

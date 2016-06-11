@@ -1,3 +1,19 @@
+$(function showtrolley(){
+	$("#trolleyCount").css("color","red");
+	$.ajax({
+		type:'post',
+		url:'trolley_showTrolley.action',
+		dataType:'json',
+		success:function(data){
+			if(data != null){
+				$("#trolleyCount").html(data.length);
+			}else{
+				$("#trolleyCount").html(0);
+			}
+		}
+	});
+});
+
 // JavaScript Document
 var count1=0;
 var count2=0;
@@ -69,7 +85,6 @@ function clickPj(){
 	//	$(this).parent().parent().parent().append(pjContent);
 		$("pjDetail")
 		document.getElementsByClassName("pjDetail")[pjliIndex].style.display = 'block';
-		console.info($(this).parent().parent());
 		$(".v2_pingjia").each(function(){
 			$(this).parent().children().css("background","white");
 			$(this).parent().children().css("border-color","#eee");
@@ -143,7 +158,7 @@ $(function(){
 			for(var i=0;i<data.length;i++){	
 				str += '<div class="orders_body">'
 					+'<div class="order_title">'     	
-					+ '订单编号：<a class="number" href="javascript:void(0)">'+data[i].oidentifier+'</a>'
+					+ '订单编号：<a class="number" href="javascript:void(0)" onclick = "orderDetail('+data[i].oid+')">'+data[i].oidentifier+'</a>'
 					+ ' <a class="delete" href="javascript:void(0)" onclick=dOrder('+i+') onMouseOver="fc('+i+')" onMouseOut="fr('+i+')">删除</a>'
 					+ '</div>'
 					+ '  <div class="order_row">'
@@ -188,18 +203,16 @@ function listCollection(){
 				return;
 			}
 			var str="";
-			console.info(data);
 			for(var i=0;i<data.length;i++){
 				str += 
-				'<tr class="collection_detailed">'+
-					'<td class="sc_td"><div>'+
-						'<a href="page/foods.jsp?gid= '+ data[i].gid +'"><img src="'+ data[i].img +'"'+
+				'<tr class="collection_detailed"><td class="sc_td"><div>'+
+						'<a href="page/foods.jsp?gid= '+ data[i].gid +'"><img src="'+ data[i].img +'" '+
 							'style="float: left;padding-bottom:10px; margin-top: 10px; margin-left: 20px; width: 100px; height: 61px;" /></a>'+
 						'<a href="page/foods.jsp?gid='+ data[i].gid +'" style="float: left; margin-left: 20px; font-size:12px; margin-top: 33px; color: #666666;"'+
 							'class="goods_text_a">'+ data[i].gtitle1 +'</a>'+
 						'</div></td> <td class="sc_td"><div> <p class="goods_text">￥'+ data[i].gprice2 +'</p></div></td>'+
 					'<td class="sc_td"><div> <p class="goods_text">'+ data[i].gstatus +'</p> </div></td>'+
-					'<td class="sc_td"> <div> <a href="page/fair.jsp?gid='+ data[i].gid +'" class="goods_text_buy" style="margin-left: 23px; color: #2BB8AA;"'+
+					'<td class="sc_td"> <div> <a href="page/foods.jsp?gid='+ data[i].gid +'" class="goods_text_buy" style="margin-left: 23px; color: #2BB8AA;"'+
 						'>购买</a> <a '+
 						'href="javascript:void(0)" class="goods_text_del" style="margin-left: 3px;"'+
 						' onClick=" ('+data[i].cid+')">删除</a>'+
@@ -226,6 +239,7 @@ function showNoPj(){
 					    +'<div class="v2_dingdan">'
 						+'<form class="pingjiaForm" id="pingjiaForm'+ i +'" method="post" enctype="multipart/form-data"><div>'
 						+'<input type="hidden" name="oid" class="oid" value="'+data[i].oid+'">'
+						+'<input type="hidden" name="gid" class="gid" value="'+data[i].gid+'">'
 						+'<input type="hidden" name="hid" class="hid" value="0">'
 						+'<input type="hidden" name="egrade_4" class="egrade4" value="0">'
 						+'<div class="v2_d_img v2_d_div"><img src="'+data[i].img+'" width="90" height="60"></div>'
@@ -257,7 +271,6 @@ function showNoPj(){
 						+'<p class="bb">修改后的评价不参与“认真评价奖积分”活动。</p>'
 						+'</div></div>'
 						+'</form></div></li>';
-						
 					$("#pingjiaUl").append(value);
 					$(".v2_jf_count").html(data.length);
 				}
@@ -329,7 +342,6 @@ function pinglun(){
 	}else{
 		document.getElementsByClassName("hid")[pjliIndex].value=0;
 	}
-	console.info($("#pingjiaForm"+pjliIndex).serialize());
 	//评论提交时发送请求
 	$.ajax({	
 		type:"post",
@@ -337,7 +349,6 @@ function pinglun(){
 		data:$("#pingjiaForm"+pjliIndex).serialize(),
 		dataType:"json",
 		success:function(data){
-			console.info("回调参数："+data);
 			if(data == 1){
 				alert("评价成功！");
 				hide();
@@ -365,80 +376,82 @@ var goods = document.getElementsByClassName('goods');
 //我的收藏
 var nav_content = document.getElementsByClassName('nav_content');	
 
-	//左侧导航栏
-	function changeColor(index){
-		var x = list.length;
-		for(var i=0;i<x;i++){
-			list[i].style.background = "#f6f6f6";
-			$(".image").removeAttr("src");			
-			font[i].style.color = "#666";
-			document.getElementById('v'+i).style.display = 'none';
-		}			
-		list[index].style.background = "#2BB8AA";
-		image[index].src = "images/arrow.png";
-		font[index].style.color = "#FFF";
-		document.getElementById('v'+index).style.display = 'block';
-		flag = true;						
+//左侧导航栏
+function changeColor(index){
+	var x = list.length;
+	for(var i=0;i<x;i++){
+		list[i].style.background = "#f6f6f6";
+		$(".image").removeAttr("src");			
+		font[i].style.color = "#666";
+		document.getElementById('v'+i).style.display = 'none';
+	}			
+	list[index].style.background = "#2BB8AA";
+	image[index].src = "images/arrow.png";
+	font[index].style.color = "#FFF";
+	document.getElementById('v'+index).style.display = 'block';
+	flag = true;						
+}
+
+function fontColor(index){
+	if(flag){
+		font[index].style.color = '#FFF';
+	}else{
+		font[index].style.color = "#2BB8AA";
 	}
-	
-	function fontColor(index){
-		if(flag){
-			font[index].style.color = '#FFF';
-		}else{
-			font[index].style.color = "#2BB8AA";
-		}
-		flag = false;
+	flag = false;
+}
+
+function fontReturn(index){
+	if(flag){
+		font[index].style.color = '#FFF';
+	}else{
+		font[index].style.color = "#666";
 	}
+	flag = false;
+}
+
+//我的订单
+function fc(index){
+	deleting[index].style.color = "#2BB8AA";
+}
+
+function fr(index){
+	deleting[index].style.color = '#666';	
+}
+
+function font_1(index){
+	goods[index].style.color = "#2BB8AA";
+}
+
+function fr_1(index){
+	goods[index].style.color = '#666';	
+}
+
+//我的收藏
+function navChange(index){
+	nav_content[index].style.textDecoration = 'underline';
+}
 	
-	function fontReturn(index){
-		if(flag){
-			font[index].style.color = '#FFF';
-		}else{
-			font[index].style.color = "#666";
-		}
-		flag = false;
+function navReturn(index){
+	nav_content[index].style.textDecoration = 'none';
+}
+
+function clicked(index){
+	var x = nav_content.length;
+	for(var i=0;i<x;i++){
+		nav_content[i].style.color = '#2bb8aa';
+		$('.nav_content').css('background','#fff');
 	}
+	nav_content[index].style.color = '#fff';
+	nav_content[index].style.background = '#2bb8aa';
 	
-	//我的订单
-    function fc(index){
-		deleting[index].style.color = "#2BB8AA";
-	}
-	
-	function fr(index){
-		deleting[index].style.color = '#666';	
-	}
-	
-	function font_1(index){
-		goods[index].style.color = "#2BB8AA";
-	}
-	
-	function fr_1(index){
-		goods[index].style.color = '#666';	
-	}
-	
-	//我的收藏
-	function navChange(index){
-		nav_content[index].style.textDecoration = 'underline';
-	}
-		
-	function navReturn(index){
-		nav_content[index].style.textDecoration = 'none';
-	}
-	
-	function clicked(index){
-		var x = nav_content.length;
-		for(var i=0;i<x;i++){
-			nav_content[i].style.color = '#2bb8aa';
-			$('.nav_content').css('background','#fff');
-		}
-		nav_content[index].style.color = '#fff';
-		nav_content[index].style.background = '#2bb8aa';
-		
-	}
-	
-	function upload(){
-		$(".uploadimg").click();
-	}
-	
-	
-	
+}
+
+function upload(){
+	$(".uploadimg").click();
+}
+
+function orderDetail(obj){
+	window.location.href="page/orderDetail.jsp?oid="+obj;
+}
+

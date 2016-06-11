@@ -10,10 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ModelDriven;
 import com.yc.meituan.entity.GoodsInfo;
+import com.yc.meituan.entity.UserInfo;
 import com.yc.meituan.entity.bean.EvaluateBean;
 import com.yc.meituan.entity.bean.GoodsBean;
 import com.yc.meituan.service.GoodsService;
 import com.yc.meituan.util.AjaxUtil;
+import com.yc.meituan.util.MeituanData;
 
 public class GoodsAction implements ModelDriven<GoodsBean>, SessionAware, RequestAware {
 

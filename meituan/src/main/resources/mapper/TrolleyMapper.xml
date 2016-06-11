@@ -13,4 +13,9 @@
 	<update id="updateToGoodsCar" parameterType="Trolley">
 		update meituan_trolley set tcount = tcount + #{tcount} where gid = #{gid}
 	</update>
+	
+	<select id="showTrolley" parameterType="Integer" resultType="TrolleyBean">
+		select t.gid,t.tcount,g.gtitle1,g.gtitle2,g.gprice1,g.img from meituan_trolley t 
+			inner join meituan_goods_info g on t.gid = g.gid and t.muid = #{muid}
+	</select>
 </mapper>

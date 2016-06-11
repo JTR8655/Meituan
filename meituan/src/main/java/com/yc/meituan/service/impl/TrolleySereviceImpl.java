@@ -1,9 +1,12 @@
 package com.yc.meituan.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yc.meituan.entity.Trolley;
+import com.yc.meituan.entity.bean.TrolleyBean;
 import com.yc.meituan.mapper.TrolleyMapper;
 import com.yc.meituan.service.TrolleySerevice;
 
@@ -29,6 +32,11 @@ public class TrolleySereviceImpl implements TrolleySerevice {
 				throw new RuntimeException("插入数据失败！！！", e);
 			}
 		}
+	}
+
+	@Override
+	public List<TrolleyBean> showTrolley(Integer muid) {
+		return trolleyMapper.showTrolley(muid);
 	}
 
 }

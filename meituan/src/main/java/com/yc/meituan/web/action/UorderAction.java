@@ -17,6 +17,7 @@ import com.yc.meituan.entity.UserInfo;
 import com.yc.meituan.entity.bean.CollectionBean;
 import com.yc.meituan.entity.bean.NoevalBean;
 import com.yc.meituan.entity.bean.UorderBean;
+import com.yc.meituan.service.GoodsService;
 import com.yc.meituan.service.UorderService;
 import com.yc.meituan.util.AjaxUtil;
 import com.yc.meituan.util.MeituanData;
@@ -26,6 +27,8 @@ public class UorderAction implements ModelDriven<Uorder>, SessionAware, RequestA
 
 	@Autowired
 	private UorderService uorderService;
+	@Autowired
+	private GoodsService goodsService;
 	private Uorder uorder;
 	private Map<String, Object> session;
 	private Map<String, Object> request;
@@ -95,6 +98,7 @@ public class UorderAction implements ModelDriven<Uorder>, SessionAware, RequestA
 		uorder.setMuid(user.getMuid());
 		LogManager.getLogger().debug(uorder);
 		try {
+			goodsService.updateSoldCount(uorder);
 			Uorder successUorder = uorderService.addUorder(uorder);
 			AjaxUtil.objectAjaxResponse(successUorder);
 		} catch (Exception e) {
@@ -102,6 +106,20 @@ public class UorderAction implements ModelDriven<Uorder>, SessionAware, RequestA
 			AjaxUtil.stringAjaxResponse(""+0);
 		}
 		
+		return "none";
+	}
+	
+	public String showOrderDetail(){
+		UserInfo user = (UserInfo) session.get(MeituanData.LOGIN_USER);
+		if(null == user){
+			AjaxUtil.stringAjaxResponse(""+2);
+			return "none";
+		}
+		uorder.setMuid(user.getMuid());
+		UorderBean uorderBean = uorderService.showOrderDetail(uorder);
+		if(null != uorderBean){
+			AjaxUtil.objectAjaxResponse(uorderBean);
+		}
 		return "none";
 	}
 	

@@ -18,4 +18,6 @@ public interface UorderMapper {
 	void updatePlStatus(int oid);
 
 	void addUorder(Uorder uorder);
+
+	UorderBean showOrderDetail(Uorder uorder);
 }

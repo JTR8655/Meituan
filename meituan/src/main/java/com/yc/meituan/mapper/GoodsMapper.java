@@ -12,6 +12,5 @@ public interface GoodsMapper {
 	List<GoodsInfo> selectGoods();
 
 	List<GoodsBean> showOtherGoods(GoodsBean goodsBean);
-	
 
 }

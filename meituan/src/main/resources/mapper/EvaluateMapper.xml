@@ -6,8 +6,8 @@
  	</select>
  	
 	<insert id="addEvaluate" parameterType="Evaluate">
-		insert into meituan_evaluate (eid,muid,oid,egrade_4,econtent,img,hidename) values 
-			(SEQ_MEITUAN_EVAL.nextval,#{muid},#{oid},#{egrade_4},#{econtent},#{img},#{hidename})
+		insert into meituan_evaluate (eid,muid,oid,egrade_4,econtent,img,hidename,gid) values 
+			(SEQ_MEITUAN_EVAL.nextval,#{muid},#{oid},#{egrade_4},#{econtent},#{img},#{hidename},#{gid})
 	</insert>
 	
 	<select id="listPj" parameterType="int" resultType="EvaluatedBean">

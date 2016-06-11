@@ -1,5 +1,6 @@
 package com.yc.meituan.web.action;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.RequestAware;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.ModelDriven;
 import com.yc.meituan.entity.Trolley;
 import com.yc.meituan.entity.UserInfo;
+import com.yc.meituan.entity.bean.TrolleyBean;
 import com.yc.meituan.service.TrolleySerevice;
 import com.yc.meituan.util.AjaxUtil;
 import com.yc.meituan.util.MeituanData;
@@ -23,6 +25,22 @@ public class TrolleyAction implements SessionAware, RequestAware, ModelDriven<Tr
 	
 	@Autowired
 	TrolleySerevice trolleyserice;
+	
+	public String showTrolley(){
+		UserInfo user = (UserInfo) session.get(MeituanData.LOGIN_USER);
+		if(null == user){
+			return "none";
+		}
+		if(null != session.get("trollies")){
+			AjaxUtil.objectAjaxResponse(session.get("trollies"));
+		}
+		List<TrolleyBean> trollies = trolleyserice.showTrolley(user.getMuid());
+		if(null != trollies){
+			session.put("trollies", trollies);
+			AjaxUtil.objectAjaxResponse(trollies);
+		}
+		return "none";
+	}
 	
 	public String addToGoodsCar(){
 		UserInfo user = (UserInfo) session.get(MeituanData.LOGIN_USER);
@@ -42,7 +60,19 @@ public class TrolleyAction implements SessionAware, RequestAware, ModelDriven<Tr
 		return "none";
 	}
 	
-	
+	public String showTroDetail(){
+		UserInfo user = (UserInfo) session.get(MeituanData.LOGIN_USER);
+		if(null == user){
+			AjaxUtil.stringAjaxResponse(""+2);
+			return "none";
+		}
+		List<TrolleyBean> trollies = (List<TrolleyBean>) session.get("trollies");
+		if(null != trollies){
+			AjaxUtil.objectAjaxResponse(trollies);
+		}
+		
+		return "none";
+	}
 	
 	
 	
