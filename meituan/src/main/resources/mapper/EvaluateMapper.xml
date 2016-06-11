@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.meituan.mapper.EvaluateMapper" >
+ 	<select id="showEvaluate" parameterType="int" resultType="EvaluateBean">
+ 		select sum(egrade_1) grade, count(egrade_1) amount from meituan_evaluate e inner join meituan_uorder o on e.oid=o.oid and o.gid=#{gid}
+ 	</select>
+ 	
+	<insert id="addEvaluate" parameterType="Evaluate">
+		insert into meituan_evaluate (eid,muid,oid,egrade_4,econtent,img,hidename) values 
+			(SEQ_MEITUAN_EVAL.nextval,#{muid},#{oid},#{egrade_4},#{econtent},#{img},#{hidename})
+	</insert>
+	
+	<select id="listPj" parameterType="int" resultType="EvaluatedBean">
+		select g.gid,g.img,g.gtitle1,e.egrade_4,e.econtent from meituan_evaluate e inner join 
+       meituan_uorder o on o.oid = e.oid inner join meituan_goods_info g on 
+       o.gid = g.gid and e.muid = #{muid} order by eid desc
+	</select>
+	
+	<select id="showEvaluatePoint" parameterType="int" resultType="EvaluateBean">
+ 		select sum(egrade_4) grade, count(egrade_4) amount from meituan_evaluate e 
+ 		inner join meituan_uorder o on e.oid=o.oid and o.gid=#{gid}
+ 	</select>
+ 	<select id="showGoodsDetails" parameterType="int" resultType="EvaluateBean">
+ 		select o.gid,u.uaccounts, u.uheadimg,e.hidename, e.egrade_4, e.econtent, e.temp1 from meituan_user_info u
+ 		inner join meituan_evaluate e on u.muid = e.muid
+ 		inner join meituan_uorder o on e.oid=o.oid and o.gid=#{gid}
+ 	</select>
+</mapper>

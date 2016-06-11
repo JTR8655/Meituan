@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.meituan.mapper.TrolleyMapper" >
+	<insert id="addToGoodsCar" parameterType="Trolley">
+		insert into meituan_trolley (tid,muid,gid,tcount) 
+			values(SEQ_MEITUAN_TRO_TID.nextval,#{muid},#{gid},#{tcount})
+	</insert>
+	
+	<select id="checkHadTrolley" parameterType="Trolley" resultType="Trolley">
+		select * from meituan_trolley where gid =#{gid}
+	</select>
+	
+	<update id="updateToGoodsCar" parameterType="Trolley">
+		update meituan_trolley set tcount = tcount + #{tcount} where gid = #{gid}
+	</update>
+</mapper>

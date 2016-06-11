@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.meituan.mapper.GoodsMapper" >
+	<select id="selectGoods" resultType="GoodsInfo">
+		select g.gid, g.gtitle1,g.gtitle2, g.img, g.text, g.gprice1, g.gprice2, g.gsoldcount from meituan_goods_info g
+	</select>
+	
+	<select id="showOtherGoods" parameterType="GoodsBean" resultType="GoodsBean">
+		select g.gid,g.gtitle1, g.gprice1, g.gprice2, g.gsoldcount, s.sshopname from meituan_goods_info g 
+			 inner join meituan_seller_info s on g.sid = s.sid and s.sid = #{sid} and g.gid != #{gid} 
+	</select>
+</mapper>

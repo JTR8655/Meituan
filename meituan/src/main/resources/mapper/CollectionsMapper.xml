@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.meituan.mapper.CollectionsMapper" >
+  <insert id="addCollection" parameterType="Collections">
+  		insert into meituan_collection values(SEQ_MEITUAN_COLLEC_CID.nextval,#{muid},#{gid})
+  </insert>
+  
+  <select id="checkIsCollect" parameterType="Collections" resultType="Collections">
+  		select * from meituan_collection where muid = #{muid} and gid = #{gid}
+  </select>
+</mapper>

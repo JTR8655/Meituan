@@ -1,0 +1,165 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	margin:0 auto;
+	}
+#header{
+	margin:0 auto;
+	height:67px;
+	border-bottom:3px #23BEB1 solid;
+	background-color:#23beb1;
+}
+#seller_main{
+	width:980px;
+	height:67px;
+	background-color:#23beb1;
+	margin:0 auto;
+	line-height:67px;
+}
+#seller_main a img{
+	margin-top:15px;
+	float:left;
+	width:215px;
+	height:37px;
+}
+.mt_index{
+	text-decoration:none;
+	width:68px;
+	height:23px;
+	float:right;
+	margin-right:170px;
+	font-size:12px;
+	color:#fff;
+}
+.mt_index:hover{
+	text-decoration:underline;
+}
+#main_body{
+	margin:20px auto;
+	width:938px;
+	padding-left:20px;
+	padding-right:20px;
+	height:456px;
+	border:1px #CCC solid;
+}
+.main_body_title{
+	width:858px;
+	height:36px;
+	padding-top:10px;
+	padding-bottom:10px;
+	margin-top:15px;
+	margin-left:60px;
+	margin-right:60px;
+	border-bottom:1px #ccc solid;
+	
+}
+.p1{
+	width:98px;
+	height:26px;
+	padding-left:12px;
+}
+#login_form{
+	width:475px;
+	height:269px;
+	padding-bottom:30px;
+	padding-top:35px;
+	padding-left:44px;
+	border-right:1px #CCC solid;
+	margin-bottom:25px;
+	margin-top:25px;
+	float:left;
+}
+.login_form{
+	float:right;
+	width:475;
+	height:252px;
+}
+#erweima{
+	float:right;
+	width:360px;
+	height:266px;
+	padding:20px;
+}
+#erweima img{
+	float:right;
+	width:276px;
+	height:245px;
+	margin-top:15px;
+	margin-left:42px;
+	margin-right:42px;
+}
+#code{
+	float:right;
+	width:475px;
+	height:32px;
+	padding-bottom:3px;
+	padding-top:3px;
+	padding-left:70px;
+	padding-right:10px;
+	margin-bottom:17px;
+}
+#td1{
+	width:60px;
+	height:21px;
+	padding-top:4px;
+	float:left;
+}
+#text1{
+	margin-left:10px;
+	float:left;
+	width:250px;
+	height:20px;
+	padding:5px;
+	border:1px #ccc solid;
+}
+
+#pwd{
+	float:right;
+	width:475px;
+	height:32px;
+	padding-bottom:3px;
+	padding-top:3px;
+	padding-left:70px;
+	padding-right:10px;
+	margin-bottom:17px;
+	
+}
+
+#nocode{
+	margin-top:5px;
+	float:left;
+	width:112px;
+	height:16px;
+	font-size:12px;
+	color:#2bb8aa;
+	text-decoration:none;
+	line-height:16px;
+	text-align:center;
+}
+#nocode:hover{
+	text-decoration:underline;
+}
+#forgetpwd{
+	margin-top:8px;
+	float:left;
+	width:112px;
+	height:16px;
+	font-size:12px;
+	color:#2bb8aa;
+	text-decoration:none;
+	line-height:16px;
+	text-align:center;
+}
+#forgetpwd:hover{
+	text-decoration:underline;
+}
+#next_login{
+	float:left;
+	width:222px;
+	height:21px;
+	padding-left:70px;
+	padding-right:10px;
+	padding-bottom:3px;
+	padding-top:3px;
+	margin-bottom:17px;
+}
