@@ -1,20 +1,15 @@
 package com.yc.meituan.web.action;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.LogManager;
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.google.gson.Gson;
 import com.opensymphony.xwork2.ModelDriven;
 import com.yc.meituan.entity.Evaluate;
 import com.yc.meituan.entity.UserInfo;
@@ -75,7 +70,14 @@ public class EvaluateAction implements ModelDriven<Evaluate>, SessionAware, Requ
 	}
 
 	//显示评价总分
-		public String showEvaluatePoint() {
+	public String showEvaluatePoint(){
+		LogManager.getLogger().debug("=========>"+eva);
+		List<EvaluateBean> evaluates = evaluateService.listshowEvaluatePoint(eva.getGid());	
+		LogManager.getLogger().debug(evaluates);
+		AjaxUtil.objectAjaxResponse(evaluates);
+		return "none";
+	}
+	/*	public String showEvaluatePoint() {
 			LogManager.getLogger().debug("=========>"+eva);
 			List<EvaluateBean> evaluates = evaluateService.listshowEvaluatePoint(eva.getGid());
 			Gson gson = new Gson();
@@ -92,8 +94,16 @@ public class EvaluateAction implements ModelDriven<Evaluate>, SessionAware, Requ
 				e.printStackTrace();
 			}
 			return "none";
+		}*/
+	//显示评价内容
+		public String showGoodsDetails(){
+			LogManager.getLogger().debug("=========>"+eva);
+			List<EvaluateBean> evaluates = evaluateService.listshowEvaluatePoint(eva.getGid());	
+			LogManager.getLogger().debug(evaluates);
+			AjaxUtil.objectAjaxResponse(evaluates);
+			return "none";
 		}
-		//显示评价内容
+		/*//显示评价内容
 			public String showGoodsDetails() {
 				List<EvaluateBean> evaluates = evaluateService.listshowGoodsDetails(eva.getGid());
 				Gson gson = new Gson();
@@ -111,7 +121,7 @@ public class EvaluateAction implements ModelDriven<Evaluate>, SessionAware, Requ
 				}
 				return "none";
 			}
-		
+		*/
 	
 	
 	
