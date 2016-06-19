@@ -123,6 +123,35 @@ public class UorderAction implements ModelDriven<Uorder>, SessionAware, RequestA
 		return "none";
 	}
 	
+	public String deleteUorder(){
+		UserInfo user = (UserInfo) session.get(MeituanData.LOGIN_USER);
+		if(null == user){
+			AjaxUtil.stringAjaxResponse(""+2);
+			return "none";
+		}
+		
+		try {
+			uorderService.deleteUorderByOid(uorder.getOid());
+			AjaxUtil.stringAjaxResponse(""+1);
+		} catch (Exception e) {
+			LogManager.getLogger().error(e.getMessage());
+			AjaxUtil.stringAjaxResponse(""+0);
+		}
+
+		return "none";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public void setRequest(Map<String, Object> request) {
 		this.request = request;

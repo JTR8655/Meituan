@@ -3,6 +3,7 @@ package com.yc.meituan.web.action;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,7 +75,22 @@ public class TrolleyAction implements SessionAware, RequestAware, ModelDriven<Tr
 		return "none";
 	}
 	
-	
+	public String deleteTrolley(){
+		UserInfo user = (UserInfo) session.get(MeituanData.LOGIN_USER);
+		if(null == user){
+			AjaxUtil.stringAjaxResponse(""+2);
+			return "none";
+		}
+		try {
+			trolleyserice.deleteTrolley(trolley.getTid());
+			session.remove("trollies");
+			AjaxUtil.stringAjaxResponse(""+1);
+		} catch (Exception e) {
+			LogManager.getLogger().debug(e.getMessage());
+			AjaxUtil.stringAjaxResponse(""+0);
+		}
+		return "none";
+	}
 	
 	@Override
 	public void setRequest(Map<String, Object> request) {

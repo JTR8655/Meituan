@@ -28,4 +28,8 @@
 	<select id="showOrderDetail" parameterType="Uorder" resultType="UorderBean">
 		select to_char(o.otime,'yyyy-MM-dd HH:mm:ss') otime, to_char(o.opaytime,'yyyy-MM-dd HH:mm:ss') opaytime,o.*,g.gtitle1 from meituan_uorder o inner join meituan_goods_info g on o.gid = g.gid and o.oid = #{oid} and o.muid = #{muid}
 	</select>
+	
+	<delete id="deleteUorderByOid" parameterType="Integer">
+		delete from meituan_uorder where oid = #{oid}
+	</delete>
 </mapper>

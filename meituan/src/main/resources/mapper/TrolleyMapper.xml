@@ -15,7 +15,11 @@
 	</update>
 	
 	<select id="showTrolley" parameterType="Integer" resultType="TrolleyBean">
-		select t.gid,t.tcount,g.gtitle1,g.gtitle2,g.gprice1,g.img from meituan_trolley t 
+		select t.tid,t.gid,t.tcount,g.gtitle1,g.gtitle2,g.gprice1,g.img from meituan_trolley t 
 			inner join meituan_goods_info g on t.gid = g.gid and t.muid = #{muid}
 	</select>
+	
+	<delete id="deleteTrolley" parameterType="Integer">
+		delete from meituan_trolley where tid = #{tid}
+	</delete>
 </mapper>

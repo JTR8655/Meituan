@@ -59,6 +59,9 @@
 		<action name="collection_addCollection" class="com.yc.meituan.web.action.CollectionAction" method="addCollection"></action>
 		<action name="trolley_showTroDetail" class="com.yc.meituan.web.action.TrolleyAction" method="showTroDetail"></action>
 		<action name="uorder_showOrderDetail" class="com.yc.meituan.web.action.UorderAction" method="showOrderDetail"></action>
+		<action name="collection_deleteCol" class="com.yc.meituan.web.action.CollectionAction" method="deleteCol"></action>
+		<action name="trolley_deleteTro" class="com.yc.meituan.web.action.TrolleyAction" method="deleteTrolley"></action>
+		<action name="uorder_delUorder" class="com.yc.meituan.web.action.UorderAction" method="deleteUorder"></action>
 		
 	</package>
 </struts>

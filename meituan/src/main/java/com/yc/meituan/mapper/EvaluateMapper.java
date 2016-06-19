@@ -7,6 +7,7 @@ import com.yc.meituan.entity.bean.EvaluateBean;
 import com.yc.meituan.entity.bean.EvaluatedBean;
 
 public interface EvaluateMapper {
+	
 	EvaluateBean listShowEvaluate();
 
 	List<EvaluateBean> selectEvaluates(int gid);
@@ -14,4 +15,8 @@ public interface EvaluateMapper {
 	void addEvaluate(Evaluate evaluate);
 
 	List<EvaluatedBean> listPj(Integer muid);
+
+	Evaluate showEvluateByOid(Integer oid);
+
+	void deleteEvaluateByOid(Integer oid);
 }

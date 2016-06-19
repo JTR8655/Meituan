@@ -47,6 +47,29 @@ public class CollectionAction implements ModelDriven<Collections>, SessionAware,
 		
 		return "none";
 	}
+	
+	public String deleteCol(){
+		UserInfo user = (UserInfo) session.get(MeituanData.LOGIN_USER);
+		if(null == user){
+			AjaxUtil.stringAjaxResponse(""+2);
+			return "none";
+		}
+		
+		try {
+			collectionsService.deleteCol(collections.getCid());
+			AjaxUtil.stringAjaxResponse(""+1);
+			return "none";
+		} catch (Exception e) {
+			LogManager.getLogger().error(e.getMessage());
+			AjaxUtil.stringAjaxResponse(""+0);
+		}
+		return "none";
+	}
+	
+	
+	
+	
+	
 
 	@Override
 	public void setRequest(Map<String, Object> request) {

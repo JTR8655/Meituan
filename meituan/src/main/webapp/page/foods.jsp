@@ -5,7 +5,7 @@
 <html>
 <head>
 <base href="/meituan/">
-<title>【土火锅烧烤】团购</title>
+<title>美团网</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta charset="utf-8">
 <link href="css/basic.css" type="text/css" rel="stylesheet">
@@ -35,7 +35,7 @@
 						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;最近浏览</a></li>
 						<li><a href="page/fair.jsp?type=trolley" class="border">|&nbsp;&nbsp;&nbsp;购物车<a id="trolleyCount">0</a>件</a></li>
 						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;联系客服</a></li>
-						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;我是商家</a></li>
+						<li><a href="back/sellerLogin.html" class="border">|&nbsp;&nbsp;&nbsp;我是商家</a></li>
 						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;更多</a></li>
 					</ul>
 				<c:if test="${sessionScope.loginUser != null}">
@@ -101,7 +101,7 @@
 			<a class="black__green" href="">美食团购</a> <span>»</span> 
 			<a class="black__green" href="">火锅</a> <span>»</span> 
 			<a class="black__green" href="">蒸湘区</a> <span>»</span> 
-			<a class="black__green" href="">星美/美凯龙</a> <span>»</span> 土火锅烧烤
+			<a class="black__green" href="">星美/美凯龙</a> <span>»</span> <span id="foodTitle1"></span> 
 		</div>
 		<!--nav-->
 		<div id="body_mid1">
@@ -109,19 +109,19 @@
 				<div id="body_mid1_top1">
 					<input type="hidden" value="  item[i].GID  " class="get_id" />
 					 <span class="title-prefix">【星美/美凯龙】</span>
-					<h1 class="title">土火锅烧烤</h1>
+					<h1 class="title"></h1>
 				</div>
 				<div id="body_mid1_top2">
-					<div class="tishi1">item[i].TEXT</div>
+					<div class="tishi1"></div>
 				</div>
 			</div>
 			<div id="body_mid1_down">
 				<div id="down_left">
 					<div id="big_image">
-						<img src="  item[i].IMG  " />
+						<img src="" />
 					</div>
 					<div id="small_image">
-						<img src="  item[i].IMG  " />
+						<img src="" />
 					</div>
 				</div>
 				<div id="down_right">
@@ -238,15 +238,8 @@
                 <th class="goods_amount">数量/规格</th>
                 <th class="goods_subtotal">小计</th>
             </thead>
-				<tbody id="taocan_info">
-					<tr>
-						<td class="goods_name">代金券</td>
-						<td class="goods_price">￥50</td>
-						<td class="goods_amount">1张</td>
-						<td class="goods_subtotal">￥50</td>
-					</tr>
-					
-				</tbody>
+			<tbody id="taocan_info">
+			</tbody>
 			</table>
     </div>
     <div>

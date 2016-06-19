@@ -26,4 +26,13 @@ public class CollectionsServiceImpl implements CollectionsService {
 		return collectionsMapper.checkIsCollect(collections);
 	}
 
+	@Override
+	public void deleteCol(Integer cid) {
+		try {
+			collectionsMapper.deleteCollectionByCid(cid);
+		} catch (Exception e) {
+			throw new RuntimeException("删除收藏失败！！！",e);
+		}
+	}
+
 }

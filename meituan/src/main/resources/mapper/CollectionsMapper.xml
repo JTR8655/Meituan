@@ -8,4 +8,8 @@
   <select id="checkIsCollect" parameterType="Collections" resultType="Collections">
   		select * from meituan_collection where muid = #{muid} and gid = #{gid}
   </select>
+  
+  <delete id="deleteCollectionByCid" parameterType="Integer">
+  		delete from meituan_collection where cid = #{cid}
+  </delete>
 </mapper>

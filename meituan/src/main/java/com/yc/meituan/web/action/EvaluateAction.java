@@ -59,8 +59,11 @@ public class EvaluateAction implements ModelDriven<Evaluate>, SessionAware, Requ
 			return "none";
 		}
 		List<EvaluatedBean> evaluated = evaluateService.listPj(user.getMuid());
+		LogManager.getLogger().debug(evaluated.size());
 		if(null != evaluated && evaluated.size() > 0){
 			AjaxUtil.objectAjaxResponse(evaluated);
+		}else{
+			AjaxUtil.stringAjaxResponse("0");
 		}
 		return "none";
 	}

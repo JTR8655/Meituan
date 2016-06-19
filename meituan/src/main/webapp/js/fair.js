@@ -52,7 +52,7 @@ $(function() {
 							+ ' class="ui-checkbox"> </td>'
 							+ '<td width="auto" class="desc"><a '
 							+ 'title="'+data[i].gtitle1+'：'+data[i].gtitle2+'" '
-							+ 'href=""> <img class="tro_img" width="63" height="39" src="'+data[i].img+'">'
+							+ 'href="page/foods.jsp?gid='+data[i].gid+'"> <img class="tro_img" width="63" height="39" src="'+data[i].img+'">'
 							+ '<a class="title1" href="page/foods.jsp?gid='+data[i].gid+'">'+data[i].gtitle1+'：'+data[i].gtitle2+'</a></a></td>'
 							+ '<td width="70" class="price">¥<span class="J-price">'+data[i].gprice1+'</span></td>'
 							+ '<td width="150" class="saleNum deal-component-quantity" >'
@@ -62,7 +62,7 @@ $(function() {
 							+ '<button type="button" class="item plus adder">+</button></div></div></td>'
 							+ '<td width="70" class="money total" rowspan="1">¥<span class="J-total">'+data[i].gprice1+'</span> <br></td>'
 							+ '<td width="80" class="op list-delete"><a href="javascript:void(0);"'
-							+ 'class="delete">删除</a></td></tr>';
+							+ 'class="delete" onclick="deleteTroll('+data[i].tid+')">删除</a></td></tr>';
 					}
 					str += '<tr id="totalCount">'
 						+ '<td id="total-td" class="extra-fee total-fee" colspan="4"><span '
@@ -260,4 +260,23 @@ function ch(){
 		}
 	}
 	document.getElementsByName('cart-selectall')[0].checked=true;
+}
+
+function deleteTroll(tid){
+	if(confirm("确定要删除该商品？")){
+		$.ajax({	
+			type:"post",
+			url:"trolley_deleteTro.action",
+			data:{tid:tid},
+			dataType:"json",
+			success:function(data){
+				console.info(data);
+				if(data == 1){
+					window.location.reload();
+				}else if(data == 0){
+					alert("删除失败！！！");
+				}
+			}
+		});
+	}
 }

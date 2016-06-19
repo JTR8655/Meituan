@@ -48,6 +48,8 @@ function showInfo(data){
 	            +'</div></div></div>';
 		text = data[i].text;
 	    $("#body_mid1").append(value);
+	    $("#foodTitle1").html(data[i].gtitle1);
+	    document.getElementsByTagName("title").innerHTML=data[i].gtitle1+"【团购】";
 	}
 }
 
@@ -126,10 +128,10 @@ function otherFoods(data){
 
 
 //显示套餐详情
-/*function tuanTaoCan(data){
+function tuanTaoCan(data){
 	var value = "";
 	$("#taocan_info").html("");
-	var item = data.obj;
+	var item = data;
 	for(var i=0;i<item.length;i++){
 		value += '<tr>'
             	+'<td class="goods_name">'+item[i].d_taocan+'</td>'
@@ -139,7 +141,7 @@ function otherFoods(data){
             	+'</tr>';
             	$("#taocan_info").append(value);
 	}
-}*/
+}
 
 
 //显示用户须知
@@ -224,16 +226,14 @@ function thisFood(data){
 	$('.deal_buy').html('');
 	
 	for(var i=0;i<data.length;i++){		
-		if(data[i].TEXT == text){		
-			value += '<span id="buy_price">￥<strong>'+data[i].gprice2+'</strong></span><ul>'
-        			+'<li class="seller_price">门店价<br /><p id="real_price">￥'+data[i].gprice1+'</p>'
-        			+'</li><li class="seller_price">折扣<br /><p>'+data[i].privilege+'</p></li>'
-        			+'<li class="seller_price">已售<br /><p>'+data[i].gsoldcount+'</p></li></ul><div>'
-                    +'<input id="qianggou" onclick="submits()" type="button" value="抢购" ><a id="join_cart" href="javascript:void(0)" onclick="addToGoodsCar('+ data[i].gid +')">加入购物车</a>';					
-		}
-		$('.deal_buy').html(value);
-		return;
+		value += '<span id="buy_price">￥<strong>'+data[i].gprice2+'</strong></span><ul>'
+    			+'<li class="seller_price">门店价<br /><p id="real_price">￥'+data[i].gprice1+'</p>'
+    			+'</li><li class="seller_price">折扣<br /><p>'+data[i].privilege+'</p></li>'
+    			+'<li class="seller_price">已售<br /><p>'+data[i].gsoldcount+'</p></li></ul><div>'
+                +'<input id="qianggou" onclick="submits()" type="button" value="抢购" ><a id="join_cart" href="javascript:void(0)" onclick="addToGoodsCar('+ data[i].gid +')">加入购物车</a>';					
 	}
+	$('.deal_buy').html(value);
+	return;
 }
 
 

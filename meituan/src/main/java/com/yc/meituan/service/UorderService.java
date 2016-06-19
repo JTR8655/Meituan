@@ -23,4 +23,6 @@ public interface UorderService {
 
 	UorderBean showOrderDetail(Uorder uorder);
 
+	void deleteUorderByOid(Integer oid);
+
 }

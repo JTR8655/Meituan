@@ -1,6 +1,16 @@
 package com.yc.meituan.entity.bean;
 
 public class TrolleyBean {
+	private Integer tid;
+
+	public Integer getTid() {
+		return tid;
+	}
+
+	public void setTid(Integer tid) {
+		this.tid = tid;
+	}
+
 	private Integer gid;
 	private Integer tcount;
 	private String gtitle1;
@@ -58,8 +68,8 @@ public class TrolleyBean {
 
 	@Override
 	public String toString() {
-		return "TrolleyBean [gid=" + gid + ", tcount=" + tcount + ", gtitle1=" + gtitle1 + ", gtitle2=" + gtitle2
-				+ ", gprice1=" + gprice1 + ", img=" + img + "]";
+		return "TrolleyBean [tid=" + tid + ", gid=" + gid + ", tcount=" + tcount + ", gtitle1=" + gtitle1 + ", gtitle2="
+				+ gtitle2 + ", gprice1=" + gprice1 + ", img=" + img + "]";
 	}
 
 }

@@ -13,4 +13,6 @@ public interface TrolleyMapper {
 	void updateToGoodsCar(Trolley trolley);
 
 	List<TrolleyBean> showTrolley(Integer muid);
+
+	void deleteTrolley(Integer tid);
 }

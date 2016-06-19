@@ -8,4 +8,6 @@ public interface CollectionsService {
 
 	Collections checkIsCollect(Collections collections);
 
+	void deleteCol(Integer cid);
+
 }

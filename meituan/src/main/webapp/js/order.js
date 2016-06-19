@@ -159,7 +159,7 @@ $(function(){
 				str += '<div class="orders_body">'
 					+'<div class="order_title">'     	
 					+ '订单编号：<a class="number" href="javascript:void(0)" onclick = "orderDetail('+data[i].oid+')">'+data[i].oidentifier+'</a>'
-					+ ' <a class="delete" href="javascript:void(0)" onclick=dOrder('+i+') onMouseOver="fc('+i+')" onMouseOut="fr('+i+')">删除</a>'
+					+ ' <a class="delete" href="javascript:void(0)" onclick=dOrder('+data[i].oid+') onMouseOver="fc('+i+')" onMouseOut="fr('+i+')">删除</a>'
 					+ '</div>'
 					+ '  <div class="order_row">'
 					+ '<div class="order_cell_info">'
@@ -215,7 +215,7 @@ function listCollection(){
 					'<td class="sc_td"> <div> <a href="page/foods.jsp?gid='+ data[i].gid +'" class="goods_text_buy" style="margin-left: 23px; color: #2BB8AA;"'+
 						'>购买</a> <a '+
 						'href="javascript:void(0)" class="goods_text_del" style="margin-left: 3px;"'+
-						' onClick=" ('+data[i].cid+')">删除</a>'+
+						' onClick="deleteCol('+data[i].cid+')">删除</a>'+
 				'</div> </td> </tr>';
 			}
 			$("#info_tbody").html(str);
@@ -286,14 +286,14 @@ function showNoPj(){
 
 
 
-//已评价订单，未完成
+//已评价订单
 $(function(){
 	$.ajax({
 		type:'post',
 		url:'evaluate_listPj.action',
 		dataType:"JSON",
 		success: function(data){
-			if(data == null){
+			if(data == null || data == 0){
 				return;
 			}
 			data = $.parseJSON(data);
@@ -330,8 +330,24 @@ $(function(){
 
 
 //删除订单
-function dOrder(i){
-	
+function dOrder(oid){
+	if(confirm("您确定要删除订单？您将不能进行退款及其他操作")){
+		$.ajax({	
+			type:"post",
+			url:"uorder_delUorder.action",
+			data:{oid:oid},
+			dataType:"json",
+			success:function(data){
+				if(data == 1){
+					window.location.reload();
+				}else if(data == 0){
+					alert("删除失败");
+				}else if(data == 2){
+					alert("请先登录");
+				}
+			}
+		});
+	}
 }
 
 //评论订单
@@ -342,8 +358,13 @@ function pinglun(){
 	}else{
 		document.getElementsByClassName("hid")[pjliIndex].value=0;
 	}
+	
+	var econtent = document.getElementsByClassName("pingjiaContent")[pjliIndex].value;
+	//检查文字是否包含敏感字
+	
+	
 	//评论提交时发送请求
-	$.ajax({	
+/*	$.ajax({	
 		type:"post",
 		url:"evaluate_addEvaluate.action",
 		data:$("#pingjiaForm"+pjliIndex).serialize(),
@@ -356,7 +377,7 @@ function pinglun(){
 				alert("评价失败");
 			}
 		}
-	});
+	});*/
 }
 
 function hide(){
@@ -453,5 +474,25 @@ function upload(){
 
 function orderDetail(obj){
 	window.location.href="page/orderDetail.jsp?oid="+obj;
+}
+
+function deleteCol(cid){
+	if(confirm("确定要删除该商品？")){
+		$.ajax({	
+			type:"post",
+			url:"collection_deleteCol.action",
+			data:{cid:cid},
+			dataType:"json",
+			success:function(data){
+				console.info(data);
+				if(data == 1){
+					window.location.reload();
+				}else if(data == 0){
+					alert("删除失败！！！");
+				}
+			}
+		});
+	}
+	
 }
 

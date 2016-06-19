@@ -7,5 +7,7 @@ public interface CollectionsMapper {
 	void addCollection(Collections collections);
 
 	Collections checkIsCollect(Collections collections);
+
+	void deleteCollectionByCid(Integer cid);
     
 }

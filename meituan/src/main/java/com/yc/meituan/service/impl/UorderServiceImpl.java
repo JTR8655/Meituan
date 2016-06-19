@@ -10,10 +10,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.yc.meituan.entity.Evaluate;
 import com.yc.meituan.entity.Uorder;
 import com.yc.meituan.entity.bean.CollectionBean;
 import com.yc.meituan.entity.bean.NoevalBean;
 import com.yc.meituan.entity.bean.UorderBean;
+import com.yc.meituan.mapper.EvaluateMapper;
 import com.yc.meituan.mapper.UorderMapper;
 import com.yc.meituan.service.UorderService;
 
@@ -23,6 +25,8 @@ public class UorderServiceImpl implements UorderService {
 
 	@Autowired 
 	UorderMapper uorderMapper;
+	@Autowired 
+	EvaluateMapper evaluateMapper;
 	
 	@Override
 	public List<UorderBean> showAllUorder(int muid) {
@@ -100,6 +104,19 @@ public class UorderServiceImpl implements UorderService {
 	@Override
 	public UorderBean showOrderDetail(Uorder uorder) {
 		return uorderMapper.showOrderDetail(uorder);
+	}
+
+	@Override
+	public void deleteUorderByOid(Integer oid) {
+		try {
+			Evaluate eval = evaluateMapper.showEvluateByOid(oid);
+			if(null != eval){
+				evaluateMapper.deleteEvaluateByOid(oid);
+			}
+			uorderMapper.deleteUorderByOid(oid);
+		} catch (Exception e) {
+			throw new RuntimeException("删除订单失败！！！",e);
+		}
 	}
 
 }

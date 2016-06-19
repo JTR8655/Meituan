@@ -20,4 +20,6 @@ public interface UorderMapper {
 	void addUorder(Uorder uorder);
 
 	UorderBean showOrderDetail(Uorder uorder);
+
+	void deleteUorderByOid(Integer oid);
 }
