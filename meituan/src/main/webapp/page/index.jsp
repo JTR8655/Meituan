@@ -818,7 +818,7 @@
 							+ ','
 							+ i
 							+ ')">收藏</a>'
-							+ '<a class="pingjia_count" href="">43人评价</a>'
+							+ '<a class="pingjia_count" href="">'+item[i].pjCount+'人评价</a>'
 							+ '</div>' + '</div>';
 					$("#food_xiangxi").append(value);
 					/* $.ajax({
@@ -840,47 +840,6 @@
 			}
 		});
 	});
-	
-
-	function shouCang(gid, i) {
-		$.ajax({
-			type : 'post',
-			url : 'IndexGoods.do',
-			data : {
-				op : 'check_coll',
-				gid : gid
-			},
-			dataType : 'json',
-			success : function(data) {
-				var item = data.obj;
-				if (item.length == 0) {
-					$.ajax({
-						type : 'post',
-						url : 'IndexGoods.do',
-						data : {
-							op : 'collection_info',
-							gid : gid
-						},
-						dataType : 'json',
-						success : function(data) {
-							if (data == -1) {
-								alert("您还未登录，请先登录");
-								window.location.href = "login.jsp";
-							} else if (data > 0) {
-								alert("收藏成功！");
-								$('.xingji').eq(i).text("已收藏");
-							} else {
-								alert("收藏失败！");
-							}
-						}
-					});
-				} else if (item.length == 1) {
-					alert("您已经收藏该商品了哦~");
-				}
-			}
-		});
-
-	}
 </script>
 </body>
 </html>

@@ -34,7 +34,12 @@ public class EvaluateAction implements ModelDriven<Evaluate>, SessionAware, Requ
 		if(null == user){
 			return "none";
 		}
-		LogManager.getLogger().debug("取到的数据：" + evaluate);
+		
+		if(evaluate.getEcontent().toLowerCase().indexOf("script") >= 0){
+			AjaxUtil.stringAjaxResponse("3");
+			return "none";
+		}
+		
 		evaluate.setHidename(evaluate.getHid());
 		evaluate.setMuid(user.getMuid());
 		if(null == evaluate.getImg()){
@@ -56,6 +61,7 @@ public class EvaluateAction implements ModelDriven<Evaluate>, SessionAware, Requ
 	public String listPj(){
 		UserInfo user = (UserInfo) session.get(MeituanData.LOGIN_USER);
 		if(null == user){
+			AjaxUtil.stringAjaxResponse("2");
 			return "none";
 		}
 		List<EvaluatedBean> evaluated = evaluateService.listPj(user.getMuid());

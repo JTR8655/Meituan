@@ -52,6 +52,7 @@ public class TrolleyAction implements SessionAware, RequestAware, ModelDriven<Tr
 		trolley.setMuid(user.getMuid());
 		try {
 			trolleyserice.addToGoodsCar(trolley);
+			session.remove("trollies");
 			AjaxUtil.stringAjaxResponse(""+1);
 		} catch (Exception e) {
 			AjaxUtil.stringAjaxResponse(""+0);

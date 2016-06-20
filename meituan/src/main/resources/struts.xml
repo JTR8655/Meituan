@@ -63,5 +63,7 @@
 		<action name="trolley_deleteTro" class="com.yc.meituan.web.action.TrolleyAction" method="deleteTrolley"></action>
 		<action name="uorder_delUorder" class="com.yc.meituan.web.action.UorderAction" method="deleteUorder"></action>
 		
+		<action name="seller_login" class="com.yc.meituan.web.action.SellerAction" method="login"></action>
+		
 	</package>
 </struts>

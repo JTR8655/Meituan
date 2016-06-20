@@ -206,7 +206,7 @@ function listCollection(){
 			for(var i=0;i<data.length;i++){
 				str += 
 				'<tr class="collection_detailed"><td class="sc_td"><div>'+
-						'<a href="page/foods.jsp?gid= '+ data[i].gid +'"><img src="'+ data[i].img +'" '+
+						'<a href="page/foods.jsp?gid='+ data[i].gid +'"><img src="'+ data[i].img +'" '+
 							'style="float: left;padding-bottom:10px; margin-top: 10px; margin-left: 20px; width: 100px; height: 61px;" /></a>'+
 						'<a href="page/foods.jsp?gid='+ data[i].gid +'" style="float: left; margin-left: 20px; font-size:12px; margin-top: 33px; color: #666666;"'+
 							'class="goods_text_a">'+ data[i].gtitle1 +'</a>'+
@@ -323,12 +323,6 @@ $(function(){
 });
 
 
-
-
-
-
-
-
 //删除订单
 function dOrder(oid){
 	if(confirm("您确定要删除订单？您将不能进行退款及其他操作")){
@@ -359,12 +353,8 @@ function pinglun(){
 		document.getElementsByClassName("hid")[pjliIndex].value=0;
 	}
 	
-	var econtent = document.getElementsByClassName("pingjiaContent")[pjliIndex].value;
-	//检查文字是否包含敏感字
-	
-	
 	//评论提交时发送请求
-/*	$.ajax({	
+	$.ajax({	
 		type:"post",
 		url:"evaluate_addEvaluate.action",
 		data:$("#pingjiaForm"+pjliIndex).serialize(),
@@ -375,9 +365,11 @@ function pinglun(){
 				hide();
 			}else if(data == 0){
 				alert("评价失败");
+			}else if(data == 3){
+				alert("您的评论中包含敏感字，请检查后重试");
 			}
 		}
-	});*/
+	});
 }
 
 function hide(){

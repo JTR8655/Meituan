@@ -335,6 +335,7 @@ $(function(){
 });
 
 function submits(){	
+	
 	var title = $('.title').html();
 	var text = $('.tishi1').html();
 	var price = $('.price').html();

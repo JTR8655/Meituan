@@ -1,8 +1,9 @@
-package com.yc.meituan.mapper;
+package com.yc.meituan.service;
 
 import com.yc.meituan.entity.SellerInfo;
 
-public interface SellerInfoMapper {
+public interface SellerService {
 
 	SellerInfo login(SellerInfo sellerInfo);
+
 }

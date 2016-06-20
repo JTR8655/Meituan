@@ -61,9 +61,7 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware, RequestA
 
 	// 登录
 	public String login() {
-		LogManager.getLogger().debug("userInfo:" + userInfo);
 		UserInfo user = userService.login(userInfo);
-		LogManager.getLogger().debug("取到的用户：" + user);
 		if (null != user) {
 			session.put(MeituanData.LOGIN_USER, user);
 			return "loginSuccess";

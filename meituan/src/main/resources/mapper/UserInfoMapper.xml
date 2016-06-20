@@ -11,7 +11,7 @@
 	
 	<insert id="reg" parameterType="com.yc.meituan.entity.UserInfo" >
 		<!-- insert into meituan_user_info values(seq_meituanuser.nextval,#{uaccounts},#{upwd},#{uemail},default,default,default,null,null,null,null,null,default,#{uaddr},sysdate) -->
-		insert into meituan_user_info(MUID,UACCOUNTS,UPWD,UEMAIL,'uaddr',USTATUS) values(seq_meituanuser.nextval,#{uaccounts},#{upwd},#{uemail},#{uaddr},default)
+		insert into meituan_user_info(MUID,UACCOUNTS,UPWD,UEMAIL,UADDR,USTATUS) values(seq_meituanuser.nextval,#{uaccounts},#{upwd},#{uemail},#{uaddr},default)
 	</insert>
 	
 	<update id="changeStatus" parameterType="String">

@@ -74,7 +74,7 @@
 	});
 </script>
 
-<script>
+<!-- <script>
 	var value = '<tr id="collection_list"><th class="item_info" width="491"><p>团购项目</p></th><th width="80"><p>金额</p></th><th width="80"><p>状态</p></th><th width="112"><p>操作</p></th></tr>';
 	function showData(data) {
 		$("#info_tbody").html("");
@@ -185,7 +185,7 @@
 		}
 
 	}
-</script>
+</script> -->
 </head>
 <body>
 	<div id="head_tishi"></div>
@@ -198,24 +198,24 @@
 			<li id="head_2">
 				<div>
 					<ul id="head_2_left">
-						<li><a href="" id="shoucang">收藏美团</a></li>
+						<li><a href="#" id="shoucang">收藏美团</a></li>
 						<li><a href="page/login.jsp" id="login">登录</a></li>
 						<li><a href="page/register.jsp" id="register">注册</a></li>
 					</ul>
 					<ul id="head_2_left_login">
-						<li><a href="" id="shoucang">收藏美团</a></li>
+						<li><a href="#" id="shoucang">收藏美团</a></li>
 						<li><a href="page/order.jsp" id="user">${sessionScope.loginUser.uemail }</a></li>
 						<li><a href="javascript:void(0)" onclick="logOut()"
 							id="logout">退出</a></li>
 					</ul>
 					<ul id="head_2_right">
-						<li><a href="">我的订单</a></li>
-						<li><a href="">我的美团</a></li>
-						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;最近浏览</a></li>
+						<li><a href="page/order.jsp">我的订单</a></li>
+						<li><a href="page/order.jsp">我的美团</a></li>
+						<li><a href="#" class="border">|&nbsp;&nbsp;&nbsp;最近浏览</a></li>
 						<li><a href="page/fair.jsp?type=trolley" class="border">|&nbsp;&nbsp;&nbsp;购物车<a id="trolleyCount">0</a>件</a></li>
-						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;联系客服</a></li>
+						<li><a href="#" class="border">|&nbsp;&nbsp;&nbsp;联系客服</a></li>
 						<li><a href="back/sellerLogin.html" class="border">|&nbsp;&nbsp;&nbsp;我是商家</a></li>
-						<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;更多</a></li>
+						<li><a href="#" class="border">|&nbsp;&nbsp;&nbsp;更多</a></li>
 					</ul>
 				<c:if test="${sessionScope.loginUser != null}">
 					<script type="text/javascript">

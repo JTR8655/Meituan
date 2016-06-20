@@ -99,7 +99,9 @@ public class UorderAction implements ModelDriven<Uorder>, SessionAware, RequestA
 		LogManager.getLogger().debug(uorder);
 		try {
 			goodsService.updateSoldCount(uorder);
+			LogManager.getLogger().debug("插入之前：" + uorder);
 			Uorder successUorder = uorderService.addUorder(uorder);
+			LogManager.getLogger().debug("插入之后：" + successUorder);
 			AjaxUtil.objectAjaxResponse(successUorder);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -89,3 +89,28 @@ function closeTishi(){
 function closeAd(){
 	$("#head_3").css("display","none");	
 }
+
+function shouCang(gid,index){
+	$.ajax({
+		type:'post',
+		url:'collection_addCollection.action',
+		data:{
+			gid:gid
+		},
+		dataType:'json',
+		success:function(data){
+			if(data == 1){
+				alert("收藏成功！");
+				document.getElementsByClassName("xingji")[index].innerHTML="已收藏";
+			}else if(data == 0){
+				alert("收藏失败！！");
+			}else if(data == 2){
+				alert("请先登录");
+				window.location.href="page/login.jsp";
+			}else if(data == 3){
+				alert("已收藏");
+				document.getElementsByClassName("xingji")[index].innerHTML="已收藏";
+			}
+		}
+	});
+}

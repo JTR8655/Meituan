@@ -4,16 +4,10 @@
 <meta charset="utf-8">
 <base href="/meituan/">
 <title>商家登录 | 美团网商家推广</title>
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-    <meta http-equiv="description" content="this is my page">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" type="text/css" href="easyui/css/easyui.css">
-    <link rel="stylesheet" type="text/css" href="easyui/css/icon.css">
-	<script type="text/javascript" src="easyui/js/jquery.min.js"></script>
-	<script type="text/javascript" src="easyui/js/jquery.easyui.min.js"></script>
-	<script type="text/javascript" src="easyui/js/easyui-lang-zh_CN.js"></script>
-	<script type="text/javascript" src="easyui/js/main.js"></script>
-	
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+   <meta http-equiv="description" content="this is my page">
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="js/jquery.min.js"></script>
 	
 <link href="css/sellerLogin.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript">
@@ -21,15 +15,15 @@
 	function slogin(){
 		$.ajax({
 			type:"POST",
-			url:"/meituan/SellerOperate.do",
+			url:"seller_login.action",
 			data:$("#form").serialize(),
 			dataType:"JSON",
 			success:function (data){
 				if(data==1){
-			//		alert("登录成功！");
-					window.location.href="sellerback/sellerMain.html";
+					alert("登录成功！");
+			//		window.location.href="back/sellerMain.html";
 				}else if(data==0){
-					alert("登陆失败！");
+					alert("登陆失败！请检查您的账户和密码");
 				}
 			}
 		});
@@ -54,11 +48,10 @@
                     <div id="code">
 						<label id="td1">账号：</label>
 						<input id="text1" type="text" value="" name="saccounts" data-options="required:true" placeholder="请输入用户名">
-                        <a href="registBack/sellerRegist.html" id="nocode">无账号，我想合作</a>
+                        <a href="back/sellerRegist.html" id="nocode">无账号，我想合作</a>
                     </div>
 				
                     <div id="pwd">
-					
 						<label id="td1">密码：</label>
 					<input id="text1"type="password" value="" name="spwd" data-options="required:true" >
                      <a href="#" id="forgetpwd">忘记账号或密码</a>

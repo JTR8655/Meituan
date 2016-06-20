@@ -52,7 +52,6 @@ $(document).ready(function(){
 					},
 					datatype:'jsp',
 					success:function(data){
-						alert(data+"---------");
 						if(data==0){
 							$("#iuser_email").show();//邮箱号被注册
 							$("#email").val("");
