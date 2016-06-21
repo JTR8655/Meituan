@@ -35,17 +35,17 @@ public class TrolleySereviceImpl implements TrolleySerevice {
 	}
 
 	@Override
-	public List<TrolleyBean> showTrolley(Integer muid) {
-		return trolleyMapper.showTrolley(muid);
-	}
-
-	@Override
 	public void deleteTrolley(Integer tid) {
 		try {
 			trolleyMapper.deleteTrolley(tid);
 		} catch (Exception e) {
 			throw new RuntimeException("删除购物车失败！！！",e);
 		}
+	}
+
+	@Override
+	public List<TrolleyBean> showTrolley(Integer muid) {
+		return trolleyMapper.showTrolley(muid);
 	}
 
 }

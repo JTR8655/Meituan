@@ -10,12 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ModelDriven;
 import com.yc.meituan.entity.GoodsInfo;
-import com.yc.meituan.entity.UserInfo;
 import com.yc.meituan.entity.bean.EvaluateBean;
 import com.yc.meituan.entity.bean.GoodsBean;
 import com.yc.meituan.service.GoodsService;
 import com.yc.meituan.util.AjaxUtil;
-import com.yc.meituan.util.MeituanData;
 
 public class GoodsAction implements ModelDriven<GoodsBean>, SessionAware, RequestAware {
 
@@ -54,6 +52,7 @@ public class GoodsAction implements ModelDriven<GoodsBean>, SessionAware, Reques
 		return "none";
 	}
 	
+	
 	//显示商家其他商品
 	public String showOtherGoods(){
 		List<GoodsBean> goodsbean = goodsService.showOtherGoods(goodsBean);
@@ -79,7 +78,4 @@ public class GoodsAction implements ModelDriven<GoodsBean>, SessionAware, Reques
 		return goodsBean;
 	}
 
-	
-
-	
 }

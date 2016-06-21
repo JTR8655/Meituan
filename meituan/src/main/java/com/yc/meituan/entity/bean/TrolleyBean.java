@@ -2,6 +2,12 @@ package com.yc.meituan.entity.bean;
 
 public class TrolleyBean {
 	private Integer tid;
+	private Integer gid;
+	private Integer tcount;
+	private String gtitle1;
+	private String gtitle2;
+	private Double gprice1;
+	private String img;
 
 	public Integer getTid() {
 		return tid;
@@ -10,13 +16,6 @@ public class TrolleyBean {
 	public void setTid(Integer tid) {
 		this.tid = tid;
 	}
-
-	private Integer gid;
-	private Integer tcount;
-	private String gtitle1;
-	private String gtitle2;
-	private Double gprice1;
-	private String img;
 
 	public Integer getGid() {
 		return gid;

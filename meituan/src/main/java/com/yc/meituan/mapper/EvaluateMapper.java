@@ -19,4 +19,12 @@ public interface EvaluateMapper {
 	Evaluate showEvluateByOid(Integer oid);
 
 	void deleteEvaluateByOid(Integer oid);
+
+	//评价总分
+	EvaluateBean listShowEvaluatePoint();
+	List<EvaluateBean> showEvaluatePoint(int gid);
+	
+	//评价内容
+	EvaluateBean listShowGoodsDetails();
+	List<EvaluateBean> showGoodsDetails(int gid);
 }

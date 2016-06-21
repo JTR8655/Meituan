@@ -985,7 +985,7 @@
 	.seller_price{
 		font-weight:700;
 		font-size:12px;
-		margin-left:80px;
+		margin-left:60px;
 		margin-top:10px;
 	}
 	#real_price{
@@ -1808,6 +1808,16 @@
 		padding:0 7px;
 		font-weight:700;
 	}
+	#standard_bar{
+		margin-top:20px;
+		padding:0 7px;
+		weight:680px;
+	}
+	.foodsimg{
+		width:640px;
+		height:388px;
+		margin:10px 0;
+	}
 	.deal_menu{
 		width:702px;
 		margin-top:20px;
@@ -1997,7 +2007,7 @@
 	.seller_price{
 		font-weight:700;
 		font-size:12px;
-		margin-left:80px;
+		margin-left:60px;
 		margin-top:10px;
 	}
 	#real_price{

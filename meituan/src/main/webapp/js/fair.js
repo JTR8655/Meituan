@@ -13,8 +13,18 @@ $(function showtrolley() {
 		}
 	});
 });
+//退出
+function logOut() {
+	$.ajax({
+		type : 'post',
+		url : 'user_logout.action',
+		success : function(data) {
+			$("#head_2_left_login").css("display", "none");
+			$("#head_2_left").css("display", "block");
+		}
+	});
+}
 
-//购物车
 $(function() {
 	var strs = window.location.href;
 	var type1 = strs.split("?")[1].split("=")[1];
@@ -81,7 +91,7 @@ $(function() {
 		$('#wrapper').append(content);
 		$("#first-trolley").css("dislay", "block");
 		$("#first-step").css("display", "none");
-	} else {
+	}else{	
 		var title = strs.split("?")[1].split("&")[0].split("=")[1];
 		var text = strs.split("?")[1].split("&")[1].split("=")[1];
 		var price = strs.split("?")[1].split("&")[2].split("=")[1];
@@ -91,27 +101,101 @@ $(function() {
 		if (type == "fair") {
 			var value = document.getElementsByClassName('fair-count').innerHTML = '';
 			var content = '<td class="fair-project">'
-					+ decodeURI(title)
-					+ '：'
-					+ decodeURI(text)
-					+ '</td>'
-					+ '<td class="fair-price">￥<span class="unit-price">'
-					+ price
-					+ '</span></td>'
-					+ '<td class="fair-price"><input id="gid" type="hidden" value="'
-					+ gid
-					+ '">'
+					+ decodeURI(title) + '：' + decodeURI(text) + '</td>'
+					+ '<td class="fair-price">￥<span class="unit-price">' + price + '</span></td>'
+					+ '<td class="fair-price"><input id="gid" type="hidden" value="' + gid + '">'
 					+ '<button class="lower" onClick="lower(0)">-</button>'
 					+ '<input type="text" class="amount" id="amount_0" value="1" />'
 					+ '<button class="adder" onClick="adder(0)">+</button></td>'
 					+ '<td class="fair-amount"><span style="color:#F76120;)">￥</span>'
 					+ '<span class="amount-price"></span></td>';
 			$('.fair-count').html(content);
-			$("#total-price").val("￥" + (price * count));
-			$("#first-step").css("display", "block");
-			$("#first-trolley").css("display", "none");
+			$("#total-price").val("￥"+(price*count));
+			$("#first-step").css("display","block");
+			$("#first-trolley").css("display","none");
 		} else {
-
+			$("#first-step").css("block","none");
+			var content = '<div id="first-trolley"><div class="cart-head cf">'
+				+ '<div class="cart-status"><i class="cart-status-icon status-1"></i> '
+				+ '<span class="cart-title">我的购物车</span>'
+				+ '<span class="number" title="您的购物车内有2种商品，共可放20种商品"> <em'
+				+ 'class="count-in-carts">0</em>/20</span></div></div>'
+				+ '<div class="table-section summary-table" id="yui_170">'
+				+ '<table cellspacing="0" id="yui_169">'
+				+ '<thead><tr id="thead"><th width="84"><input type="checkbox"'
+				+ 'mb-onchange="toggleAll($$checked)" mb-checked="isAllChecked"'
+				+ 'class="ui-checkbox" id="cart-selectall"> <label '
+				+ 'class="cart-select-all" for="cart-selectall">全选</label></th>'
+				+ '<th width="auto" class="desc">项目</th><th width="87">单价</th>'
+				+ '<th width="157">数量</th><th width="74" class="total">小计</th>'
+				+ '<th width="84">操作</th></tr></thead>'
+				+ '<tbody id="yui_168">'
+				
+				+ '<tr class="yui_1317">'
+				+ '<td width="84" class="select-cartItem" rowspan="1"><input '
+				+ 'type="checkbox" value="35786909-0" '
+				+ 'id="35786909" class="ui-checkbox"> </td>'
+				+ '<td width="auto" class="desc"><a '
+				+ 'title="意大利经典披萨：双人套餐，提供免费WiFi" '
+				+ 'href=""> <img class="tro_img" width="63" height="39" src="">'
+				+ '<a class="title1" href="">意大利经典披萨：双人套餐，提供免费WiFi</a></a></td>'
+				+ '<td width="70" class="price">¥<span class="J-price">39</span></td>'
+				+ '<td width="150" class="saleNum deal-component-quantity" >'
+				+ '<div class="component-cart-quantity mt-component--booted" >'
+				+ '<div class="cart-quantity"><button type="button" class="minus lower">-</button>'
+				+ '<input type="text" value="1" maxlength="4" class="f-text J-quantity J-cart-quantity amount">'
+				+ '<button type="button" class="item plus adder">+</button></div></div></td>'
+				+ '<td width="70" class="money total" rowspan="1">¥<span class="J-total">39</span> <br></td>'
+				+ '<td width="80" class="op list-delete"><a href="javascript:void(0);"'
+				+ 'class="delete">删除</a></td></tr>'
+				
+				+ '<tr class="yui_1317">'
+				+ '<td width="84" class="select-cartItem" rowspan="1"><input '
+				+ 'type="checkbox" value="35786909-0" '
+				+ 'id="35786909" class="ui-checkbox"> </td>'
+				+ '<td width="auto" class="desc"><a '
+				+ 'title="意大利经典披萨：双人套餐，提供免费WiFi" '
+				+ 'href=""> <img class="tro_img" width="63" height="39" src="">'
+				+ '<a class="title1" href="">意大利经典披萨：双人套餐，提供免费WiFi</a></a></td>'
+				+ '<td width="70" class="price">¥<span class="J-price">39</span></td>'
+				+ '<td width="150" class="saleNum deal-component-quantity" >'
+				+ '<div class="component-cart-quantity mt-component--booted" >'
+				+ '<div class="cart-quantity"><button type="button" class="minus lower">-</button>'
+				+ '<input type="text" value="1" maxlength="4" class="f-text J-quantity J-cart-quantity amount">'
+				+ '<button type="button" class="item plus adder">+</button></div></div></td>'
+				+ '<td width="70" class="money total" rowspan="1">¥<span class="J-total">39</span> <br></td>'
+				+ '<td width="80" class="op list-delete"><a href="javascript:void(0);"'
+				+ 'class="delete">删除</a></td></tr>'
+				
+				+ '<tr class="yui_1317">'
+				+ '<td width="84" class="select-cartItem" rowspan="1"><input '
+				+ 'type="checkbox" value="35786909-0" '
+				+ 'id="35786909" class="ui-checkbox"> </td>'
+				+ '<td width="auto" class="desc"><a '
+				+ 'title="意大利经典披萨：双人套餐，提供免费WiFi" '
+				+ 'href=""> <img class="tro_img" width="63" height="39" src="">'
+				+ '<a class="title1" href="">意大利经典披萨：双人套餐，提供免费WiFi</a></a></td>'
+				+ '<td width="70" class="price">¥<span class="J-price">39</span></td>'
+				+ '<td width="150" class="saleNum deal-component-quantity" >'
+				+ '<div class="component-cart-quantity mt-component--booted" >'
+				+ '<div class="cart-quantity"><button type="button" class="minus lower">-</button>'
+				+ '<input type="text" value="1" maxlength="4" class="f-text J-quantity J-cart-quantity amount">'
+				+ '<button type="button" class="item plus adder">+</button></div></div></td>'
+				+ '<td width="70" class="money total" rowspan="1">¥<span class="J-total">39</span> <br></td>'
+				+ '<td width="80" class="op list-delete"><a href="javascript:void(0);"'
+				+ 'class="delete">删除</a></td></tr>'
+				
+				+'<tr id="totalCount">'
+				+ '<td id="total-td" class="extra-fee total-fee" colspan="4"><span '
+				+ 'class="amount tro-amount"> 已选<strong  '
+				+ 'id="J-cart-amount" class="amount__num">2</strong>件商品 '
+				+ '</span> <strong class="tro-amount">应付总额：</strong> <span class="inline-block money" '
+				+ 'style="font-size:20px;">¥<strong id="J-cart-total">71</strong>'
+				+ '</span></td</tr></tbody></table></div><div id="submit-deal">'
+				+ '<input type="button" id="submit-fair" onclick="submitTroFair()" value="提交订单"></div></div>';
+			$('#wrapper').append(content);
+			$("#first-trolley").css("dislay","block");
+			$("#first-step").css("display","none");
 		}
 	}
 });
@@ -141,7 +225,6 @@ window.onload = function() {
 };
 // 点击提交订单时所产生的页面效果
 function submitFair() {
-	var oprice = $(".unit-price").html();
 	var gid = $("#gid").val();
 	var ocount = $("#amount_0").val();
 	var title1 = $(".fair-project").html().split("：")[0];
@@ -151,8 +234,7 @@ function submitFair() {
 		url : 'uorder_addUorder.action',
 		data : {
 			gid : gid,
-			ocount : ocount,
-			oprice : oprice
+			ocount : ocount
 		},
 		dataType : 'json',
 		success : function(data) {
@@ -178,8 +260,8 @@ function submitFair() {
 	});
 }
 
-function submitTroFair() {
-
+function submitTroFair(){
+	
 }
 
 // 点击添加按钮所产生的页面效果

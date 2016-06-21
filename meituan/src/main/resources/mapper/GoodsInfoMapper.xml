@@ -7,7 +7,9 @@
 		 from meituan_seller_info s inner join meituan_goods_info g on s.sid = g.sid inner join meituan_goods_intro m
 		  on g.gid = m.gid and g.gid = #{gid}
 	</select>
-	
+	<!-- <select id="selectGoodsImg" parameterType="int" resultType="GoodsBean">
+		select img from meituan_goods_info where gid=#{gid}	
+	</select> -->
 	<update id="updateSoldCount" parameterType="Uorder">
 		update meituan_goods_info set gsoldcount = gsoldcount + #{ocount} where gid = #{gid}
 	</update>

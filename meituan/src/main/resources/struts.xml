@@ -4,6 +4,7 @@
 	"http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
+
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<constant name="struts.devMode" value="true" /> 
 	
@@ -44,7 +45,6 @@
 		<action name="user_findEmail" class="com.yc.meituan.web.action.UserAction" method="findEmail"></action>
 		<action name="user_code" class="com.yc.meituan.web.action.UserAction" method="code"></action>
 		<action name="goods_indexGoods" class="com.yc.meituan.web.action.GoodsAction" method="indexGoods"></action>
-		<action name="trolley_showTrolley" class="com.yc.meituan.web.action.TrolleyAction" method="showTrolley"></action>
 		<action name="uorder_showAllUorder" class="com.yc.meituan.web.action.UorderAction" method="showAllUorder"></action>
 		<action name="uorder_listCollection" class="com.yc.meituan.web.action.UorderAction" method="listCollection"></action>
 		<action name="goods_showGoods" class="com.yc.meituan.web.action.GoodsAction" method="showGoods"></action>
@@ -62,8 +62,10 @@
 		<action name="collection_deleteCol" class="com.yc.meituan.web.action.CollectionAction" method="deleteCol"></action>
 		<action name="trolley_deleteTro" class="com.yc.meituan.web.action.TrolleyAction" method="deleteTrolley"></action>
 		<action name="uorder_delUorder" class="com.yc.meituan.web.action.UorderAction" method="deleteUorder"></action>
-		
+		<action name="goods_showEvaluatePoint" class="com.yc.meituan.web.action.EvaluateAction" method="showEvaluatePoint" ></action>
+		<action name="goods_showGoodsDetails" class="com.yc.meituan.web.action.EvaluateAction" method="showGoodsDetails" ></action>
+		<action name="trolley_showTrolley" class="com.yc.meituan.web.action.TrolleyAction" method="showTrolley"></action>
+
 		<action name="seller_login" class="com.yc.meituan.web.action.SellerAction" method="login"></action>
-		
 	</package>
 </struts>

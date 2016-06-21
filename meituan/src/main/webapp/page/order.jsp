@@ -276,7 +276,7 @@
 			<li id="head_5">
 				<p>全部分类</p>
 				<ul>
-					<li class="head_5_li"><a calss="fenlei_a" href=""><h4>首页</h4></a></li>
+					<li class="head_5_li"><a calss="fenlei_a" href="index.html"><h4>首页</h4></a></li>
 					<li class="head_5_li"><a calss="fenlei_a"  href=""><h4>今日新单</a>
 					</h4></li>
 					<li class="head_5_li"><a calss="fenlei_a"  href=""><h4>身边团购</a>
@@ -420,7 +420,35 @@
 									<th width="112"><p>操作</p></th>
 								</tr>
 								<tbody id="info_tbody">
-									
+									<tr class="collection_detailed" id="tr'+items.GID+'">
+										<td class="sc_td"><div>
+												<a href="javascript:void(0)"><img
+													src="ges/goods_image_1.jpg"
+													style="float: left; margin-top: 20px; margin-left: 20px; width: 100px; height: 61px;" /></a>
+												<a href="javascript:void(0)"
+													style="float: left; margin-left: 20px; font-size:12px; margin-top: 33px; color: #666666;"
+													class="goods_text" onMouseOver="changeFontColor(0)"
+													onMouseOut="returnFontColor(0)">DIY蛋糕</a>
+											</div></td>
+										<td class="sc_td"><div>
+												<p class="goods_text">￥22</p>
+											</div></td>
+										<td class="sc_td"><div>
+												<p class="goods_text">进行中</p>
+											</div></td>
+										<td class="sc_td">
+											<div>
+												<a href="javascript:void(0)" class="goods_text"
+													style="margin-left: 23px; color: #2BB8AA;"
+													onMouseOver="changeFontColor(3)"
+													onMouseOut="returnFontColor(3)">购买</a> <a
+													href="javascript:void(0)" class="goods_text"
+													style="margin-left: 3px;" onMouseOver="changeFontColor(4)"
+													onMouseOut="returnFontColor(4)"
+													onClick="deleteCollection('+items.GID+')">删除</a>
+											</div>
+										</td>
+									</tr>
 								</tbody>
 							</table>
 						</div>

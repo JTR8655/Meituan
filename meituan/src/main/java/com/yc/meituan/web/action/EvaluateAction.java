@@ -1,7 +1,10 @@
 package com.yc.meituan.web.action;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.struts2.interceptor.RequestAware;
@@ -12,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.ModelDriven;
 import com.yc.meituan.entity.Evaluate;
 import com.yc.meituan.entity.UserInfo;
+import com.yc.meituan.entity.bean.EvaluateBean;
 import com.yc.meituan.entity.bean.EvaluatedBean;
 import com.yc.meituan.service.EvaluateService;
 import com.yc.meituan.service.UorderService;
@@ -22,8 +26,11 @@ import com.yc.meituan.util.MeituanData;
 public class EvaluateAction implements ModelDriven<Evaluate>, SessionAware, RequestAware {
 
 	private Evaluate evaluate;
+	private EvaluateBean evaluateBean = new EvaluateBean();
+	
 	private Map<String, Object> session;
 	private Map<String, Object> request;
+	
 	@Autowired
 	private EvaluateService evaluateService;
 	@Autowired
@@ -45,6 +52,11 @@ public class EvaluateAction implements ModelDriven<Evaluate>, SessionAware, Requ
 		if(null == evaluate.getImg()){
 			evaluate.setImg("");
 		}
+		
+		Date d = new Date();
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		String time = sf.format(d);
+		evaluate.setTemp1(time);
 		
 		try{
 			evaluateService.addEvaluate(evaluate);
@@ -74,19 +86,23 @@ public class EvaluateAction implements ModelDriven<Evaluate>, SessionAware, Requ
 		return "none";
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	//显示评价总分
+	public String showEvaluatePoint(){
+		LogManager.getLogger().debug("=========>"+evaluate);
+		List<EvaluateBean> evaluates = evaluateService.listshowEvaluatePoint(evaluate.getGid());	
+		LogManager.getLogger().debug(evaluates);
+		AjaxUtil.objectAjaxResponse(evaluates);
+		return "none";
+	}
+	//显示评价内容
+		public String showGoodsDetails(){
+			LogManager.getLogger().debug("=========>"+evaluate);
+			List<EvaluateBean> evaluates = evaluateService.listshowGoodsDetails(evaluate.getGid());	
+			LogManager.getLogger().debug(evaluates);
+			AjaxUtil.objectAjaxResponse(evaluates);
+			return "none";
+		}
+		
 	
 	@Override
 	public void setRequest(Map<String, Object> request) {
@@ -102,6 +118,16 @@ public class EvaluateAction implements ModelDriven<Evaluate>, SessionAware, Requ
 	public Evaluate getModel() {
 		evaluate = new Evaluate();
 		return evaluate;
+	}
+
+
+	public EvaluateBean getEvaluateBean() {
+		return evaluateBean;
+	}
+
+
+	public void setEvaluateBean(EvaluateBean evaluateBean) {
+		this.evaluateBean = evaluateBean;
 	}
 	
 }

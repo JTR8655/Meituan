@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.yc.meituan.entity.Evaluate;
+import com.yc.meituan.entity.bean.EvaluateBean;
 import com.yc.meituan.entity.bean.EvaluatedBean;
 import com.yc.meituan.mapper.EvaluateMapper;
 import com.yc.meituan.service.EvaluateService;
@@ -24,17 +25,28 @@ public class EvaluateServiceImpl implements EvaluateService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addEvaluate(Evaluate evaluate) {
 		try {
-			LogManager.getLogger().debug("!!!!!");
 			evaluateMapper.addEvaluate(evaluate);
 		} catch (Exception e) {
 			throw new RuntimeException("添加评论失败！！！", e);
 		}
 	}
+	
+	
 
 	@Override
 	public List<EvaluatedBean> listPj(Integer muid) {
 		LogManager.getLogger().debug("listPj");
 		return evaluateMapper.listPj(muid);
+	}
+	//显示评价总分
+	@Override
+	public List<EvaluateBean> listshowEvaluatePoint(int gid) {
+		return evaluateMapper.showEvaluatePoint(gid);
+	}
+	//显示评价内容
+	@Override
+	public List<EvaluateBean> listshowGoodsDetails(int gid) {
+		return evaluateMapper.showGoodsDetails(gid);
 	}
 
 }

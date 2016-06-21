@@ -1,18 +1,19 @@
-$(function showtrolley(){
-	$("#trolleyCount").css("color","red");
+$(function showtrolley() {
+	$("#trolleyCount").css("color", "red");
 	$.ajax({
-		type:'post',
-		url:'trolley_showTrolley.action',
-		dataType:'json',
-		success:function(data){
-			if(data != null){
+		type : 'post',
+		url : 'trolley_showTrolley.action',
+		dataType : 'json',
+		success : function(data) {
+			if (data != null) {
 				$("#trolleyCount").html(data.length);
-			}else{
+			} else {
 				$("#trolleyCount").html(0);
 			}
 		}
 	});
 });
+
 
 // JavaScript Document
 var count1=0;
@@ -85,6 +86,7 @@ function clickPj(){
 	//	$(this).parent().parent().parent().append(pjContent);
 		$("pjDetail")
 		document.getElementsByClassName("pjDetail")[pjliIndex].style.display = 'block';
+		console.info($(this).parent().parent());
 		$(".v2_pingjia").each(function(){
 			$(this).parent().children().css("background","white");
 			$(this).parent().children().css("border-color","#eee");
@@ -164,7 +166,7 @@ $(function(){
 					+ '  <div class="order_row">'
 					+ '<div class="order_cell_info">'
 					+ '<div class="images">'
-					+ ' 	<a href="javascript:void(0)"><img class="v0_img" src="'+data[i].img+'" /></a>'
+					+ ' 	<a href="page/foods.jsp?gid='+ data[i].gid +'"><img class="v0_img" src="'+data[i].img+'" /></a>'
 					+ ' </div>'
 					+ '  <div class="goods_info">'
 					+ '	<a class="goods" href="page/foods.jsp?gid='+ data[i].gid +'" onMouseOver="font_1('+i+')" onMouseOut="fr_1('+i+')">'+data[i].gtitle1+'</a><br />'
@@ -203,6 +205,7 @@ function listCollection(){
 				return;
 			}
 			var str="";
+			console.info(data);
 			for(var i=0;i<data.length;i++){
 				str += 
 				'<tr class="collection_detailed"><td class="sc_td"><div>'+
@@ -212,7 +215,7 @@ function listCollection(){
 							'class="goods_text_a">'+ data[i].gtitle1 +'</a>'+
 						'</div></td> <td class="sc_td"><div> <p class="goods_text">￥'+ data[i].gprice2 +'</p></div></td>'+
 					'<td class="sc_td"><div> <p class="goods_text">'+ data[i].gstatus +'</p> </div></td>'+
-					'<td class="sc_td"> <div> <a href="page/foods.jsp?gid='+ data[i].gid +'" class="goods_text_buy" style="margin-left: 23px; color: #2BB8AA;"'+
+					'<td class="sc_td"> <div> <a href="page/fair.jsp?gid='+ data[i].gid +'" class="goods_text_buy" style="margin-left: 23px; color: #2BB8AA;"'+
 						'>购买</a> <a '+
 						'href="javascript:void(0)" class="goods_text_del" style="margin-left: 3px;"'+
 						' onClick="deleteCol('+data[i].cid+')">删除</a>'+
@@ -239,8 +242,8 @@ function showNoPj(){
 					    +'<div class="v2_dingdan">'
 						+'<form class="pingjiaForm" id="pingjiaForm'+ i +'" method="post" enctype="multipart/form-data"><div>'
 						+'<input type="hidden" name="oid" class="oid" value="'+data[i].oid+'">'
-						+'<input type="hidden" name="gid" class="gid" value="'+data[i].gid+'">'
 						+'<input type="hidden" name="hid" class="hid" value="0">'
+						+'<input type="hidden" name="gid" class="gid" value="'+data[i].gid+'">'
 						+'<input type="hidden" name="egrade_4" class="egrade4" value="0">'
 						+'<div class="v2_d_img v2_d_div"><img src="'+data[i].img+'" width="90" height="60"></div>'
 						+'<div class="v2_d_pingjia v2_d_div">'
@@ -271,6 +274,7 @@ function showNoPj(){
 						+'<p class="bb">修改后的评价不参与“认真评价奖积分”活动。</p>'
 						+'</div></div>'
 						+'</form></div></li>';
+						
 					$("#pingjiaUl").append(value);
 					$(".v2_jf_count").html(data.length);
 				}
@@ -352,7 +356,7 @@ function pinglun(){
 	}else{
 		document.getElementsByClassName("hid")[pjliIndex].value=0;
 	}
-	
+//	console.info($("#pingjiaForm"+pjliIndex).serialize());
 	//评论提交时发送请求
 	$.ajax({	
 		type:"post",
@@ -360,6 +364,7 @@ function pinglun(){
 		data:$("#pingjiaForm"+pjliIndex).serialize(),
 		dataType:"json",
 		success:function(data){
+			console.info("回调参数："+data);
 			if(data == 1){
 				alert("评价成功！");
 				hide();
@@ -414,6 +419,34 @@ function fontColor(index){
 	flag = false;
 }
 
+function upload(){
+	$(".uploadimg").click();
+}
+
+function orderDetail(obj){
+	window.location.href="page/orderDetail.jsp?oid="+obj;
+}
+
+function deleteCol(cid){
+	if(confirm("确定要删除该商品？")){
+		$.ajax({	
+			type:"post",
+			url:"collection_deleteCol.action",
+			data:{cid:cid},
+			dataType:"json",
+			success:function(data){
+				console.info(data);
+				if(data == 1){
+					window.location.reload();
+				}else if(data == 0){
+					alert("删除失败！！！");
+				}
+			}
+		});
+	}
+	
+}
+
 function fontReturn(index){
 	if(flag){
 		font[index].style.color = '#FFF';
@@ -457,34 +490,11 @@ function clicked(index){
 	}
 	nav_content[index].style.color = '#fff';
 	nav_content[index].style.background = '#2bb8aa';
-	
 }
 
 function upload(){
 	$(".uploadimg").click();
 }
-
-function orderDetail(obj){
-	window.location.href="page/orderDetail.jsp?oid="+obj;
-}
-
-function deleteCol(cid){
-	if(confirm("确定要删除该商品？")){
-		$.ajax({	
-			type:"post",
-			url:"collection_deleteCol.action",
-			data:{cid:cid},
-			dataType:"json",
-			success:function(data){
-				console.info(data);
-				if(data == 1){
-					window.location.reload();
-				}else if(data == 0){
-					alert("删除失败！！！");
-				}
-			}
-		});
-	}
 	
-}
-
+	
+	

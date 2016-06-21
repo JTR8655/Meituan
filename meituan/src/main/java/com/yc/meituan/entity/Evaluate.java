@@ -13,17 +13,10 @@ public class Evaluate {
 	private Integer oid;// 订单编号
 
 	private Double egrade_2;// 口味分
-	// private Double egrade_1;// 服务分
 
 	private Double egrade_3;// 环境分
-	// private Double egrade_2;// 口味分
 
 	private Double egrade_4;// 总评分
-
-	// private Integer hid;
-	// private Double egrade_3;// 环境分
-
-	// private Double egrade_4;// 总评分
 
 	private String econtent;// 长时间未评价，系统默认好评
 

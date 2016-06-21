@@ -1,25 +1,27 @@
-var text = '';
-
-$(function showtrolley(){
-	$("#trolleyCount").css("color","red");
+$(function showtrolley() {
+	$("#trolleyCount").css("color", "red");
 	$.ajax({
-		type:'post',
-		url:'trolley_showTrolley.action',
-		dataType:'json',
-		success:function(data){
-			if(data != null){
+		type : 'post',
+		url : 'trolley_showTrolley.action',
+		dataType : 'json',
+		success : function(data) {
+			if (data != null) {
 				$("#trolleyCount").html(data.length);
-			}else{
+			} else {
 				$("#trolleyCount").html(0);
 			}
 		}
 	});
 });
+
+
+
+var text = '';
+
 //显示当前商品详情
 function showInfo(data){
 	var value = "";
 	$("#body_mid1").html("");
-	console.info(data);
 	for(var i=0;i<data.length;i++){
 		value += '<div id="body_midl_top"><div id="body_mid1_top1">'
 				+'<input type="hidden" value="'+data[i].gid+'" class="get_id"/>'
@@ -143,7 +145,15 @@ function tuanTaoCan(data){
 	}
 }
 
-
+//显示本单详情美味尽享的图片
+function goodsImg(data){
+	var value = "";
+	$("#must_know").html("");
+	for(var i=0;i<data.length;i++){
+		value += '<img class="foodsimg" src=" ../update/back1.jpg">'
+	}
+}
+	
 //显示用户须知
 function mustKnow(data){
 	var value = "";
@@ -186,20 +196,19 @@ function mustKnow(data){
 function showEvaluatePoint(data){
 	var value = "";
 	$("#evaluation_stars").html("");
-	var item = data.obj;
-	for(var i=0;i<item.length;i++){
+	for(var i=0;i<data.length;i++){
 		var point=0;
-		if(item[i].AMOUNT==0){
+		if(data[i].amount==0){
 			point=0;
 		}else{
-			point=toDecimal(item[i].GRADE/item[i].AMOUNT);
+			point=toDecimal(data[i].grade/data[i].amount);
 		}
 		value += '<div id="eva_point">'
     			+'<span id="aggregate-point">'+point+'</span> 分</div>'
     			+'<div id="eva_stars">'
     			+'<span class="back_stars">'
-        		+'<span class="infact_stars" style="width: '+(item[i].GRADE/item[i].AMOUNT)*20+'%;"></span></span></div>'
-        		+'<div id="eva_amount">共有 <span>'+item[i].AMOUNT+'</span> 人评价</div>';
+        		+'<span class="infact_stars" style="width: '+(data[i].grade/data[i].amount)*20+'%;"></span></span></div>'
+        		+'<div id="eva_amount">共有 <span>'+data[i].amount+'</span> 人评价</div>';
 				$("#evaluation_stars").html(value);
 	}
 }
@@ -209,11 +218,17 @@ function showEvaluateContent(data){
 	var value = '';
 	$('#evaluation_contents').html('');
 	for(var i=0;i<data.length;i++){
+		var uname='';
+		if(data[i].hidename==0){
+			uname='佚名';
+		}else{
+			uname=data[i].uaccounts;
+		}
 		value += '<li><div class="user_info">'
     			+'<div class="user_touxiang">'
-    			+'<img src="images/touxiang.png" /></div><p class="user_id">'+data[i].uaccounts+'</p></div>'
+    			+'<img src="images/touxiang.png" /></div><p class="user_id">'+uname+'</p></div>'
     			+'<div class="evaluation_content"><div>'
-    			+'<span class="back_stars"><p class="infact_stars" style="width:'+data[i].egrade_1*20+'%;"></p></span>'
+    			+'<span class="back_stars"><p class="infact_stars" style="width:'+data[i].egrade_4*20+'%;"></p></span>'
     			+'<span>'+data[i].temp1+'</span></div><div class="contents">'
     			+'<p>'+data[i].econtent+'</p></div></div></li>';
 				$('#evaluation_contents').html(value);
@@ -289,7 +304,6 @@ $(function(){
 		success:function(data){
 			showInfo(data);
 			sid = data.sid;
-			console.info(data);
 			othergoods(data[0].sid,gid);
 			thisFood(data);
 		}
@@ -299,6 +313,19 @@ $(function(){
 	$.ajax({
 		type:'post',
 		url:'goods_showGoodsIntro.action',
+		data:{
+			gid:gid
+		},
+		dataType:'json',
+		success:function(data){
+			mustKnow(data);
+			tuanTaoCan(data);
+		}
+	});
+	//显示美味尽享的图片
+	$.ajax({
+		type:'post',
+		url:'goods_showGoodsInfo.action',
 		data:{
 			gid:gid
 		},

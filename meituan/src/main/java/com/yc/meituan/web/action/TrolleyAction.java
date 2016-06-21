@@ -62,19 +62,7 @@ public class TrolleyAction implements SessionAware, RequestAware, ModelDriven<Tr
 		return "none";
 	}
 	
-	public String showTroDetail(){
-		UserInfo user = (UserInfo) session.get(MeituanData.LOGIN_USER);
-		if(null == user){
-			AjaxUtil.stringAjaxResponse(""+2);
-			return "none";
-		}
-		List<TrolleyBean> trollies = (List<TrolleyBean>) session.get("trollies");
-		if(null != trollies){
-			AjaxUtil.objectAjaxResponse(trollies);
-		}
-		
-		return "none";
-	}
+	
 	
 	public String deleteTrolley(){
 		UserInfo user = (UserInfo) session.get(MeituanData.LOGIN_USER);
@@ -90,6 +78,20 @@ public class TrolleyAction implements SessionAware, RequestAware, ModelDriven<Tr
 			LogManager.getLogger().debug(e.getMessage());
 			AjaxUtil.stringAjaxResponse(""+0);
 		}
+		return "none";
+	}
+	
+	public String showTroDetail(){
+		UserInfo user = (UserInfo) session.get(MeituanData.LOGIN_USER);
+		if(null == user){
+			AjaxUtil.stringAjaxResponse(""+2);
+			return "none";
+		}
+		List<TrolleyBean> trollies = (List<TrolleyBean>) session.get("trollies");
+		if(null != trollies){
+			AjaxUtil.objectAjaxResponse(trollies);
+		}
+		
 		return "none";
 	}
 	

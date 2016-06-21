@@ -6,6 +6,7 @@ public class EvaluateBean {
 	private Double egrade_4;//总评分
 	private double grade;//所有分支评价分总和
 	private int amount;//评价总人数
+	private String uaccounts;//评论人会员名
 	private Integer hidename;//评论人的用户名，默认为匿名
 	private String uheadimg;//评论人头像
 	private String temp1;//评论时间
@@ -35,6 +36,13 @@ public class EvaluateBean {
 	}
 	public void setAmount(int amount) {
 		this.amount = amount;
+	}
+	
+	public String getUaccounts() {
+		return uaccounts;
+	}
+	public void setUaccounts(String uaccounts) {
+		this.uaccounts = uaccounts;
 	}
 	public Integer getHidename() {
 		return hidename;
@@ -71,8 +79,9 @@ public class EvaluateBean {
 	public String toString() {
 		return "EvaluateBean [gid=" + gid + ", oid=" + oid + ", egrade_4="
 				+ egrade_4 + ", grade=" + grade + ", amount=" + amount
-				+ ", hidename=" + hidename + ", uheadimg=" + uheadimg
-				+ ", temp1=" + temp1 + ", econtent=" + econtent + "]";
+				+ ", uaccounts=" + uaccounts + ", hidename=" + hidename
+				+ ", uheadimg=" + uheadimg + ", temp1=" + temp1 + ", econtent="
+				+ econtent + "]";
 	}
 	
 	

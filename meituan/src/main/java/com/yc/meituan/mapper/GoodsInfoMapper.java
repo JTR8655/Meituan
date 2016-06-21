@@ -10,6 +10,8 @@ public interface GoodsInfoMapper {
 	GoodsBean listShowGoods();
 
 	List<GoodsBean> selectGoodsInfo(int gid);
-
+	
+	//List<GoodsBean> selectGoodsImg(int gid);
+ 
 	void updateSoldCount(Uorder uorder);
 }

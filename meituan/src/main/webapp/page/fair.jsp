@@ -28,7 +28,6 @@
 			<ul id="head_2_right">
 				<li><a href="page/order.jsp">我的订单</a></li>
 				<li><a href="page/order.jsp">我的美团</a></li>
-		<!-- 		<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;最近浏览</a></li>   -->
 				<li><a href="page/fair.jsp?type=trolley" class="border">|&nbsp;&nbsp;&nbsp;购物车<a id="trolleyCount">0</a>件</a></li>
 				<li><a href="" class="border">|&nbsp;&nbsp;&nbsp;联系客服</a></li>
 				<li><a href="back/sellerLogin.html" class="border">|&nbsp;&nbsp;&nbsp;我是商家</a></li>
@@ -266,5 +265,7 @@
 			</div>
 		</div>
 	</footer>
+	
+	
 </body>
 </html>

@@ -14,7 +14,21 @@ $(function(){
 	});*/
 	
 });
-
+$(function showtrolley() {
+	$("#trolleyCount").css("color", "red");
+	$.ajax({
+		type : 'post',
+		url : 'trolley_showTrolley.action',
+		dataType : 'json',
+		success : function(data) {
+			if (data != null) {
+				$("#trolleyCount").html(data.length);
+			} else {
+				$("#trolleyCount").html(0);
+			}
+		}
+	});
+});
 
 
 var mytime;//定时器

@@ -243,10 +243,8 @@
 		<div id="beian">
 			<div>
 				<center>
-					<p>
-						&copy;2015<a href="">美团团购</a>&nbsp;meituan.com&nbsp;<a href="">京ICP证070791号</a>&nbsp;京公网安备11010502025545号&nbsp;<a
-							href="">电子公告服务规则</a>
-					</p>
+					<p>&copy;2015<a href="">美团团购</a>&nbsp;meituan.com&nbsp;<a href="">京ICP证070791号</a>&nbsp;京公网安备11010502025545号&nbsp;<a
+							href="">电子公告服务规则</a></p>
 					<div>
 						<a href=""><img src="basic_images/beian_1.png"></a> <a
 							href=""><img src="basic_images/beian_2.png"></a> <a href=""><img
@@ -254,8 +252,8 @@
 							src="basic_images/beian_4.png"></a> <a href=""><img
 							src="basic_images/beian_5.png"></a>
 					</div>
-			</div>
 			</center>
+			</div>
 		</div>
 	</div>
 	<script type="text/javascript">
@@ -300,6 +298,18 @@
 				}
 			});
 		});
+		
+		//退出
+		function logOut() {
+			$.ajax({
+				type : 'post',
+				url : 'user_logout.action',
+				success : function(data) {
+					$("#head_2_left_login").css("display", "none");
+					$("#head_2_left").css("display", "block");
+				}
+			});
+		}
 	</script>
 </body>
 </html>

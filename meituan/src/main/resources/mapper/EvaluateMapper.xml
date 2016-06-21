@@ -6,8 +6,8 @@
  	</select>
  	
 	<insert id="addEvaluate" parameterType="Evaluate">
-		insert into meituan_evaluate (eid,muid,oid,egrade_4,econtent,img,hidename,gid) values 
-			(SEQ_MEITUAN_EVAL.nextval,#{muid},#{oid},#{egrade_4},#{econtent},#{img},#{hidename},#{gid})
+		insert into meituan_evaluate (eid,muid,oid,egrade_4,econtent,img,hidename,temp1,gid) values 
+			(SEQ_MEITUAN_EVAL.nextval,#{muid},#{oid},#{egrade_4},#{econtent},#{img},#{hidename},#{temp1},#{gid})
 	</insert>
 	
 	<select id="listPj" parameterType="int" resultType="EvaluatedBean">
@@ -23,4 +23,15 @@
 	<delete id="deleteEvaluateByOid" parameterType="Integer">
 		delete from meituan_evaluate where oid = #{oid}
 	</delete>
+
+	<select id="showEvaluatePoint" parameterType="int" resultType="EvaluateBean">
+ 		select sum(egrade_4) grade, count(egrade_4) amount from meituan_evaluate e 
+ 		inner join meituan_uorder o on e.oid=o.oid and o.gid=#{gid}
+ 	</select>
+ 	
+ 	<select id="showGoodsDetails" parameterType="int" resultType="EvaluateBean">
+ 		select o.gid,u.uaccounts, u.uheadimg,e.hidename, e.egrade_4, e.econtent, e.temp1 from meituan_user_info u
+ 		inner join meituan_evaluate e on u.muid = e.muid
+ 		inner join meituan_uorder o on e.oid=o.oid and o.gid=#{gid}
+ 	</select>
 </mapper>

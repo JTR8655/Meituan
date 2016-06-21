@@ -44,6 +44,10 @@ insert into meituan_collection(cid,muid,gid)
 	
 
 -commit
+--查询每个商品的图片
+select img from meituan_goods_info where gid=1112;
+
+
 
 --查询所有订单
 select o.oid,o.oidentifier,o.muid,o.gid,o.ocount,o.ostatus,g.gprice2,g.gtitle1,g.img,g.sid,gi.b_retime from meituan_uorder o inner join 
@@ -60,3 +64,8 @@ insert into meituan_user_info values(seq_meituanuser.nextval,'samsara0','a','918
 select sum(egrade_1) grade, count(egrade_1) amount from meituan_evaluate e inner join meituan_uorder o on e.oid=o.oid and o.gid=1112;
 
 select s.sid,g.gid,g.gtitle1, g.gprice1, g.gprice2, g.gsoldcount, s.sshopname from meituan_goods_info g inner join meituan_seller_info s on g.sid = s.sid and s.sid = 1 and g.gid != 3 
+
+
+insert into meituan_goods_info values(1112,to_date('2016-5-28','yyyy-MM-dd'),'8.8折',1,'土火锅烧烤','仅售38.8元，提供免费wifi',68.8,38.8,9,'../update/back1.jpg',null,1,null);
+
+

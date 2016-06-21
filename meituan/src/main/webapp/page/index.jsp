@@ -53,7 +53,7 @@
 			<li id="head_4">
 				<div id="h4_div">
 					<div id="head_4_left">
-						<a href="page/index.jsp" id="logo"><img id="logo_img"
+						<a href="" id="logo"><img id="logo_img"
 							src="images/smalljpg.png"></a> <a href="" class="didian"
 							id="city">衡阳</a><br />
 						<!--     <a href="" class="didian" id="qiehuan">切换城市</a>  -->
@@ -297,7 +297,7 @@
             </div><!--详细美食 -->
             <a id="afterXiangxi" href=""><div id="food_more" class="xiangxi_more">更多美食团购，请点击查看></div></a>
         </div><!--美食-->
-		<!-- <div id="funny" class="xiangxi">
+		<div id="funny" class="xiangxi">
 			<div class="title">
 				<a href=""><img src="images/xiuxian.png"></a>
 				<ul>
@@ -307,7 +307,7 @@
 					<li class="title_right"><a href="">全部></a></li>
 				</ul>
 			</div>
-		     <div id="movie" class="xiangxi">
+		<!--      <div id="movie" class="xiangxi">
         	<div class="title">
             	<a href=""><img src="images/dianying.png"></a>
                 <ul>

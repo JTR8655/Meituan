@@ -21,8 +21,8 @@
 	</update>
 	
 	<insert id="addUorder" parameterType="Uorder">
-		insert into meituan_uorder (oid,oidentifier,muid,gid,otime,opwd,opaytime,ocount,oprice)
-			values(SEQ_MEITUAN_UORDER_OID.nextval,#{oidentifier},#{muid},#{gid},sysdate,#{opwd},sysdate,#{ocount},#{oprice})
+		insert into meituan_uorder (oid,oidentifier,muid,gid,otime,opwd,opaytime,ocount)
+			values(SEQ_MEITUAN_UORDER_OID.nextval,#{oidentifier},#{muid},#{gid},sysdate,#{opwd},sysdate,#{ocount})
 	</insert>
 	
 	<select id="showOrderDetail" parameterType="Uorder" resultType="UorderBean">
