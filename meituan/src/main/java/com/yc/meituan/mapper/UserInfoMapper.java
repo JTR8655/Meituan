@@ -13,5 +13,7 @@ public interface UserInfoMapper {
 	UserInfo sendEmail(String uemail);
 
 	void changeStatus(String uemail);
+
+	void changePwd(UserInfo userInfo);
 	
 }

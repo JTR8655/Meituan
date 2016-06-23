@@ -2,10 +2,11 @@
 <html>
 <head>
 <meta charset="utf-8">
+<base href="/meituan/">
 <title>登录|找回登录密码</title>
 <link href="css/findpwd.css" type="text/css" rel="stylesheet">
-<script src="js/findpwd.js" type="text/javascript"></script>
 <script src="js/jquery-1.11.3.js" type="text/javascript"></script>
+<script src="js/findpwd.js" type="text/javascript"></script>
 <script type="text/javascript">
 /*$(function(){
 	$("#next_findpwd").click(function(){
@@ -25,7 +26,7 @@
 
 
 //显示查询，再是修改。查询是否存在邮箱账号。才能跳转至邮箱界面，跳转后就可以修改密码的页面~
-function checkEmail(){//查询是否有次邮箱账号，并匹配验证码~
+/* function checkEmail(){//查询是否有次邮箱账号，并匹配验证码~
 	var uemail=$("#con_email").val();
 	var recode=$("#con_yz").val();
 	console.info(uemail);
@@ -53,34 +54,72 @@ function checkEmail(){//查询是否有次邮箱账号，并匹配验证码~
 		}
 		
 	});
-};
+}; */
 
+function checkEmail(){//查询是否有次邮箱账号，并匹配验证码~
+	var uemail=$("#con_email").val();
+	var recode=$("#con_yz").val();
+	var zhengze=/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+	if(uemail.match(zhengze)&&uemail!=null){
+		console.info(32323);
+		$.ajax({
+			type:'post',
+			url:'user_checkFogetEmail.action',
+			data:{
+				'uemail':uemail,
+				'captcha':recode
+			},
+			dataType:'json',
+			success:function(data){
+				console.info(data);
+				if(data==0){//
+					$("#content_second").css("display","block");
+					$("#content_first").css("display","none");
+				}else if(data==1){
+					alert("无此账号信息~");
+				}else{
+					$("#user_reyanzheng").text("验证码错误");
+					alert("验证码验证失败");
+				}
+			}
+		});
+	}else{
+		$("#content_first").css("display","block");
+		alert("邮箱格式不正确,请重新输入");
+		return;
+	}
+};
 
 function fogetPwd(){
 	var uemail=$("#con_email").val();
 	$.ajax({
 		method:'POST',
-		url:'/meituan/UserOperate.do',
+		url:'user_fogetUemail.action',
 		data:{
-			'op':'forgetEmail',
-			'email':uemail,
+			'uemail':uemail
 		},
 		dataType:'json',
 		success:function(data){
-			//alert("回调函数"+data.code);
-			if(data.code==1){//
+			if(data.code==1){
 				$("#forgetEmail").text(uemail);
 				$("#content_third").css("display","block");
 				$("#content_second").css("display","none");
 			}else if(data.code==0){
 				alert("邮件发送失败，请重试");
-				window.location.href="findpwd.html";
+				window.location.href="page/findpwd.html";
 			}
 		}
 		
 	});
 
+	
 }
+
+//重新获取验证码
+function changeyanzheng(obj){
+	 $("#signup_captcha_img").attr("src","user_code.action?t="+Math.random() );//改变验证码图片  
+}
+
 </script>
 
 </head>
@@ -104,7 +143,7 @@ function fogetPwd(){
             <form class="form_content" method="POST" action="">
                 <div class="form_field">
                     <label>美团账户</label>
-                    <input class="f_text account" id="con_email" name="userid" type="text" placeholder="请输入您的邮箱" />
+                    <input class="f_text account" id="con_email" name="uemail" type="text" placeholder="请输入您的邮箱" />
                     <span class="tip" style="display:none;">
                     	<span></span>
                     </span>
@@ -112,8 +151,8 @@ function fogetPwd(){
                 <div class="form_field captcha cf" >
                     <label>验证码</label>
                     <input class="f_text verify_code" style="width: 100px;" id="con_yz" name="captcha" type="text" />
-                    <img height="36px" width="72px" class="signup_captcha_img" id="signup_captcha_img" src="code.do" />
-                    <a tabindex="-1" class="captcha_refresh J_captcha_refresh" href="javascript:void(0)">看不清楚？换一张</a>
+                    <img height="36px" width="72px" class="signup_captcha_img" id="signup_captcha_img" src="user_code.action" />
+                    <a tabindex="-1" class="captcha_refresh J_captcha_refresh" href="javascript:void(0)" onclick="changeyanzheng(this)">看不清楚？换一张</a>
                 </div>
                 <div class="form_field">
                     <input type="hidden" name="csrf" value="" />

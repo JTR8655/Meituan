@@ -6,4 +6,8 @@
 		select * from MEITUAN_SELLER_INFO where saccounts = #{saccounts} and spwd = #{spwd}
 	</select>
 	
+	<select id="selectSBackShowGoods" parameterType="GoodsInfo" resultType="GoodsInfo">
+		select gid,gtitle1,gdate,gprice1,gprice2,privilege,gsoldcount,temp1 from meituan_goods_info where sid=#{sid}
+	</select>
+	
 </mapper>

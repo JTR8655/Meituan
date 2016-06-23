@@ -65,6 +65,9 @@
 		<action name="goods_showEvaluatePoint" class="com.yc.meituan.web.action.EvaluateAction" method="showEvaluatePoint" ></action>
 		<action name="goods_showGoodsDetails" class="com.yc.meituan.web.action.EvaluateAction" method="showGoodsDetails" ></action>
 		<action name="trolley_showTrolley" class="com.yc.meituan.web.action.TrolleyAction" method="showTrolley"></action>
+		<action name="user_checkFogetEmail" class="com.yc.meituan.web.action.UserAction" method="checkFogetEmail"></action>
+		<action name="user_modifyPwd" class="com.yc.meituan.web.action.UserAction" method="modifyPwd"></action>
+		<action name="user_fogetUemail" class="com.yc.meituan.web.action.UserAction" method="fogetUemail"></action>
 
 		<action name="seller_login" class="com.yc.meituan.web.action.SellerAction" method="login"></action>
 	</package>

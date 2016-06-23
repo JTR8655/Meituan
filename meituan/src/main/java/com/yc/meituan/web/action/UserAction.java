@@ -46,6 +46,16 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware, RequestA
 	private String province;
 	private String city;
 	private String uemail;
+	private String captcha;
+	private String repwd;
+
+	public void setRepwd(String repwd) {
+		this.repwd = repwd;
+	}
+
+	public void setCaptcha(String captcha) {
+		this.captcha = captcha;
+	}
 
 	public void setUemail(String uemail) {
 		this.uemail = uemail;
@@ -234,6 +244,88 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware, RequestA
 		return font[random.nextInt(5)];
 	}
 
+	//第一步：检查邮箱是否存在
+	public String checkFogetEmail(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String recode=(String) request.getSession().getAttribute("code");
+		LogManager.getLogger().debug(captcha+"------"+recode);
+		if(captcha.equals(recode)){
+			LogManager.getLogger().debug("sssss===="+userInfo.getUemail());
+			//UserInfo userInfos=userService.findEmail(userInfo.getUemail());
+			UserInfo uemail = userService.findEmail(userInfo.getUemail());
+			LogManager.getLogger().debug(uemail);
+			int status = 0;
+			if (uemail != null) {
+				if (uemail.getUemail() != null && "".equals(uemail.getUemail())) {
+					status = 0;//存在
+				}
+			}else {
+				status = 1;//不存在
+			}
+			request.getSession().setAttribute("uemail", uemail);//存到session中
+			AjaxUtil.stringAjaxResponse(status+"");
+		}
+		return "none";
+	}
+	
+	public String fogetUemail(){
+		
+		if(fogetEmail(userInfo.getUemail())){
+			AjaxUtil.stringAjaxResponse(1+"");
+		}else{
+			AjaxUtil.stringAjaxResponse(0+"");
+		}
+		return "none";
+	}
+
+	
+	//忘记密码 发送邮件内容
+	/**
+	 * 找回密码，发邮件到邮箱
+	 * @param request
+	 * @param response
+	 */
+	public boolean fogetEmail(String toEmail) {
+		MimeMessage mm = javaMailSender.createMimeMessage();
+		try {
+			MimeMessageHelper smm=new MimeMessageHelper(mm,true);
+			smm.setFrom("13298581430@163.com");//邮件发送者
+			smm.setTo(toEmail);//接收者
+			smm.setSubject("美团用户忘记密码"); //邮件主题	
+			smm.setText("<p>Hi~"+toEmail+"</p><p><a href='http://localhost:8080/meituan/page/updatepwd.jsp?uemail="+toEmail+"'>您在美.团网申请了【找回登录密码】的邮箱验证，请点击本链接，然后根据页面提示完成验证</a></p>", true); //内容
+			javaMailSender.send(mm);//发送邮件
+			return true;
+		} catch (MessagingException e) {
+		}
+		return false;
+	}
+
+	
+	public String modifyPwd(){
+		LogManager.getLogger().debug("===="+userInfo.getUemail());
+		userInfo.setUemail(userInfo.getUemail());
+		LogManager.getLogger().debug("===="+userInfo.getUemail());
+		LogManager.getLogger().debug(repwd+"------"+userInfo.getUpwd());
+		try {
+			if(repwd.equals(userInfo.getUpwd())){
+				int status=0;
+				if(userService.changePwd(userInfo)){
+					status=1;
+				}else{
+					status=1;
+				}
+				AjaxUtil.stringAjaxResponse(1+"");
+			}else{
+				AjaxUtil.stringAjaxResponse(0+"");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "none";
+	}
+
+	
 	@Override
 	public void setRequest(Map<String, Object> request) {
 		this.request = request;

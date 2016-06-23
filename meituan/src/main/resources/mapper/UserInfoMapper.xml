@@ -17,4 +17,10 @@
 	<update id="changeStatus" parameterType="String">
 		update meituan_user_info set USTATUS=1 where UEMAIL=#{uemail}
 	</update>
+	
+	<update id="changePwd" parameterType="UserInfo">
+		update meituan_user_info set upwd=#{upwd} where uemail=#{uemail}
+	</update>
+	
+	
 </mapper>

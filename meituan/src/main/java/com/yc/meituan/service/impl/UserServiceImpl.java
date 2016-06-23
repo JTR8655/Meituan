@@ -49,5 +49,15 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
-	
+	@Override
+	public boolean changePwd(UserInfo userInfo) {
+		try {
+			userInfoMapper.changePwd(userInfo);
+			return true;
+		} catch (Exception e) {
+			throw new RuntimeException("修改失败",e);
+		}
+		
+	}
+
 }

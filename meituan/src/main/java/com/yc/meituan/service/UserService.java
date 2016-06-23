@@ -12,5 +12,7 @@ public interface UserService {
 
 	void activeUser(String uemail);
 
+	boolean changePwd(UserInfo userInfo);
+
 
 }
