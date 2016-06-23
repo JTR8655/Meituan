@@ -1,0 +1,68 @@
+
+.navbar .collapse {
+	margin-left: 306px; 
+}
+.content .container-fluid .row .col-xs-2 {
+	background-color: #FFC;
+	border-right: 1px #ccc solid;
+	margin-top: -20px;
+}
+.content .container-fluid .row .col-xs-2 ul li {
+	margin: 20px 0;
+}
+.col-xs-10 h2{
+	margin-top: 7px;
+}
+table {
+	border: 1px solid #EEE;
+}
+#add-goods-info, #update-goods-info {
+	display: none;
+}
+form {
+	position: relative;
+	border: 1px solid #EEE;
+	border-radius: 5px;
+	padding: 10px 0;
+	margin: 10px auto;
+}
+.form-margins {
+	margin-bottom: 10px;
+}
+form label {
+	margin-left: 30px;
+}
+#update-img, #add-img {
+	width: 179px;
+	height: auto;
+}
+#select-list {
+	width: 120px;
+	margin: 10px 0;
+}
+footer {
+	width: 100%;
+	position: absolute;
+	border-top: 1px solid #CCC;
+	background-color: #FFF;
+}
+#goods-page, #order-page, #infom-page, #install-page {
+	display: none;
+}
+.order-status, .order-pwd {
+	width: 120px;
+	text-align: center;
+}
+.fonts-in-page {
+	font-size: 40px;
+}
+.btn-in-index {
+	margin:0 30px 0 30px;
+	width: 200px;
+	height: 150px;
+}
+.sale-chart {
+	background: #FF9;
+	height: 300px;
+	width: 100%;
+}
