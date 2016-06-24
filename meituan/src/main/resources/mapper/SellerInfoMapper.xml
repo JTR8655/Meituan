@@ -1,13 +1,121 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yc.meituan.mapper.SellerInfoMapper" >
+<mapper namespace="com.yc.meituan.mapper.SellerInfoMapper">
 
-	<select id="login" parameterType="SellerInfo" resultType="SellerInfo">
-		select * from MEITUAN_SELLER_INFO where saccounts = #{saccounts} and spwd = #{spwd}
+	<select id="login" parameterType="com.yc.meituan.web.bean.SellerGoodsBean" resultType="SellerInfo">
+		select
+		* from MEITUAN_SELLER_INFO where saccounts = #{saccounts} and spwd =
+		#{spwd}
+	</select>
+
+	<select id="selectSBackShowGoods" parameterType="int"
+		resultType="GoodsInfo">
+		select
+		gid,gtitle1,gdate,gprice1,gprice2,privilege,gsoldcount,temp1 from
+		meituan_goods_info where sid=#{sid}
+	</select>
+
+	<select id="sListOrder" parameterType="map" resultType="UorderBean">
+		select o.*,g.gtitle1,u.uaccounts from meituan_uorder o inner join meituan_user_info u on o.muid = u.muid inner join meituan_goods_info g on
+		o.gid = g.gid inner join meituan_seller_info s on g.sid = s.sid and o.ostatus like
+		#{status} and s.sid = #{sid}
+	</select>
+
+	<update id="updateGoodsType" parameterType="int">
+		update
+		meituan_goods_info set temp1='已下架' where gid=#{gid}
+	</update>
+
+	<select id="getSGoodsInfosById" parameterType="int"
+		resultType="com.yc.meituan.web.bean.SellerGoodsBean">
+		select
+		gi.gid,gi.sid,gi.gtitle1,gi.gtitle2,gi.gprice1,gi.privilege,gi.gprice2,gi.img,gi.text,gin.b_retime,gin.b_usetime,
+		gin.b_ordertip,gin.b_parlor,gin.b_pack,gin.b_serve,gin.b_limittip,gin.b_prompt
+		from meituan_goods_info gi inner join meituan_goods_intro gin
+		on gi.gid=gin.gid
+		where gi.gid=#{gid}
+	</select>
+
+	<update id="modyfySGoodsinfos" parameterType="com.yc.meituan.web.bean.SellerGoodsBean">
+		update meituan_goods_info
+		<set>
+			<if test="gtitle1!=null ">
+				gtitle1=#{gtitle1},
+			</if>
+			<if test="gtitle2!=null ">
+				gtitle2=#{gtitle2},
+			</if>
+			<if test="gprice1!=null ">
+				gprice1=#{gprice1},
+			</if>
+			<if test="privilege!=null ">
+				privilege=#{privilege},
+			</if>
+			<if test="img !=null">
+				img=#{img},
+			</if>
+			<if test="text !=null ">
+				text=#{text}
+			</if>
+		</set>
+		where gid=#{gid}
+	</update>
+
+	<update id="modyfySGoodsintros" parameterType="com.yc.meituan.web.bean.SellerGoodsBean">
+		update meituan_goods_intro
+		<set>
+			<if test=" b_retime!=null  ">
+				b_retime=#{b_retime},
+			</if>
+			<if test="b_usetime !=null ">
+				b_usetime=#{b_usetime},
+			</if>
+			<if test="b_ordertip !=null ">
+				b_ordertip=#{b_ordertip},
+			</if>
+			<if test="b_parlor !=null ">
+				b_parlor=#{b_parlor},
+			</if>
+			<if test="b_pack !=null">
+				b_pack=#{b_pack},
+			</if>
+			<if test="b_serve !=null ">
+				b_serve=#{b_serve},
+			</if>
+			<if test="b_limittip !=null ">
+				b_limittip=#{b_limittip}
+			</if>
+		</set>
+		where gid=#{gid}
+	</update>
+	
+	<select id="showOrderInfo" parameterType="string" resultType="com.yc.meituan.web.bean.SellerGoodsBean">
+		select o.oid, o.oidentifier, o.otime, o.opaytime, o.opwd, o.ocount, u.uaccounts, g.gtitle1, o.oprice
+		from meituan_uorder o inner join meituan_user_info u on u.muid = o.muid inner join meituan_goods_info g
+		on o.gid = g.gid where opwd = #{opwd} and o.ostatus = '未使用'
 	</select>
 	
-	<select id="selectSBackShowGoods" parameterType="GoodsInfo" resultType="GoodsInfo">
-		select gid,gtitle1,gdate,gprice1,gprice2,privilege,gsoldcount,temp1 from meituan_goods_info where sid=#{sid}
+	<update id="useOrder" parameterType="String">
+		update meituan_uorder set ostatus = '已使用', usetime = sysdate where opwd = #{opwd} 
+	</update>
+	
+	<select id="selectSumgsoldcount" parameterType="int" resultType="GoodsInfo">
+		select gtitle1,gsoldcount from meituan_goods_info where sid=#{sid}
+		
+	</select>
+	<select id="selectEvaluates" parameterType="EvaluateBean" resultType="EvaluateBean">
+		select e.muid,e.gid,u.uaccounts, u.uheadimg,e.hidename, e.egrade_4, e.econtent, e.temp1 from meituan_user_info u
+ 		inner join meituan_evaluate e on u.muid = e.muid
+ 		inner join meituan_goods_info g on g.gid=e.gid and g.sid=#{sid}
+	</select>
+	
+	<select id="getTotalSoldBySid" parameterType="int" resultType="com.yc.meituan.web.bean.SellerGoodsBean">
+		select gi.gid,gi.gtitle1,sum(o.ocount) totalTodaySold from meituan_goods_info gi 
+		left join  meituan_uorder o on gi.gid=o.gid   
+		left join meituan_seller_info ms on ms.sid=gi.sid  
+		where ms.sid=#{sid} and
+		trunc(o.otime)=trunc(sysdate)
+		group by gi.gid,gi.gtitle1
 	</select>
 	
 </mapper>

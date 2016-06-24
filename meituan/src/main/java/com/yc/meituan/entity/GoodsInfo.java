@@ -137,5 +137,6 @@ public class GoodsInfo {
 				+ gtitle1 + ", gtitle2=" + gtitle2 + ", gprice1=" + gprice1 + ", gprice2=" + gprice2 + ", gsoldcount="
 				+ gsoldcount + ", img=" + img + ", text=" + text + ", temp1=" + temp1 + ", temp2=" + temp2 + "]";
 	}
+
     
 }

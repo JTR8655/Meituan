@@ -1,120 +1,131 @@
 package com.yc.meituan.entity;
 
 public class Uorder {
-    private Integer oid;
+	private Integer oid;
 
-    private String oidentifier;
+	private String oidentifier;
 
-    private Integer muid;
+	private Integer muid;
 
-    private Integer gid;
+	private Integer gid;
 
-    private String otime;
+	private String otime;
 
-    private String ostatus;
+	private String ostatus;
 
-    private String opwd;
+	private String opwd;
 
-    private String opaytime;
+	private String opaytime;
 
-    private Integer ocount;
+	private Integer ocount;
 
-    private Integer pjstatus;
+	private Integer pjstatus;
 
-    private String temp2;
+	private String temp2;
 
-    public Integer getOid() {
-        return oid;
-    }
+	private String usetime;//消费时间
 
-    public void setOid(Integer oid) {
-        this.oid = oid;
-    }
+	public String getUsetime() {
+		return usetime;
+	}
 
-    public String getOidentifier() {
-        return oidentifier;
-    }
+	public void setUsetime(String usetime) {
+		this.usetime = usetime;
+	}
 
-    public void setOidentifier(String oidentifier) {
-        this.oidentifier = oidentifier;
-    }
+	public Integer getOid() {
+		return oid;
+	}
 
-    public Integer getMuid() {
-        return muid;
-    }
+	public void setOid(Integer oid) {
+		this.oid = oid;
+	}
 
-    public void setMuid(Integer muid) {
-        this.muid = muid;
-    }
+	public String getOidentifier() {
+		return oidentifier;
+	}
 
-    public Integer getGid() {
-        return gid;
-    }
+	public void setOidentifier(String oidentifier) {
+		this.oidentifier = oidentifier;
+	}
 
-    public void setGid(Integer gid) {
-        this.gid = gid;
-    }
+	public Integer getMuid() {
+		return muid;
+	}
 
-    public String getOtime() {
-        return otime;
-    }
+	public void setMuid(Integer muid) {
+		this.muid = muid;
+	}
 
-    public void setOtime(String otime) {
-        this.otime = otime;
-    }
+	public Integer getGid() {
+		return gid;
+	}
 
-    public String getOstatus() {
-        return ostatus;
-    }
+	public void setGid(Integer gid) {
+		this.gid = gid;
+	}
 
-    public void setOstatus(String ostatus) {
-        this.ostatus = ostatus == null ? null : ostatus.trim();
-    }
+	public String getOtime() {
+		return otime;
+	}
 
-    public String getOpwd() {
-        return opwd;
-    }
+	public void setOtime(String otime) {
+		this.otime = otime;
+	}
 
-    public void setOpwd(String opwd) {
-        this.opwd = opwd == null ? null : opwd.trim();
-    }
+	public String getOstatus() {
+		return ostatus;
+	}
 
-    public String getOpaytime() {
-        return opaytime;
-    }
+	public void setOstatus(String ostatus) {
+		this.ostatus = ostatus == null ? null : ostatus.trim();
+	}
 
-    public void setOpaytime(String opaytime) {
-        this.opaytime = opaytime;
-    }
+	public String getOpwd() {
+		return opwd;
+	}
 
-    public Integer getOcount() {
-        return ocount;
-    }
+	public void setOpwd(String opwd) {
+		this.opwd = opwd == null ? null : opwd.trim();
+	}
 
-    public void setOcount(Integer ocount) {
-        this.ocount = ocount;
-    }
+	public String getOpaytime() {
+		return opaytime;
+	}
 
-    public Integer getPjstatus() {
-        return pjstatus;
-    }
+	public void setOpaytime(String opaytime) {
+		this.opaytime = opaytime;
+	}
 
-    public void setPjstatus(Integer pjstatus) {
-        this.pjstatus = pjstatus;
-    }
+	public Integer getOcount() {
+		return ocount;
+	}
 
-    public String getTemp2() {
-        return temp2;
-    }
+	public void setOcount(Integer ocount) {
+		this.ocount = ocount;
+	}
 
-    public void setTemp2(String temp2) {
-        this.temp2 = temp2 == null ? null : temp2.trim();
-    }
+	public Integer getPjstatus() {
+		return pjstatus;
+	}
+
+	public void setPjstatus(Integer pjstatus) {
+		this.pjstatus = pjstatus;
+	}
+
+	public String getTemp2() {
+		return temp2;
+	}
+
+	public void setTemp2(String temp2) {
+		this.temp2 = temp2 == null ? null : temp2.trim();
+	}
 
 	@Override
 	public String toString() {
 		return "Uorder [oid=" + oid + ", oidentifier=" + oidentifier + ", muid=" + muid + ", gid=" + gid + ", otime="
 				+ otime + ", ostatus=" + ostatus + ", opwd=" + opwd + ", opaytime=" + opaytime + ", ocount=" + ocount
-				+ ", pjstatus=" + pjstatus + ", temp2=" + temp2 + "]";
+				+ ", pjstatus=" + pjstatus + ", temp2=" + temp2 + ", usetime=" + usetime + "]";
 	}
+
 }

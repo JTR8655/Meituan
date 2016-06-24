@@ -9,4 +9,6 @@ public interface GoodsIntroMapper {
 	GoodsBean listShowGoodsIntro();
 
 	List<GoodsBean> selectGoodsIntro(int gid);
+
+	int sAddgoodsIntro(GoodsBean goodsBean);
 }

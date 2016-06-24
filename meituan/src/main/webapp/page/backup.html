@@ -1,12 +1,14 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="author" content="Mirror">
-    <title>美团商家</title>
-    <link type="text/css" href="../css/bootstrap.min.css" rel="stylesheet">
-    <link type="text/css" href="../css/backup.css" rel="stylesheet">
-	<script type="text/javascript" src="../js/backup.js"></script> 
+<meta charset="utf-8">
+<meta name="author" content="Mirror">
+<title>美团商家</title>
+<base href="/meituan/">
+<link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="css/backup.css" rel="stylesheet">
+<script src="js/Chart-1.0.1-beta.4.js"></script>
+<script type="text/javascript" src="js/backup.js"></script> 
 </head>
 <body>
 	<header>
@@ -18,27 +20,15 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="#" class="h2">美团网</a>
+		      <a class="navbar-brand" href="" class="h2">美团网</a>
 		    </div>
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
 		      <ul class="nav navbar-nav">
-		        <li class="active"><a href="#">美团网 </a></li>		        
-		        <li class="dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">操作 <span class="caret"></span></a>
-		          <ul class="dropdown-menu">
-		            <li><a href="#">Action</a></li>
-		            <li><a href="#">Another action</a></li>
-		            <li><a href="#">Something else here</a></li>
-		            <li role="separator" class="divider"></li>
-		            <li><a href="#">Separated link</a></li>
-		            <li role="separator" class="divider"></li>
-		            <li><a href="#">One more separated link</a></li>
-		          </ul>
-		        </li>
+		        <li class="active"><a href="">美团网 </a></li>		        
 		        <li><a href="#">帮助</a></li>
 		      </ul>   
 		      <ul class="nav navbar-nav navbar-right">
-		        <li><a href="#">退出登录 </a></li>
+		        <li><a href="javascript:void(0)" onclick="sLogOut()">退出登录 </a></li>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
@@ -53,12 +43,12 @@
 					<ul class="nav nav-pills nav-stacked">
 					    <li class="active nav-btns"><a href="javascript:void(0)" id="welcome-page">首页</a></li>
 					    <li class="nav-divider"></li>
-					 	<li class="nav-btns"><a href="javascript:void(0)" id="goods-charge">商品管理</a></li>
-					 	<li class="nav-btns"><a href="javascript:void(0)" id="order-charge">订单管理</a></li>
-					 	<li class="nav-btns"><a href="javascript:void(0)" id="infom-inquire">信息查询</a></li>
+					 	<li class="nav-btns"><a href="javascript:void(0)" id="goods-charge" onclick="listGoods()">商品管理</a></li>
+					 	<li class="nav-btns"><a href="javascript:void(0)" onclick="sListOrder('全部订单')" id="order-charge">订单管理</a></li>
+					 	<li class="nav-btns"><a href="javascript:void(0)" onclick="listInfos()" id="infom-inquire">信息查询</a></li>
 					    <li class="nav-divider"></li>
-					 	<li class="nav-btns"><a href="javascript:void(0)" id="install">设置</a></li>
-					 	<li class="nav-btns"><a href="javascript:void(0)" id="about-us">关于</a></li>
+					 	<!-- <li class="nav-btns"><a href="javascript:void(0)" id="install">设置</a></li> -->
+					 	<li class="nav-btns"><a href="javascript:void(0)" id="about-us" data-toggle="modal" data-target="#about-Modal">关于</a></li>
 					 	<li class="nav-divider"></li>
 					</ul>				
 				</div>
@@ -70,17 +60,53 @@
 						<!-- 常用功能 -->						
 						<div class="col-xs-6">
 							<div class="func-btns">
-								<button class="btn btn-lg btn-success btn-in-index">
-									<span class="glyphicon glyphicon-plus fonts-in-page"></span>用户消费
-									</button>
+								<button class="btn btn-lg btn-success btn-in-index" 
+									data-toggle="modal" data-target="#exampleModal">
+									<span class="glyphicon glyphicon-usd fonts-in-page"></span><br /><br />
+									<p>消费美团券</p>	
+								</button>
+								
+								<!-- 模态框 用于检查美团券密码 -->
+								<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+								  <div class="modal-dialog modal-lg" role="document">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+								        <h2>验证美团券密码</h2>
+								      </div>
+								      <div class="modal-body">
+								        <form>
+								          <div class="form-group form-inline">
+								            <label for="message-text" class="control-label">美团券密码：</label>
+								            <input class="form-control" id="message-text" size="100" placeholder="请输入美团券密码" onChange="showOrderInfo()"/>
+								          </div>
+								        </form>
+								        <div id="show-order-info"></div>							        
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+								        <button type="button" class="btn btn-success" id="checkOPwd">确定</button>
+								      </div>
+								    </div>
+								  </div>
+								</div>
 									
-								<button class="btn btn-lg btn-info btn-in-index">
-									<span class="glyphicon glyphicon-search fonts-in-page"></span>查看订单
-									</button>
+								<button class="btn btn-lg btn-info btn-in-index" onClick="showOrderPage()">
+									<span class="glyphicon glyphicon-search fonts-in-page"></span><br /><br />
+									<p>查看订单</p>	
+								</button>
 							</div>
 							
 							<div class="sale-chart">
-								<h1>假装有图表。</h1>
+								<h3>今日销量</h3>
+								<div style="float: left;"><canvas id="mychart" width="260" height="200"></canvas></div>
+								<div id="chart-annotation">
+									<span class="chart-color"></span>：<span class="chart-content"></span><br />
+									<span class="chart-color"></span>：<span class="chart-content"></span><br />
+									<span class="chart-color"></span>：<span class="chart-content"></span><br />
+									<span class="chart-color"></span>：<span class="chart-content"></span><br />
+									<span class="chart-color"></span>：<span class="chart-content"></span><br />
+								</div>
 							</div>
 						</div>
 					
@@ -88,10 +114,7 @@
 						<div class="col-xs-6">
 							<div class="panel panel-primary"> 
 					            <div class="panel-heading">
-					              	<h3 class="panel-title">
-					              		最新提醒
-					              		<span class="close glyphicon glyphicon-remove-sign"></span>
-					              	</h3>
+					              	<h3 class="panel-title">最新提醒</h3>
 					            </div>
 					            <div class="panel-body">
 									<div class="alert alert-success" role="alert"> 
@@ -129,69 +152,70 @@
 					<br />
 					
 					<div id="add-goods-info">
-						<form class="form">
+						<form class="form" id="addGoodsForm">
 							<div class="form-inline form-margins">
 								<label for="add-gtitle1">商品名：　　</label>
-								<input class="form-control" type="text" id="add-gtitle1" placeholder=" 请输入商品名" />
+								<input class="form-control" type="text" id="add-gtitle1" name="gtitle1" placeholder=" 请输入商品名" />
 								
 								<label for="add-gtitle2">　&nbsp;商品副标题：</label>
-								<input class="form-control" type="text" id="add-gtitle2" placeholder=" 请输入商品副标题" />
+								<input class="form-control" type="text" id="add-gtitle2" name="gtitle2" placeholder=" 请输入商品副标题" />
 							</div>
 								
 							<div class="form-inline form-margins">
 								<label for="add-gprice1">原　价：　　</label>
-								<input class="form-control" type="text" id="add-gprice1" placeholder=" 请输入商品原价" />
+								<input class="form-control" type="text" id="add-gprice1" name="gprice1" placeholder=" 请输入商品原价" />
 								
 								<label for="add-privilege">　&nbsp;优惠：　　　</label>
-								<input class="form-control" type="text" id="add-privilege" placeholder=" 请输入商品折扣" />
+								<input class="form-control" type="text" id="add-privilege" name="privilege" placeholder=" 请输入商品折扣" />
 								
 								<label for="add-gprice2">　&nbsp;折后价：　　　</label>
-								<input class="form-control" disabled type="text" id="add-gprice2"/>
+								<input class="form-control" disabled type="text" name="gprice2" id="add-gprice2"/>
 							</div>
 							
 							<div class="form-inline form-margins">
 								<label for="add-img">上传商品图：</label>
-								<input class="form-control" type="file" id="add-img"/>
+								<input class="form-control" type="file" name="image" id="add-img" />
 								
 								<label for="add-text">　&nbsp;商品描述：　</label>
-								<textarea class="form-control" id="add-text"></textarea>
+								<textarea class="form-control" name="text" id="add-text"></textarea>
 							</div>
 							
 							<div class="form-inline form-margins">
 								<label for="add-retime">有效期至：　</label>
-								<input type="date" class="form-control" id="add-retime" placeholder="年-月-日">
+								<input type="date" class="form-control" name="b_retime" id="add-retime" placeholder="年-月-日">
 								
 								<label for="add-usetime">　&nbsp;使用时间：　</label>
-								<input type="date" class="form-control" id="add-usetime" value="8:00 - 18:00">
+								<input type="date" class="form-control" name="b_usetime" id="add-usetime" value="8:00 - 18:00">
 							</div>
 							
 							<div class="form-inline form-margins">
 								<label for="add-parlor">包间：　　　</label>
-								<textarea class="form-control" id="add-parlor"></textarea>
+								<textarea class="form-control" name="b_parlor" id="add-parlor"></textarea>
 							
 								<label for="add-pack">食堂外带：　</label>
-								<textarea class="form-control" id="add-pack"></textarea>
+								<textarea class="form-control" name="b_pack" id="add-pack"></textarea>
 							</div>
 							
 							<div class="form-inline form-margins">
 								<label for="add-ordertip">预约提示：　</label>
-								<textarea class="form-control" id="add-ordertip"></textarea>
+								<textarea class="form-control" name="b_ordertip" id="add-ordertip"></textarea>
 							
 								<label for="add-serve">商家服务：　</label>
-								<textarea class="form-control" id="add-serve"></textarea>
+								<textarea class="form-control" name="b_serve" id="add-serve"></textarea>
 								
 								<label for="add-limittip">限购限用题醒：</label>
-								<textarea class="form-control" id="add-limittip"></textarea>
+								<textarea class="form-control" name="b_limittip" id="add-limittip"></textarea>
 							</div>
 							<div class="text-center" style="margin: 10px;">
 								<input type="reset" class="btn btn-info" value="重置" />
-								<input type="button" class="btn btn-success" onClick="addInfo()" value="提 交" />
+								<input type="button" class="btn btn-success" onClick=" return addInfo()" value="提 交" />
+								<!-- <input type="submit" class="btn btn-success" value="提 交" /> -->
 							</div>			
 						</form>
 					</div>
 				
 					<div id="show-goods-info">
-						<table class="table table-striped text-center">
+						<table class="table table-striped text-center"  id="goodsTable">
 						<thead>
 							<tr><td>商品名</td><td>上架时间</td><td>原价</td><td>现价</td><td>折扣</td>
 								<td>销量</td><td>状态</td><td>操作</td></tr>
@@ -201,7 +225,7 @@
 								<td>privilege</td><td>gsoldcount</td><td>temp1</td>
 								<td>
 									<button type="button" class="btn btn-success btn-sm" onClick="updateInfo(1)">修改商品信息</button>
-									<button type="button" class="btn btn-danger btn-sm" onClick="deleteGoods(gid)">下架商品</button>
+									<button type="button" class="btn btn-danger btn-sm xiajia" onClick="deleteGoods(gid)">下架商品</button>
 								</td></tr>
 							<tr><td>我的天啊</td><td>2016-6-22</td><td>￥199.0</td><td>￥299.0</td>
 								<td>9.9</td><td>99999</td><td>热销中</td>
@@ -220,59 +244,72 @@
 					</div>
 					
 					<div id="update-goods-info">
-						<form class="form">
+						<form class="form" id="updateGoodsForm">
 							<div class="form-inline form-margins">
 								<label for="update-gtitle1">商品名：　　</label>
-								<input class="form-control" type="text" id="update-gtitle1" placeholder=" 请输入商品名" />
+								<input class="form-control" type="text" id="update-gtitle1" placeholder=" 请输入商品名" 
+								name="gtitle1" />
 								
 								<label for="update-gtitle2">　&nbsp;商品副标题：</label>
-								<input class="form-control" type="text" id="update-gtitle2" placeholder=" 请输入商品副标题" />
+								<input class="form-control" type="text" id="update-gtitle2" placeholder=" 请输入商品副标题" 
+								name="gtitle2" />
 							</div>
 								
 							<div class="form-inline form-margins">
 								<label for="update-gprice1">原　价：　　</label>
-								<input class="form-control" type="text" id="update-gprice1" placeholder=" 请输入商品原价" />
+								<input class="form-control" type="text" id="update-gprice1" placeholder=" 请输入商品原价" 
+								name="gprice1" />
 								
 								<label for="update-privilege">　&nbsp;优惠：　　　</label>
-								<input class="form-control" type="text" id="update-privilege" placeholder=" 请输入商品折扣" />
+								<input class="form-control" type="text" id="update-privilege" placeholder=" 请输入商品折扣" 
+								name="privilege" />
 								
 								<label for="update-gprice2">　&nbsp;折后价：　　　</label>
-								<input class="form-control" disabled type="text" id="update-gprice2"/>
+								<input class="form-control" disabled type="text" id="update-gprice2" name="gprice2"/>
 							</div>
 							
 							<div class="form-inline form-margins">
 								<label for="update-img">上传商品图：</label>
-								<input class="form-control" type="file" id="update-img"/>
+								<input class="form-control" type="file" id="update-img" 
+								name="img" />
 								
 								<label for="update-text">　&nbsp;商品描述：　</label>
-								<textarea class="form-control" id="update-text"></textarea>
+								<textarea class="form-control" id="update-text" 
+								name="text" ></textarea>
 							</div>
 							
 							<div class="form-inline form-margins">
 								<label for="update-retime">有效期至：　</label>
-								<input type="date" class="form-control" id="update-retime" placeholder="年-月-日">
+								<input type="date" class="form-control" id="update-retime" placeholder="年-月-日" 
+								name="b_retime" >
 								
 								<label for="update-usetime">　&nbsp;使用时间：　</label>
-								<input type="text" class="form-control" id="update-usetime" placeholder="年-月-日">
+								<input type="text" class="form-control" id="update-usetime" placeholder="年-月-日" 
+								name="b_usetime" />
 							</div>
 							
 							<div class="form-inline form-margins">
 								<label for="update-parlor">包间：　　　</label>
-								<textarea class="form-control" id="update-parlor"></textarea>
+								<textarea class="form-control" id="update-parlor" 
+								name="b_parlor" ></textarea>
 							
 								<label for="update-pack">食堂外带：　</label>
-								<textarea class="form-control" id="update-pack"></textarea>
+								<textarea class="form-control" id="update-pack" 
+								name="b_pack" ></textarea>
 							</div>
 							
 							<div class="form-inline form-margins">
 								<label for="update-ordertip">预约提示：　</label>
-								<textarea class="form-control" id="update-ordertip"></textarea>
+								<textarea class="form-control" id="update-ordertip" 
+								name="b_ordertip" ></textarea>
 							
 								<label for="update-serve">商家服务：　</label>
-								<textarea class="form-control" id="update-serve"></textarea>
+								<textarea class="form-control" id="update-serve" 
+								name="b_serve" ></textarea>
 								
 								<label for="update-limittip">限购限用题醒：</label>
-								<textarea class="form-control" id="update-limittip"></textarea>
+								<textarea class="form-control" id="update-limittip" 
+								name="b_limittip" ></textarea>
 							</div>
 							<div class="text-center" style="margin: 10px;">
 								<input id="closeForm" type="button" class="btn btn-danger" onClick="cancelUpdate()" value="取消修改" />
@@ -291,21 +328,17 @@
 							<option>未消费订单</option>
 							<option>已消费订单</option>
 						</select>
-						<table class="table table-striped text-center">
+						<table class="table table-striped text-center" id="orderTable">
 							<thead>
-								<tr><td>订单号</td><td>商品号</td><td>下单用户</td><td>下单时间</td><td>付款时间</td>
-									<td>美团券密码</td><td>购买数量</td><td>订单状态</td>
+								<tr><td>订单号</td><td>商品名</td>
+									<td>下单用户</td><td>下单时间</td><td>付款时间</td>
+									<td>购买数量</td><td>订单状态</td>
 								</tr>
 							</thead>
 							<tbody>
 								<tr><td>oidentifier</td><td>gid</td><td>muid</td><td>otime</td>
-									<td>opaytime</td><td><input type="text" class="order-pwd" onChange="checkPwd(oidentifier)"/>
-										<input type="hidden" class="hidden-pwd" value="opwd" /></td><td>ocount</td>
-									<td><input type="text" value="ostatus" class="order-status" onChange="updateStatus(oidentifier)"/></td></tr>
-								<tr><td>201606229238</td><td>1111</td><td>huang36594912</td><td>2016-6-20</td>
-									<td>2016-6-20</td><td><input type="text" class="order-pwd" onChange="checkPwd(201606229238)"/>
-										<input type="hidden" class="hidden-pwd" value="opwd" /></td><td>2</td>
-									<td><input type="text" value="未消费" class="order-status" onChange="updateStatus(201606229238)"/></td></tr>
+									<td>opaytime</td><td>ocount</td>
+									<td>未消费</td></tr>
 							</tbody>
 						</table>
 					</div>
@@ -313,15 +346,82 @@
 			
 				<!-- 信息查询 -->
 				<div class="col-xs-10" id="infom-page">
-				
+					<div class="row">
+						<!-- 统计图表 -->
+						<div class="col-xs-7">
+							<div class="row">
+							
+								<div class="col-xs-12">
+									<div>
+										<h3>消费高峰期</h3>
+										<canvas id="show-fastigium" height="200" width="600"></canvas>
+									</div>
+								</div>
+								
+								<div class="col-xs-12">
+									<div>
+										<h3>历史总销量</h3>
+										<canvas id="show-history" height="200" width="600"></canvas>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- 评论 -->
+						<div class="col-xs-5">
+							<div id="show-evaluate">
+								
+								<!-- 评论框 -->
+								<div class="evaluate-content">
+									<div class="contents">
+										<div class="head-portrait">
+											<a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Huang36594912" class="user-name">
+												<img src="images/kefu.png"/></a>
+											<div class="tooltip top" role="tooltip">
+												 <div class="tooltip-arrow"></div>
+												 <div class="tooltip-inner">
+													Huang36594912
+												 </div>
+											</div>
+										</div>
+										<p>好吃好吃真好吃</p>
+										<div class="evaluate-points">
+											<span class="evaluate-time">2016-6-25 7:45:20</span>
+											<span class="point-five">　<span class="point-zero">　</span></span>	
+										</div>
+									</div>
+								</div>	
+																	
+							</div>
+						</div>
+					</div>
 				</div>
 			
 				<!-- 设置 -->
 				<div class="col-xs-10" id="install-page">
-				
 				</div>
-			
-			
+				
+				<!-- 关于 -->
+				<div>
+					<div class="modal fade"  id="about-Modal" tabindex="-1">
+					  <div class="modal-dialog">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h3 class="modal-title">关于我们</h3>
+					      </div>
+					      <div class="modal-body">
+					        <h4>抱大家讨论小组</h4>
+					        <p>　　组长：龙振宇</p>
+					        <p>　　组员：黄勇、卓玲、黄善政</p>
+					        <p>　　其实并没有什么好关于的ಥ_ಥ</p>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -329,13 +429,12 @@
 	<footer>
 		<div class="text-center">
 			<p>抱大家讨论小组<sup>TM</sup> 版权所有 &copy; 翻版必究</p>
-			<p>Powered by <a href="http://www.getbootstrap.com">Bootstrap</a>.</p>
+			<p>Powered by <a href="http://www.getbootstrap.com">Bootstrap</a> & Fonts by <a href="http://glyphicons.com/">glyphicon</a>.</p>
 		</div>
 	</footer>
     
-    
-   
-<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
-<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="js/ajaxupload.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 </body>
 </html>

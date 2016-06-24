@@ -41,7 +41,7 @@
 						placeholder="密码" type="password">
 				</div>
 				<div id="tishi">
-					<a class="forget-password" href="findpwd.html">忘记密码？</a>
+					<a class="forget-password" href="page/findpwd.html">忘记密码？</a>
 				</div>
 				<p>
 					<a href="javascript:void(0)" onclick="login()"><img

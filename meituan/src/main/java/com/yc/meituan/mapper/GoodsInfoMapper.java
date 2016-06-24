@@ -14,4 +14,8 @@ public interface GoodsInfoMapper {
 	//List<GoodsBean> selectGoodsImg(int gid);
  
 	void updateSoldCount(Uorder uorder);
+
+	int sAddgoodsInfo(GoodsBean goodsBean);
+
+	int getNextGid();
 }

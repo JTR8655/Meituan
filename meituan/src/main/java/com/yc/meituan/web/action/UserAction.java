@@ -89,27 +89,11 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware, RequestA
 		}
 
 		AjaxUtil.stringAjaxResponse(code + "");
-		LogManager.getLogger().debug("注销成功");
-		HttpServletResponse response = ServletActionContext.getResponse();
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("charset=utf-8");
-		try {
-			PrintWriter out = response.getWriter();
-			out.println(code + "");// 写出响应数据
-			out.flush();
-			out.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
 		return "none";
 	}
 
 	public String findEmail(){
-		LogManager.getLogger().debug(""+userInfo.getUemail());
-		//UserInfo userInfos=userService.findEmail(userInfo.getUemail());
 		UserInfo uemail = userService.findEmail(userInfo.getUemail());
-		LogManager.getLogger().debug(uemail);
 		int status = 0;
 		if (uemail != null) {
 			if (uemail.getUemail() != null && "".equals(uemail.getUemail())) {
@@ -167,7 +151,6 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware, RequestA
 	}
 
 	public String actives(){//UserInfo userInfo
-		LogManager.getLogger().debug(userInfo.getUemail());
 		userInfo.setUemail(userInfo.getUemail());
 		try {
 			userService.activeUser(userInfo.getUemail());
@@ -248,12 +231,9 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware, RequestA
 	public String checkFogetEmail(){
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String recode=(String) request.getSession().getAttribute("code");
-		LogManager.getLogger().debug(captcha+"------"+recode);
 		if(captcha.equals(recode)){
-			LogManager.getLogger().debug("sssss===="+userInfo.getUemail());
 			//UserInfo userInfos=userService.findEmail(userInfo.getUemail());
 			UserInfo uemail = userService.findEmail(userInfo.getUemail());
-			LogManager.getLogger().debug(uemail);
 			int status = 0;
 			if (uemail != null) {
 				if (uemail.getUemail() != null && "".equals(uemail.getUemail())) {
@@ -292,7 +272,7 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware, RequestA
 			smm.setFrom("13298581430@163.com");//邮件发送者
 			smm.setTo(toEmail);//接收者
 			smm.setSubject("美团用户忘记密码"); //邮件主题	
-			smm.setText("<p>Hi~"+toEmail+"</p><p><a href='http://localhost:8080/meituan/page/updatepwd.jsp?uemail="+toEmail+"'>您在美.团网申请了【找回登录密码】的邮箱验证，请点击本链接，然后根据页面提示完成验证</a></p>", true); //内容
+			smm.setText("<p>Hi~"+toEmail+"</p><p><a href='http://localhost:8080/meituan/page/updatepwd.html?uemail="+toEmail+"'>您在美.团网申请了【找回登录密码】的邮箱验证，请点击本链接，然后根据页面提示完成验证</a></p>", true); //内容
 			javaMailSender.send(mm);//发送邮件
 			return true;
 		} catch (MessagingException e) {
@@ -302,10 +282,7 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware, RequestA
 
 	
 	public String modifyPwd(){
-		LogManager.getLogger().debug("===="+userInfo.getUemail());
 		userInfo.setUemail(userInfo.getUemail());
-		LogManager.getLogger().debug("===="+userInfo.getUemail());
-		LogManager.getLogger().debug(repwd+"------"+userInfo.getUpwd());
 		try {
 			if(repwd.equals(userInfo.getUpwd())){
 				int status=0;

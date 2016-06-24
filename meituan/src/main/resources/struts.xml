@@ -12,21 +12,43 @@
 	<constant name="struts.objectFactory " value="spring" />
 
 	<package name="default" namespace="/" extends="struts-default">
-		<interceptors>
-			<interceptor name="LoginInterceptor" class="com.yc.meituan.web.interceptor.LoginInterceptor"/>
+		
+    	<interceptors>
+    		<!-- 声明 -->
+	   		<interceptor-stack name="myPicUploadStack">
+	   			<interceptor-ref name="fileUpload">
+	   			 	<param name="maximumSize">100000000</param><!--  设置上传文件大小，最大只能是2M，超过2M文件被限制 -->
+	    			<param name="allowedExtensions">jpg,png</param> <!-- 允许上传的文件扩展名 -->
+	    			<param name="allowedTypes">image/jpeg,image/png</param> <!-- 允许上传的文件类型 -->
+	   			</interceptor-ref>
+	   			<interceptor-ref name="basicStack"/>
+	   		</interceptor-stack>
+	   		
+	   		<interceptor name="LoginInterceptor" class="com.yc.meituan.web.interceptor.LoginInterceptor"/>
 			<interceptor-stack name="myStack">
 				<interceptor-ref name="defaultStack" />
 				<interceptor-ref name="LoginInterceptor" >
 					<param name="includeMethods">listNoPj,addUorder,addEvaluate,listPj,addToGoodsCar,uorder_showAllUorder</param><!-- 要过滤的请求方法 -->
 				</interceptor-ref>
-			</interceptor-stack>		
-		</interceptors>
+			</interceptor-stack>
+    	</interceptors>
 		
 		<!-- 全局result : 表示在对应action中没有找对应result后，就到全局result中找 --> 
 		<global-results>
 			<result name="login" type="redirect">page/login.jsp</result>
 		</global-results>
 		<global-allowed-methods>login,register,actives</global-allowed-methods>
+		
+		<!-- 图片上传action -->
+		<action name="image_upload" class="com.yc.meituan.web.action.ImageAction" method="upload">
+			<result name="success">
+				<param name="contentType">text/html</param>
+			</result>
+			<result name="error">
+				<param name="contentType">text/html</param>
+			</result>
+		</action>
+		
 		<action name="*_*" class="{1}Action" method="{2}">
 			<!-- <interceptor-ref name="myStack" /> -->
 			<interceptor-ref name="myStack" />
@@ -70,5 +92,18 @@
 		<action name="user_fogetUemail" class="com.yc.meituan.web.action.UserAction" method="fogetUemail"></action>
 
 		<action name="seller_login" class="com.yc.meituan.web.action.SellerAction" method="login"></action>
+		<action name="seller_sBackShowGoods" class="com.yc.meituan.web.action.SellerAction" method="sBackShowGoods"></action>
+		<action name="seller_checkLogin" class="com.yc.meituan.web.action.SellerAction" method="checkLogin"></action>
+		<action name="seller_sLogOut" class="com.yc.meituan.web.action.SellerAction" method="sLogOut"></action>
+		<action name="seller_sListOrder" class="com.yc.meituan.web.action.SellerAction" method="sListOrder"></action>
+		<action name="goods_updateGoodsType" class="com.yc.meituan.web.action.SellerAction" method="updateGoodsType"></action>
+		<action name="seller_updateSGoodsInfos" class="com.yc.meituan.web.action.SellerAction" method="updateSGoodsInfos"></action>
+		<action name="seller_doUpdateSGoodsInfos" class="com.yc.meituan.web.action.SellerAction" method="doUpdateSGoodsInfos"></action>
+		<action name="seller_showOrder" class="com.yc.meituan.web.action.SellerAction" method="showOrderInfo"></action>
+		<action name="seller_useOrder" class="com.yc.meituan.web.action.SellerAction" method="useOrder"></action>
+		<action name="seller_goodsSoldCounts" class="com.yc.meituan.web.action.SellerAction" method="goodsSoldCounts"></action>
+		<action name="goods_goodsEvaluates" class="com.yc.meituan.web.action.SellerAction" method="goodsEvaluates"></action>
+		<action name="seller_todaySoldCount" class="com.yc.meituan.web.action.SellerAction" method="getTadaySoldBySid"></action>
+		
 	</package>
 </struts>

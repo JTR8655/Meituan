@@ -13,4 +13,12 @@
 	<update id="updateSoldCount" parameterType="Uorder">
 		update meituan_goods_info set gsoldcount = gsoldcount + #{ocount} where gid = #{gid}
 	</update>
+	
+	<insert id="sAddgoodsInfo" parameterType="GoodsBean">
+		insert into meituan_goods_info values(#{gid},sysdate,#{privilege},#{sid},#{gtitle1},#{gtitle2},#{gprice1},#{gprice2},0,#{img},#{text},'热销中','')
+	</insert>
+	
+	<select id="getNextGid" resultType="int">
+		select seq_meituan_goods_gid.nextval from dual
+	</select>
 </mapper>

@@ -1,6 +1,5 @@
 package com.yc.meituan.entity.bean;
 
-
 public class UorderBean {
 	private Integer oid; // 订单id
 	private String opwd;
@@ -17,6 +16,24 @@ public class UorderBean {
 	private Double oprice;
 	private String otime;
 	private String opaytime;
+	private String usetime;
+	private String uaccounts;
+
+	public String getUaccounts() {
+		return uaccounts;
+	}
+
+	public void setUaccounts(String uaccounts) {
+		this.uaccounts = uaccounts;
+	}
+
+	public String getUsetime() {
+		return usetime;
+	}
+
+	public void setUsetime(String usetime) {
+		this.usetime = usetime;
+	}
 
 	public Integer getOid() {
 		return oid;
@@ -143,7 +160,8 @@ public class UorderBean {
 		return "UorderBean [oid=" + oid + ", opwd=" + opwd + ", oidentifier=" + oidentifier + ", muid=" + muid
 				+ ", gid=" + gid + ", ostatus=" + ostatus + ", ocount=" + ocount + ", gtitle1=" + gtitle1 + ", gprice2="
 				+ gprice2 + ", img=" + img + ", sid=" + sid + ", b_retime=" + b_retime + ", oprice=" + oprice
-				+ ", otime=" + otime + ", opaytime=" + opaytime + "]";
+				+ ", otime=" + otime + ", opaytime=" + opaytime + ", usetime=" + usetime + ", uaccounts=" + uaccounts
+				+ "]";
 	}
 
 }
