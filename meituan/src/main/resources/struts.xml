@@ -104,6 +104,7 @@
 		<action name="seller_goodsSoldCounts" class="com.yc.meituan.web.action.SellerAction" method="goodsSoldCounts"></action>
 		<action name="goods_goodsEvaluates" class="com.yc.meituan.web.action.SellerAction" method="goodsEvaluates"></action>
 		<action name="seller_todaySoldCount" class="com.yc.meituan.web.action.SellerAction" method="getTadaySoldBySid"></action>
+		<action name="seller_highUseCount" class="com.yc.meituan.web.action.SellerAction" method="highUseCount"></action>
 		
 	</package>
 </struts>

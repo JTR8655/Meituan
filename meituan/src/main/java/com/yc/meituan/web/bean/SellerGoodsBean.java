@@ -38,6 +38,15 @@ public class SellerGoodsBean {
 	private String ostatus;
 	private String uaccounts;
 	private int totalTodaySold;
+	public String usetime;
+
+	public String getUsetime() {
+		return usetime;
+	}
+
+	public void setUsetime(String usetime) {
+		this.usetime = usetime;
+	}
 
 	public int getTotalTodaySold() {
 		return totalTodaySold;
@@ -401,9 +410,9 @@ public class SellerGoodsBean {
 				+ ", saccounts=" + saccounts + ", spwd=" + spwd + ", saddress=" + saddress + ", sshopname=" + sshopname
 				+ ", stype=" + stype + ", sname=" + sname + ", slicense=" + slicense + ", sphone=" + sphone
 				+ ", status=" + status + ", temp1=" + temp1 + ", temp2=" + temp2 + ", opwd=" + opwd + ", ostatus="
-				+ ostatus + ", uaccounts=" + uaccounts + ", totalTodaySold=" + totalTodaySold + ", oid=" + oid
-				+ ", oidentifier=" + oidentifier + ", otime=" + otime + ", opaytime=" + opaytime + ", ocount=" + ocount
-				+ ", oprice=" + oprice + "]";
+				+ ostatus + ", uaccounts=" + uaccounts + ", totalTodaySold=" + totalTodaySold + ", usetime=" + usetime
+				+ ", oid=" + oid + ", oidentifier=" + oidentifier + ", otime=" + otime + ", opaytime=" + opaytime
+				+ ", ocount=" + ocount + ", oprice=" + oprice + "]";
 	}
 
 }

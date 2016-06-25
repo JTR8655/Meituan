@@ -1,5 +1,7 @@
 package com.yc.meituan.service.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -116,6 +118,20 @@ public class SellerServiceImpl implements SellerService {
 	@Override
 	public List<SellerGoodsBean> getTotalSoldBySids(int sid) {
 		return sellerInfoMapper.getTotalSoldBySid(sid);
+	}
+
+	@Override
+	public List<Integer> highUseCount(Integer sid,List<String> times) {
+		List<Integer> useCount = new ArrayList<Integer>();
+		useCount.add(0);//初始显示为0
+		for(int i = 0; i < 6; i ++){
+			Map<String,Object> params = new HashMap<String,Object>();
+			params.put("sid", sid);
+			params.put("startTime", times.get(i));
+			params.put("endTime", times.get(i+1));
+			useCount.add(sellerInfoMapper.highUseCount(params));
+		}
+		return useCount;
 	}
 
 }

@@ -14,6 +14,6 @@
 		select distinct(g.gid), g.gtitle1,g.gtitle2, g.img, g.text, g.gprice1, g.gprice2, g.gsoldcount,
     	(select count(1) from meituan_evaluate where gid=g.gid) pjCount
    	 	from meituan_goods_info g  
-   		left join meituan_evaluate e on g.gid=e.gid 
+   		left join meituan_evaluate e on g.gid=e.gid and g.temp1 = '热销中'
 	</select>
 </mapper>

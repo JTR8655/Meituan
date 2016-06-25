@@ -52,6 +52,7 @@ function showInfo(data){
 	    $("#body_mid1").append(value);
 	    $("#foodTitle1").html(data[i].gtitle1);
 	    document.getElementsByTagName("title").innerHTML=data[i].gtitle1+"【团购】";
+	    $(".foodsimg").attr("src",data[i].img);
 	}
 }
 

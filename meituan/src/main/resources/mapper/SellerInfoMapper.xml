@@ -90,7 +90,7 @@
 	</update>
 	
 	<select id="showOrderInfo" parameterType="string" resultType="com.yc.meituan.web.bean.SellerGoodsBean">
-		select o.oid, o.oidentifier, o.otime, o.opaytime, o.opwd, o.ocount, u.uaccounts, g.gtitle1, o.oprice
+		select o.oid, o.oidentifier, o.otime, o.usetime, o.opwd, o.ocount, u.uaccounts, g.gtitle1, o.oprice
 		from meituan_uorder o inner join meituan_user_info u on u.muid = o.muid inner join meituan_goods_info g
 		on o.gid = g.gid where opwd = #{opwd} and o.ostatus = '未使用'
 	</select>
@@ -103,8 +103,8 @@
 		select gtitle1,gsoldcount from meituan_goods_info where sid=#{sid}
 		
 	</select>
-	<select id="selectEvaluates" parameterType="EvaluateBean" resultType="EvaluateBean">
-		select e.muid,e.gid,u.uaccounts, u.uheadimg,e.hidename, e.egrade_4, e.econtent, e.temp1 from meituan_user_info u
+	<select id="selectEvaluates" parameterType="int" resultType="EvaluateBean">
+		select e.muid,e.gid,u.uaccounts, u.uheadimg,e.hidename, e.egrade_4, e.econtent, e.temp1, g.gtitle1 from meituan_user_info u
  		inner join meituan_evaluate e on u.muid = e.muid
  		inner join meituan_goods_info g on g.gid=e.gid and g.sid=#{sid}
 	</select>
@@ -118,4 +118,9 @@
 		group by gi.gid,gi.gtitle1
 	</select>
 	
+	<select id="highUseCount" parameterType="map" resultType="Integer">
+		select count(*) from meituan_uorder o inner join meituan_goods_info g on o.gid = g.gid inner join
+			 meituan_seller_info s on s.sid = g.sid and to_char(otime,'HH24:mm:ss') &gt; #{startTime} and
+			  to_char(otime,'HH24:mm:ss') &lt;= #{endTime} and s.sid = #{sid}
+	</select>
 </mapper>

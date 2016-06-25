@@ -80,7 +80,6 @@ footer {
 	display: inline-block;
 	width: 20px;
 	height: 10px;
-	background: #EEE;
 }
 #show-evaluate {
 	width: 100%;
@@ -142,4 +141,8 @@ footer {
 	position: absolute;
 	right: 0;
 	top: -1px;
+}
+.goods-name {
+	display: inline-block;
+	margin-right: 20px;
 }

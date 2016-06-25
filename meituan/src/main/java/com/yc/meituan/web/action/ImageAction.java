@@ -75,7 +75,7 @@ public class ImageAction implements ModelDriven<GoodsBean>, SessionAware, Reques
 			for(int i=0;i<image.length;i++){
 				FileUtils.copyFile(image[i],new File(savePath+File.separator+imageFileName[i]));
 			}
-			goodsBean.setImg("upload/"+imageFileName[0]);
+			goodsBean.setImg("upload\\"+imageFileName[0]);
 			goodsBean.setD_count(1);
 			goodsBean.setD_price1(goodsBean.getGprice2());
 			goodsBean.setD_taocan(goodsBean.getGtitle1());

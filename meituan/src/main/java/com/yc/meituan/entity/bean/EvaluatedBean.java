@@ -6,6 +6,33 @@ public class EvaluatedBean {
 	private String gtitle1;
 	private String egrade_4;
 	private String econtent;
+	private String temp1;
+	public String getUheadimg() {
+		return uheadimg;
+	}
+
+	public void setUheadimg(String uheadimg) {
+		this.uheadimg = uheadimg;
+	}
+
+	public String getUaccounts() {
+		return uaccounts;
+	}
+
+	public void setUaccounts(String uaccounts) {
+		this.uaccounts = uaccounts;
+	}
+
+	private String uheadimg;
+	private String uaccounts;
+	
+	public String getTemp1() {
+		return temp1;
+	}
+
+	public void setTemp1(String temp1) {
+		this.temp1 = temp1;
+	}
 
 	public Integer getGid() {
 		return gid;
@@ -50,7 +77,7 @@ public class EvaluatedBean {
 	@Override
 	public String toString() {
 		return "EvaluatedBean [gid=" + gid + ", img=" + img + ", gtitle1=" + gtitle1 + ", egrade_4=" + egrade_4
-				+ ", econtent=" + econtent + "]";
+				+ ", econtent=" + econtent + ", temp1=" + temp1 + ", uheadimg=" + uheadimg + ", uaccounts=" + uaccounts
+				+ "]";
 	}
-
 }

@@ -1,5 +1,6 @@
 package com.yc.meituan.web.action;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -194,6 +195,26 @@ public class SellerAction implements ModelDriven<SellerGoodsBean>, SessionAware,
 		List<SellerGoodsBean> sellerGoodsBeans=sellerService.getTotalSoldBySids(seller.getSid());
 		LogManager.getLogger().debug("商家今日销量数据："+sellerGoodsBeans);
 		AjaxUtil.objectAjaxResponse(sellerGoodsBeans);
+		return "none";
+	}
+	
+	//消费高峰期
+	public String highUseCount(){
+		SellerInfo seller = (SellerInfo) session.get(MeituanData.LOGIN_SELLER);
+		if (null == seller) {
+			AjaxUtil.stringAjaxResponse("2");
+			return "none";
+		}
+		List<String> times = new ArrayList<String>();
+		times.add("08:00:00");
+		times.add("10:00:00");
+		times.add("12:00:00");
+		times.add("14:00:00");
+		times.add("16:00:00");
+		times.add("18:00:00");
+		times.add("20:00:00");
+		List<Integer> highUseList = sellerService.highUseCount(seller.getSid(),times);
+		AjaxUtil.objectAjaxResponse(highUseList);
 		return "none";
 	}
 	

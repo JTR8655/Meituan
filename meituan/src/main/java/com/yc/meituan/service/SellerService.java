@@ -45,4 +45,6 @@ public interface SellerService {
 
 	List<SellerGoodsBean> getTotalSoldBySids(int sid);
 
+	List<Integer> highUseCount(Integer sid, List<String> times);
+
 }

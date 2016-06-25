@@ -253,7 +253,7 @@
 			</p>
 			<p class="standard_bar">美味尽享</p>
 			<div id="standard_bar">
-				<img class="foodsimg" src="update/back1.jpg">
+				<img class="foodsimg" src="">
 			</div>
 		</div>
 		<div>

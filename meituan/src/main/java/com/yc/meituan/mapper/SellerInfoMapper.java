@@ -41,4 +41,6 @@ public interface SellerInfoMapper {
 	
 	List<SellerGoodsBean> getTotalSoldBySid(int sid);
 
+	Integer highUseCount(Map<String, Object> params);
+
 }
